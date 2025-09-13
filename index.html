@@ -15,31 +15,36 @@
       --card-bg:#0e0e0e;
       --panel-bg:#1e1e1e;
       --white:#ffffff;
+      --muted:#666;
     }
+
     html,body{margin:0;height:100%;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;}
 
     /* ===== HEADER ===== */
     header{
       background:var(--violet);
-      padding:12px 28px;
+      padding:12px 24px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:16px;
       position:sticky;
       top:0;
       z-index:1100;
-      box-shadow:0 2px 8px rgba(0,0,0,0.3);
+      box-shadow:0 2px 10px rgba(0,0,0,0.25);
+      min-height:64px;
     }
-    .logo{height:48px;}
+    .logo{height:48px;flex:0 0 auto;}
 
-    nav ul{display:flex;gap:16px;margin:0;padding:0;list-style:none;}
-    nav ul li a{color:var(--white);text-decoration:none;font-weight:600;transition:color .18s;}
-    nav ul li a:hover,nav ul li a.active{color:var(--violet-light);}
+    /* left area: logo + nav */
+    .left-area{display:flex;align-items:center;gap:14px;}
+    nav ul{display:flex;gap:14px;margin:0;padding:0;list-style:none;align-items:center;}
+    nav ul li a{color:var(--white);text-decoration:none;font-weight:600;padding:6px 4px;border-radius:4px;}
+    nav ul li a:hover, nav ul li a.active{color:var(--violet-light);background:rgba(255,255,255,0.03);}
 
-    /* ===== SEARCH BAR (centrée) ===== */
+    /* ===== SEARCH (center) ===== */
     .search-container{flex:1;display:flex;justify-content:center;}
-    .search-bar{position:relative;width:60%;max-width:700px;min-width:260px;}
+    .search-bar{position:relative;width:60%;max-width:720px;min-width:240px;}
     .search-input{
       width:100%;
       border-radius:26px;
@@ -47,37 +52,52 @@
       padding:10px 18px 10px 44px;
       font-size:15px;
       outline:none;
+      background:#fff;
+      color:#000;
     }
+    /* since search input is white, adjust icon color */
     .search-bar .fa-search{
       position:absolute;
       left:16px;
       top:50%;
       transform:translateY(-50%);
-      color:#666;
+      color:var(--muted);
       font-size:18px;
       pointer-events:none;
     }
 
-    /* ===== ACTIONS à droite ===== */
-    .actions{display:flex;gap:12px;}
-    .actions button{
-      background:transparent;
-      color:var(--white);
-      border:1px solid rgba(255,255,255,0.15);
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
+    /* ===== ACTION PANEL (vertical, outside header, fixed on right) ===== */
+    .action-panel{
+      position:fixed;
+      right:18px;
+      top:84px; /* just below header */
+      z-index:1200;
       display:flex;
-      gap:6px;
-      align-items:center;
-      transition:background .2s;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
     }
-    .actions button:hover{background:rgba(255,255,255,0.08);}
-    .actions i{color:var(--violet-light);}
+    .action-panel button{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,0.04);
+      color:var(--white);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:10px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
+      min-width:48px;
+    }
+    .action-panel button i{color:var(--violet-light); min-width:20px; text-align:center;}
+    .action-panel button:hover{background:rgba(255,255,255,0.06);}
+
+    /* compact icon-only style for narrow screens */
+    .action-panel .icon-only{padding:10px; width:44px; justify-content:center;}
 
     /* ===== MAIN / CARDS ===== */
-    main{padding:26px;}
+    main{padding:28px;}
     .cards-wrapper{
       background:var(--panel-bg);
       padding:26px;
@@ -97,26 +117,43 @@
     .card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,0.6);}
     .card-img{width:100px;height:100px;object-fit:contain;margin-bottom:12px;}
     .card h3{color:var(--violet-light);margin:8px 0;}
+    .card p{color:#dcdcdc;}
     .card a{color:var(--violet-light);font-weight:700;text-decoration:none;display:inline-block;margin-top:10px;}
 
+    /* ===== LIST VIEW ===== */
+    .cards.list-view{display:flex;flex-direction:column;gap:14px;}
+    .cards.list-view .card{display:flex;align-items:center;text-align:left;gap:18px;padding:16px;}
+    .cards.list-view .card-img{width:84px;height:84px;flex:0 0 auto;margin:0;}
+
     /* ===== LIGHT MODE ===== */
-    body.light-mode{background:#f5f5f5;color:#000;}
-    body.light-mode header{background:var(--violet);}
-    body.light-mode .card{border-color:rgba(0,0,0,0.1);}
+    body.light-mode{
+      background:#f5f5f5;color:#000;
+    }
+    body.light-mode header{background:var(--violet);} /* preserve violet header even in light mode */
+    body.light-mode .cards-wrapper{background:#eee;}
+    body.light-mode .card{background:#fff;border-color:rgba(0,0,0,0.06);color:#000;}
+    body.light-mode .search-input{background:#fff;color:#000;}
+
+    /* responsive small */
+    @media (max-width:760px){
+      .search-bar{width:85%;}
+      .action-panel{right:10px;top:78px;}
+      nav ul{display:none;}
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <!-- Logo + menu -->
-    <div style="display:flex;align-items:center;gap:18px;">
+    <!-- left: logo + nav -->
+    <div class="left-area">
       <img src="assets/logo.png" alt="Logo GTANew" class="logo">
       <nav>
         <ul>
           <li><a href="index.html" class="active">Accueil</a></li>
           <li><a href="regles.html">Règles</a></li>
-          <li><a href="jobs_legaux.html">Jobs légaux</a></li>
-          <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
+          <li><a href="jobs-legaux.html">Jobs légaux</a></li>
+          <li><a href="jobs-illegaux.html">Jobs illégaux</a></li>
           <li><a href="tutoriels.html">Tutoriels</a></li>
           <li><a href="generales.html">Générales</a></li>
           <li><a href="discord.html">Discord</a></li>
@@ -124,21 +161,24 @@
       </nav>
     </div>
 
-    <!-- Recherche centrée -->
+    <!-- centered search (stays in header) -->
     <div class="search-container">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
+      <div class="search-bar" role="search" aria-label="Recherche sur le site">
+        <i class="fas fa-search" aria-hidden="true"></i>
         <input class="search-input" id="searchInput" type="text" placeholder="Rechercher..." />
       </div>
     </div>
 
-    <!-- Actions à droite -->
-    <div class="actions">
-      <button id="themeToggle"><i class="fas fa-adjust"></i> Thème</button>
-      <button id="gridBtn"><i class="fas fa-th-large"></i> Grille</button>
-      <button id="listBtn"><i class="fas fa-list"></i> Liste</button>
-    </div>
+    <!-- right is intentionally left empty (actions are external panel) -->
+    <div style="width:120px"></div>
   </header>
+
+  <!-- ACTION PANEL (vertical / fixed, outside header) -->
+  <div class="action-panel" aria-label="Actions">
+    <button id="themeBtn" title="Basculer thème (clair/sombre)"><i class="fas fa-adjust"></i> Thème</button>
+    <button id="gridBtn" title="Vue en grille"><i class="fas fa-th-large"></i> Grille</button>
+    <button id="listBtn" title="Vue en liste"><i class="fas fa-list"></i> Liste</button>
+  </div>
 
   <main>
     <div class="cards-wrapper">
@@ -149,24 +189,28 @@
           <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
           <a href="regles.html">Voir les règles</a>
         </div>
+
         <div class="card">
           <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
           <h3>Jobs Légaux</h3>
           <p>Découvrez les métiers disponibles dans la légalité.</p>
-          <a href="jobs_legaux.html">Voir les jobs légaux</a>
+          <a href="jobs-legaux.html">Voir les jobs légaux</a>
         </div>
+
         <div class="card">
           <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
           <h3>Jobs Illégaux</h3>
           <p>Plongez dans les activités illégales proposées sur l’île.</p>
-          <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
+          <a href="jobs-illegaux.html">Voir les jobs illégaux</a>
         </div>
+
         <div class="card">
           <img src="assets/discord.png" alt="Discord" class="card-img">
           <h3>Discord</h3>
           <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
           <a href="discord.html">Accéder au Discord</a>
         </div>
+
         <div class="card">
           <img src="assets/general.png" alt="Général" class="card-img">
           <h3>Informations Générales</h3>
@@ -178,26 +222,69 @@
   </main>
 
   <script>
-    const searchInput=document.getElementById('searchInput');
-    const cards=document.querySelectorAll('.card');
-    const cardsContainer=document.getElementById('cardsContainer');
+    // Elements
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+    const cardsContainer = document.getElementById('cardsContainer');
+    const themeBtn = document.getElementById('themeBtn');
+    const gridBtn = document.getElementById('gridBtn');
+    const listBtn = document.getElementById('listBtn');
 
-    searchInput.addEventListener('input',()=>{
-      const q=searchInput.value.toLowerCase().trim();
-      cards.forEach(c=>{
-        const text=c.innerText.toLowerCase();
-        c.style.display=text.includes(q)?'block':'none';
+    // --- Search filter ---
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.toLowerCase().trim();
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = text.includes(q) ? 'block' : 'none';
       });
+      // save search if you want (optional)
+      localStorage.setItem('gtanew_search', q);
     });
 
-    document.getElementById('themeToggle').addEventListener('click',()=>{
-      document.body.classList.toggle('light-mode');
+    // --- Theme toggle (with persistence) ---
+    function setTheme(theme) {
+      if (theme === 'light') document.body.classList.add('light-mode');
+      else document.body.classList.remove('light-mode');
+      localStorage.setItem('gtanew_theme', theme);
+    }
+    themeBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-mode');
+      setTheme(isLight ? 'light' : 'dark');
     });
-    document.getElementById('gridBtn').addEventListener('click',()=>{
-      cardsContainer.style.display='grid';
+
+    // --- View toggle (grid/list) with persistence ---
+    function setView(view) {
+      if (view === 'list') {
+        cardsContainer.classList.add('list-view');
+      } else {
+        cardsContainer.classList.remove('list-view');
+      }
+      localStorage.setItem('gtanew_view', view);
+    }
+    gridBtn.addEventListener('click', () => setView('grid'));
+    listBtn.addEventListener('click', () => setView('list'));
+
+    // --- Load persisted prefs on startup ---
+    window.addEventListener('DOMContentLoaded', () => {
+      const theme = localStorage.getItem('gtanew_theme') || 'dark';
+      setTheme(theme);
+      const view = localStorage.getItem('gtanew_view') || 'grid';
+      setView(view);
+
+      const savedSearch = localStorage.getItem('gtanew_search') || '';
+      if (savedSearch) {
+        searchInput.value = savedSearch;
+        // trigger filter
+        const event = new Event('input');
+        searchInput.dispatchEvent(event);
+      }
     });
-    document.getElementById('listBtn').addEventListener('click',()=>{
-      cardsContainer.style.display='block';
+
+    // Accessibility: keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'g') setView('grid');        // press "g" for grid
+      if (e.key === 'l') setView('list');        // press "l" for list
+      if (e.key === 't') themeBtn.click();       // press "t" toggle theme
     });
   </script>
 
