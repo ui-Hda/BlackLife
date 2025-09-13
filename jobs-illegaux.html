@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GTANew - Jobs Illégaux</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+
   <style>
+    /* Reset / layout de base */
     body {
       background: #0d0017;
-      color: white;
+      color: #fff;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -18,18 +20,15 @@
       flex-direction: column;
     }
 
-    /* ===== NAVBAR ===== */
+    /* NAVBAR (rouge) */
     header {
-      background: #7f1d1d; /* ✅ Rouge foncé */
+      background: #7f1d1d; /* rouge foncé */
       padding: 15px 30px;
       display: flex;
       align-items: center;
       gap: 40px;
     }
-
-    header .logo {
-      height: 50px;
-    }
+    header .logo { height: 50px; }
 
     nav ul {
       list-style: none;
@@ -38,25 +37,18 @@
       margin: 0;
       padding: 0;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
     }
-
     nav ul li a:hover, nav ul li a.active {
-      color: #f87171; /* ✅ Rouge clair */
+      color: #fb7185; /* rouge clair */
     }
 
-    /* ===== SEARCH BAR ===== */
-    .search-bar {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-    }
-
+    /* SEARCH BAR */
+    .search-bar { flex-grow: 1; display:flex; justify-content:center; }
     .search-bar input {
       width: 70%;
       max-width: 650px;
@@ -68,17 +60,9 @@
       background: #1e1e1e;
       color: white;
     }
+    .search-bar i { position: relative; left: 35px; top: 12px; color: #999; font-size: 18px; pointer-events: none; }
 
-    .search-bar i {
-      position: relative;
-      left: 35px;
-      top: 12px;
-      color: #999;
-      font-size: 18px;
-      pointer-events: none;
-    }
-
-    /* ===== LAYOUT ===== */
+    /* MAIN 3 colonnes */
     main {
       flex: 1;
       display: grid;
@@ -87,19 +71,14 @@
       margin: 30px;
     }
 
-    /* ===== AJOUTS RECENTS ===== */
+    /* AJOUTS RECENTS (gauche) */
     .recent {
       background: #1e1e1e;
       padding: 20px;
       border-radius: 10px;
       height: fit-content;
     }
-
-    .recent h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #ccc;
-    }
+    .recent h2 { font-size: 18px; margin-bottom: 15px; color: #ccc; }
 
     .recent-item {
       background: #0e0e0e;
@@ -109,55 +88,39 @@
       margin-bottom: 12px;
       transition: 0.3s;
     }
-
     .recent-item:hover {
-      border-color: #f87171;
+      border-color: #fb7185;
       background: #1a1a1a;
     }
-
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #f87171; /* ✅ Rouge */
+      color: #fb7185;
     }
+    .recent-item p { margin: 0; font-size: 13px; color: #aaa; }
 
-    .recent-item p {
-      margin: 0;
-      font-size: 13px;
-      color: #aaa;
-    }
-
-    /* ===== CARDS WRAPPER ===== */
+    /* CARDS (centre) */
     .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
     }
+    .cards-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+    .cards-header h2 { margin:0; font-size:20px; color:#fff; }
+    .cards-header select { padding:8px 12px; border-radius:8px; border:none; font-size:14px; }
 
-    .cards-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .cards-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .cards-header select {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 14px;
-    }
-
-    .cards {
+    /* vue par défaut = grid */
+    .cards.grid-view {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+    }
+
+    /* vue liste */
+    .cards.list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .card {
@@ -168,32 +131,30 @@
       padding: 20px;
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(248, 113, 113, 0.3); /* ✅ Glow rouge */
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(248,113,113,0.22);
     }
 
     .card-img {
       width: 100px;
       height: 100px;
       object-fit: contain;
-      margin-bottom: 15px;
+      margin: 0 auto 15px auto;
+      border-radius: 8px;
+      background: #222;
     }
+    .card h3 { color: #fb7185; margin: 8px 0; }
 
-    .card h3 {
-      color: #f87171; /* ✅ Rouge */
-    }
+    /* Quand la grille devient liste, on aligne horizontalement */
+    .cards.list-view .card { flex-direction: row; text-align: left; align-items: center; }
+    .cards.list-view .card .card-img { width: 80px; height: 80px; margin: 0 18px 0 0; }
 
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #f87171;
-      font-weight: bold;
-    }
-
-    /* ===== ACTIONS ===== */
+    /* ACTIONS (droite) */
     .actions {
       width: 220px;
       background: #0d0017;
@@ -202,42 +163,42 @@
       height: fit-content;
       align-self: flex-start;
     }
-
-    .actions h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #ccc;
-    }
-
+    .actions h2 { font-size:18px; margin-bottom:15px; color:#ccc; }
     .actions button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      background: none;
-      border: none;
-      color: #f87171; /* ✅ Rouge */
-      font-size: 15px;
-      padding: 8px 0;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.3s;
+      display:flex; align-items:center; gap:8px; width:100%; background:none; border:none;
+      color:#fb7185; font-size:15px; padding:8px 0; text-align:left; cursor:pointer; transition:0.3s;
+    }
+    .actions button:hover { color:#fff; }
+
+    /* MODE CLAIR */
+    body.light-mode {
+      background: #f5f5f5; color:#111;
+    }
+    body.light-mode header { background: #ef4444; } /* rouge clair en light-mode */
+    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions {
+      background:#fff; color:#111;
+    }
+    body.light-mode .card, body.light-mode .recent-item {
+      background:#fff; color:#111; border:2px solid #ccc;
     }
 
-    .actions button:hover {
-      color: #fff;
+    /* responsive */
+    @media(max-width:1100px) {
+      main { grid-template-columns: 1fr; margin: 20px; }
+      .actions, .recent { order: 2; }
+      .cards-wrapper { order: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ====== NAVBAR ====== -->
+  <!-- NAVBAR -->
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html">Réglement</a></li>
+        <li><a href="regles.html">Règlement</a></li>
         <li><a href="jobs-legaux.html">Légal</a></li>
         <li><a href="jobs-illegaux.html" class="active">Illégal</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
@@ -246,21 +207,21 @@
       </ul>
     </nav>
 
-    <!-- Barre de recherche -->
     <div class="search-bar">
       <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher...">
+      <input type="text" id="searchInput" placeholder="Rechercher un job...">
     </div>
   </header>
 
-  <!-- ====== MAIN ====== -->
+  <!-- MAIN -->
   <main>
     <!-- AJOUTS RECENTS -->
     <aside class="recent" id="recentContainer">
       <h2>Ajouts récents</h2>
+      <!-- rempli via JS -->
     </aside>
 
-    <!-- CARTES JOBS ILLEGAUX -->
+    <!-- CARTES -->
     <div class="cards-wrapper">
       <div class="cards-header">
         <h2>Jobs Illégaux</h2>
@@ -270,117 +231,164 @@
         </select>
       </div>
 
-      <div class="cards" id="cardsContainer">
+      <div class="cards grid-view" id="cardsContainer">
+        <!-- Cartes (liste fournie, change les src si besoin) -->
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/gang.png" alt="Gang" class="card-img">
           <h3>Gang</h3>
-          <p>Prendre le contrôle des quartiers par la force.</p>
+          <p>Prendre le contrôle de quartiers et mener des trafics locaux.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/mafia.png" alt="Mafia" class="card-img">
           <h3>Mafia</h3>
-          <p>Organisation criminelle influente et structurée.</p>
+          <p>Réseaux criminels organisés, extorsion et infiltration.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/cartel.png" alt="Cartel" class="card-img">
           <h3>Cartel</h3>
-          <p>Contrôle du trafic de drogues et des exportations illégales.</p>
+          <p>Trafic de stupéfiants à grande échelle et opérations internationales.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/dealer.png" alt="Dealer" class="card-img">
           <h3>Dealer</h3>
-          <p>Vente de stupéfiants dans les rues.</p>
+          <p>Vente et distribution de drogues en rue.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/fabricant.png" alt="Fabricant" class="card-img">
+          <img src="assets/jobs/fabricant.png" alt="Fabricant de drogues" class="card-img">
           <h3>Fabricant de drogues</h3>
-          <p>Production de substances illégales.</p>
+          <p>Production de substances illicites en laboratoire.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/armes.png" alt="Traffic d'armes" class="card-img">
-          <h3>Trafic d’armes</h3>
-          <p>Importation et revente d’armes illégales.</p>
+          <img src="assets/jobs/armes.png" alt="Trafic d'armes" class="card-img">
+          <h3>Trafic d'armes</h3>
+          <p>Importation, modification et revente d'armes illégales.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/braqueur.png" alt="Braqueur" class="card-img">
           <h3>Braqueur</h3>
-          <p>Braquages de banques, bijouteries et commerces.</p>
+          <p>Braquages organisés (banques, bijouteries, fourgons blindés).</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
           <img src="assets/jobs/hacker.png" alt="Hacker" class="card-img">
           <h3>Hacker</h3>
-          <p>Piratage informatique et détournement de données.</p>
+          <p>Piratage, intrusion et vol de données / de fonds.</p>
         </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/contrebandier.png" alt="Contrebandier" class="card-img">
+          <h3>Contrebandier</h3>
+          <p>Transport et vente de marchandises illégales entre frontières.</p>
+        </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/fraude.png" alt="Fraude" class="card-img">
+          <h3>Fraude / Arnaqueur</h3>
+          <p>Arnaques financières, faux documents et escroqueries.</p>
+        </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/vol.png" alt="Voleur" class="card-img">
+          <h3>Voleur / Cambrioleur</h3>
+          <p>Cambriolages, vols à la tire et pillages ciblés.</p>
+        </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/blackmarket.png" alt="Marché noir" class="card-img">
+          <h3>Marché noir</h3>
+          <p>Vente d'objets rares/illégaux et services interdits.</p>
+        </div>
+
       </div>
     </div>
 
     <!-- ACTIONS -->
     <aside class="actions">
       <h2>Actions</h2>
-      <button><i class="fas fa-list"></i> Vue en liste</button>
-      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
-      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
-      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+      <button id="gridBtn"><i class="fas fa-th"></i> Vue en grille</button>
+      <button id="listBtn"><i class="fas fa-list"></i> Vue en liste</button>
+      <button id="themeToggle"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
   </main>
 
-  <!-- ====== SCRIPT ====== -->
+  <!-- SCRIPTS -->
   <script>
+    // éléments
     const searchInput = document.getElementById("searchInput");
-    const cards = document.querySelectorAll(".card");
-    const sortSelect = document.getElementById("sortSelect");
     const cardsContainer = document.getElementById("cardsContainer");
-    const themeBtn = document.getElementById("themeToggle");
+    const sortSelect = document.getElementById("sortSelect");
+    const cardsNodeList = document.querySelectorAll(".card");
+    const cards = Array.from(cardsNodeList); // array pour manip
     const recentContainer = document.getElementById("recentContainer");
+    const themeBtn = document.getElementById("themeToggle");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
 
-    // Recherche
+    // Recherche live
     searchInput.addEventListener("input", () => {
-      const search = searchInput.value.toLowerCase();
+      const q = searchInput.value.trim().toLowerCase();
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(search) ? "block" : "none";
+        card.style.display = text.includes(q) ? "block" : "none";
       });
+      updateRecent(); // recalculer récents si filtres changeant
     });
 
     // Tri
     sortSelect.addEventListener("change", () => {
-      let sortedCards = Array.from(cards);
+      let sorted = [...cards];
       if (sortSelect.value === "name") {
-        sortedCards.sort((a, b) =>
-          a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
-        );
-      } else if (sortSelect.value === "date") {
-        sortedCards.sort((a, b) =>
-          new Date(b.dataset.date) - new Date(a.dataset.date)
-        );
+        sorted.sort((a,b) => a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText));
+      } else {
+        sorted.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
       }
+      // retirer et réinsérer
       cardsContainer.innerHTML = "";
-      sortedCards.forEach(card => cardsContainer.appendChild(card));
+      sorted.forEach(c => cardsContainer.appendChild(c));
     });
 
-    // Mode clair/sombre
-    function toggleTheme() {
+    // Theme toggle
+    themeBtn.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
       themeBtn.innerHTML = document.body.classList.contains("light-mode")
         ? '<i class="fas fa-adjust"></i> Mode sombre'
         : '<i class="fas fa-adjust"></i> Mode clair';
-    }
+    });
 
-    // Ajouts récents
-    function loadRecent() {
-      let sortedCards = Array.from(cards);
-      sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+    // Grid / List views
+    gridBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("list-view");
+      cardsContainer.classList.add("grid-view");
+    });
+    listBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("grid-view");
+      cardsContainer.classList.add("list-view");
+    });
+
+    // Chargement et affichage des ajouts récents (3 derniers)
+    function updateRecent() {
+      // prendre uniquement les cartes visibles (display != none)
+      const visible = Array.from(cards).filter(c => c.style.display !== "none");
+      visible.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
-      sortedCards.slice(0, 3).forEach(card => {
-        const title = card.querySelector("h3").innerText;
-        const date = "13/09/2025";
+      visible.slice(0,3).forEach(c => {
+        const title = c.querySelector("h3").innerText;
+        const date = c.dataset.date || "13/09/2025";
         const item = document.createElement("div");
-        item.classList.add("recent-item");
-        item.innerHTML = `<h3>${title}</h3><p>Modifié le ${date}</p>`;
+        item.className = "recent-item";
+        item.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
         recentContainer.appendChild(item);
       });
     }
-    loadRecent();
+
+    // initial
+    updateRecent();
   </script>
 </body>
 </html>
