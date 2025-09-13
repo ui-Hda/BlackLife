@@ -21,7 +21,7 @@
     .layout { display:grid; grid-template-columns:260px 1fr 260px; gap:24px; max-width:1600px; margin:26px auto; padding:0 18px; }
 
     /* Sidebar gauche */
-    .recent-additions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(157,78,221,0.12); }
+    .recent-additions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(157,78,221,0.12); min-height:260px; }
     .recent-additions h3 { color:#9d4edd; margin:0 0 8px; }
 
     /* Centre */
@@ -32,13 +32,19 @@
     button.cta { background:#9d4edd; color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer; }
 
     /* Sidebar droite */
-    .actions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(157,78,221,0.12); }
+    .actions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(157,78,221,0.12); min-height:260px; }
     .actions h3 { color:#c77dff; margin-top:0; }
     .actions button { display:block; width:100%; margin-bottom:10px; background:#333; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; }
 
+    /* Mode clair */
+    body.light-mode { background:#f5f5f5; color:#111; }
+    body.light-mode header { background:#ddd; }
+    body.light-mode .card { background:#fff; color:#000; border:1px solid #ccc; }
+    body.light-mode .recent-additions, body.light-mode .actions { background:#eee; color:#000; border:1px solid #ccc; }
+
     @media(max-width:1100px) {
       .layout { grid-template-columns:1fr; }
-      .actions, .recent-additions { order:2; }
+      .actions, .recent-additions { order:2; min-height:auto; }
       .jobs-cards { order:1; }
     }
   </style>
@@ -81,7 +87,6 @@
 
     <!-- centre -->
     <section class="jobs-cards">
-      <!-- Exemple cartes -->
       <div class="card"><img class="card-img" src="assets/jobs/lspd.jpg" alt="LSPD"><h3>LSPD</h3><p>Maintenir l'ordre et la sécurité en ville.</p><span class="tag">Pré-requis : Oui</span><span class="tag">Salaire : Haut</span><button class="cta">En savoir +</button></div>
       <div class="card"><img class="card-img" src="assets/jobs/bcso.jpg" alt="BCSO"><h3>BCSO</h3><p>Patrouille et sécurité dans le comté.</p><span class="tag">Pré-requis : Oui</span><span class="tag">Salaire : Haut</span><button class="cta">En savoir +</button></div>
       <div class="card"><img class="card-img" src="assets/jobs/gouv.jpg" alt="Gouvernement"><h3>Gouvernement</h3><p>Gestion de l’administration et des lois.</p><span class="tag">Pré-requis : Oui</span><span class="tag">Salaire : Haut</span><button class="cta">En savoir +</button></div>
