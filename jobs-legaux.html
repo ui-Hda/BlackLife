@@ -18,8 +18,9 @@
       flex-direction: column;
     }
 
+    /* ===== NAVBAR ===== */
     header {
-      background: #4b0082;
+      background: #0f5d2f; /* ✅ Vert */
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -46,10 +47,10 @@
     }
 
     nav ul li a:hover, nav ul li a.active {
-      color: #d8b4fe;
+      color: #4ade80; /* ✅ Vert clair */
     }
 
-    /* Barre de recherche */
+    /* ===== SEARCH BAR ===== */
     .search-bar {
       flex-grow: 1;
       display: flex;
@@ -77,7 +78,7 @@
       pointer-events: none;
     }
 
-    /* Layout */
+    /* ===== LAYOUT ===== */
     main {
       flex: 1;
       display: grid;
@@ -86,7 +87,7 @@
       margin: 30px;
     }
 
-    /* Ajouts récents */
+    /* ===== AJOUTS RECENTS ===== */
     .recent {
       background: #1e1e1e;
       padding: 20px;
@@ -110,14 +111,14 @@
     }
 
     .recent-item:hover {
-      border-color: #9d4edd;
+      border-color: #4ade80;
       background: #1a1a1a;
     }
 
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #d8b4fe;
+      color: #4ade80; /* ✅ Vert */
     }
 
     .recent-item p {
@@ -126,13 +127,7 @@
       color: #aaa;
     }
 
-    .recent-item a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Cards */
+    /* ===== CARDS WRAPPER ===== */
     .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
@@ -150,6 +145,13 @@
       margin: 0;
       font-size: 20px;
       color: #fff;
+    }
+
+    .cards-header select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
     }
 
     .cards {
@@ -170,22 +172,28 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+      box-shadow: 0 0 20px rgba(74, 222, 128, 0.3); /* ✅ Vert glow */
     }
 
     .card-img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
       margin-bottom: 15px;
-      border-radius: 10px;
     }
 
     .card h3 {
-      color: #9d4edd;
+      color: #4ade80; /* ✅ Vert */
     }
 
-    /* Actions */
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #4ade80;
+      font-weight: bold;
+    }
+
+    /* ===== ACTIONS ===== */
     .actions {
       width: 220px;
       background: #0d0017;
@@ -208,7 +216,7 @@
       width: 100%;
       background: none;
       border: none;
-      color: #d33eff;
+      color: #4ade80; /* ✅ Vert */
       font-size: 15px;
       padding: 8px 0;
       text-align: left;
@@ -223,13 +231,13 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- ====== NAVBAR ====== -->
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="regles.html">Réglement</a></li>
         <li><a href="jobs-legaux.html" class="active">Légal</a></li>
         <li><a href="jobs-illegaux.html">Illégal</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
@@ -237,61 +245,103 @@
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
+
+    <!-- Barre de recherche -->
     <div class="search-bar">
       <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher un job...">
+      <input type="text" id="searchInput" placeholder="Rechercher...">
     </div>
   </header>
 
-  <!-- Main -->
+  <!-- ====== MAIN ====== -->
   <main>
-    <!-- Ajouts récents -->
+    <!-- AJOUTS RECENTS -->
     <aside class="recent" id="recentContainer">
       <h2>Ajouts récents</h2>
     </aside>
 
-    <!-- Cartes métiers -->
+    <!-- CARTES JOBS LEGAUX -->
     <div class="cards-wrapper">
       <div class="cards-header">
         <h2>Jobs Légaux</h2>
+        <select id="sortSelect">
+          <option value="name">Trier par Nom</option>
+          <option value="date">Trier par Date</option>
+        </select>
       </div>
 
       <div class="cards" id="cardsContainer">
-        <div class="card" data-date="2025-09-13" data-link="#">
-          <img src="assets/jobs/lspd.jpg" alt="LSPD" class="card-img">
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lspd.png" alt="LSPD" class="card-img">
           <h3>LSPD</h3>
-          <p>Maintenir l’ordre et la sécurité.</p>
+          <p>Maintenir l’ordre et assurer la sécurité de la ville.</p>
         </div>
-        <div class="card" data-date="2025-09-13" data-link="#">
-          <img src="assets/jobs/bcso.jpg" alt="BCSO" class="card-img">
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bcso.png" alt="BCSO" class="card-img">
           <h3>BCSO</h3>
-          <p>Patrouille dans le comté.</p>
+          <p>Sécurité et justice dans le comté.</p>
         </div>
-        <div class="card" data-date="2025-09-13" data-link="#">
-          <img src="assets/jobs/ems.jpg" alt="EMS" class="card-img">
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/fib.png" alt="FIB" class="card-img">
+          <h3>FIB</h3>
+          <p>Enquêtes fédérales et lutte contre le crime organisé.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/gouvernement.png" alt="Gouvernement" class="card-img">
+          <h3>Gouvernement</h3>
+          <p>Gestion et politique de l’État.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/ems.png" alt="EMS" class="card-img">
           <h3>EMS</h3>
-          <p>Soins et interventions médicales.</p>
+          <p>Sauver des vies et assurer les soins médicaux.</p>
         </div>
-        <!-- Ajoute ici les autres jobs (Gouv, FIB, LS Customs, Benny’s, etc.) -->
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lscustoms.png" alt="LS Customs" class="card-img">
+          <h3>LS Customs</h3>
+          <p>Réparation et personnalisation de véhicules.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bennys.png" alt="Benny's" class="card-img">
+          <h3>Benny's</h3>
+          <p>Garage spécialisé dans les véhicules modifiés.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/concession.png" alt="Concessionnaire" class="card-img">
+          <h3>Concessionnaire</h3>
+          <p>Vente de véhicules neufs et d’occasion.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/vigneron.png" alt="Vigneron" class="card-img">
+          <h3>Vigneron</h3>
+          <p>Production et commerce de vin local.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bar.png" alt="Boîte/Bar" class="card-img">
+          <h3>Boîte de nuit / Bar</h3>
+          <p>Gestion d’établissements festifs et de détente.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Actions -->
+    <!-- ACTIONS -->
     <aside class="actions">
       <h2>Actions</h2>
       <button><i class="fas fa-list"></i> Vue en liste</button>
       <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
-      <button><i class="fas fa-info-circle"></i> Afficher détails</button>
-      <button id="themeToggle"><i class="fas fa-adjust"></i> Mode clair</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
   </main>
 
-  <!-- Script -->
+  <!-- ====== SCRIPT ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
-    const recentContainer = document.getElementById("recentContainer");
+    const sortSelect = document.getElementById("sortSelect");
+    const cardsContainer = document.getElementById("cardsContainer");
     const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
 
     // Recherche
     searchInput.addEventListener("input", () => {
@@ -302,15 +352,31 @@
       });
     });
 
-    // Mode clair/sombre
-    themeBtn.addEventListener("click", () => {
-      document.body.classList.toggle("light-mode");
-      themeBtn.innerHTML = document.body.classList.contains("light-mode") 
-        ? '<i class="fas fa-adjust"></i> Mode sombre' 
-        : '<i class="fas fa-adjust"></i> Mode clair';
+    // Tri
+    sortSelect.addEventListener("change", () => {
+      let sortedCards = Array.from(cards);
+      if (sortSelect.value === "name") {
+        sortedCards.sort((a, b) =>
+          a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
+        );
+      } else if (sortSelect.value === "date") {
+        sortedCards.sort((a, b) =>
+          new Date(b.dataset.date) - new Date(a.dataset.date)
+        );
+      }
+      cardsContainer.innerHTML = "";
+      sortedCards.forEach(card => cardsContainer.appendChild(card));
     });
 
-    // Générer ajouts récents
+    // Mode clair/sombre
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    // Ajouts récents
     function loadRecent() {
       let sortedCards = Array.from(cards);
       sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
@@ -318,15 +384,9 @@
       sortedCards.slice(0, 3).forEach(card => {
         const title = card.querySelector("h3").innerText;
         const date = "13/09/2025";
-        const link = card.dataset.link;
         const item = document.createElement("div");
         item.classList.add("recent-item");
-        item.innerHTML = `
-          <a href="${link}">
-            <h3>${title}</h3>
-            <p>Modifié le ${date}</p>
-          </a>
-        `;
+        item.innerHTML = `<h3>${title}</h3><p>Modifié le ${date}</p>`;
         recentContainer.appendChild(item);
       });
     }
