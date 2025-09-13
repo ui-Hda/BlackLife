@@ -13,9 +13,9 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     /* ===== NAVBAR ===== */
@@ -50,7 +50,7 @@
       color: #d8b4fe;
     }
 
-    /* ===== SEARCH BAR ===== */
+    /* ===== SEARCH BAR (style Unity) ===== */
     .search-bar {
       flex-grow: 1;
       display: flex;
@@ -82,9 +82,8 @@
     main {
       flex: 1;
       display: flex;
-      justify-content: center;
-      gap: 40px;
       margin: 30px;
+      gap: 20px;
     }
 
     /* ===== CARDS WRAPPER ===== */
@@ -92,11 +91,9 @@
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
-      max-width: 900px;
       flex-grow: 1;
     }
 
-    /* Header du bloc cartes */
     .cards-header {
       display: flex;
       justify-content: space-between;
@@ -158,13 +155,13 @@
 
     /* ===== ACTIONS ===== */
     .actions {
-      min-width: 200px;
+      width: 220px;
       background: #0d0017;
       padding: 20px;
       border-radius: 10px;
       height: fit-content;
       margin-top: 30px;
-      margin-right: 50px; /* rapproché du centre */
+      align-self: flex-start; /* pour rester en haut */
     }
 
     .actions h2 {
@@ -237,7 +234,6 @@
   <main>
     <!-- CARTES -->
     <div class="cards-wrapper">
-      <!-- header des cartes -->
       <div class="cards-header">
         <h2>Catégories</h2>
         <select id="sortSelect">
@@ -290,7 +286,7 @@
       <button onclick="setList()"><i class="fas fa-list"></i> Vue en liste</button>
       <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
       <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
-      <button onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
   </main>
 
@@ -300,6 +296,7 @@
     const cards = document.querySelectorAll(".card");
     const sortSelect = document.getElementById("sortSelect");
     const cardsContainer = document.getElementById("cardsContainer");
+    const themeBtn = document.getElementById("themeToggle");
 
     // Recherche
     searchInput.addEventListener("input", () => {
@@ -328,9 +325,14 @@
       sortedCards.forEach(card => cardsContainer.appendChild(card));
     });
 
-    // Mode clair/sombre
+    // Mode clair/sombre dynamique
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
     }
 
     function setList() {
