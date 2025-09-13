@@ -20,7 +20,7 @@
 
     /* ===== NAVBAR ===== */
     header {
-      background: #0f5d2f; /* ✅ Vert */
+      background: #065f46; /* Vert foncé */
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -47,7 +47,7 @@
     }
 
     nav ul li a:hover, nav ul li a.active {
-      color: #4ade80; /* ✅ Vert clair */
+      color: #34d399; /* Vert clair */
     }
 
     /* ===== SEARCH BAR ===== */
@@ -78,7 +78,7 @@
       pointer-events: none;
     }
 
-    /* ===== LAYOUT ===== */
+    /* ===== LAYOUT 3 colonnes ===== */
     main {
       flex: 1;
       display: grid;
@@ -111,14 +111,14 @@
     }
 
     .recent-item:hover {
-      border-color: #4ade80;
+      border-color: #34d399;
       background: #1a1a1a;
     }
 
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #4ade80; /* ✅ Vert */
+      color: #34d399;
     }
 
     .recent-item p {
@@ -172,7 +172,7 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(74, 222, 128, 0.3); /* ✅ Vert glow */
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
     }
 
     .card-img {
@@ -183,14 +183,7 @@
     }
 
     .card h3 {
-      color: #4ade80; /* ✅ Vert */
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #4ade80;
-      font-weight: bold;
+      color: #34d399;
     }
 
     /* ===== ACTIONS ===== */
@@ -216,7 +209,7 @@
       width: 100%;
       background: none;
       border: none;
-      color: #4ade80; /* ✅ Vert */
+      color: #34d399;
       font-size: 15px;
       padding: 8px 0;
       text-align: left;
@@ -226,6 +219,49 @@
 
     .actions button:hover {
       color: #fff;
+    }
+
+    /* ===== LIST VIEW ===== */
+    .list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .list-view .card {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+
+    .list-view .card-img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+
+    /* ===== MODE CLAIR ===== */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode header {
+      background: #10b981;
+    }
+
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper,
+    body.light-mode .actions {
+      background: #ddd;
+      color: #000;
+    }
+
+    body.light-mode .card,
+    body.light-mode .recent-item {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
     }
   </style>
 </head>
@@ -245,11 +281,9 @@
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
-
-    <!-- Barre de recherche -->
     <div class="search-bar">
       <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher...">
+      <input type="text" id="searchInput" placeholder="Rechercher un job...">
     </div>
   </header>
 
@@ -260,66 +294,76 @@
       <h2>Ajouts récents</h2>
     </aside>
 
-    <!-- CARTES JOBS LEGAUX -->
+    <!-- CARTES -->
     <div class="cards-wrapper">
       <div class="cards-header">
-        <h2>Jobs Légaux</h2>
+        <h2>Jobs légaux</h2>
         <select id="sortSelect">
           <option value="name">Trier par Nom</option>
           <option value="date">Trier par Date</option>
         </select>
       </div>
 
-      <div class="cards" id="cardsContainer">
+      <div class="cards grid-view" id="cardsContainer">
+        <!-- Exemples de jobs -->
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/lspd.png" alt="LSPD" class="card-img">
+          <img src="assets/jobs/lspd.jpg" alt="LSPD" class="card-img">
           <h3>LSPD</h3>
-          <p>Maintenir l’ordre et assurer la sécurité de la ville.</p>
+          <p>Maintenir l’ordre et la sécurité en ville.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/bcso.png" alt="BCSO" class="card-img">
+          <img src="assets/jobs/bcso.jpg" alt="BCSO" class="card-img">
           <h3>BCSO</h3>
-          <p>Sécurité et justice dans le comté.</p>
+          <p>Sécurité et patrouille dans le comté.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/fib.png" alt="FIB" class="card-img">
-          <h3>FIB</h3>
-          <p>Enquêtes fédérales et lutte contre le crime organisé.</p>
-        </div>
-        <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/gouvernement.png" alt="Gouvernement" class="card-img">
+          <img src="assets/jobs/gouv.jpg" alt="Gouvernement" class="card-img">
           <h3>Gouvernement</h3>
-          <p>Gestion et politique de l’État.</p>
+          <p>Gestion de l’administration et des lois.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/ems.png" alt="EMS" class="card-img">
-          <h3>EMS</h3>
-          <p>Sauver des vies et assurer les soins médicaux.</p>
+          <img src="assets/jobs/fib.jpg" alt="FIB" class="card-img">
+          <h3>FIB</h3>
+          <p>Investigations et sécurité nationale.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/lscustoms.png" alt="LS Customs" class="card-img">
+          <img src="assets/jobs/lscustoms.jpg" alt="LS Customs" class="card-img">
           <h3>LS Customs</h3>
           <p>Réparation et personnalisation de véhicules.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/bennys.png" alt="Benny's" class="card-img">
+          <img src="assets/jobs/bennys.jpg" alt="Benny's" class="card-img">
           <h3>Benny's</h3>
-          <p>Garage spécialisé dans les véhicules modifiés.</p>
+          <p>Customisation haut de gamme.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/concession.png" alt="Concessionnaire" class="card-img">
-          <h3>Concessionnaire</h3>
-          <p>Vente de véhicules neufs et d’occasion.</p>
+          <img src="assets/jobs/ems.jpg" alt="EMS" class="card-img">
+          <h3>EMS</h3>
+          <p>Soins et interventions médicales.</p>
         </div>
+
         <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/vigneron.png" alt="Vigneron" class="card-img">
-          <h3>Vigneron</h3>
-          <p>Production et commerce de vin local.</p>
-        </div>
-        <div class="card" data-date="2025-09-13">
-          <img src="assets/jobs/bar.png" alt="Boîte/Bar" class="card-img">
+          <img src="assets/jobs/club.jpg" alt="Club" class="card-img">
           <h3>Boîte de nuit / Bar</h3>
-          <p>Gestion d’établissements festifs et de détente.</p>
+          <p>Animation et gestion nocturne.</p>
+        </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/vigneron.jpg" alt="Vigneron" class="card-img">
+          <h3>Vigneron</h3>
+          <p>Culture et production de vin.</p>
+        </div>
+
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/concessionnaire.jpg" alt="Concessionnaire" class="card-img">
+          <h3>Concessionnaire</h3>
+          <p>Vente de véhicules.</p>
         </div>
       </div>
     </div>
@@ -327,23 +371,24 @@
     <!-- ACTIONS -->
     <aside class="actions">
       <h2>Actions</h2>
-      <button><i class="fas fa-list"></i> Vue en liste</button>
-      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
-      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
-      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+      <button id="gridBtn"><i class="fas fa-th"></i> Vue en grille</button>
+      <button id="listBtn"><i class="fas fa-list"></i> Vue en liste</button>
+      <button id="themeToggle"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
   </main>
 
   <!-- ====== SCRIPT ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
-    const cards = document.querySelectorAll(".card");
-    const sortSelect = document.getElementById("sortSelect");
     const cardsContainer = document.getElementById("cardsContainer");
-    const themeBtn = document.getElementById("themeToggle");
+    const sortSelect = document.getElementById("sortSelect");
+    const cards = document.querySelectorAll(".card");
     const recentContainer = document.getElementById("recentContainer");
+    const themeBtn = document.getElementById("themeToggle");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
 
-    // Recherche
+    // 🔍 Recherche
     searchInput.addEventListener("input", () => {
       const search = searchInput.value.toLowerCase();
       cards.forEach(card => {
@@ -352,7 +397,7 @@
       });
     });
 
-    // Tri
+    // 📌 Tri
     sortSelect.addEventListener("change", () => {
       let sortedCards = Array.from(cards);
       if (sortSelect.value === "name") {
@@ -368,15 +413,26 @@
       sortedCards.forEach(card => cardsContainer.appendChild(card));
     });
 
-    // Mode clair/sombre
-    function toggleTheme() {
+    // 🌙 Mode clair/sombre
+    themeBtn.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
       themeBtn.innerHTML = document.body.classList.contains("light-mode")
         ? '<i class="fas fa-adjust"></i> Mode sombre'
         : '<i class="fas fa-adjust"></i> Mode clair';
-    }
+    });
 
-    // Ajouts récents
+    // 🔲 Vue Grille / Liste
+    gridBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("list-view");
+      cardsContainer.classList.add("grid-view");
+    });
+
+    listBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("grid-view");
+      cardsContainer.classList.add("list-view");
+    });
+
+    // 📌 Ajouts récents auto
     function loadRecent() {
       let sortedCards = Array.from(cards);
       sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
@@ -386,7 +442,7 @@
         const date = "13/09/2025";
         const item = document.createElement("div");
         item.classList.add("recent-item");
-        item.innerHTML = `<h3>${title}</h3><p>Modifié le ${date}</p>`;
+        item.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
         recentContainer.appendChild(item);
       });
     }
