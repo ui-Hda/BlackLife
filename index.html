@@ -3,103 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTA New RP Wiki</title>
+  <title>GTANew - Accueil</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
+  <!-- ====== NAVBAR ====== -->
   <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="GTA New Logo">
-      <span>GTA New RP Wiki</span>
-    </div>
+    <img src="assets/logo.png" alt="Logo GTANew">
     <nav>
       <a href="index.html">Accueil</a>
       <a href="regles.html">Règles</a>
-      <a href="jobs-legaux.html">Jobs légaux</a>
-      <a href="jobs-illegaux.html">Jobs illégaux</a>
-      <a href="tutoriels.html">Tutoriels</a>
+      <a href="jobs_legaux.html">Jobs Légaux</a>
+      <a href="jobs_illegaux.html">Jobs Illégaux</a>
+      <a href="discord.html">Discord</a>
     </nav>
   </header>
 
-  <main>
-    <h1>Bienvenue sur le Wiki officiel de GTA New RP</h1>
-    <p>Découvrez les règles, jobs légaux et illégaux, tutoriels et toutes les infos utiles pour évoluer sur GTA New.</p>
+  <!-- ====== CONTENU PRINCIPAL ====== -->
+  <div class="container">
+    <h1>Bienvenue sur GTANew</h1>
+    <p style="text-align:center; margin-bottom:30px;">
+      Explorez toutes les informations utiles sur notre serveur GTA RP : règles, jobs, guides et plus encore.
+    </p>
 
-    <!-- Barre de recherche -->
+    <!-- ====== BARRE DE RECHERCHE ====== -->
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Rechercher une section...">
+      <input type="text" id="searchInput" placeholder="Rechercher une catégorie...">
     </div>
 
-    <!-- Grille des catégories -->
-    <section class="card-grid">
+    <!-- ====== CARTES ====== -->
+    <div class="cards" id="cardsContainer">
 
-      <a href="discord.html" class="card">
+      <div class="card">
+        <img src="assets/rules.png" alt="Règles" class="card-img">
+        <h3>Règles</h3>
+        <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
+        <a href="regles.html">Voir les règles</a>
+      </div>
+
+      <div class="card">
+        <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
+        <h3>Jobs Légaux</h3>
+        <p>Découvrez les métiers disponibles dans la légalité.</p>
+        <a href="jobs_legaux.html">Voir les jobs légaux</a>
+      </div>
+
+      <div class="card">
+        <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
+        <h3>Jobs Illégaux</h3>
+        <p>Plongez dans les activités illégales proposées sur l’île.</p>
+        <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
+      </div>
+
+      <div class="card">
         <img src="assets/discord.png" alt="Discord" class="card-img">
-        <div class="card-content">
-          <h2>Discord</h2>
-          <p>Rejoignez le serveur officiel pour rester informé et discuter.</p>
-        </div>
-      </a>
+        <h3>Discord</h3>
+        <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
+        <a href="discord.html">Accéder au Discord</a>
+      </div>
 
-      <a href="general.html" class="card">
-        <img src="assets/general.png" alt="Infos générales" class="card-img">
-        <div class="card-content">
-          <h2>Général</h2>
-          <p>Tout ce qu’il faut savoir pour bien débuter et comprendre le serveur.</p>
-        </div>
-      </a>
+      <div class="card">
+        <img src="assets/general.png" alt="Général" class="card-img">
+        <h3>Informations Générales</h3>
+        <p>Accédez aux infos pratiques et générales sur le serveur.</p>
+        <a href="general.html">Voir les infos</a>
+      </div>
 
-      <a href="jobs-legaux.html" class="card">
-        <img src="assets/jobs-legaux.png" alt="Jobs légaux" class="card-img">
-        <div class="card-content">
-          <h2>Jobs légaux</h2>
-          <p>Travaille honnêtement pour gagner ta vie en ville.</p>
-        </div>
-      </a>
+    </div>
+  </div>
 
-      <a href="jobs-illegaux.html" class="card">
-        <img src="assets/jobs-illegaux.png" alt="Jobs illégaux" class="card-img">
-        <div class="card-content">
-          <h2>Jobs illégaux</h2>
-          <p>Risque gros pour décrocher la fortune dans les bas-fonds.</p>
-        </div>
-      </a>
-
-      <a href="regles.html" class="card">
-        <img src="assets/regles.png" alt="Règlement" class="card-img">
-        <div class="card-content">
-          <h2>Règlement</h2>
-          <p>Les règles officielles du serveur GTA New RP à respecter.</p>
-        </div>
-      </a>
-
-      <a href="tutoriels.html" class="card">
-        <img src="assets/tuto.png" alt="Tutoriels" class="card-img">
-        <div class="card-content">
-          <h2>Tutoriels</h2>
-          <p>Guides et astuces pour progresser efficacement en RP.</p>
-        </div>
-      </a>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
-  </footer>
-
+  <!-- ====== SCRIPT RECHERCHE ====== -->
   <script>
-    // Recherche dynamique
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
 
     searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
+      const search = searchInput.value.toLowerCase();
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(query) ? "block" : "none";
+        card.style.display = text.includes(search) ? "block" : "none";
       });
     });
   </script>
+
 </body>
 </html>
