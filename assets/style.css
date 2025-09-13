@@ -1,118 +1,145 @@
-/* ====== Style général ====== */
+/* ====== GLOBAL ====== */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: #1f0033;
-  color: #e0e0e0;
-}
-
-/* ====== Header ====== */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  background: linear-gradient(to right, #550088, #7700aa);
+  background-color: #0e0e0e;
   color: #fff;
+  margin: 0;
+  padding: 0;
+  opacity: 0;                 /* départ invisible */
+  transform: translateY(20px); /* départ légèrement en bas */
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-header .logo-container {
-  display: flex;
-  align-items: center;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.logo {
-  height: 50px;
-  margin-right: 15px;
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-.site-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-
-nav a {
-  margin: 0 12px;
-  color: #ddd;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #fff;
-}
-
-/* ====== Section d'intro ====== */
-.intro {
+/* ====== TITRES ====== */
+h1, h2 {
   text-align: center;
-  margin: 40px auto;
-  max-width: 800px;
+  color: #9d4edd; /* Violet clair adapté au logo */
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInTitle 1s ease-out forwards;
+  animation-delay: 0.3s;
 }
 
-.intro h1 {
-  color: #bb55ff;
-  font-size: 2rem;
-  margin-bottom: 10px;
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.intro p {
-  font-size: 1.1rem;
+/* ====== BLOCS DETAILS ====== */
+details {
+  background: #1a1a1a;
+  border: 1px solid #9d4edd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+details:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+  cursor: pointer;
+}
+
+summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  cursor: pointer;
+}
+
+summary .icon {
+  margin-right: 10px;
+  color: #9d4edd;
+  font-size: 1.4em;
+}
+
+summary::after {
+  content: "▶";
+  font-size: 16px;
+  transition: transform 0.3s ease;
+  color: #9d4edd;
+}
+
+details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* ====== TEXTE DES BLOCS ====== */
+details p,
+details ul {
+  padding: 0 20px 20px 20px;
   line-height: 1.6;
   color: #ccc;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* ====== Shelves (catégories) ====== */
-.shelves {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto 50px;
-  padding: 0 20px;
+details[open] p,
+details[open] ul {
+  opacity: 1;
+  max-height: 800px;
 }
 
-.shelf {
-  background: #2a003f;
-  padding: 20px;
-  border-radius: 8px;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.shelf:hover {
-  background: #440066;
-  transform: translateY(-3px);
-}
-
-.shelf h2 {
-  margin-bottom: 10px;
-  color: #bb55ff;
-}
-
-.shelf ul {
-  list-style: none;
-  padding: 0;
-}
-
-.shelf li {
-  margin: 8px 0;
-}
-
-.shelf li a {
-  color: #ccc;
+/* ====== LIENS ====== */
+a {
+  color: #9d4edd;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.shelf li a:hover {
+a:hover {
+  text-decoration: underline;
+}
+
+/* ====== NAVBAR / HEADER ====== */
+header {
+  background: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #9d4edd;
+}
+
+header img {
+  height: 40px;
+}
+
+header nav a {
+  margin-left: 20px;
+  font-size: 1.1em;
   color: #fff;
+  transition: color 0.3s ease;
 }
 
-/* ====== Footer ====== */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #30001a;
-  color: #aaa;
-  font-size: 0.9rem;
+header nav a:hover {
+  color: #9d4edd;
 }
