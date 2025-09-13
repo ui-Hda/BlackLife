@@ -5,237 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Règlement - GTA New RP</title>
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
-    body {
-      background: #140026; /* Fond sombre violet/bleu */
+    .accordion {
+      background: #2c003e;
       color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(90deg, #6a1b9a, #8e24aa);
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-    }
-
-    header img {
-      height: 45px;
-    }
-
-    header nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-
-    header nav a:hover {
-      background: #7a2cff;
-      color: #fff;
-      box-shadow: 0 0 12px #d699ff;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.2em;
-      background: linear-gradient(90deg, #9c27b0, #d699ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 1.5s ease;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* DETAILS / SUMMARY */
-    details {
-      background: #3a0a63; /* Violet moyen */
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 12px 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    }
-
-    details:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 15px #bb86fc;
-    }
-
-    details[open] {
-      background: #5b1d9e; /* Violet clair */
-      animation: slideDown 0.4s ease;
-    }
-
-    summary {
-      font-size: 18px;
-      font-weight: bold;
       cursor: pointer;
+      padding: 15px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      font-size: 18px;
+      transition: 0.3s;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      list-style: none;
-      transition: color 0.3s ease;
+      align-items: center;
+      margin-top: 10px;
+      border-radius: 8px;
     }
 
-    summary:hover {
-      color: #d699ff;
+    .accordion:hover {
+      background: #6d28d9;
     }
 
-    summary .icon {
-      margin-right: 10px;
-    }
-
-    summary::after {
-      content: "▶";
-      font-size: 16px;
+    .accordion i {
       transition: transform 0.3s ease;
-      margin-left: 10px;
     }
 
-    details[open] summary::after {
+    .accordion.active i {
       transform: rotate(90deg);
     }
 
-    details p,
-    details ul {
-      margin-top: 10px;
-      opacity: 0;
+    .panel {
       max-height: 0;
       overflow: hidden;
-      transition: all 0.4s ease;
+      background: #1a001f;
+      transition: max-height 0.4s ease-out, padding 0.3s;
+      padding: 0 15px;
+      color: #ddd;
+      border-radius: 0 0 8px 8px;
     }
 
-    details[open] p,
-    details[open] ul {
-      opacity: 1;
-      max-height: 1000px;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      background: #1f0035;
-      color: #ccc;
-      font-size: 14px;
-      border-top: 1px solid #7a2cff;
+    .panel.open {
+      padding: 15px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="Logo GTA New RP">
     <nav>
-      <a href="index.html">Accueil</a>
-      <a href="jobs.html">Jobs</a>
-      <a href="tutoriels.html">Tutoriels</a>
+      <img src="assets/logo.png" alt="GTA New Logo" class="logo">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html" class="active">Règles</a></li>
+        <li><a href="jobs-legaux.html">Jobs légaux</a></li>
+        <li><a href="jobs-illegaux.html">Jobs illégaux</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <h1>Règlement Officiel - GTA New RP</h1>
+    <h1>📜 Règlement Officiel</h1>
+    <p>Nul n'est censé l'ignorer et chacun se doit de le respecter. Des sanctions peuvent s'appliquer en cas de non-respect.</p>
 
-    <details>
-      <summary><span class="icon">⚡</span>1. Powergaming</summary>
-      <p>Le powergaming consiste à faire quelque chose qui serait impossible à réaliser dans la vie réelle [...]</p>
-    </details>
+    <!-- Règles -->
+    <button class="accordion">1. Powergaming <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Le powergaming consiste à faire quelque chose d’impossible IRL ou à forcer les choses en sa faveur sans laisser le choix aux autres joueurs.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🎭</span>2. Metagaming</summary>
-      <p>Utiliser des informations HRP (Hors-RP/Hors-Jeu) dans un contexte RP est strictement prohibé [...]</p>
-    </details>
+    <button class="accordion">2. Metagaming <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Utiliser des informations HRP (Discord, Twitch, etc.) dans un contexte RP est interdit. L’expérience se vit uniquement via votre personnage.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🚓</span>3. Mass RP</summary>
-      <p>Il s’agit du fait de prendre en compte la population de la ville et non du serveur [...]</p>
-    </details>
+    <button class="accordion">3. Mass RP <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Vous devez prendre en compte la population de la ville, PNJ compris, comme si c’étaient de vrais habitants.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">😨</span>4. Fear RP</summary>
-      <p>Il s’agit simplement du fait d’avoir peur en RP, même si le joueur lui-même n’a pas peur [...]</p>
-    </details>
+    <button class="accordion">4. Fear RP <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Votre personnage doit ressentir la peur dans les situations logiques (armes, menaces...). Le NoFear RP n’est pas toléré.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🚗</span>5. Carkill</summary>
-      <p>Écraser volontairement un joueur sans raison valable est strictement interdit.</p>
-    </details>
+    <button class="accordion">5. Carkill <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Écraser volontairement un joueur sans raison RP valable est strictement interdit.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">📜</span>6. Cohérence RP & Coma</summary>
-      <p>Respecter votre personnage et appliquer les règles liées au coma (perte mémoire, délais, etc.).</p>
-    </details>
+    <button class="accordion">6. Cohérence RP <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Respectez la biographie et l’histoire de votre personnage. Gardez la cohérence dans vos actions.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">💀</span>7. Freekill</summary>
-      <p>Le freekill est le fait de tuer quelqu’un sans un réel motif roleplay. Ceci est complètement interdit.</p>
-    </details>
+    <button class="accordion">7. Coma <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Lors d’un coma, vous ne pouvez pas parler. Si réanimé, pas d’armes ni coups pendant 5 minutes. Si réveil hôpital, perte mémoire des 2 dernières heures.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🤝</span>8. Courtoisie envers autrui</summary>
-      <p>Vous vous devez d’être courtois avec les gens, les insultes HRP sont interdites.</p>
-    </details>
+    <button class="accordion">8. Freekill <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Tuer sans motif RP (simple insulte, regard...) est interdit. Les meurtres doivent avoir une justification RP solide.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🚫</span>9. Noms et prénoms interdits</summary>
-      <p>Les noms de célébrités, personnages fictifs ou noms humoristiques sont interdits.</p>
-    </details>
+    <button class="accordion">9. Courtoisie envers autrui <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Respectez les autres joueurs. Les insultes HRP/OOC sont interdites.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🔥</span>10. Provocations non-RP</summary>
-      <p>Il est interdit de provoquer de façon non-roleplay et inutile d’autres joueurs dans le seul but de créer des scènes.</p>
-    </details>
+    <button class="accordion">10. Prénoms et Noms interdits <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Les noms de célébrités, personnages fictifs ou humoristiques sont interdits. Exemple : Tony Starque, Harri Poter, Al Colique.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🐔</span>11. Chicken-run</summary>
-      <p>Courir en zigzagant de manière irréaliste pour éviter les balles est interdit.</p>
-    </details>
+    <button class="accordion">11. Provocations Non-RP <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Ne provoquez pas inutilement juste pour créer une scène RP. Les provocations doivent rester cohérentes avec votre personnage.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">📷</span>12. Caméras, GoPro et photos RP</summary>
-      <p>Prendre une photo ou vidéo doit se faire en RP (portable sorti, animation, etc.).</p>
-    </details>
+    <button class="accordion">12. Chicken-Run <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Zigzaguer pour esquiver des balles de façon irréaliste est interdit.</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">👥</span>13. Groupes et entreprises</summary>
-      <p>Les entreprises et groupes sont limités en nombre de personnes. Alliances entre gangs interdites.</p>
-    </details>
+    <button class="accordion">13. GoPro / Caméras / Photos RP <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Prendre des photos ou filmer sans animation ou objet en main n’est pas RP. Les vidéos doivent être justifiées (installation GoPro, sortie du téléphone...).</p>
+    </div>
 
-    <details>
-      <summary><span class="icon">🛡️</span>14. Zone Safe</summary>
-      <p>Les Safe Zones sont indiquées par une notification en jeu. Il est interdit de s’y réfugier en pleine scène RP.</p>
-    </details>
+    <button class="accordion">14. Groupes et Entreprises <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Groupes/entreprises limités en taille. Alliances de gangs interdites (uniquement trêves). Les véhicules de service sont obligatoires pendant le travail.</p>
+    </div>
+
+    <button class="accordion">15. Zone Safe <i class="fas fa-chevron-right"></i></button>
+    <div class="panel">
+      <p>Interdiction de frapper/tirer dans une Safe Zone. Interdiction d’y entrer en pleine scène RP.</p>
+    </div>
   </main>
 
   <footer>
-    <p>© 2025 GTA New RP - Tous droits réservés.</p>
+    <p>© 2025 GTA New RP — Tous droits réservés.</p>
   </footer>
+
+  <script>
+    const accordions = document.querySelectorAll(".accordion");
+    accordions.forEach(acc => {
+      acc.addEventListener("click", function() {
+        this.classList.toggle("active");
+
+        let panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+          panel.classList.remove("open");
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          panel.classList.add("open");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
