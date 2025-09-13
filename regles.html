@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTANew - Règles</title>
+  <title>GTANew - Règlement</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
@@ -129,40 +129,62 @@
       color: inherit;
     }
 
-    .rules-wrapper {
+    .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
     }
 
-    .rules-wrapper h2 {
-      font-size: 22px;
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 20px;
       color: #fff;
     }
 
-    .rule-section {
-      margin-bottom: 25px;
-      padding: 20px;
-      background: #0e0e0e;
-      border-radius: 10px;
-      border: 1px solid #444;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    .rule-section h3 {
-      margin: 0 0 10px;
+    .card {
+      background: #0e0e0e;
+      color: #fff;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+    }
+
+    .card-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
       color: #9d4edd;
     }
 
-    .rule-section ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .rule-section ul li {
-      margin-bottom: 8px;
-      font-size: 14px;
-      color: #ddd;
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #9d4edd;
+      font-weight: bold;
     }
 
     .actions {
@@ -205,14 +227,15 @@
     }
 
     body.light-mode .recent,
-    body.light-mode .rules-wrapper {
+    body.light-mode .cards-wrapper {
       background: #ddd;
     }
 
-    body.light-mode .rule-section {
+    body.light-mode .card,
+    body.light-mode .recent-item {
       background: #fff;
       color: #000;
-      border: 1px solid #000;
+      border: 2px solid #000;
     }
   </style>
 </head>
@@ -243,33 +266,32 @@
       <h2>Ajouts récents</h2>
     </aside>
 
-    <div class="rules-wrapper">
-      <h2>Règlement du serveur</h2>
-
-      <div class="rule-section">
-        <h3>1. Règles générales</h3>
-        <ul>
-          <li>Respectez tous les joueurs et le staff.</li>
-          <li>L’utilisation de cheats ou bugs est strictement interdite.</li>
-          <li>Le roleplay doit être respecté en toute situation.</li>
-        </ul>
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>Règlements</h2>
       </div>
 
-      <div class="rule-section">
-        <h3>2. Règles RP</h3>
-        <ul>
-          <li>Le powergaming est interdit (actions irréalistes).</li>
-          <li>Le metagaming est interdit (infos hors RP utilisées en RP).</li>
-          <li>Le fairplay est obligatoire : donnez toujours une chance à l’autre.</li>
-        </ul>
-      </div>
+      <div class="cards">
+        <div class="card" data-date="2025-09-13" data-link="regles-general.html">
+          <img src="assets/regles-general.png" alt="Réglement Général" class="card-img">
+          <h3>Réglement général</h3>
+          <p>Consultez les règles principales applicables à tous les joueurs.</p>
+          <a href="regles-general.html">Voir les règles générales</a>
+        </div>
 
-      <div class="rule-section">
-        <h3>3. Sanctions</h3>
-        <ul>
-          <li>Avertissement oral ou écrit.</li>
-          <li>Bannissement temporaire ou définitif en cas de récidive.</li>
-        </ul>
+        <div class="card" data-date="2025-09-13" data-link="regles-legaux.html">
+          <img src="assets/regles-legaux.png" alt="Réglement Légal" class="card-img">
+          <h3>Réglement légal</h3>
+          <p>Découvrez les règles spécifiques aux métiers légaux.</p>
+          <a href="regles-legaux.html">Voir les règles légales</a>
+        </div>
+
+        <div class="card" data-date="2025-09-13" data-link="regles-illegaux.html">
+          <img src="assets/regles-illegaux.png" alt="Réglement Illégal" class="card-img">
+          <h3>Réglement illégal</h3>
+          <p>Plongez dans les règles liées aux activités illégales.</p>
+          <a href="regles-illegaux.html">Voir les règles illégales</a>
+        </div>
       </div>
     </div>
 
@@ -296,9 +318,9 @@
 
     function loadRecent() {
       const recent = [
-        { title: "Illégal", link: "jobs-illegaux.html", date: "13/09/2025" },
-        { title: "Légal", link: "jobs-legaux.html", date: "13/09/2025" },
-        { title: "Tutoriels", link: "tutoriels.html", date: "13/09/2025" }
+        { title: "Réglement illégal", link: "regles-illegaux.html", date: "13/09/2025" },
+        { title: "Réglement légal", link: "regles-legaux.html", date: "13/09/2025" },
+        { title: "Réglement général", link: "regles-general.html", date: "13/09/2025" }
       ];
 
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
