@@ -1,34 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobs illégaux - GTA New Wiki</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GTANew — Jobs illégaux</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#0d0017; color:#fff; }
+    header { background:#a30c0c; display:flex; align-items:center; gap:18px; padding:12px 20px; position:sticky; top:0; }
+    .logo { height:42px; }
+    nav ul { display:flex; gap:14px; list-style:none; margin:0; padding:0; }
+    nav a { color:#fff; text-decoration:none; font-weight:600; }
+    .header-search { flex:1; display:flex; justify-content:center; }
+    .search-bar { width:60%; max-width:640px; position:relative; }
+    .search-bar input { width:100%; padding:10px 14px 10px 40px; border-radius:28px; border:none; background:#1e1e1e; color:#fff; }
+    .search-bar .fa-search { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#cfcfcf; }
+
+    /* Layout 3 colonnes fixes */
+    .layout { display:grid; grid-template-columns:260px 1fr 260px; gap:24px; max-width:1600px; margin:26px auto; padding:0 18px; }
+
+    /* Sidebar gauche */
+    .recent-additions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(163,12,12,0.25); }
+    .recent-additions h3 { color:#ff4d4d; margin:0 0 8px; }
+
+    /* Centre */
+    .jobs-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px; }
+    .card { background:#111; padding:18px; border-radius:12px; border:1px solid rgba(163,12,12,0.25); display:flex; flex-direction:column; justify-content:space-between; }
+    .card-img { width:100%; height:140px; object-fit:cover; border-radius:8px; background:#222; margin-bottom:12px; }
+    .tag { display:inline-block; padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.04); margin-right:8px; font-size:13px; }
+    button.cta { background:#a30c0c; color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer; }
+
+    /* Sidebar droite */
+    .actions { background:#1a1a1a; border-radius:10px; padding:14px; border:1px solid rgba(163,12,12,0.25); }
+    .actions h3 { color:#ff6666; margin-top:0; }
+    .actions button { display:block; width:100%; margin-bottom:10px; background:#333; color:#fff; border:none; padding:8px 10px; border-radius:8px; cursor:pointer; }
+
+    @media(max-width:1100px) {
+      .layout { grid-template-columns:1fr; }
+      .actions, .recent-additions { order:2; }
+      .jobs-cards { order:1; }
+    }
+  </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <div class="logo-container">
-      <img src="assets/logo.png" alt="GTA New Logo" class="logo">
-      <span class="site-title">GTA New RP Wiki</span>
-    </div>
+    <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
     <nav>
-      <a href="index.html">Accueil</a>
-      <a href="regles.html">Règles</a>
-      <a href="jobs-legaux.html">Jobs légaux</a>
-      <a href="jobs-illegaux.html">Jobs illégaux</a>
-      <a href="tutoriels.html">Tutoriels</a>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règles</a></li>
+        <li><a href="jobs_legaux.html">Jobs légaux</a></li>
+        <li><a href="jobs_illegaux.html" class="active">Jobs illégaux</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
     </nav>
+    <div class="header-search">
+      <div class="search-bar" role="search">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" placeholder="Rechercher un job illégal, ex: Mafia..." />
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h1>Jobs illégaux</h1>
-    <p>Contenu à venir pour la section Jobs illégaux.</p>
-  </main>
+  <!-- LAYOUT -->
+  <div class="layout">
 
-  <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
-  </footer>
+    <!-- gauche -->
+    <aside class="recent-additions">
+      <h3>📌 Ajouts récents</h3>
+      <ul>
+        <li>[13/09/2025] Ajout du job Hacker</li>
+        <li>[13/09/2025] Ajout du job Contrebandier</li>
+        <li>[13/09/2025] Optimisation interface jobs illégaux</li>
+      </ul>
+    </aside>
+
+    <!-- centre -->
+    <section class="jobs-cards">
+      <div class="card"><img class="card-img" src="assets/jobs/mafia.jpg" alt="Mafia"><h3>Mafia</h3><p>Organisation criminelle hiérarchisée.</p><span class="tag">Danger : Élevé</span><span class="tag">Gain : Très haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/cartel.jpg" alt="Cartel"><h3>Cartel</h3><p>Trafic international et opérations massives.</p><span class="tag">Danger : Élevé</span><span class="tag">Gain : Très haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/gang.jpg" alt="Gang"><h3>Gang</h3><p>Contrôle de territoire et trafic de rue.</p><span class="tag">Danger : Moyen</span><span class="tag">Gain : Moyen</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/voleur.jpg" alt="Voleur"><h3>Voleur</h3><p>Cambriolages et vols rapides.</p><span class="tag">Danger : Moyen</span><span class="tag">Gain : Variable</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/hacker.jpg" alt="Hacker"><h3>Hacker</h3><p>Piratage et manipulation de données.</p><span class="tag">Danger : Faible</span><span class="tag">Gain : Haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/dealer.jpg" alt="Dealer"><h3>Dealer</h3><p>Vente de stupéfiants.</p><span class="tag">Danger : Moyen</span><span class="tag">Gain : Haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/contrebandier.jpg" alt="Contrebandier"><h3>Contrebandier</h3><p>Transport illégal de marchandises.</p><span class="tag">Danger : Haut</span><span class="tag">Gain : Haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/braqueur.jpg" alt="Braqueur"><h3>Braqueur de banque</h3><p>Braquages organisés à haut risque.</p><span class="tag">Danger : Extrême</span><span class="tag">Gain : Très haut</span><button class="cta">En savoir +</button></div>
+      <div class="card"><img class="card-img" src="assets/jobs/fabricant.jpg" alt="Fabricant de drogues"><h3>Fabricant de drogues</h3><p>Production de substances illégales.</p><span class="tag">Danger : Moyen</span><span class="tag">Gain : Haut</span><button class="cta">En savoir +</button></div>
+    </section>
+
+    <!-- droite -->
+    <aside class="actions">
+      <h3>⚙️ Actions</h3>
+      <button id="themeToggle">🌙 Mode clair</button>
+      <button id="gridBtn">🔲 Vue grille</button>
+      <button id="listBtn">📋 Vue liste</button>
+    </aside>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', function(){
+      document.body.classList.toggle('light-mode');
+      this.textContent = document.body.classList.contains('light-mode') ? '☀️ Mode sombre' : '🌙 Mode clair';
+    });
+  </script>
 </body>
 </html>
