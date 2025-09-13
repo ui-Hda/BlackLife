@@ -156,6 +156,26 @@
     }
     .actions button:hover { color: #fff; }
 
+    /* LIGHT MODE */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+    body.light-mode header { background: #87cefa; }
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper,
+    body.light-mode .actions {
+      background: #ddd;
+      color: #000;
+    }
+    body.light-mode .card,
+    body.light-mode .recent-item {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+    body.light-mode .card h3 { color: #1e90ff; }
+
     /* ANIMATIONS */
     @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes slideInLeft { from {opacity: 0; transform: translateX(-30px);} to {opacity: 1; transform: translateX(0);} }
@@ -223,6 +243,7 @@
       <button onclick="window.location.href='tutoriels.html'"><i class="fas fa-home"></i> Retour aux Tutoriels</button>
       <button><i class="fas fa-share"></i> Partager</button>
       <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
   </main>
 
@@ -243,6 +264,17 @@
         </a>`;
       recentContainer.appendChild(div);
     });
+
+    // Toggle mode clair/sombre
+    const themeBtn = document.getElementById("themeToggle");
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
+    }
   </script>
 </body>
 </html>
