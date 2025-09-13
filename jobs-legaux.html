@@ -28,30 +28,31 @@
     <!-- Barre de recherche -->
     <div class="search-bar">
       <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher un job...">
+      <input type="text" id="searchInput" placeholder="Rechercher...">
     </div>
   </header>
 
   <main>
     <div class="layout">
-
+      
       <!-- ====== AJOUTS RÉCENTS ====== -->
       <aside class="recent">
-        <h3>📌 Ajouts récents</h3>
+        <h2>📌 Ajouts récents</h2>
         <ul>
-          <li>13/09/2025 - Mise à jour LSPD</li>
-          <li>13/09/2025 - Nouveau métier EMS</li>
-          <li>13/09/2025 - Ajout Gouvernement</li>
+          <li>[13/09/2025] Ajout du job Vigneron</li>
+          <li>[13/09/2025] Nouvelle interface des jobs légaux</li>
+          <li>[13/09/2025] Optimisation du site</li>
         </ul>
       </aside>
 
-      <!-- ====== CONTENU PRINCIPAL ====== -->
-      <section class="main-content">
-        <h1>⚖️ Jobs Légaux</h1>
+      <!-- ====== SLIDER JOBS ====== -->
+      <section class="jobs">
+        <h1>👔 Les métiers légaux</h1>
 
         <div class="carousel">
+          <button class="prev">&#10094;</button>
           <div class="carousel-track">
-
+            
             <div class="job-card">
               <img src="assets/jobs/lspd.png" alt="LSPD">
               <h3>LSPD</h3>
@@ -73,7 +74,7 @@
             </div>
 
             <div class="job-card">
-              <img src="assets/jobs/lscustoms.png" alt="LS Customs">
+              <img src="assets/jobs/lsc.png" alt="LS Customs">
               <h3>LS Customs</h3>
             </div>
 
@@ -88,7 +89,7 @@
             </div>
 
             <div class="job-card">
-              <img src="assets/jobs/nightclub.png" alt="Boîte de nuit / Bar">
+              <img src="assets/jobs/nightclub.png" alt="Boîte de nuit">
               <h3>Boîte de nuit / Bar</h3>
             </div>
 
@@ -103,17 +104,18 @@
             </div>
 
             <div class="job-card">
-              <img src="assets/jobs/farm.png" alt="Farms">
+              <img src="assets/jobs/farm.png" alt="Jobs de farm">
               <h3>Jobs de farm</h3>
             </div>
 
           </div>
+          <button class="next">&#10095;</button>
         </div>
       </section>
 
-      <!-- ====== MENU ACTION ====== -->
+      <!-- ====== MENU ACTIONS ====== -->
       <aside class="actions">
-        <h3>⚙️ Actions</h3>
+        <h2>⚙️ Actions</h2>
         <button onclick="toggleTheme()">🌙 Mode</button>
         <button onclick="setGrid()">🔲 Grille</button>
         <button onclick="setList()">📋 Liste</button>
@@ -123,10 +125,11 @@
   </main>
 
   <script>
+    // ====== THEME ======
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
-      const btn = document.querySelector(".actions button");
-      btn.textContent = document.body.classList.contains("light-mode") ? "☀️ Mode sombre" : "🌙 Mode clair";
+      const modeBtn = document.querySelector(".actions button");
+      modeBtn.textContent = document.body.classList.contains("light-mode") ? "☀️ Mode Sombre" : "🌙 Mode Clair";
     }
 
     function setGrid() {
@@ -136,6 +139,19 @@
     function setList() {
       document.querySelector(".carousel-track").style.flexDirection = "column";
     }
+
+    // ====== CAROUSEL ======
+    const track = document.querySelector(".carousel-track");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -300, behavior: "smooth" });
+    });
   </script>
 </body>
 </html>
