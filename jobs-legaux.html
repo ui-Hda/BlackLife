@@ -1,262 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GTANew — Jobs légaux</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobs légaux</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- HEADER -->
+  
+  <!-- ===== HEADER ===== -->
   <header>
-    <div class="header-left">
-      <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="regles.html">Règles</a></li>
-          <li><a href="jobs_legaux.html" class="active">Jobs légaux</a></li>
-          <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
-          <li><a href="tutoriels.html">Tutoriels</a></li>
-          <li><a href="generales.html">Générales</a></li>
-          <li><a href="discord.html">Discord</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="header-search">
-      <div class="search-bar" role="search">
-        <i class="fas fa-search"></i>
-        <input id="searchInput" type="search" placeholder="Rechercher un job, ex: LSPD..." />
-      </div>
-    </div>
-
-    <div class="header-right">
-      <!-- reserved for icons or login later -->
+    <img src="images/logo.png" alt="Logo">
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="regles.html">Règles</a>
+      <a href="jobs-legaux.html" class="active">Jobs légaux</a>
+      <a href="jobs-illegaux.html">Jobs illégaux</a>
+      <a href="tutoriels.html">Tutoriels</a>
+      <a href="generales.html">Générales</a>
+      <a href="discord.html">Discord</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher un job, ex: LSPD...">
     </div>
   </header>
 
-  <!-- MAIN LAYOUT -->
-  <div class="layout">
+  <!-- ===== CONTENU ===== -->
+  <main>
+    <h2>📑 Les métiers légaux</h2>
 
-    <!-- LEFT: recent -->
-    <aside class="recent" aria-label="Ajouts récents">
-      <h2>📌 Ajouts récents</h2>
-      <ul>
-        <li>[13/09/2025] Ajout du job Vigneron</li>
-        <li>[13/09/2025] Nouvelle interface des jobs légaux</li>
-        <li>[13/09/2025] Optimisation du site</li>
-      </ul>
-    </aside>
+    <div class="jobs-container">
+      
+      <!-- Colonne gauche : ajouts récents -->
+      <aside class="jobs-sidebar">
+        <div class="recent-additions">
+          <h3>📌 Ajouts récents</h3>
+          <p>[13/09/2025] Ajout du job Vigneron</p>
+          <p>[13/09/2025] Nouvelle interface des jobs légaux</p>
+          <p>[13/09/2025] Optimisation du site</p>
+        </div>
+      </aside>
 
-    <!-- CENTER: carousel -->
-    <section class="jobs" aria-label="Jobs légaux">
-      <h1>🧾 Les métiers légaux</h1>
+      <!-- Colonne droite : cartes jobs -->
+      <section class="jobs-cards">
 
-      <div class="carousel" aria-hidden="false">
-        <button class="btn prev" aria-label="Précédent">&#10094;</button>
-
-        <div class="carousel-track" id="carouselTrack" aria-live="polite">
-          <!-- each card uses inline background for big cover -->
-          <article class="job-card" data-title="LSPD">
-            <div class="cover" style="background-image: url('assets/jobs/lspd.jpg');"></div>
-            <div class="content">
-              <h3>LSPD</h3>
-              <p>Maintenir l’ordre et la sécurité en ville.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Haut</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="BCSO">
-            <div class="cover" style="background-image: url('assets/jobs/bcso.jpg');"></div>
-            <div class="content">
-              <h3>BCSO</h3>
-              <p>Patrouille et sécurité dans le comté.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Haut</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Gouvernement">
-            <div class="cover" style="background-image: url('assets/jobs/gouv.jpg');"></div>
-            <div class="content">
-              <h3>Gouvernement</h3>
-              <p>Gestion de l’administration et des lois.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Haut</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="FIB">
-            <div class="cover" style="background-image: url('assets/jobs/fib.jpg');"></div>
-            <div class="content">
-              <h3>FIB</h3>
-              <p>Investigations et enquêtes fédérales.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Haut</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="LS Customs">
-            <div class="cover" style="background-image: url('assets/jobs/lscustoms.jpg');"></div>
-            <div class="content">
-              <h3>LS Customs</h3>
-              <p>Réparation et personnalisation des véhicules.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Non</span>
-                <span class="tag">Salaire : Moyen</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Benny's">
-            <div class="cover" style="background-image: url('assets/jobs/bennys.jpg');"></div>
-            <div class="content">
-              <h3>Benny's</h3>
-              <p>Customisation haut de gamme.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Non</span>
-                <span class="tag">Salaire : Moyen</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="EMS">
-            <div class="cover" style="background-image: url('assets/jobs/ems.jpg');"></div>
-            <div class="content">
-              <h3>EMS</h3>
-              <p>Sauver des vies et soins d'urgence.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Moyen</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Nightclub">
-            <div class="cover" style="background-image: url('assets/jobs/nightclub.jpg');"></div>
-            <div class="content">
-              <h3>Boîte de nuit / Bar</h3>
-              <p>Ambiance et divertissement nocturne.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Non</span>
-                <span class="tag">Salaire : Moyen</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Vigneron">
-            <div class="cover" style="background-image: url('assets/jobs/vigneron.jpg');"></div>
-            <div class="content">
-              <h3>Vigneron</h3>
-              <p>Production de vin et culture des vignes.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Non</span>
-                <span class="tag">Salaire : Bas</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Concessionnaire">
-            <div class="cover" style="background-image: url('assets/jobs/concession.jpg');"></div>
-            <div class="content">
-              <h3>Concessionnaire</h3>
-              <p>Vente et gestion de véhicules.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Oui</span>
-                <span class="tag">Salaire : Haut</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
-          <article class="job-card" data-title="Farm">
-            <div class="cover" style="background-image: url('assets/jobs/farm.jpg');"></div>
-            <div class="content">
-              <h3>Jobs de farm</h3>
-              <p>Mineur, pêcheur, livreur — ressources & récoltes.</p>
-              <div class="meta">
-                <span class="tag">Pré-requis : Non</span>
-                <span class="tag">Salaire : Variable</span>
-              </div>
-              <a class="cta" href="metiers.html">En savoir +</a>
-            </div>
-          </article>
-
+        <div class="card">
+          <img src="images/jobs/lspd.png" alt="LSPD" class="card-img">
+          <h3>LSPD</h3>
+          <p>Maintenir l'ordre et la sécurité en ville.</p>
+          <span class="tag">Pré-requis : Oui</span>
+          <span class="tag">Salaire : Haut</span>
+          <button>En savoir +</button>
         </div>
 
-        <button class="btn next" aria-label="Suivant">&#10095;</button>
-      </div>
+        <div class="card">
+          <img src="images/jobs/bcso.png" alt="BCSO" class="card-img">
+          <h3>BCSO</h3>
+          <p>Patrouille et sécurité dans le comté.</p>
+          <span class="tag">Pré-requis : Oui</span>
+          <span class="tag">Salaire : Haut</span>
+          <button>En savoir +</button>
+        </div>
 
-    </section>
+        <div class="card">
+          <img src="images/jobs/gouvernement.png" alt="Gouvernement" class="card-img">
+          <h3>Gouvernement</h3>
+          <p>Gestion de l’administration et des lois.</p>
+          <span class="tag">Pré-requis : Oui</span>
+          <span class="tag">Salaire : Haut</span>
+          <button>En savoir +</button>
+        </div>
 
-    <!-- RIGHT: actions -->
-    <aside class="actions">
-      <h2>⚙️ Actions</h2>
-      <button id="themeToggle">🌙 Mode clair</button>
-      <button id="viewGrid">🔲 Vue grille</button>
-      <button id="viewList">📋 Vue liste</button>
-    </aside>
-  </div>
+        <div class="card">
+          <img src="images/jobs/fib.png" alt="FIB" class="card-img">
+          <h3>FIB</h3>
+          <p>Investigations et sécurité nationale.</p>
+          <span class="tag">Pré-requis : Oui</span>
+          <span class="tag">Salaire : Haut</span>
+          <button>En savoir +</button>
+        </div>
 
-  <!-- SCRIPTS -->
-  <script>
-    // carousel buttons
-    const track = document.getElementById('carouselTrack');
-    document.querySelector('.prev').addEventListener('click', () => track.scrollBy({ left: -380, behavior: 'smooth' }));
-    document.querySelector('.next').addEventListener('click', () => track.scrollBy({ left: 380, behavior: 'smooth' }));
+        <div class="card">
+          <img src="images/jobs/lscustoms.png" alt="LS Customs" class="card-img">
+          <h3>LS Customs</h3>
+          <p>Réparation et personnalisation de véhicules.</p>
+          <span class="tag">Pré-requis : Non</span>
+          <span class="tag">Salaire : Moyen</span>
+          <button>En savoir +</button>
+        </div>
 
-    // theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️ Mode sombre' : '🌙 Mode clair';
-    });
+        <div class="card">
+          <img src="images/jobs/bennys.png" alt="Benny's" class="card-img">
+          <h3>Benny's</h3>
+          <p>Préparation et tuning haut de gamme.</p>
+          <span class="tag">Pré-requis : Non</span>
+          <span class="tag">Salaire : Moyen</span>
+          <button>En savoir +</button>
+        </div>
 
-    // view grid/list
-    document.getElementById('viewGrid').addEventListener('click', () => {
-      track.style.display = 'flex';
-      track.style.flexDirection = 'row';
-    });
-    document.getElementById('viewList').addEventListener('click', () => {
-      track.style.display = 'block';
-      // when in list, allow vertical stacking
-      Array.from(track.children).forEach(card => {
-        card.style.marginBottom = '18px';
-        card.style.width = '100%';
-        card.style.maxWidth = '100%';
-      });
-    });
+        <div class="card">
+          <img src="images/jobs/ems.png" alt="EMS" class="card-img">
+          <h3>EMS</h3>
+          <p>Sauver des vies et assurer les soins médicaux.</p>
+          <span class="tag">Pré-requis : Oui</span>
+          <span class="tag">Salaire : Haut</span>
+          <button>En savoir +</button>
+        </div>
 
-    // small search filter for cards
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim().toLowerCase();
-      Array.from(track.children).forEach(card => {
-        const title = (card.dataset.title || '').toLowerCase();
-        card.style.display = title.includes(q) ? '' : 'none';
-      });
-    });
-  </script>
+        <div class="card">
+          <img src="images/jobs/bar.png" alt="Boite de nuit / Bar" class="card-img">
+          <h3>Boite de nuit / Bar</h3>
+          <p>Animation et divertissement en soirée.</p>
+          <span class="tag">Pré-requis : Non</span>
+          <span class="tag">Salaire : Moyen</span>
+          <button>En savoir +</button>
+        </div>
+
+        <div class="card">
+          <img src="images/jobs/vigneron.png" alt="Vigneron" class="card-img">
+          <h3>Vigneron</h3>
+          <p>Travail de la vigne et production de vin.</p>
+          <span class="tag">Pré-requis : Non</span>
+          <span class="tag">Salaire : Bas</span>
+          <button>En savoir +</button>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
 </body>
 </html>
