@@ -1,0 +1,228 @@
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background: #5a0ca3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar nav ul {
+  display: flex;
+  list-style: none;
+  gap: 18px;
+}
+
+.navbar nav ul li a {
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar nav ul li a:hover,
+.navbar nav ul li a.active {
+  text-decoration: underline;
+}
+
+/* === SEARCH BAR === */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #2b2b2b;
+  border-radius: 30px;
+  padding: 4px 12px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 6px;
+  width: 220px;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* === LAYOUT === */
+.content {
+  display: grid;
+  grid-template-columns: 250px 1fr 200px;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* === AJOUTS RÉCENTS === */
+.recent-updates {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.recent-updates h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #a855f7;
+}
+
+.recent-updates ul {
+  list-style: none;
+}
+
+.recent-updates li {
+  margin: 6px 0;
+}
+
+/* === CARROUSEL DES JOBS === */
+.jobs-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+  padding-bottom: 10px;
+}
+
+.jobs-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.jobs-carousel::-webkit-scrollbar-thumb {
+  background: #5a0ca3;
+  border-radius: 4px;
+}
+
+.job-card {
+  flex: 0 0 280px;
+  background: #1e1e1e;
+  border-radius: 15px;
+  padding: 16px;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  background: #2a2a2a;
+}
+
+.job-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.job-card h2 {
+  color: #a855f7;
+  margin-bottom: 8px;
+}
+
+.job-card p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.job-card span {
+  display: inline-block;
+  font-size: 13px;
+  margin-right: 8px;
+  margin-bottom: 4px;
+}
+
+/* === MENU ACTIONS === */
+.actions-menu {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.actions-menu h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #a855f7;
+}
+
+.actions-menu ul {
+  list-style: none;
+}
+
+.actions-menu li {
+  margin: 8px 0;
+}
+
+.actions-menu button {
+  width: 100%;
+  background: #2b2b2b;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actions-menu button:hover {
+  background: #5a0ca3;
+}
+
+/* === MODE CLAIR === */
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+
+body.light-mode .navbar {
+  background: #a855f7;
+}
+
+body.light-mode .recent-updates,
+body.light-mode .actions-menu,
+body.light-mode .job-card {
+  background: #e8e8e8;
+  color: #222;
+}
+
+body.light-mode .job-card h2,
+body.light-mode .recent-updates h2,
+body.light-mode .actions-menu h2 {
+  color: #5a0ca3;
+}
