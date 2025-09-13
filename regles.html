@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <style>
     body {
-      background: #0a0018;
+      background: #140026; /* Fond sombre violet/bleu */
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
@@ -16,7 +16,7 @@
 
     /* HEADER */
     header {
-      background: #1a0033;
+      background: linear-gradient(90deg, #6a1b9a, #8e24aa);
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -39,9 +39,9 @@
     }
 
     header nav a:hover {
-      background: #3a0070;
-      color: #cfa9ff;
-      box-shadow: 0 0 10px #a56bff;
+      background: #7a2cff;
+      color: #fff;
+      box-shadow: 0 0 12px #d699ff;
     }
 
     /* MAIN */
@@ -54,9 +54,10 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
-      color: #b97aff;
       font-size: 2.2em;
-      text-shadow: 0 0 10px #6a1b9a;
+      background: linear-gradient(90deg, #9c27b0, #d699ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       animation: fadeIn 1.5s ease;
     }
 
@@ -73,17 +74,22 @@
 
     /* DETAILS / SUMMARY */
     details {
-      background: #1a0033;
-      border-radius: 8px;
+      background: #3a0a63; /* Violet moyen */
+      border-radius: 10px;
       margin-bottom: 15px;
       padding: 12px 16px;
       overflow: hidden;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    details:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px #bb86fc;
     }
 
     details[open] {
-      background: #2a004f;
+      background: #5b1d9e; /* Violet clair */
       animation: slideDown 0.4s ease;
     }
 
@@ -95,17 +101,11 @@
       align-items: center;
       justify-content: space-between;
       list-style: none;
-      transition: all 0.3s ease;
-    }
-
-    /* ANIMATION de pré-sélection */
-    details:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 15px #7a2cff;
+      transition: color 0.3s ease;
     }
 
     summary:hover {
-      color: #cfa9ff;
+      color: #d699ff;
     }
 
     summary .icon {
@@ -143,10 +143,10 @@
       text-align: center;
       padding: 20px;
       margin-top: 40px;
-      background: #100022;
-      color: #aaa;
+      background: #1f0035;
+      color: #ccc;
       font-size: 14px;
-      border-top: 1px solid #3a0070;
+      border-top: 1px solid #7a2cff;
     }
   </style>
 </head>
