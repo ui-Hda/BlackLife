@@ -98,4 +98,18 @@
 
 .jobs-cards button:hover {
   background: #c77dff;
+  .recent-additions,
+}
+
+  .actions {
+  width: 260px;         /* largeur fixe */
+  height: 260px;        /* hauteur identique = carré */
+  overflow-y: auto;     /* scroll si trop de contenu */
+  background: #1a1a1a;  /* même style */
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid rgba(106,13,173,0.25);
+  box-sizing: border-box;
+}
+
 }
