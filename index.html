@@ -57,12 +57,13 @@
     }
 
     .card {
-      background: #fff;
-      color: #000;
+      background: #0e0e0e; /* Fond noir */
+      color: #fff;
       border-radius: 15px;
+      border: 2px solid #fff; /* Bordure blanche par défaut (mode sombre) */
       padding: 20px;
       text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
     }
 
     .card:hover {
@@ -104,8 +105,9 @@
     }
 
     body.light-mode .card {
-      background: #fff;
+      background: #fff; /* Fond blanc pour mode clair */
       color: #000;
+      border: 2px solid #000; /* Bordure noire */
     }
   </style>
 </head>
