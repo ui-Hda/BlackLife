@@ -1,212 +1,129 @@
-/* ====== GLOBAL ====== */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #0e0e0e;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  opacity: 0;                 /* départ invisible */
-  transform: translateY(20px); /* départ légèrement en bas */
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.container {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-/* ====== TITRES ====== */
-h1, h2 {
-  text-align: center;
-  color: #9d4edd; /* Violet clair adapté au logo */
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: fadeInTitle 1s ease-out forwards;
-  animation-delay: 0.3s;
-}
-
-@keyframes fadeInTitle {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ====== BLOCS DETAILS ====== */
-details {
-  background: #1a1a1a;
-  border: 1px solid #9d4edd;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-details:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
-  cursor: pointer;
-}
-
-summary {
+/* ====== LAYOUT PRINCIPAL (avec aside gauche + centre + droite) ====== */
+.layout {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  font-size: 1.2em;
-  color: #fff;
-  cursor: pointer;
-}
-
-summary .icon {
-  margin-right: 10px;
-  color: #9d4edd;
-  font-size: 1.4em;
-  flex-shrink: 0;
-}
-
-summary::after {
-  content: "▶";
-  font-size: 16px;
-  transition: transform 0.3s ease;
-  color: #9d4edd;
-}
-
-details[open] summary::after {
-  transform: rotate(90deg);
-}
-
-/* ====== TEXTE DES BLOCS ====== */
-details p,
-details ul {
-  padding: 0 20px 20px 20px;
-  line-height: 1.6;
-  color: #ccc;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-details[open] p,
-details[open] ul {
-  opacity: 1;
-  max-height: 800px;
-}
-
-/* ====== LIENS ====== */
-a {
-  color: #9d4edd;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ====== NAVBAR / HEADER ====== */
-header {
-  background: #111;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #9d4edd;
-}
-
-header img {
-  height: 40px;
-}
-
-header nav a {
-  margin-left: 20px;
-  font-size: 1.1em;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-header nav a:hover {
-  color: #9d4edd;
-}
-
-/* ====== CARTES (ACCUEIL, JOBS, ETC.) ====== */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: flex-start;
+  margin: 30px;
   gap: 20px;
 }
 
-.card {
+/* ====== AJOUTS RÉCENTS ====== */
+.recent {
+  width: 20%;
   background: #1a1a1a;
-  border: 1px solid #9d4edd;
-  border-radius: 15px;
   padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.5);
-}
-
-.card h3 {
-  color: #fff;
-  margin: 10px 0;
-}
-
-.card p {
-  color: #ccc;
-  font-size: 0.9em;
-}
-
-/* ====== IMAGES DANS LES CARTES ====== */
-.card-img {
-  width: 100px;       /* taille carrée fixe */
-  height: 100px;
-  object-fit: contain; /* garde proportions */
+.recent h2 {
   margin-bottom: 15px;
-  border-radius: 10px;
-  background: #111;
-  padding: 8px;
+  color: #9d4edd;
 }
 
-/* ====== BARRE DE RECHERCHE ====== */
-.search-bar {
+.recent ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recent ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ====== JOBS (CAROUSEL) ====== */
+.jobs {
+  flex: 1;
+  text-align: center;
+}
+
+.jobs h1 {
+  margin-bottom: 20px;
+}
+
+.carousel {
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
 }
 
-.search-bar input {
-  width: 60%;
-  padding: 12px 15px;
-  border: 2px solid #9d4edd;
-  border-radius: 25px;
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.job-card {
+  min-width: 220px;
+  background: #0e0e0e;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  padding: 15px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+}
+
+.job-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.job-card h3 {
+  margin-top: 10px;
+  color: #9d4edd;
+}
+
+.carousel button {
+  background: #4b0082;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.carousel button:hover {
+  background: #6a0dad;
+}
+
+/* ====== MENU ACTIONS ====== */
+.actions {
+  width: 20%;
   background: #1a1a1a;
-  color: #fff;
-  font-size: 1em;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
 }
 
-.search-bar input:focus {
-  outline: none;
-  border: 2px solid #c77dff;
-  box-shadow: 0 0 10px rgba(199, 125, 255, 0.5);
+.actions h2 {
+  margin-bottom: 15px;
+  color: #9d4edd;
+}
+
+.actions button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background: #4b0082;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actions button:hover {
+  background: #6a0dad;
 }
