@@ -14,6 +14,8 @@
       margin: 0;
       padding: 0;
       display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     /* ===== NAVBAR ===== */
@@ -23,18 +25,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100vw; /* prend toute la largeur */
     }
 
     header .logo {
       height: 50px;
-    }
-
-    nav {
-      margin-left: 30px;
     }
 
     nav ul {
@@ -76,60 +70,20 @@
 
     .search-bar i {
       position: absolute;
-      left: calc(50% - 290px);
+      left: calc(50% - 280px);
       top: 50%;
       transform: translateY(-50%);
       color: #555;
       font-size: 18px;
     }
 
-    /* ===== MAIN ===== */
+    /* ===== LAYOUT ===== */
     main {
-      flex-grow: 1;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ===== ACTIONS ===== */
-    .actions-panel {
-      width: 220px;
-      height: 220px; /* carré */
-      background: #1e1e1e;
-      padding: 15px;
-      border-left: 2px solid #4b0082;
-      margin-top: 120px; /* plus bas */
+      flex: 1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      box-sizing: border-box;
-    }
-
-    .actions-panel h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #d8b4fe;
-      text-align: center;
-    }
-
-    .actions-panel button {
-      display: block;
-      width: 100%;
-      background: #4b0082;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 8px;
-      margin-bottom: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-      text-align: left;
-    }
-
-    .actions-panel button:hover {
-      background: #6a0dad;
+      gap: 40px;
+      margin: 30px;
     }
 
     /* ===== CARDS WRAPPER ===== */
@@ -137,8 +91,29 @@
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
-      margin: 30px auto;
-      max-width: 1000px;
+      max-width: 900px;
+      flex-grow: 1;
+    }
+
+    /* Header du bloc cartes */
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .cards-header select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
     }
 
     .cards {
@@ -180,6 +155,40 @@
       font-weight: bold;
     }
 
+    /* ===== ACTIONS ===== */
+    .actions {
+      min-width: 200px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d33eff;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
     /* ===== MODE CLAIR ===== */
     body.light-mode {
       background: #f5f5f5;
@@ -199,87 +208,97 @@
 </head>
 <body>
 
-  <div style="flex-grow:1">
-    <!-- ====== NAVBAR ====== -->
-    <header>
-      <img src="assets/logo.png" alt="Logo" class="logo">
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active">Accueil</a></li>
-          <li><a href="regles.html">Règles</a></li>
-          <li><a href="jobs-legaux.html">Jobs légaux</a></li>
-          <li><a href="jobs-illegaux.html">Jobs illégaux</a></li>
-          <li><a href="tutoriels.html">Tutoriels</a></li>
-          <li><a href="generales.html">Générales</a></li>
-          <li><a href="discord.html">Discord</a></li>
-        </ul>
-      </nav>
+  <!-- ====== NAVBAR ====== -->
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="regles.html">Règles</a></li>
+        <li><a href="jobs_legaux.html">Jobs légaux</a></li>
+        <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
 
-      <!-- Barre de recherche avec icône -->
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Rechercher...">
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <!-- ====== MAIN ====== -->
+  <main>
+    <!-- CARTES -->
+    <div class="cards-wrapper">
+      <!-- header des cartes -->
+      <div class="cards-header">
+        <h2>Catégories</h2>
+        <select id="sortSelect">
+          <option value="name">Trier par Nom</option>
+          <option value="date">Trier par Date</option>
+        </select>
       </div>
-    </header>
 
-    <!-- ====== CONTENU PRINCIPAL ====== -->
-    <main>
-      <div class="cards-wrapper">
-        <div class="cards" id="cardsContainer">
+      <div class="cards" id="cardsContainer">
+        <div class="card" data-date="2024-01-01">
+          <img src="assets/rules.png" alt="Règles" class="card-img">
+          <h3>Règles</h3>
+          <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
+          <a href="regles.html">Voir les règles</a>
+        </div>
 
-          <div class="card">
-            <img src="assets/rules.png" alt="Règles" class="card-img">
-            <h3>Règles</h3>
-            <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
-            <a href="regles.html">Voir les règles</a>
-          </div>
+        <div class="card" data-date="2024-02-01">
+          <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
+          <h3>Jobs Légaux</h3>
+          <p>Découvrez les métiers disponibles dans la légalité.</p>
+          <a href="jobs_legaux.html">Voir les jobs légaux</a>
+        </div>
 
-          <div class="card">
-            <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
-            <h3>Jobs Légaux</h3>
-            <p>Découvrez les métiers disponibles dans la légalité.</p>
-            <a href="jobs-legaux.html">Voir les jobs légaux</a>
-          </div>
+        <div class="card" data-date="2024-03-01">
+          <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
+          <h3>Jobs Illégaux</h3>
+          <p>Plongez dans les activités illégales proposées sur l’île.</p>
+          <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
+        </div>
 
-          <div class="card">
-            <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
-            <h3>Jobs Illégaux</h3>
-            <p>Plongez dans les activités illégales proposées sur l’île.</p>
-            <a href="jobs-illegaux.html">Voir les jobs illégaux</a>
-          </div>
+        <div class="card" data-date="2024-04-01">
+          <img src="assets/discord.png" alt="Discord" class="card-img">
+          <h3>Discord</h3>
+          <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
+          <a href="discord.html">Accéder au Discord</a>
+        </div>
 
-          <div class="card">
-            <img src="assets/discord.png" alt="Discord" class="card-img">
-            <h3>Discord</h3>
-            <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
-            <a href="discord.html">Accéder au Discord</a>
-          </div>
-
-          <div class="card">
-            <img src="assets/general.png" alt="Général" class="card-img">
-            <h3>Informations Générales</h3>
-            <p>Accédez aux infos pratiques et générales sur le serveur.</p>
-            <a href="generales.html">Voir les infos</a>
-          </div>
-
+        <div class="card" data-date="2024-05-01">
+          <img src="assets/general.png" alt="Général" class="card-img">
+          <h3>Informations Générales</h3>
+          <p>Accédez aux infos pratiques et générales sur le serveur.</p>
+          <a href="generales.html">Voir les infos</a>
         </div>
       </div>
-    </main>
-  </div>
+    </div>
 
-  <!-- ====== ACTIONS ====== -->
-  <aside class="actions-panel">
-    <h2>Actions</h2>
-    <button onclick="toggleTheme()">🌙 Mode clair/sombre</button>
-    <button onclick="setGrid()">🔲 Vue grille</button>
-    <button onclick="setList()">📋 Vue liste</button>
-  </aside>
+    <!-- ACTIONS -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button onclick="setList()"><i class="fas fa-list"></i> Vue en liste</button>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
 
   <!-- ====== SCRIPT ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
+    const sortSelect = document.getElementById("sortSelect");
+    const cardsContainer = document.getElementById("cardsContainer");
 
+    // Recherche
     searchInput.addEventListener("input", () => {
       const search = searchInput.value.toLowerCase();
       cards.forEach(card => {
@@ -288,16 +307,31 @@
       });
     });
 
+    // Tri
+    sortSelect.addEventListener("change", () => {
+      let sortedCards = Array.from(cards);
+
+      if (sortSelect.value === "name") {
+        sortedCards.sort((a, b) => 
+          a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
+        );
+      } else if (sortSelect.value === "date") {
+        sortedCards.sort((a, b) => 
+          new Date(a.dataset.date) - new Date(b.dataset.date)
+        );
+      }
+
+      cardsContainer.innerHTML = "";
+      sortedCards.forEach(card => cardsContainer.appendChild(card));
+    });
+
+    // Mode clair/sombre
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
     }
 
-    function setGrid() {
-      document.getElementById("cardsContainer").style.display = "grid";
-    }
-
     function setList() {
-      document.getElementById("cardsContainer").style.display = "block";
+      cardsContainer.style.display = "block";
     }
   </script>
 </body>
