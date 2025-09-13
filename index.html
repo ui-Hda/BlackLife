@@ -8,7 +8,6 @@
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 
   <style>
-    /* ===== GLOBAL ===== */
     :root{
       --violet:#4b0082;
       --violet-light:#9d4edd;
@@ -17,122 +16,65 @@
       --panel-bg:#1e1e1e;
       --white:#ffffff;
     }
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;}
 
-    /* ===== HEADER / NAVBAR ===== */
+    /* ===== HEADER ===== */
     header{
       background:var(--violet);
       padding:12px 28px;
       display:flex;
       align-items:center;
+      justify-content:space-between;
       gap:20px;
       position:sticky;
       top:0;
       z-index:1100;
       box-shadow:0 2px 8px rgba(0,0,0,0.3);
     }
+    .logo{height:48px;}
 
-    .logo{height:48px;flex:0 0 auto;}
-
-    /* left area : logo + nav */
-    .left{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      flex:0 0 auto;
-    }
-
-    nav ul{display:flex;gap:16px;margin:0;padding:0;list-style:none;align-items:center;}
+    nav ul{display:flex;gap:16px;margin:0;padding:0;list-style:none;}
     nav ul li a{color:var(--white);text-decoration:none;font-weight:600;transition:color .18s;}
-    nav ul li a:hover, nav ul li a.active{color:var(--violet-light);}
+    nav ul li a:hover,nav ul li a.active{color:var(--violet-light);}
 
-    /* ===== SEARCH (au centre dans la barre violette) ===== */
-    .search-bar{
-      flex:1 1 auto;          /* prend l'espace disponible => centré */
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-    }
-
-    .search-input {
-      width:64%;              /* taille actuelle (garde la largeur) */
-      max-width:700px;
-      min-width:260px;
+    /* ===== SEARCH BAR (centrée) ===== */
+    .search-container{flex:1;display:flex;justify-content:center;}
+    .search-bar{position:relative;width:60%;max-width:700px;min-width:260px;}
+    .search-input{
+      width:100%;
       border-radius:26px;
       border:none;
-      padding:10px 18px 10px 44px; /* place la loupe à gauche */
+      padding:10px 18px 10px 44px;
       font-size:15px;
       outline:none;
     }
-
     .search-bar .fa-search{
       position:absolute;
-      left: calc(50% - 0.32 * 100% + 14px); /* place l'icône au début du champ centré */
-      /* the calc is a compromise to keep icon near left inside the centred input */
+      left:16px;
+      top:50%;
+      transform:translateY(-50%);
       color:#666;
       font-size:18px;
       pointer-events:none;
     }
 
-    /* ===== ACTIONS (en haut à droite, listé quand on ouvre) ===== */
-    .actions {
-      flex:0 0 auto;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      position:relative;
-    }
-
-    .actions-button{
+    /* ===== ACTIONS à droite ===== */
+    .actions{display:flex;gap:12px;}
+    .actions button{
       background:transparent;
       color:var(--white);
-      border:1px solid rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
       padding:8px 12px;
       border-radius:8px;
       cursor:pointer;
       font-weight:600;
       display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .actions-button:hover{background:rgba(255,255,255,0.04);}
-
-    /* dropdown list (vertical) */
-    .actions-dropdown{
-      position:absolute;
-      right:0;
-      top:calc(100% + 10px);
-      width:220px;
-      background:rgba(0,0,0,0.75);
-      border-radius:10px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.45);
-      padding:8px;
-      display:none;
-      flex-direction:column;
       gap:6px;
-      z-index:1200;
-    }
-
-    .actions-dropdown.open{display:flex;}
-
-    .actions-dropdown button{
-      background:none;
-      border:none;
-      color:var(--white);
-      text-align:left;
-      padding:10px;
-      border-radius:8px;
-      cursor:pointer;
-      display:flex;
-      gap:8px;
       align-items:center;
-      font-weight:600;
+      transition:background .2s;
     }
-    .actions-dropdown button:hover{
-      background:linear-gradient(90deg, rgba(157,78,221,0.12), rgba(157,78,221,0.06));
-    }
-    .actions-dropdown i{color:var(--violet-light);min-width:20px;text-align:center;}
+    .actions button:hover{background:rgba(255,255,255,0.08);}
+    .actions i{color:var(--violet-light);}
 
     /* ===== MAIN / CARDS ===== */
     main{padding:26px;}
@@ -144,35 +86,30 @@
       margin:0 auto;
     }
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;}
-    .card{background:var(--card-bg);padding:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.06);text-align:center;transition:transform .16s,box-shadow .16s;}
+    .card{
+      background:var(--card-bg);
+      padding:18px;
+      border-radius:12px;
+      border:2px solid rgba(255,255,255,0.06);
+      text-align:center;
+      transition:transform .16s,box-shadow .16s;
+    }
     .card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,0.6);}
     .card-img{width:100px;height:100px;object-fit:contain;margin-bottom:12px;}
     .card h3{color:var(--violet-light);margin:8px 0;}
     .card a{color:var(--violet-light);font-weight:700;text-decoration:none;display:inline-block;margin-top:10px;}
 
     /* ===== LIGHT MODE ===== */
-    body.light-mode{
-      background:#f5f5f5;color:#000;
-    }
-    body.light-mode header{background:var(--violet);} /* keep violet in light mode as requested */
-    body.light-mode .actions-dropdown{background:#fff;color:#000;box-shadow:0 6px 20px rgba(0,0,0,0.08);}
-    body.light-mode .actions-dropdown button:hover{background:rgba(0,0,0,0.04);}
-
-    /* responsive tweak */
-    @media (max-width:900px){
-      .search-input{width:80%;}
-      .search-bar .fa-search{left: calc(50% - 0.4 * 100% + 12px);}
-    }
-    @media (max-width:640px){
-      nav ul{display:none;} /* hide menu on small screens to save space */
-      .search-input{width:86%;}
-    }
+    body.light-mode{background:#f5f5f5;color:#000;}
+    body.light-mode header{background:var(--violet);}
+    body.light-mode .card{border-color:rgba(0,0,0,0.1);}
   </style>
 </head>
 <body>
 
   <header>
-    <div class="left">
+    <!-- Logo + menu -->
+    <div style="display:flex;align-items:center;gap:18px;">
       <img src="assets/logo.png" alt="Logo GTANew" class="logo">
       <nav>
         <ul>
@@ -187,127 +124,80 @@
       </nav>
     </div>
 
-    <!-- barre de recherche RESTE DANS LA BARRE VIOLETTE (centre) -->
-    <div class="search-bar" aria-label="Recherche">
-      <i class="fas fa-search" aria-hidden="true"></i>
-      <input class="search-input" id="searchInput" type="text" placeholder="Rechercher..." />
+    <!-- Recherche centrée -->
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input class="search-input" id="searchInput" type="text" placeholder="Rechercher..." />
+      </div>
     </div>
 
-    <!-- actions : bouton + dropdown listé verticalement -->
+    <!-- Actions à droite -->
     <div class="actions">
-      <button class="actions-button" id="actionsBtn" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-cog"></i> Actions ▾
-      </button>
-
-      <div class="actions-dropdown" id="actionsDropdown" role="menu" aria-hidden="true">
-        <button id="themeToggle"><i class="fas fa-adjust"></i> Passer en mode clair/sombre</button>
-        <button id="gridBtn"><i class="fas fa-th-large"></i> Vue en grille</button>
-        <button id="listBtn"><i class="fas fa-list"></i> Vue en liste</button>
-      </div>
+      <button id="themeToggle"><i class="fas fa-adjust"></i> Thème</button>
+      <button id="gridBtn"><i class="fas fa-th-large"></i> Grille</button>
+      <button id="listBtn"><i class="fas fa-list"></i> Liste</button>
     </div>
   </header>
 
   <main>
     <div class="cards-wrapper">
       <div class="cards" id="cardsContainer">
-
         <div class="card">
           <img src="assets/rules.png" alt="Règles" class="card-img">
           <h3>Règles</h3>
           <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
           <a href="regles.html">Voir les règles</a>
         </div>
-
         <div class="card">
           <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
           <h3>Jobs Légaux</h3>
           <p>Découvrez les métiers disponibles dans la légalité.</p>
           <a href="jobs_legaux.html">Voir les jobs légaux</a>
         </div>
-
         <div class="card">
           <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
           <h3>Jobs Illégaux</h3>
           <p>Plongez dans les activités illégales proposées sur l’île.</p>
           <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
         </div>
-
         <div class="card">
           <img src="assets/discord.png" alt="Discord" class="card-img">
           <h3>Discord</h3>
           <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
           <a href="discord.html">Accéder au Discord</a>
         </div>
-
         <div class="card">
           <img src="assets/general.png" alt="Général" class="card-img">
           <h3>Informations Générales</h3>
           <p>Accédez aux infos pratiques et générales sur le serveur.</p>
           <a href="generales.html">Voir les infos</a>
         </div>
-
       </div>
     </div>
   </main>
 
   <script>
-    // éléments
-    const searchInput = document.getElementById('searchInput');
-    const cards = document.querySelectorAll('.card');
-    const actionsBtn = document.getElementById('actionsBtn');
-    const actionsDropdown = document.getElementById('actionsDropdown');
-    const themeToggle = document.getElementById('themeToggle');
-    const gridBtn = document.getElementById('gridBtn');
-    const listBtn = document.getElementById('listBtn');
-    const cardsContainer = document.getElementById('cardsContainer');
+    const searchInput=document.getElementById('searchInput');
+    const cards=document.querySelectorAll('.card');
+    const cardsContainer=document.getElementById('cardsContainer');
 
-    // recherche
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase().trim();
-      cards.forEach(c => {
-        const text = c.innerText.toLowerCase();
-        c.style.display = text.includes(q) ? 'block' : 'none';
+    searchInput.addEventListener('input',()=>{
+      const q=searchInput.value.toLowerCase().trim();
+      cards.forEach(c=>{
+        const text=c.innerText.toLowerCase();
+        c.style.display=text.includes(q)?'block':'none';
       });
     });
 
-    // dropdown actions
-    actionsBtn.addEventListener('click', (e) => {
-      const open = actionsDropdown.classList.toggle('open');
-      actionsBtn.setAttribute('aria-expanded', String(open));
-      actionsDropdown.setAttribute('aria-hidden', String(!open));
-    });
-
-    // fermer le dropdown si clic en dehors
-    document.addEventListener('click', (e) => {
-      if (!actionsBtn.contains(e.target) && !actionsDropdown.contains(e.target)) {
-        actionsDropdown.classList.remove('open');
-        actionsBtn.setAttribute('aria-expanded', 'false');
-        actionsDropdown.setAttribute('aria-hidden', 'true');
-      }
-    });
-
-    // actions : thème / vue grille / vue liste
-    themeToggle.addEventListener('click', () => {
+    document.getElementById('themeToggle').addEventListener('click',()=>{
       document.body.classList.toggle('light-mode');
-      // garder le dropdown ouvert? on le laisse ouvert (UX) ; ferme si tu préfères:
-      // actionsDropdown.classList.remove('open');
     });
-
-    gridBtn.addEventListener('click', () => {
-      cardsContainer.style.display = 'grid';
+    document.getElementById('gridBtn').addEventListener('click',()=>{
+      cardsContainer.style.display='grid';
     });
-
-    listBtn.addEventListener('click', () => {
-      cardsContainer.style.display = 'block';
-    });
-
-    // accessible keyboard: fermer avec Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        actionsDropdown.classList.remove('open');
-        actionsBtn.setAttribute('aria-expanded','false');
-        actionsDropdown.setAttribute('aria-hidden','true');
-      }
+    document.getElementById('listBtn').addEventListener('click',()=>{
+      cardsContainer.style.display='block';
     });
   </script>
 
