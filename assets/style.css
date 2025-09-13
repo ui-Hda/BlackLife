@@ -5,8 +5,8 @@ body {
   color: #fff;
   margin: 0;
   padding: 0;
-  opacity: 0;                 /* départ invisible */
-  transform: translateY(20px); /* départ légèrement en bas */
+  opacity: 0;
+  transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
@@ -19,12 +19,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
 }
 
 /* ====== TITRES ====== */
@@ -48,7 +42,72 @@ h1, h2 {
   }
 }
 
-/* ====== BLOCS DETAILS ====== */
+/* ====== NAVBAR / HEADER ====== */
+header {
+  background: #111;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #9d4edd;
+}
+
+header img {
+  height: 40px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+header nav a {
+  margin-left: 20px;
+  font-size: 1.1em;
+  color: #fff;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: #9d4edd;
+}
+
+/* ====== CONTENEUR ====== */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ====== BARRE DE RECHERCHE ====== */
+.search-bar {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #9d4edd;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 1em;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 8px #c084fc;
+}
+
+/* ====== BLOCS DETAILS (règles, etc.) ====== */
 details {
   background: #1a1a1a;
   border: 1px solid #9d4edd;
@@ -91,7 +150,6 @@ details[open] summary::after {
   transform: rotate(90deg);
 }
 
-/* ====== TEXTE DES BLOCS ====== */
 details p,
 details ul {
   padding: 0 20px 20px 20px;
@@ -109,37 +167,59 @@ details[open] ul {
   max-height: 800px;
 }
 
-/* ====== LIENS ====== */
-a {
-  color: #9d4edd;
+/* ====== GRILLE DE CARTES (accueil) ====== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: 2px solid #2d2d2d;
+  border-radius: 15px;
+  padding: 20px;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ====== NAVBAR / HEADER ====== */
-header {
-  background: #111;
-  padding: 15px 30px;
+  color: white;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  border-bottom: 2px solid #9d4edd;
+  text-align: center;
 }
 
-header img {
-  height: 40px;
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #9d4edd;
+  box-shadow: 0 6px 18px rgba(157, 78, 221, 0.4);
 }
 
-header nav a {
-  margin-left: 20px;
-  font-size: 1.1em;
-  color: #fff;
-  transition: color 0.3s ease;
+.card-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
 }
 
-header nav a:hover {
-  color: #9d4edd;
+.card-content h2 {
+  margin: 10px 0 8px;
+  font-size: 1.3em;
+  color: #c084fc;
+}
+
+.card-content p {
+  font-size: 0.95em;
+  color: #b3b3b3;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  background-color: #111;
+  border-top: 2px solid #9d4edd;
+  color: #a1a1a1;
+  font-size: 0.9em;
 }
