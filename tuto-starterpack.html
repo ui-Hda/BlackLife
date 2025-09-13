@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Starter Pack</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    header {
+      background: #1e90ff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      position: relative;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #1e90ff;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    /* LAYOUT */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    /* Ajouts récents */
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #1e90ff;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #1e90ff;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* Zone tutoriel */
+    .tutorial-content {
+      background: #1e1e1e;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .tutorial-content h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .tutorial-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 20px 0;
+      color: #ddd;
+    }
+
+    .tutorial-content img {
+      max-width: 80%;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    /* Menu actions */
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #1e90ff;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    /* Mode clair */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .tutorial-content,
+    body.light-mode .recent {
+      background: #ddd;
+    }
+
+    body.light-mode .tutorial-content p {
+      color: #000;
+    }
+
+    body.light-mode .tutorial-content img {
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <main>
+    <!-- Ajouts récents -->
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <!-- Zone tutoriel -->
+    <div class="tutorial-content">
+      <h1>Starter Pack</h1>
+      <p>
+        Lors de vos premiers pas sur GTANew, vous recevez un <strong>starter pack</strong>.  
+        Il contient tout le nécessaire pour bien débuter votre aventure sans être perdu.
+      </p>
+      <img src="assets/screens/starter1.png" alt="Starter pack - contenu">
+      <p>
+        Vous y trouverez généralement une petite somme d’argent, un téléphone, une arme de mélée ainsi que de la nourriture.  
+        Ces éléments sont conçus pour vous aider à découvrir les mécaniques du serveur.
+      </p>
+      <img src="assets/screens/starter2.png" alt="Starter pack - exemple d'équipement">
+      <p>
+        Utilisez ce pack avec stratégie : il est pensé pour faciliter vos premiers pas, mais ne remplacera pas vos efforts 
+        et interactions RP sur le serveur.
+      </p>
+    </div>
+
+    <!-- Menu actions -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    // Thème clair/sombre
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    // Ajouts récents dynamiques
+    function loadRecent() {
+      const recent = [
+        { title: "Tutoriel Starter Pack", link: "tuto-starterpack.html", date: "14/09/2025" },
+        { title: "Tutoriel Création de personnage", link: "tuto-personnage.html", date: "14/09/2025" },
+        { title: "Tutoriel Connexion", link: "tuto-connect.html", date: "13/09/2025" }
+      ];
+
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      recent.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("recent-item");
+        div.innerHTML = `
+          <a href="${item.link}">
+            <h3>${item.title}</h3>
+            <p>Modifié le ${item.date}</p>
+          </a>`;
+        recentContainer.appendChild(div);
+      });
+    }
+
+    loadRecent();
+  </script>
+</body>
+</html>
