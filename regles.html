@@ -59,33 +59,53 @@
       color: #d8b4fe;
     }
 
-    .rule-card {
-      background: #1a0029;
+    .accordion {
+      margin-bottom: 15px;
       border: 2px solid #4b0082;
       border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.2s, border-color 0.3s;
+      overflow: hidden;
+      background: #1a0029;
     }
 
-    .rule-card:hover {
-      transform: scale(1.02);
-      border-color: #d8b4fe;
-    }
-
-    .rule-card h2 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      color: #d8b4fe;
+    .accordion-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      padding: 15px 20px;
+      cursor: pointer;
+      color: #d8b4fe;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background 0.3s;
     }
 
-    .rule-card p {
-      margin: 0;
-      line-height: 1.5;
+    .accordion-header:hover {
+      background: #2b0044;
+    }
+
+    .accordion-header i {
+      transition: transform 0.3s;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 20px;
       color: #ddd;
+    }
+
+    .accordion-content p {
+      margin: 15px 0;
+    }
+
+    .accordion.active .accordion-content {
+      max-height: 500px; /* grande hauteur pour du texte long */
+      padding-bottom: 15px;
+    }
+
+    .accordion.active .accordion-header i:last-child {
+      transform: rotate(90deg);
     }
 
     footer {
@@ -116,84 +136,169 @@
   <main>
     <h1>📜 Règlement Officiel</h1>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-bolt"></i> 1. Powergaming</h2>
-      <p>Le powergaming consiste à faire quelque chose d’impossible IRL ou à forcer les choses en sa faveur sans laisser le choix aux autres joueurs.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-bolt"></i> 1. Powergaming</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Le powergaming consiste à faire quelque chose d’impossible IRL ou à forcer les choses en sa faveur sans laisser le choix aux autres joueurs. Exemple : ignorer un accident, une blessure ou des effets de gaz.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-eye"></i> 2. Metagaming</h2>
-      <p>Utiliser des informations HRP (Discord, Twitch, etc.) dans un contexte RP est interdit. L’expérience se vit uniquement via votre personnage.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-eye"></i> 2. Metagaming</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Utiliser des informations HRP (Discord, Twitch, etc.) dans un contexte RP est interdit. Même si un ami vous dit quelque chose hors RP, vous devez l’ignorer en jeu.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-users"></i> 3. Mass RP</h2>
-      <p>Vous devez prendre en compte la population de la ville, PNJ compris, comme si c’étaient de vrais habitants.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-users"></i> 3. Mass RP</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Il faut considérer les PNJ et la population comme de vrais habitants. Un commissariat n’est pas vide simplement parce qu’un seul policier est connecté.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-heartbeat"></i> 4. Fear RP</h2>
-      <p>Votre personnage doit ressentir la peur dans les situations logiques (armes, menaces...). Le NoFear RP n’est pas toléré.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-heartbeat"></i> 4. Fear RP</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Votre personnage doit ressentir la peur dans les situations réalistes (armes, menaces, etc.). Le NoFear RP n’est pas toléré.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-car-crash"></i> 5. Carkill</h2>
-      <p>Écraser volontairement un joueur sans raison RP valable est strictement interdit.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-car-crash"></i> 5. Carkill</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Écraser volontairement un joueur sans raison RP est interdit.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-user-edit"></i> 6. Cohérence RP</h2>
-      <p>Respectez la biographie et l’histoire de votre personnage. Gardez la cohérence dans vos actions.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-user-edit"></i> 6. Cohérence RP</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Votre personnage doit respecter sa biographie et ses choix RP. Toute incohérence casse l’immersion et est sanctionnable.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-procedures"></i> 7. Coma</h2>
-      <p>Lors d’un coma, vous ne pouvez pas parler. Si réanimé, pas d’armes ni coups pendant 5 minutes. Si réveil hôpital, perte mémoire des 2 dernières heures.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-procedures"></i> 7. Coma</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>En coma : pas de paroles. Après réanimation, interdiction d’utiliser une arme ou frapper pendant 5 minutes. Si hôpital : oubli des 2 dernières heures de la scène.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-skull"></i> 8. Freekill</h2>
-      <p>Tuer sans motif RP (simple insulte, regard...) est interdit. Les meurtres doivent avoir une justification RP solide.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-skull"></i> 8. Freekill</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Tuer sans raison RP est interdit. Les meurtres doivent être justifiés (pas juste une insulte ou un regard de travers).</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-handshake"></i> 9. Courtoisie envers autrui</h2>
-      <p>Respectez les autres joueurs. Les insultes HRP/OOC sont interdites.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-handshake"></i> 9. Courtoisie envers autrui</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Les insultes HRP sont interdites. Vous devez rester courtois et respectueux en dehors du rôleplay.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-id-card"></i> 10. Prénoms et Noms interdits</h2>
-      <p>Les noms de célébrités, personnages fictifs ou humoristiques sont interdits. Exemple : Tony Starque, Harri Poter, Al Colique.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-id-card"></i> 10. Prénoms et Noms interdits</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Les noms de célébrités ou fictifs sont interdits. Pas de “Tony Starque” ou “Harri Poter”. Évitez aussi les noms humoristiques type “Al Colique”.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-comment-dots"></i> 11. Provocations Non-RP</h2>
-      <p>Ne provoquez pas inutilement juste pour créer une scène RP. Les provocations doivent rester cohérentes avec votre personnage.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-comment-dots"></i> 11. Provocations Non-RP</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Les provocations doivent rester RP. Évitez de créer artificiellement des scènes par des insultes ou provocations répétées.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-running"></i> 12. Chicken-Run</h2>
-      <p>Zigzaguer pour esquiver des balles de façon irréaliste est interdit.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-running"></i> 12. Chicken-Run</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Zigzaguer pour esquiver les balles ou coups de manière irréaliste est interdit.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-video"></i> 13. GoPro / Caméras / Photos RP</h2>
-      <p>Prendre des photos ou filmer sans animation ou objet en main n’est pas RP. Les vidéos doivent être justifiées (installation GoPro, sortie du téléphone...).</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-video"></i> 13. GoPro / Caméras / Photos RP</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Les photos/vidéos doivent être jouées avec animation ou annonce (GoPro installée, téléphone sorti...). Sinon, elles ne sont pas valides RP.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-building"></i> 14. Groupes et Entreprises</h2>
-      <p>Groupes/entreprises limités en taille. Alliances de gangs interdites (uniquement trêves). Les véhicules de service sont obligatoires pendant le travail.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-building"></i> 14. Groupes et Entreprises</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Entreprises limitées en taille. Gangs max 26 personnes. Alliances interdites (seules les trêves sont acceptées). Véhicule de service obligatoire en travail.</p>
+      </div>
     </div>
 
-    <div class="rule-card">
-      <h2><i class="fas fa-shield-alt"></i> 15. Zone Safe</h2>
-      <p>Interdiction de frapper/tirer dans une Safe Zone. Interdiction d’y entrer en pleine scène RP.</p>
+    <div class="accordion">
+      <div class="accordion-header">
+        <span><i class="fas fa-shield-alt"></i> 15. Zone Safe</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Interdit de se battre ou tirer dans une Safe Zone. Interdit d’y entrer en pleine scène RP.</p>
+      </div>
     </div>
+
   </main>
 
   <footer>
     <p>© 2025 GTA New RP — Tous droits réservés.</p>
   </footer>
+
+  <script>
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+      acc.querySelector('.accordion-header').addEventListener('click', () => {
+        acc.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
