@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Tutoriel Débutant</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body { background: #0d0017; color: white; font-family: Arial, sans-serif; margin: 0; }
+    header { background: #1e90ff; padding: 15px 30px; display: flex; align-items: center; gap: 40px; }
+    header .logo { height: 70px; }
+    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    nav ul li a:hover, nav ul li a.active { color: #1e90ff; }
+    main { display: grid; grid-template-columns: 250px 1fr 220px; gap: 20px; margin: 30px; }
+    .recent, .actions { background: #1e1e1e; padding: 20px; border-radius: 10px; height: fit-content; }
+    .content { background: #1e1e1e; padding: 30px; border-radius: 15px; }
+    .content h1 { color: #1e90ff; }
+    .content p { line-height: 1.6; color: #ddd; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Réglement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <aside class="recent">
+      <h2>Ajouts récents</h2>
+      <p><a href="tuto-avance.html" style="color:#1e90ff;">Tutoriel Avancé</a></p>
+      <p><a href="tuto-astuces.html" style="color:#1e90ff;">Astuces</a></p>
+    </aside>
+
+    <div class="content">
+      <h1>Tutoriel Débutant</h1>
+      <p>Bienvenue dans l’univers de GTANew ! 🎉</p>
+      <p>Dans ce tutoriel, tu apprendras toutes les bases nécessaires pour bien débuter sur le serveur :</p>
+      <ul>
+        <li>Comment créer ton personnage</li>
+        <li>Découverte de la ville et de ses lieux importants</li>
+        <li>Présentation des métiers de départ</li>
+        <li>Conseils pour gagner tes premiers revenus</li>
+      </ul>
+      <p>⚡ Astuce : prends toujours le temps de lire les panneaux et demande de l’aide aux joueurs expérimentés sur Discord.</p>
+    </div>
+
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-home"></i> Retour aux Tutoriels</button>
+      <button><i class="fas fa-share"></i> Partager</button>
+    </aside>
+  </main>
+</body>
+</html>
