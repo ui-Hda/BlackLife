@@ -5,13 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Règlement - GTA New RP</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <style>
+    body {
+      background: #120025;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #2a004f;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #a56bff;
+    }
+
     main {
       max-width: 900px;
       margin: 40px auto;
       padding: 20px;
-      text-align: left;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #c9a3ff;
     }
 
     details {
@@ -19,181 +55,147 @@
       color: white;
       border-radius: 8px;
       margin-bottom: 15px;
-      padding: 12px;
+      padding: 12px 16px;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    details[open] {
+      background: #3a006f;
     }
 
     summary {
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
     }
 
-    summary::-webkit-details-marker {
-      display: none; /* enlève la flèche par défaut */
+    summary::after {
+      content: "▶";
+      font-size: 16px;
+      transition: transform 0.3s ease;
     }
 
-    details[open] {
-      background: #3a006f;
+    details[open] summary::after {
+      transform: rotate(90deg);
+    }
+
+    details p,
+    details ul {
+      margin-top: 10px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    details[open] p,
+    details[open] ul {
+      opacity: 1;
+      max-height: 1000px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #1a002f;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <!-- ===== Header ===== -->
   <header>
-    <div class="logo-container">
-      <img src="assets/logo.png" alt="GTA New Logo" class="logo">
-      <span class="site-title">GTA New RP Wiki</span>
-    </div>
+    <img src="assets/logo.png" alt="Logo GTA New RP">
     <nav>
       <a href="index.html">Accueil</a>
-      <a href="regles.html" class="active">Règles</a>
-      <a href="jobs-legaux.html">Jobs légaux</a>
-      <a href="jobs-illegaux.html">Jobs illégaux</a>
+      <a href="regles.html">Règlement</a>
+      <a href="jobs.html">Jobs</a>
       <a href="tutoriels.html">Tutoriels</a>
     </nav>
   </header>
 
-  <!-- ===== Main ===== -->
   <main>
-    <h1>Règlement Officiel</h1>
-    <p>
-      Voici le règlement officiel concernant le serveur GTA NEW RP.  
-      Nul n'est censé l'ignorer et chacun se doit de le respecter.  
-      En cas de non-respect, des sanctions seront appliquées.  
-      Il peut également être sujet à des changements.
-    </p>
+    <h1>Règlement Officiel - GTA New RP</h1>
 
     <details>
       <summary>1. Powergaming</summary>
-      <p>
-        Le powergaming consiste à faire quelque chose qui serait impossible à réaliser dans la vie réelle.
-        Cela consiste également à s'octroyer un avantage et donc forcer les choses en sa faveur
-        sans donner aucune chance à la partie adverse.
-        Les interactions avec l’univers doivent rester réalistes.
-      </p>
+      <p>Le powergaming consiste à faire quelque chose qui serait impossible à réaliser dans la vie réelle [...]</p>
     </details>
 
     <details>
       <summary>2. Metagaming</summary>
-      <p>
-        Utiliser des informations HRP (Hors-Jeu) dans un contexte RP est strictement prohibé.
-        Exemple : informations vues sur Discord ou Twitch ne doivent pas être utilisées InGame.
-      </p>
+      <p>Utiliser des informations HRP (Hors-RP/Hors-Jeu) dans un contexte RP est strictement prohibé [...]</p>
     </details>
 
     <details>
       <summary>3. Mass RP</summary>
-      <p>
-        Vous devez considérer la population globale de la ville et non seulement les joueurs connectés.
-        Chaque PNJ doit être traité comme un être vivant RP.
-      </p>
+      <p>Il s’agit du fait de prendre en compte la population de la ville et non du serveur [...]</p>
     </details>
 
     <details>
       <summary>4. Fear RP</summary>
-      <p>
-        Votre personnage doit ressentir la peur dans les situations où cela est logique.
-        Le NoFear RP n’est pas toléré.
-      </p>
+      <p>Il s’agit simplement du fait d’avoir peur en RP, même si le joueur lui-même n’a pas peur [...]</p>
     </details>
 
     <details>
       <summary>5. Carkill</summary>
-      <p>
-        Écraser volontairement un joueur sans raison RP valable est strictement interdit.
-      </p>
+      <p>Écraser volontairement un joueur sans raison valable est strictement interdit.</p>
     </details>
 
     <details>
-      <summary>6. Cohérence RP</summary>
-      <p>
-        Respectez l’histoire et la biographie de votre personnage.
-        La cohérence RP assure une expérience équitable pour tous.
-      </p>
+      <summary>6. Cohérence RP & Coma</summary>
+      <p>La cohérence RP consiste à incarner pleinement votre personnage [...]  
+      Les règles de coma incluent : interdiction de parler, perte de mémoire, délai avant de revenir en scène [...]</p>
     </details>
 
     <details>
-      <summary>7. Coma</summary>
-      <ul>
-        <li>Pas de retour sur les lieux d’une scène avant 15 minutes après un coma.</li>
-        <li>Impossible de parler pendant un coma.</li>
-        <li>Après réanimation : pas d’armes ou d’actions violentes pendant 5 minutes.</li>
-        <li>Réanimé par EMS : mémoire effacée des 15 minutes avant le coma.</li>
-        <li>Réveil à l’hôpital : oubli des 2 dernières heures de la scène.</li>
-        <li>Interdiction d’empêcher un EMS de réanimer (attente max 2 minutes).</li>
-      </ul>
+      <summary>7. Freekill</summary>
+      <p>Le freekill est le fait de tuer quelqu’un sans un réel motif roleplay. Ceci est complètement interdit.</p>
     </details>
 
     <details>
-      <summary>8. Freekill</summary>
-      <p>
-        Tuer quelqu'un sans motif RP est interdit.  
-        Exemple : insulte, regard de travers ou rébellion ne justifient pas un meurtre.
-      </p>
+      <summary>8. Courtoisie envers autrui</summary>
+      <p>Vous vous devez d’être courtois avec les gens, les insultes HRP sont interdites.</p>
     </details>
 
     <details>
-      <summary>9. Courtoisie</summary>
-      <p>
-        Soyez respectueux et courtois avec les autres joueurs.  
-        Les insultes HRP sont interdites.
-      </p>
+      <summary>9. Noms et prénoms interdits</summary>
+      <p>Les noms de célébrités, personnages fictifs ou noms humoristiques sont interdits.</p>
     </details>
 
     <details>
-      <summary>10. Noms interdits</summary>
-      <p>
-        Interdiction d’utiliser le nom de célébrités, personnages fictifs ou noms humoristiques
-        (ex : Al Colique, Harry Cow).
-      </p>
+      <summary>10. Provocations non-RP</summary>
+      <p>Il est interdit de provoquer de façon non-roleplay et inutile d’autres joueurs dans le seul but de créer des scènes.</p>
     </details>
 
     <details>
-      <summary>11. Provocations non-RP</summary>
-      <p>
-        Interdiction de provoquer inutilement dans le seul but de créer des scènes.
-      </p>
+      <summary>11. Chicken-run</summary>
+      <p>Courir en zigzagant de manière irréaliste pour éviter les balles est interdit.</p>
     </details>
 
     <details>
-      <summary>12. Chicken-run</summary>
-      <p>
-        Interdiction de zigzaguer de façon irréaliste pour éviter des projectiles.
-      </p>
+      <summary>12. Caméras, GoPro et photos RP</summary>
+      <p>Prendre une photo ou vidéo doit se faire en RP (portable sorti, animation, etc.).</p>
     </details>
 
     <details>
-      <summary>13. Go Pro / Caméras / Photos RP</summary>
-      <p>
-        Les enregistrements doivent être joués RP (ex : sortir un téléphone, installer une caméra).  
-        Les preuves doivent être obtenues de façon réaliste.
-      </p>
+      <summary>13. Groupes et entreprises</summary>
+      <p>Les entreprises et groupes sont limités en nombre de personnes [...] Toute alliance entre gangs est interdite.</p>
     </details>
 
     <details>
-      <summary>14. Groupes & Entreprises</summary>
-      <ul>
-        <li>Entreprise : max 24 personnes (20 si farm).</li>
-        <li>Services d’urgence : max 100 personnes.</li>
-        <li>Gang/cartel : max 26 personnes.</li>
-        <li>Alliances interdites (trêves autorisées).</li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>15. Zone Safe</summary>
-      <p>
-        Les Safe Zones sont des zones protégées où toute action illégale est interdite.  
-        Impossible de s’y réfugier pendant une scène RP.  
-        Dérogations possibles uniquement avec accord du staff.
-      </p>
+      <summary>14. Zone Safe</summary>
+      <p>Les Safe Zones sont indiquées par une notification en jeu. Il est interdit de s’y réfugier en pleine scène RP.</p>
     </details>
   </main>
 
-  <!-- ===== Footer ===== -->
   <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
+    <p>© 2025 GTA New RP - Tous droits réservés.</p>
   </footer>
 </body>
 </html>
