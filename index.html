@@ -23,8 +23,8 @@
       background: #4b0082;
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 40px;
     }
 
     header .logo {
@@ -50,31 +50,32 @@
       color: #d8b4fe;
     }
 
-    /* ===== SEARCH BAR ===== */
+    /* ===== SEARCH BAR (style Unity) ===== */
     .search-bar {
       flex-grow: 1;
       display: flex;
       justify-content: center;
-      position: relative;
     }
 
     .search-bar input {
-      width: 65%;
-      max-width: 600px;
-      padding: 10px 40px 10px 40px;
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
       border: none;
       border-radius: 25px;
       font-size: 16px;
       outline: none;
+      background: #1e1e1e;
+      color: white;
     }
 
     .search-bar i {
-      position: absolute;
-      left: calc(50% - 280px);
-      top: 50%;
-      transform: translateY(-50%);
-      color: #555;
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
       font-size: 18px;
+      pointer-events: none;
     }
 
     /* ===== LAYOUT ===== */
@@ -162,6 +163,8 @@
       padding: 20px;
       border-radius: 10px;
       height: fit-content;
+      margin-top: 30px;
+      margin-right: 50px; /* rapproché du centre */
     }
 
     .actions h2 {
