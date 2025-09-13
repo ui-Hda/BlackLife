@@ -78,7 +78,7 @@
       margin-bottom: 15px;
       padding: 12px 16px;
       overflow: hidden;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
@@ -95,6 +95,17 @@
       align-items: center;
       justify-content: space-between;
       list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    /* ANIMATION de pré-sélection */
+    details:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px #7a2cff;
+    }
+
+    summary:hover {
+      color: #cfa9ff;
     }
 
     summary .icon {
