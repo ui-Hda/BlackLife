@@ -22,6 +22,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header .logo {
@@ -52,35 +55,39 @@
       color: #d8b4fe;
     }
 
-    /* ===== SEARCH BAR (NAVBAR) ===== */
+    /* ===== SEARCH BAR ===== */
     .search-bar {
+      flex-grow: 1;
       display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 8px;
-      padding: 5px 10px;
-    }
-
-    .search-bar i {
-      color: #4b0082;
-      margin-right: 8px;
+      justify-content: center;
+      position: relative;
     }
 
     .search-bar input {
+      width: 65%;
+      max-width: 600px;
+      padding: 10px 40px 10px 40px;
       border: none;
+      border-radius: 25px;
+      font-size: 16px;
       outline: none;
-      font-size: 14px;
-      padding: 5px;
-      border-radius: 8px;
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: calc(50% - 290px);
+      top: 50%;
+      transform: translateY(-50%);
+      color: #555;
+      font-size: 18px;
     }
 
     /* ===== ACTIONS ===== */
     .actions {
-      margin-top: 20px;
+      margin: 30px auto;
       display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      padding-right: 30px;
+      justify-content: center;
+      gap: 30px;
     }
 
     .actions button {
@@ -88,9 +95,9 @@
       color: white;
       border: none;
       border-radius: 6px;
-      padding: 8px 12px;
+      padding: 10px 16px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
       transition: 0.3s;
     }
 
