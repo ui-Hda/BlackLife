@@ -3,170 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobs Légaux</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>GTANew - Jobs Légaux</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/jobs.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 </head>
-<body class="dark-mode">
+<body>
 
-  <!-- Barre violette -->
-  <header class="navbar">
-    <div class="logo">MonServeur RP</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Rechercher un métier...">
-      <button class="search-btn">🔍</button>
-    </div>
+  <!-- ====== NAVBAR ====== -->
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="regles.html">Règles</a></li>
-        <li><a href="jobs_legaux.html" class="active">Jobs Légaux</a></li>
-        <li><a href="jobs_illegaux.html">Jobs Illégaux</a></li>
-        <li><a href="infos.html">Infos</a></li>
-        <li><a href="https://discord.gg/">Discord</a></li>
+        <li><a href="jobs_legaux.html" class="active">Jobs légaux</a></li>
+        <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
+
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher un job...">
+    </div>
   </header>
 
-  <main class="content">
+  <main>
+    <div class="layout">
 
-    <!-- Ajouts récents -->
-    <aside class="recent-updates">
-      <h2>Ajouts récents</h2>
-      <ul>
-        <li>📌 Concessionnaire ajouté (13/09/2025)</li>
-        <li>📌 Système de jobs fermés (13/09/2025)</li>
-        <li>📌 Ajout du FIB (13/09/2025)</li>
-      </ul>
-    </aside>
+      <!-- ====== AJOUTS RÉCENTS ====== -->
+      <aside class="recent">
+        <h3>📌 Ajouts récents</h3>
+        <ul>
+          <li>13/09/2025 - Mise à jour LSPD</li>
+          <li>13/09/2025 - Nouveau métier EMS</li>
+          <li>13/09/2025 - Ajout Gouvernement</li>
+        </ul>
+      </aside>
 
-    <!-- Carrousel des métiers -->
-    <section class="jobs-carousel">
-      <div class="job-card">
-        <img src="assets/metiers/lspd.jpg" alt="LSPD">
-        <h2>LSPD</h2>
-        <p>Maintenir l’ordre et protéger Los Santos.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Haut</span>
-      </div>
+      <!-- ====== CONTENU PRINCIPAL ====== -->
+      <section class="main-content">
+        <h1>⚖️ Jobs Légaux</h1>
 
-      <div class="job-card">
-        <img src="assets/metiers/bcso.jpg" alt="BCSO">
-        <h2>BCSO</h2>
-        <p>Surveiller et protéger le comté de Blaine.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Haut</span>
-      </div>
+        <div class="carousel">
+          <div class="carousel-track">
 
-      <div class="job-card">
-        <img src="assets/metiers/gouv.jpg" alt="Gouvernement">
-        <h2>Gouvernement</h2>
-        <p>Gérer l’administration et la politique.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Haut</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/lspd.png" alt="LSPD">
+              <h3>LSPD</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/fib.jpg" alt="FIB">
-        <h2>FIB</h2>
-        <p>Enquêtes spéciales et missions secrètes.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Haut</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/bcso.png" alt="BCSO">
+              <h3>BCSO</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/lscustoms.jpg" alt="LS Customs">
-        <h2>LS Customs</h2>
-        <p>Réparer et améliorer des véhicules.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Moyen</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/gouv.png" alt="Gouvernement">
+              <h3>Gouvernement</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/bennys.jpg" alt="Benny's">
-        <h2>Benny's</h2>
-        <p>Spécialiste des voitures custom.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Moyen</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/fib.png" alt="FIB">
+              <h3>FIB</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/ems.jpg" alt="EMS">
-        <h2>EMS</h2>
-        <p>Sauver des vies et soigner les citoyens.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Moyen</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/lscustoms.png" alt="LS Customs">
+              <h3>LS Customs</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/bar.jpg" alt="Boîte de nuit">
-        <h2>Boîte de nuit / Bar</h2>
-        <p>Faire la fête et servir des boissons.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Moyen</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/bennys.png" alt="Benny's">
+              <h3>Benny's</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/vigneron.jpg" alt="Vigneron">
-        <h2>Vigneron</h2>
-        <p>Produire du vin et gérer les récoltes.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Bas</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/ems.png" alt="EMS">
+              <h3>EMS</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/concession.jpg" alt="Concessionnaire">
-        <h2>Concessionnaire</h2>
-        <p>Vendre et gérer les véhicules de luxe.</p>
-        <span>Pré-requis : Oui</span><br>
-        <span>Salaire : Haut</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/nightclub.png" alt="Boîte de nuit / Bar">
+              <h3>Boîte de nuit / Bar</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/mineur.jpg" alt="Mineur">
-        <h2>Mineur</h2>
-        <p>Extraire des ressources précieuses.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Bas</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/vigneron.png" alt="Vigneron">
+              <h3>Vigneron</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/pecheur.jpg" alt="Pêcheur">
-        <h2>Pêcheur</h2>
-        <p>Attraper du poisson pour le marché.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Bas</span>
-      </div>
+            <div class="job-card">
+              <img src="assets/jobs/concession.png" alt="Concessionnaire">
+              <h3>Concessionnaire</h3>
+            </div>
 
-      <div class="job-card">
-        <img src="assets/metiers/livreur.jpg" alt="Livreur">
-        <h2>Livreur</h2>
-        <p>Transporter et livrer des marchandises.</p>
-        <span>Pré-requis : Non</span><br>
-        <span>Salaire : Moyen</span>
-      </div>
-    </section>
+            <div class="job-card">
+              <img src="assets/jobs/farm.png" alt="Farms">
+              <h3>Jobs de farm</h3>
+            </div>
 
-    <!-- Menu Actions -->
-    <aside class="actions-menu">
-      <h2>Actions</h2>
-      <ul>
-        <li><button id="toggleTheme">🌙 Mode clair</button></li>
-        <li><button>🔲 Vue en grille</button></li>
-        <li><button>📃 Vue en liste</button></li>
-      </ul>
-    </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== MENU ACTION ====== -->
+      <aside class="actions">
+        <h3>⚙️ Actions</h3>
+        <button onclick="toggleTheme()">🌙 Mode</button>
+        <button onclick="setGrid()">🔲 Grille</button>
+        <button onclick="setList()">📋 Liste</button>
+      </aside>
+
+    </div>
   </main>
 
   <script>
-    // Changement de thème
-    const toggleBtn = document.getElementById('toggleTheme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      document.body.classList.toggle('dark-mode');
-      toggleBtn.textContent = 
-        document.body.classList.contains('light-mode') ? "🌙 Mode sombre" : "☀️ Mode clair";
-    });
-  </script>
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      const btn = document.querySelector(".actions button");
+      btn.textContent = document.body.classList.contains("light-mode") ? "☀️ Mode sombre" : "🌙 Mode clair";
+    }
 
+    function setGrid() {
+      document.querySelector(".carousel-track").style.flexDirection = "row";
+    }
+
+    function setList() {
+      document.querySelector(".carousel-track").style.flexDirection = "column";
+    }
+  </script>
 </body>
 </html>
