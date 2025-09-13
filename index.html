@@ -49,12 +49,12 @@
     /* ==== ACTIONS MENU ==== */
     .actions-menu {
       position: fixed;
-      top: 90px; /* sous la barre */
+      top: 150px; /* placé un peu plus bas */
       right: 20px;
       background: #1a1a1a;
       border-radius: 10px;
       padding: 15px;
-      width: 180px;
+      width: 200px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       z-index: 1000;
     }
@@ -197,9 +197,9 @@
   <!-- ====== ACTIONS MENU ====== -->
   <div class="actions-menu">
     <h3>Actions</h3>
-    <button onclick="toggleTheme()">🌙/☀️ Mode</button>
-    <button onclick="setGridView()">🔲 Vue en grille</button>
-    <button onclick="setListView()">📃 Vue en liste</button>
+    <button id="themeToggle" onclick="toggleTheme()">🌙 Passer en mode clair</button>
+    <button id="gridBtn" onclick="setGridView()">🔲 Vue en grille</button>
+    <button id="listBtn" onclick="setListView()">📃 Vue en liste</button>
   </div>
 
   <!-- ====== CONTENU PRINCIPAL ====== -->
@@ -215,7 +215,7 @@
     </div>
 
     <!-- ====== ZONE CARTES ENCADRÉE ====== -->
-    <div class="cards-wrapper">
+    <div class="cards-wrapper" id="cardsWrapper">
       <div class="cards" id="cardsContainer">
 
         <div class="card">
@@ -257,30 +257,90 @@
     </div>
   </div>
 
-  <!-- ====== SCRIPT RECHERCHE + THEME + VUE ====== -->
+  <!-- ====== SCRIPT RECHERCHE + THEME + VUE + SAUVEGARDE ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
-    const cardsWrapper = document.querySelector(".cards-wrapper");
+    const cardsWrapper = document.getElementById("cardsWrapper");
+    const themeBtn = document.getElementById("themeToggle");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
 
+    // Sauvegarde des préférences
+    function savePreference(key, value) {
+      localStorage.setItem(key, value);
+    }
+
+    function loadPreference(key) {
+      return localStorage.getItem(key);
+    }
+
+    // Recherche avec sauvegarde
     searchInput.addEventListener("input", () => {
       const search = searchInput.value.toLowerCase();
+      savePreference("search", search);
+      filterCards(search);
+    });
+
+    function filterCards(search) {
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
         card.style.display = text.includes(search) ? "block" : "none";
       });
-    });
+    }
 
+    // Thème
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
+      const theme = document.body.classList.contains("light-mode") ? "light" : "dark";
+      savePreference("theme", theme);
+      updateButtons();
     }
 
+    // Vue Grille
     function setGridView() {
       cardsWrapper.classList.remove("list-view");
+      savePreference("view", "grid");
+      updateButtons();
     }
 
+    // Vue Liste
     function setListView() {
       cardsWrapper.classList.add("list-view");
+      savePreference("view", "list");
+      updateButtons();
+    }
+
+    // Mettre à jour les textes des boutons
+    function updateButtons() {
+      const isLight = document.body.classList.contains("light-mode");
+      const isList = cardsWrapper.classList.contains("list-view");
+
+      themeBtn.textContent = isLight ? "☀️ Passer en mode sombre" : "🌙 Passer en mode clair";
+      gridBtn.textContent = isList ? "🔲 Passer en vue grille" : "🔲 Vue en grille (actuelle)";
+      listBtn.textContent = isList ? "📃 Vue en liste (actuelle)" : "📃 Passer en vue liste";
+    }
+
+    // Chargement des préférences au démarrage
+    window.onload = () => {
+      const theme = loadPreference("theme");
+      const view = loadPreference("view");
+      const search = loadPreference("search");
+
+      if (theme === "light") {
+        document.body.classList.add("light-mode");
+      }
+
+      if (view === "list") {
+        cardsWrapper.classList.add("list-view");
+      }
+
+      if (search) {
+        searchInput.value = search;
+        filterCards(search);
+      }
+
+      updateButtons();
     }
   </script>
 
