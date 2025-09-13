@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Règlement - GTA New RP</title>
+  <title>GTANew - Règles</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
     body {
@@ -14,14 +13,17 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       background: #4b0082;
       padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 40px;
     }
 
     header .logo {
@@ -47,258 +49,272 @@
       color: #d8b4fe;
     }
 
-    main {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #d8b4fe;
-    }
-
-    .accordion {
-      margin-bottom: 15px;
-      border: 2px solid #4b0082;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #1a0029;
-    }
-
-    .accordion-header {
+    .search-bar {
+      flex-grow: 1;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-      cursor: pointer;
-      color: #d8b4fe;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
       font-size: 18px;
-      font-weight: bold;
-      transition: background 0.3s;
+      pointer-events: none;
     }
 
-    .accordion-header:hover {
-      background: #2b0044;
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
     }
 
-    .accordion-header i {
-      transition: transform 0.3s;
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
     }
 
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      padding: 0 20px;
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #9d4edd;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #d8b4fe;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .rules-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .rules-wrapper h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .rule-section {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #0e0e0e;
+      border-radius: 10px;
+      border: 1px solid #444;
+    }
+
+    .rule-section h3 {
+      margin: 0 0 10px;
+      color: #9d4edd;
+    }
+
+    .rule-section ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .rule-section ul li {
+      margin-bottom: 8px;
+      font-size: 14px;
       color: #ddd;
     }
 
-    .accordion-content p {
-      margin: 15px 0;
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
     }
 
-    .accordion.active .accordion-content {
-      max-height: 500px; /* grande hauteur pour du texte long */
-      padding-bottom: 15px;
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
     }
 
-    .accordion.active .accordion-header i:last-child {
-      transform: rotate(90deg);
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d33eff;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    footer {
-      background: #2c003e;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
-      color: #aaa;
+    .actions button:hover {
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .recent,
+    body.light-mode .rules-wrapper {
+      background: #ddd;
+    }
+
+    body.light-mode .rule-section {
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
     }
   </style>
 </head>
 <body>
+
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html" class="active">Règles</a></li>
-        <li><a href="jobs-legaux.html">Jobs légaux</a></li>
-        <li><a href="jobs-illegaux.html">Jobs illégaux</a></li>
+        <li><a href="regles.html" class="active">Réglement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
         <li><a href="generales.html">Générales</a></li>
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
+
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
   </header>
 
   <main>
-    <h1>📜 Règlement Officiel</h1>
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-bolt"></i> 1. Powergaming</span>
-        <i class="fas fa-chevron-right"></i>
+    <div class="rules-wrapper">
+      <h2>Règlement du serveur</h2>
+
+      <div class="rule-section">
+        <h3>1. Règles générales</h3>
+        <ul>
+          <li>Respectez tous les joueurs et le staff.</li>
+          <li>L’utilisation de cheats ou bugs est strictement interdite.</li>
+          <li>Le roleplay doit être respecté en toute situation.</li>
+        </ul>
       </div>
-      <div class="accordion-content">
-        <p>Le powergaming consiste à faire quelque chose d’impossible IRL ou à forcer les choses en sa faveur sans laisser le choix aux autres joueurs. Exemple : ignorer un accident, une blessure ou des effets de gaz.</p>
+
+      <div class="rule-section">
+        <h3>2. Règles RP</h3>
+        <ul>
+          <li>Le powergaming est interdit (actions irréalistes).</li>
+          <li>Le metagaming est interdit (infos hors RP utilisées en RP).</li>
+          <li>Le fairplay est obligatoire : donnez toujours une chance à l’autre.</li>
+        </ul>
+      </div>
+
+      <div class="rule-section">
+        <h3>3. Sanctions</h3>
+        <ul>
+          <li>Avertissement oral ou écrit.</li>
+          <li>Bannissement temporaire ou définitif en cas de récidive.</li>
+        </ul>
       </div>
     </div>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-eye"></i> 2. Metagaming</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Utiliser des informations HRP (Discord, Twitch, etc.) dans un contexte RP est interdit. Même si un ami vous dit quelque chose hors RP, vous devez l’ignorer en jeu.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-users"></i> 3. Mass RP</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Il faut considérer les PNJ et la population comme de vrais habitants. Un commissariat n’est pas vide simplement parce qu’un seul policier est connecté.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-heartbeat"></i> 4. Fear RP</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Votre personnage doit ressentir la peur dans les situations réalistes (armes, menaces, etc.). Le NoFear RP n’est pas toléré.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-car-crash"></i> 5. Carkill</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Écraser volontairement un joueur sans raison RP est interdit.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-user-edit"></i> 6. Cohérence RP</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Votre personnage doit respecter sa biographie et ses choix RP. Toute incohérence casse l’immersion et est sanctionnable.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-procedures"></i> 7. Coma</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>En coma : pas de paroles. Après réanimation, interdiction d’utiliser une arme ou frapper pendant 5 minutes. Si hôpital : oubli des 2 dernières heures de la scène.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-skull"></i> 8. Freekill</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Tuer sans raison RP est interdit. Les meurtres doivent être justifiés (pas juste une insulte ou un regard de travers).</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-handshake"></i> 9. Courtoisie envers autrui</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Les insultes HRP sont interdites. Vous devez rester courtois et respectueux en dehors du rôleplay.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-id-card"></i> 10. Prénoms et Noms interdits</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Les noms de célébrités ou fictifs sont interdits. Pas de “Tony Starque” ou “Harri Poter”. Évitez aussi les noms humoristiques type “Al Colique”.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-comment-dots"></i> 11. Provocations Non-RP</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Les provocations doivent rester RP. Évitez de créer artificiellement des scènes par des insultes ou provocations répétées.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-running"></i> 12. Chicken-Run</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Zigzaguer pour esquiver les balles ou coups de manière irréaliste est interdit.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-video"></i> 13. GoPro / Caméras / Photos RP</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Les photos/vidéos doivent être jouées avec animation ou annonce (GoPro installée, téléphone sorti...). Sinon, elles ne sont pas valides RP.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-building"></i> 14. Groupes et Entreprises</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Entreprises limitées en taille. Gangs max 26 personnes. Alliances interdites (seules les trêves sont acceptées). Véhicule de service obligatoire en travail.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span><i class="fas fa-shield-alt"></i> 15. Zone Safe</span>
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="accordion-content">
-        <p>Interdit de se battre ou tirer dans une Safe Zone. Interdit d’y entrer en pleine scène RP.</p>
-      </div>
-    </div>
-
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
   </main>
 
-  <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
-  </footer>
-
   <script>
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(acc => {
-      acc.querySelector('.accordion-header').addEventListener('click', () => {
-        acc.classList.toggle('active');
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
+    }
+
+    function loadRecent() {
+      const recent = [
+        { title: "Illégal", link: "jobs-illegaux.html", date: "13/09/2025" },
+        { title: "Légal", link: "jobs-legaux.html", date: "13/09/2025" },
+        { title: "Tutoriels", link: "tutoriels.html", date: "13/09/2025" }
+      ];
+
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      recent.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("recent-item");
+        div.innerHTML = `
+          <a href="${item.link}">
+            <h3>${item.title}</h3>
+            <p>Modifié le ${item.date}</p>
+          </a>`;
+        recentContainer.appendChild(div);
       });
-    });
+    }
+
+    loadRecent();
   </script>
 </body>
 </html>
