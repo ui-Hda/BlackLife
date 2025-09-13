@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GTANew - Accueil</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
     body {
       background: #0d0017;
@@ -14,7 +15,7 @@
       padding: 0;
     }
 
-    /* ==== NAVBAR ==== */
+    /* ===== NAVBAR ===== */
     header {
       background: #4b0082;
       padding: 15px 30px;
@@ -25,6 +26,11 @@
 
     header .logo {
       height: 50px;
+    }
+
+    nav {
+      flex-grow: 1;
+      margin-left: 40px;
     }
 
     nav ul {
@@ -46,51 +52,58 @@
       color: #d8b4fe;
     }
 
-    /* ==== ACTIONS MENU ==== */
-    .actions-menu {
-      position: fixed;
-      top: 150px; /* placé un peu plus bas */
-      right: 20px;
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 15px;
-      width: 200px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      z-index: 1000;
-    }
-
-    .actions-menu h3 {
-      margin-top: 0;
-      font-size: 16px;
-      color: #d8b4fe;
-      margin-bottom: 10px;
-    }
-
-    .actions-menu button {
+    /* ===== SEARCH BAR (NAVBAR) ===== */
+    .search-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: none;
+      background: #fff;
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+
+    .search-bar i {
+      color: #4b0082;
+      margin-right: 8px;
+    }
+
+    .search-bar input {
       border: none;
-      color: #ff0055;
+      outline: none;
       font-size: 14px;
-      padding: 5px 0;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    /* ===== ACTIONS ===== */
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding-right: 30px;
+    }
+
+    .actions button {
+      background: #4b0082;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
       cursor: pointer;
-      width: 100%;
-      text-align: left;
-      transition: color 0.2s;
+      font-size: 14px;
+      transition: 0.3s;
     }
 
-    .actions-menu button:hover {
-      color: #ff66aa;
+    .actions button:hover {
+      background: #6a0dad;
     }
 
-    /* ==== ZONE CARTES ==== */
+    /* ===== CARDS WRAPPER ===== */
     .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
-      margin: 40px auto;
+      margin: 30px auto;
       max-width: 1200px;
     }
 
@@ -123,34 +136,17 @@
     }
 
     .card h3 {
-      color: #d8b4fe;
+      color: #9d4edd;
     }
 
     .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #d8b4fe;
+      color: #9d4edd;
       font-weight: bold;
     }
 
-    /* ==== VUE LISTE ==== */
-    .list-view .cards {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .list-view .card {
-      display: flex;
-      align-items: center;
-      text-align: left;
-      gap: 20px;
-    }
-
-    .list-view .card-img {
-      margin-bottom: 0;
-    }
-
-    /* ==== MODE CLAIR ==== */
+    /* ===== MODE CLAIR ===== */
     body.light-mode {
       background: #f5f5f5;
       color: #000;
@@ -165,57 +161,42 @@
       color: #000;
       border: 2px solid #000;
     }
-
-    body.light-mode .actions-menu {
-      background: #f0f0f0;
-      color: #000;
-    }
-
-    body.light-mode .actions-menu h3 {
-      color: #4b0082;
-    }
   </style>
 </head>
 <body>
 
   <!-- ====== NAVBAR ====== -->
   <header>
-    <img src="assets/logo.png" alt="Logo GTANew" class="logo">
+    <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
       <ul>
         <li><a href="index.html" class="active">Accueil</a></li>
         <li><a href="regles.html">Règles</a></li>
-        <li><a href="jobs-legaux.html">Jobs légaux</a></li>
-        <li><a href="jobs-illegaux.html">Jobs illégaux</a></li>
+        <li><a href="jobs_legaux.html">Jobs légaux</a></li>
+        <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
         <li><a href="generales.html">Générales</a></li>
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
+
+    <!-- Barre de recherche avec icône -->
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
   </header>
 
-  <!-- ====== ACTIONS MENU ====== -->
-  <div class="actions-menu">
-    <h3>Actions</h3>
-    <button id="themeToggle" onclick="toggleTheme()">🌙 Passer en mode clair</button>
-    <button id="gridBtn" onclick="setGridView()">🔲 Vue en grille</button>
-    <button id="listBtn" onclick="setListView()">📃 Vue en liste</button>
+  <!-- ====== ACTIONS ====== -->
+  <div class="actions">
+    <button onclick="toggleTheme()">🌙 Mode</button>
+    <button onclick="setGrid()">🔲 Grille</button>
+    <button onclick="setList()">📋 Liste</button>
   </div>
 
   <!-- ====== CONTENU PRINCIPAL ====== -->
-  <div class="container">
-    <h1 style="text-align:center;">Bienvenue sur GTANew</h1>
-    <p style="text-align:center; margin-bottom:30px;">
-      Explorez toutes les informations utiles sur notre serveur GTA RP : règles, jobs, guides et plus encore.
-    </p>
-
-    <!-- ====== BARRE DE RECHERCHE ====== -->
-    <div class="search-bar" style="text-align:center; margin-bottom:20px;">
-      <input type="text" id="searchInput" placeholder="Rechercher une catégorie...">
-    </div>
-
-    <!-- ====== ZONE CARTES ENCADRÉE ====== -->
-    <div class="cards-wrapper" id="cardsWrapper">
+  <main>
+    <div class="cards-wrapper">
       <div class="cards" id="cardsContainer">
 
         <div class="card">
@@ -229,14 +210,14 @@
           <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
           <h3>Jobs Légaux</h3>
           <p>Découvrez les métiers disponibles dans la légalité.</p>
-          <a href="jobs-legaux.html">Voir les jobs légaux</a>
+          <a href="jobs_legaux.html">Voir les jobs légaux</a>
         </div>
 
         <div class="card">
           <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
           <h3>Jobs Illégaux</h3>
           <p>Plongez dans les activités illégales proposées sur l’île.</p>
-          <a href="jobs-illegaux.html">Voir les jobs illégaux</a>
+          <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
         </div>
 
         <div class="card">
@@ -255,94 +236,32 @@
 
       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- ====== SCRIPT RECHERCHE + THEME + VUE + SAUVEGARDE ====== -->
+  <!-- ====== SCRIPT ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
-    const cardsWrapper = document.getElementById("cardsWrapper");
-    const themeBtn = document.getElementById("themeToggle");
-    const gridBtn = document.getElementById("gridBtn");
-    const listBtn = document.getElementById("listBtn");
 
-    // Sauvegarde des préférences
-    function savePreference(key, value) {
-      localStorage.setItem(key, value);
-    }
-
-    function loadPreference(key) {
-      return localStorage.getItem(key);
-    }
-
-    // Recherche avec sauvegarde
     searchInput.addEventListener("input", () => {
       const search = searchInput.value.toLowerCase();
-      savePreference("search", search);
-      filterCards(search);
-    });
-
-    function filterCards(search) {
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
         card.style.display = text.includes(search) ? "block" : "none";
       });
-    }
+    });
 
-    // Thème
     function toggleTheme() {
       document.body.classList.toggle("light-mode");
-      const theme = document.body.classList.contains("light-mode") ? "light" : "dark";
-      savePreference("theme", theme);
-      updateButtons();
     }
 
-    // Vue Grille
-    function setGridView() {
-      cardsWrapper.classList.remove("list-view");
-      savePreference("view", "grid");
-      updateButtons();
+    function setGrid() {
+      document.getElementById("cardsContainer").style.display = "grid";
     }
 
-    // Vue Liste
-    function setListView() {
-      cardsWrapper.classList.add("list-view");
-      savePreference("view", "list");
-      updateButtons();
-    }
-
-    // Mettre à jour les textes des boutons
-    function updateButtons() {
-      const isLight = document.body.classList.contains("light-mode");
-      const isList = cardsWrapper.classList.contains("list-view");
-
-      themeBtn.textContent = isLight ? "☀️ Passer en mode sombre" : "🌙 Passer en mode clair";
-      gridBtn.textContent = isList ? "🔲 Passer en vue grille" : "🔲 Vue en grille (actuelle)";
-      listBtn.textContent = isList ? "📃 Vue en liste (actuelle)" : "📃 Passer en vue liste";
-    }
-
-    // Chargement des préférences au démarrage
-    window.onload = () => {
-      const theme = loadPreference("theme");
-      const view = loadPreference("view");
-      const search = loadPreference("search");
-
-      if (theme === "light") {
-        document.body.classList.add("light-mode");
-      }
-
-      if (view === "list") {
-        cardsWrapper.classList.add("list-view");
-      }
-
-      if (search) {
-        searchInput.value = search;
-        filterCards(search);
-      }
-
-      updateButtons();
+    function setList() {
+      document.getElementById("cardsContainer").style.display = "block";
     }
   </script>
-
 </body>
 </html>
