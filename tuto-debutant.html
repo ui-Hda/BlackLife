@@ -18,7 +18,7 @@
       flex-direction: column;
     }
 
-    /* HEADER + NAVBAR */
+    /* HEADER */
     header {
       background: #1e90ff; /* Bleu ciel */
       padding: 15px 30px;
@@ -42,7 +42,7 @@
     }
     nav ul li a:hover,
     nav ul li a.active {
-      color: #000; /* Inverse en noir pour survol */
+      color: #000;
       background: rgba(255, 255, 255, 0.2);
       padding: 5px 10px;
       border-radius: 5px;
@@ -67,7 +67,6 @@
       grid-template-columns: 250px 1fr 220px;
       gap: 20px;
       margin: 30px;
-      animation: fadeIn 1s ease-in;
     }
 
     /* AJOUTS RECENTS */
@@ -92,16 +91,52 @@
     .recent-item p { margin: 0; font-size: 13px; color: #aaa; }
     .recent-item a { display: block; text-decoration: none; color: inherit; }
 
-    /* CONTENT */
-    .content {
+    /* CARDS */
+    .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
       border-radius: 15px;
       animation: fadeInUp 1s ease;
     }
-    .content h1 { color: #1e90ff; margin-top: 0; }
-    .content p, .content li { line-height: 1.6; color: #ddd; }
-    .content ul { margin: 15px 0 0 20px; }
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .cards-header h2 { margin: 0; font-size: 22px; color: #fff; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #0e0e0e;
+      color: #fff;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+    }
+    .card-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .card h3 { color: #1e90ff; }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e90ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
     /* ACTIONS */
     .actions {
@@ -122,7 +157,6 @@
     .actions button:hover { color: #fff; }
 
     /* ANIMATIONS */
-    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
     @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes slideInLeft { from {opacity: 0; transform: translateX(-30px);} to {opacity: 1; transform: translateX(0);} }
     @keyframes slideInRight { from {opacity: 0; transform: translateX(30px);} to {opacity: 1; transform: translateX(0);} }
@@ -154,19 +188,33 @@
       <h2>Ajouts récents</h2>
     </aside>
 
-    <!-- CONTENU -->
-    <div class="content">
-      <h1>Tutoriel Débutant</h1>
-      <p>Bienvenue dans l’univers de <strong>GTANew</strong> 🎉</p>
-      <p>Ce tutoriel est conçu pour guider les nouveaux joueurs à travers les bases :</p>
-      <ul>
-        <li>📌 Création de personnage et choix du style de jeu</li>
-        <li>📌 Lieux importants à découvrir dans la ville</li>
-        <li>📌 Présentation des premiers métiers accessibles</li>
-        <li>📌 Comment gagner tes premiers revenus légalement</li>
-        <li>📌 Conseils pour interagir avec les autres joueurs</li>
-      </ul>
-      <p style="margin-top:20px;">⚡ <em>Astuce :</em> Rejoins le <a href="discord.html" style="color:#1e90ff;">Discord</a> pour trouver de l’aide en direct.</p>
+    <!-- CARDS -->
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>Tutoriel Débutant</h2>
+      </div>
+      <div class="cards">
+        <div class="card" data-link="tuto-connexion.html">
+          <img src="assets/connexion.png" alt="Connexion" class="card-img">
+          <h3>Comment se connecter ?</h3>
+          <p>Apprends à rejoindre rapidement GTANew.</p>
+          <a href="tuto-connexion.html">Voir plus</a>
+        </div>
+
+        <div class="card" data-link="tuto-personnage.html">
+          <img src="assets/personnage.png" alt="Création de personnage" class="card-img">
+          <h3>Création de personnage</h3>
+          <p>Crée ton avatar et choisis ton style de jeu.</p>
+          <a href="tuto-personnage.html">Voir plus</a>
+        </div>
+
+        <div class="card" data-link="tuto-starterpack.html">
+          <img src="assets/starter.png" alt="Starter Pack" class="card-img">
+          <h3>Starter Pack</h3>
+          <p>Démarre avec les bases pour bien débuter.</p>
+          <a href="tuto-starterpack.html">Voir plus</a>
+        </div>
+      </div>
     </div>
 
     <!-- ACTIONS -->
