@@ -1,21 +1,22 @@
-/* Layout */
+/* ===== LAYOUT ===== */
 .layout {
-  display: grid;
-  grid-template-columns: 250px 1fr 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 30px;
   gap: 20px;
-  margin: 20px;
 }
 
-/* Ajouts récents */
 .recent {
-  background: #1a0029;
-  padding: 15px;
-  border-radius: 10px;
+  width: 20%;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-.recent h3 {
-  color: #d8b4fe;
-  margin-bottom: 10px;
+.recent h2 {
+  margin-bottom: 15px;
+  color: #9d4edd;
 }
 
 .recent ul {
@@ -24,75 +25,98 @@
 }
 
 .recent ul li {
-  margin: 5px 0;
+  margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* Actions */
-.actions {
-  background: #1a0029;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: stretch;
-}
-
-.actions h3 {
-  color: #d8b4fe;
-  margin-bottom: 10px;
+/* ===== JOBS (CAROUSEL) ===== */
+.jobs {
+  flex: 1;
   text-align: center;
 }
 
-.actions button {
-  background: #4b0082;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.actions button:hover {
-  background: #6a0dad;
-}
-
-/* Carousel */
 .carousel {
-  overflow-x: auto;
-  scrollbar-width: thin;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
 }
 
 .carousel-track {
   display: flex;
   gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
 }
 
 .job-card {
-  min-width: 200px;
+  min-width: 220px;
   background: #0e0e0e;
+  border-radius: 12px;
   border: 2px solid #fff;
-  border-radius: 15px;
   padding: 15px;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .job-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
 }
 
 .job-card img {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 10px;
 }
 
 .job-card h3 {
+  margin-top: 10px;
   color: #9d4edd;
+}
+
+.carousel button {
+  background: #4b0082;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.carousel button:hover {
+  background: #6a0dad;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  width: 20%;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.actions h2 {
+  margin-bottom: 15px;
+  color: #9d4edd;
+}
+
+.actions button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  background: #4b0082;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actions button:hover {
+  background: #6a0dad;
 }
