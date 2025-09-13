@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GTANew - Accueil</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
     body {
       background: #0d0017;
@@ -16,9 +14,9 @@
       padding: 0;
     }
 
-    /* ===== HEADER ===== */
+    /* ==== NAVBAR ==== */
     header {
-      background: #4b0082;
+      background: #4b0082; /* Violet identique mode clair/sombre */
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
@@ -48,38 +46,29 @@
       color: #d8b4fe;
     }
 
-    /* ===== CONTENU ===== */
-    main {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #d8b4fe;
-    }
-
-    .search-bar {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .search-bar input {
-      padding: 10px 15px;
-      border-radius: 8px;
+    /* ==== BOUTON MODE CLAIR ==== */
+    .toggle-theme {
+      background: #fff;
+      color: #4b0082;
       border: none;
-      width: 80%;
-      max-width: 400px;
-      font-size: 1em;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      margin-right: 20px;
     }
 
-    /* ===== CARTES ===== */
+    .toggle-theme:hover {
+      background: #eee;
+    }
+
+    /* ==== ZONE CARTES ==== */
     .cards-wrapper {
-      background: #1a0029;
+      background: #1e1e1e; /* gris foncé rectangulaire */
       padding: 30px;
       border-radius: 15px;
+      margin-top: 40px;
     }
 
     .cards {
@@ -89,10 +78,10 @@
     }
 
     .card {
-      background: #0e0e0e;
+      background: #0e0e0e; /* Fond noir */
       color: #fff;
       border-radius: 15px;
-      border: 2px solid #fff;
+      border: 2px solid #fff; /* Bordure blanche par défaut (mode sombre) */
       padding: 20px;
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
@@ -117,67 +106,33 @@
     .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #9d4edd;
+      color: #d8b4fe;
       font-weight: bold;
     }
 
-    /* ===== MODE CLAIR ===== */
+    /* ==== MODE CLAIR ==== */
     body.light-mode {
       background: #f5f5f5;
       color: #000;
     }
 
-    body.light-mode header {
-      background: #fff;
-      border-bottom: 2px solid #9d4edd;
-    }
-
-    body.light-mode nav ul li a {
-      color: #9d4edd;
-    }
-
     body.light-mode .cards-wrapper {
-      background: #ddd;
+      background: #ddd; /* gris clair */
     }
 
     body.light-mode .card {
-      background: #fff;
+      background: #fff; /* Fond blanc */
       color: #000;
-      border: 2px solid #000;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #2c003e;
-      text-align: center;
-      padding: 15px;
-      margin-top: 50px;
-      color: #aaa;
-    }
-
-    /* ===== BOUTON MODE CLAIR ===== */
-    .toggle-theme {
-      background: #fff;
-      color: #9d4edd;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 0.9em;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-      margin-right: 20px;
-    }
-
-    .toggle-theme:hover {
-      background: #eee;
+      border: 2px solid #000; /* Bordure noire */
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
+  <!-- ====== NAVBAR ====== -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
+    <button class="toggle-theme" onclick="toggleTheme()">🌙 Mode Clair</button>
+    <img src="assets/logo.png" alt="Logo GTANew" class="logo">
     <nav>
       <ul>
         <li><a href="index.html" class="active">Accueil</a></li>
@@ -189,22 +144,21 @@
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
-    <button class="toggle-theme" onclick="toggleTheme()">☀️ Mode Clair</button>
   </header>
 
-  <!-- ===== CONTENU ===== -->
-  <main>
-    <h1>Bienvenue sur GTANew</h1>
+  <!-- ====== CONTENU PRINCIPAL ====== -->
+  <div class="container">
+    <h1 style="text-align:center;">Bienvenue sur GTANew</h1>
     <p style="text-align:center; margin-bottom:30px;">
       Explorez toutes les informations utiles sur notre serveur GTA RP : règles, jobs, guides et plus encore.
     </p>
 
-    <!-- Barre de recherche -->
-    <div class="search-bar">
+    <!-- ====== BARRE DE RECHERCHE ====== -->
+    <div class="search-bar" style="text-align:center; margin-bottom:20px;">
       <input type="text" id="searchInput" placeholder="Rechercher une catégorie...">
     </div>
 
-    <!-- Cartes -->
+    <!-- ====== ZONE CARTES ENCADRÉE ====== -->
     <div class="cards-wrapper">
       <div class="cards" id="cardsContainer">
 
@@ -230,28 +184,24 @@
         </div>
 
         <div class="card">
-          <img src="assets/general.png" alt="Infos Générales" class="card-img">
-          <h3>Informations Générales</h3>
-          <p>Accédez aux infos pratiques et générales sur le serveur.</p>
-          <a href="generales.html">Voir les infos</a>
-        </div>
-
-        <div class="card">
           <img src="assets/discord.png" alt="Discord" class="card-img">
           <h3>Discord</h3>
           <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
           <a href="discord.html">Accéder au Discord</a>
         </div>
 
+        <div class="card">
+          <img src="assets/general.png" alt="Général" class="card-img">
+          <h3>Informations Générales</h3>
+          <p>Accédez aux infos pratiques et générales sur le serveur.</p>
+          <a href="generales.html">Voir les infos</a>
+        </div>
+
       </div>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
-  </footer>
-
-  <!-- Script recherche + mode clair/sombre -->
+  <!-- ====== SCRIPT RECHERCHE + THEME ====== -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const cards = document.querySelectorAll(".card");
