@@ -56,16 +56,20 @@
     }
 
     /* ===== SEARCH BAR ===== */
-    .search-bar {
-      flex-grow: 1;
+    .search-container {
       display: flex;
       justify-content: center;
+      margin: 20px 0;
+    }
+
+    .search-bar {
       position: relative;
+      width: 65%;
+      max-width: 600px;
     }
 
     .search-bar input {
-      width: 65%;
-      max-width: 600px;
+      width: 100%;
       padding: 10px 40px 10px 40px;
       border: none;
       border-radius: 25px;
@@ -75,7 +79,7 @@
 
     .search-bar i {
       position: absolute;
-      left: calc(50% - 290px);
+      left: 15px;
       top: 50%;
       transform: translateY(-50%);
       color: #555;
@@ -84,10 +88,10 @@
 
     /* ===== ACTIONS ===== */
     .actions {
-      margin: 30px auto;
+      margin: 10px 30px 20px 30px;
       display: flex;
-      justify-content: center;
-      gap: 30px;
+      justify-content: flex-end;
+      gap: 15px;
     }
 
     .actions button {
@@ -186,13 +190,15 @@
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
+  </header>
 
-    <!-- Barre de recherche avec icône -->
+  <!-- ====== SEARCH BAR ====== -->
+  <div class="search-container">
     <div class="search-bar">
       <i class="fas fa-search"></i>
       <input type="text" id="searchInput" placeholder="Rechercher...">
     </div>
-  </header>
+  </div>
 
   <!-- ====== ACTIONS ====== -->
   <div class="actions">
