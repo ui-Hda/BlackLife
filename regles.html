@@ -7,23 +7,25 @@
   <link rel="stylesheet" href="assets/style.css">
   <style>
     body {
-      background: #120025;
+      background: #0a0018;
       color: white;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
 
+    /* HEADER */
     header {
-      background: #2a004f;
+      background: #1a0033;
       padding: 15px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
     header img {
-      height: 40px;
+      height: 45px;
     }
 
     header nav a {
@@ -31,13 +33,18 @@
       margin-left: 20px;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
 
     header nav a:hover {
-      color: #a56bff;
+      background: #3a0070;
+      color: #cfa9ff;
+      box-shadow: 0 0 10px #a56bff;
     }
 
+    /* MAIN */
     main {
       max-width: 900px;
       margin: 40px auto;
@@ -47,21 +54,37 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
-      color: #c9a3ff;
+      color: #b97aff;
+      font-size: 2.2em;
+      text-shadow: 0 0 10px #6a1b9a;
+      animation: fadeIn 1.5s ease;
     }
 
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* DETAILS / SUMMARY */
     details {
-      background: #2a004f;
-      color: white;
+      background: #1a0033;
       border-radius: 8px;
       margin-bottom: 15px;
       padding: 12px 16px;
       overflow: hidden;
       transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
 
     details[open] {
-      background: #3a006f;
+      background: #2a004f;
+      animation: slideDown 0.4s ease;
     }
 
     summary {
@@ -74,10 +97,15 @@
       list-style: none;
     }
 
+    summary .icon {
+      margin-right: 10px;
+    }
+
     summary::after {
       content: "▶";
       font-size: 16px;
       transition: transform 0.3s ease;
+      margin-left: 10px;
     }
 
     details[open] summary::after {
@@ -90,7 +118,7 @@
       opacity: 0;
       max-height: 0;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     details[open] p,
@@ -99,12 +127,15 @@
       max-height: 1000px;
     }
 
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px;
       margin-top: 40px;
-      background: #1a002f;
+      background: #100022;
       color: #aaa;
+      font-size: 14px;
+      border-top: 1px solid #3a0070;
     }
   </style>
 </head>
@@ -113,7 +144,6 @@
     <img src="assets/logo.png" alt="Logo GTA New RP">
     <nav>
       <a href="index.html">Accueil</a>
-      <a href="regles.html">Règlement</a>
       <a href="jobs.html">Jobs</a>
       <a href="tutoriels.html">Tutoriels</a>
     </nav>
@@ -123,73 +153,72 @@
     <h1>Règlement Officiel - GTA New RP</h1>
 
     <details>
-      <summary>1. Powergaming</summary>
+      <summary><span class="icon">⚡</span>1. Powergaming</summary>
       <p>Le powergaming consiste à faire quelque chose qui serait impossible à réaliser dans la vie réelle [...]</p>
     </details>
 
     <details>
-      <summary>2. Metagaming</summary>
+      <summary><span class="icon">🎭</span>2. Metagaming</summary>
       <p>Utiliser des informations HRP (Hors-RP/Hors-Jeu) dans un contexte RP est strictement prohibé [...]</p>
     </details>
 
     <details>
-      <summary>3. Mass RP</summary>
+      <summary><span class="icon">🚓</span>3. Mass RP</summary>
       <p>Il s’agit du fait de prendre en compte la population de la ville et non du serveur [...]</p>
     </details>
 
     <details>
-      <summary>4. Fear RP</summary>
+      <summary><span class="icon">😨</span>4. Fear RP</summary>
       <p>Il s’agit simplement du fait d’avoir peur en RP, même si le joueur lui-même n’a pas peur [...]</p>
     </details>
 
     <details>
-      <summary>5. Carkill</summary>
+      <summary><span class="icon">🚗</span>5. Carkill</summary>
       <p>Écraser volontairement un joueur sans raison valable est strictement interdit.</p>
     </details>
 
     <details>
-      <summary>6. Cohérence RP & Coma</summary>
-      <p>La cohérence RP consiste à incarner pleinement votre personnage [...]  
-      Les règles de coma incluent : interdiction de parler, perte de mémoire, délai avant de revenir en scène [...]</p>
+      <summary><span class="icon">📜</span>6. Cohérence RP & Coma</summary>
+      <p>Respecter votre personnage et appliquer les règles liées au coma (perte mémoire, délais, etc.).</p>
     </details>
 
     <details>
-      <summary>7. Freekill</summary>
+      <summary><span class="icon">💀</span>7. Freekill</summary>
       <p>Le freekill est le fait de tuer quelqu’un sans un réel motif roleplay. Ceci est complètement interdit.</p>
     </details>
 
     <details>
-      <summary>8. Courtoisie envers autrui</summary>
+      <summary><span class="icon">🤝</span>8. Courtoisie envers autrui</summary>
       <p>Vous vous devez d’être courtois avec les gens, les insultes HRP sont interdites.</p>
     </details>
 
     <details>
-      <summary>9. Noms et prénoms interdits</summary>
+      <summary><span class="icon">🚫</span>9. Noms et prénoms interdits</summary>
       <p>Les noms de célébrités, personnages fictifs ou noms humoristiques sont interdits.</p>
     </details>
 
     <details>
-      <summary>10. Provocations non-RP</summary>
+      <summary><span class="icon">🔥</span>10. Provocations non-RP</summary>
       <p>Il est interdit de provoquer de façon non-roleplay et inutile d’autres joueurs dans le seul but de créer des scènes.</p>
     </details>
 
     <details>
-      <summary>11. Chicken-run</summary>
+      <summary><span class="icon">🐔</span>11. Chicken-run</summary>
       <p>Courir en zigzagant de manière irréaliste pour éviter les balles est interdit.</p>
     </details>
 
     <details>
-      <summary>12. Caméras, GoPro et photos RP</summary>
+      <summary><span class="icon">📷</span>12. Caméras, GoPro et photos RP</summary>
       <p>Prendre une photo ou vidéo doit se faire en RP (portable sorti, animation, etc.).</p>
     </details>
 
     <details>
-      <summary>13. Groupes et entreprises</summary>
-      <p>Les entreprises et groupes sont limités en nombre de personnes [...] Toute alliance entre gangs est interdite.</p>
+      <summary><span class="icon">👥</span>13. Groupes et entreprises</summary>
+      <p>Les entreprises et groupes sont limités en nombre de personnes. Alliances entre gangs interdites.</p>
     </details>
 
     <details>
-      <summary>14. Zone Safe</summary>
+      <summary><span class="icon">🛡️</span>14. Zone Safe</summary>
       <p>Les Safe Zones sont indiquées par une notification en jeu. Il est interdit de s’y réfugier en pleine scène RP.</p>
     </details>
   </main>
