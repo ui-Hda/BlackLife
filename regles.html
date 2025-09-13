@@ -8,55 +8,99 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
-    .accordion {
-      background: #2c003e;
+    body {
+      background: #0d0017;
       color: white;
-      cursor: pointer;
-      padding: 15px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      font-size: 18px;
-      transition: 0.3s;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #4b0082;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 10px;
-      border-radius: 8px;
     }
 
-    .accordion:hover {
-      background: #6d28d9;
+    header .logo {
+      height: 50px;
     }
 
-    .accordion i {
-      transition: transform 0.3s ease;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
     }
 
-    .accordion.active i {
-      transform: rotate(90deg);
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    .panel {
-      max-height: 0;
-      overflow: hidden;
-      background: #1a001f;
-      transition: max-height 0.4s ease-out, padding 0.3s;
-      padding: 0 15px;
+    nav ul li a:hover, nav ul li a.active {
+      color: #d8b4fe;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d8b4fe;
+    }
+
+    .rule-card {
+      background: #1a0029;
+      border: 2px solid #4b0082;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+
+    .rule-card:hover {
+      transform: scale(1.02);
+      border-color: #d8b4fe;
+    }
+
+    .rule-card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #d8b4fe;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rule-card p {
+      margin: 0;
+      line-height: 1.5;
       color: #ddd;
-      border-radius: 0 0 8px 8px;
     }
 
-    .panel.open {
+    footer {
+      background: #2c003e;
+      text-align: center;
       padding: 15px;
+      margin-top: 50px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
     <nav>
-      <img src="assets/logo.png" alt="GTA New Logo" class="logo">
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="regles.html" class="active">Règles</a></li>
@@ -71,81 +115,79 @@
 
   <main>
     <h1>📜 Règlement Officiel</h1>
-    <p>Nul n'est censé l'ignorer et chacun se doit de le respecter. Des sanctions peuvent s'appliquer en cas de non-respect.</p>
 
-    <!-- Règles -->
-    <button class="accordion">1. Powergaming <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-bolt"></i> 1. Powergaming</h2>
       <p>Le powergaming consiste à faire quelque chose d’impossible IRL ou à forcer les choses en sa faveur sans laisser le choix aux autres joueurs.</p>
     </div>
 
-    <button class="accordion">2. Metagaming <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-eye"></i> 2. Metagaming</h2>
       <p>Utiliser des informations HRP (Discord, Twitch, etc.) dans un contexte RP est interdit. L’expérience se vit uniquement via votre personnage.</p>
     </div>
 
-    <button class="accordion">3. Mass RP <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-users"></i> 3. Mass RP</h2>
       <p>Vous devez prendre en compte la population de la ville, PNJ compris, comme si c’étaient de vrais habitants.</p>
     </div>
 
-    <button class="accordion">4. Fear RP <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-heartbeat"></i> 4. Fear RP</h2>
       <p>Votre personnage doit ressentir la peur dans les situations logiques (armes, menaces...). Le NoFear RP n’est pas toléré.</p>
     </div>
 
-    <button class="accordion">5. Carkill <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-car-crash"></i> 5. Carkill</h2>
       <p>Écraser volontairement un joueur sans raison RP valable est strictement interdit.</p>
     </div>
 
-    <button class="accordion">6. Cohérence RP <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-user-edit"></i> 6. Cohérence RP</h2>
       <p>Respectez la biographie et l’histoire de votre personnage. Gardez la cohérence dans vos actions.</p>
     </div>
 
-    <button class="accordion">7. Coma <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-procedures"></i> 7. Coma</h2>
       <p>Lors d’un coma, vous ne pouvez pas parler. Si réanimé, pas d’armes ni coups pendant 5 minutes. Si réveil hôpital, perte mémoire des 2 dernières heures.</p>
     </div>
 
-    <button class="accordion">8. Freekill <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-skull"></i> 8. Freekill</h2>
       <p>Tuer sans motif RP (simple insulte, regard...) est interdit. Les meurtres doivent avoir une justification RP solide.</p>
     </div>
 
-    <button class="accordion">9. Courtoisie envers autrui <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-handshake"></i> 9. Courtoisie envers autrui</h2>
       <p>Respectez les autres joueurs. Les insultes HRP/OOC sont interdites.</p>
     </div>
 
-    <button class="accordion">10. Prénoms et Noms interdits <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-id-card"></i> 10. Prénoms et Noms interdits</h2>
       <p>Les noms de célébrités, personnages fictifs ou humoristiques sont interdits. Exemple : Tony Starque, Harri Poter, Al Colique.</p>
     </div>
 
-    <button class="accordion">11. Provocations Non-RP <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-comment-dots"></i> 11. Provocations Non-RP</h2>
       <p>Ne provoquez pas inutilement juste pour créer une scène RP. Les provocations doivent rester cohérentes avec votre personnage.</p>
     </div>
 
-    <button class="accordion">12. Chicken-Run <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-running"></i> 12. Chicken-Run</h2>
       <p>Zigzaguer pour esquiver des balles de façon irréaliste est interdit.</p>
     </div>
 
-    <button class="accordion">13. GoPro / Caméras / Photos RP <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-video"></i> 13. GoPro / Caméras / Photos RP</h2>
       <p>Prendre des photos ou filmer sans animation ou objet en main n’est pas RP. Les vidéos doivent être justifiées (installation GoPro, sortie du téléphone...).</p>
     </div>
 
-    <button class="accordion">14. Groupes et Entreprises <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-building"></i> 14. Groupes et Entreprises</h2>
       <p>Groupes/entreprises limités en taille. Alliances de gangs interdites (uniquement trêves). Les véhicules de service sont obligatoires pendant le travail.</p>
     </div>
 
-    <button class="accordion">15. Zone Safe <i class="fas fa-chevron-right"></i></button>
-    <div class="panel">
+    <div class="rule-card">
+      <h2><i class="fas fa-shield-alt"></i> 15. Zone Safe</h2>
       <p>Interdiction de frapper/tirer dans une Safe Zone. Interdiction d’y entrer en pleine scène RP.</p>
     </div>
   </main>
@@ -153,23 +195,5 @@
   <footer>
     <p>© 2025 GTA New RP — Tous droits réservés.</p>
   </footer>
-
-  <script>
-    const accordions = document.querySelectorAll(".accordion");
-    accordions.forEach(acc => {
-      acc.addEventListener("click", function() {
-        this.classList.toggle("active");
-
-        let panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-          panel.classList.remove("open");
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-          panel.classList.add("open");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
