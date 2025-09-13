@@ -112,6 +112,7 @@
 
     .recent-item:hover {
       border-color: #9d4edd;
+      background: #1a1a1a;
     }
 
     .recent-item h3 {
@@ -124,6 +125,12 @@
       margin: 0;
       font-size: 13px;
       color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
     /* ===== CARDS WRAPPER ===== */
@@ -289,35 +296,35 @@
       </div>
 
       <div class="cards" id="cardsContainer">
-        <div class="card" data-date="2024-01-01">
+        <div class="card" data-date="2025-09-13" data-link="regles.html">
           <img src="assets/rules.png" alt="Règles" class="card-img">
           <h3>Règles</h3>
           <p>Consultez l’ensemble des règles officielles du serveur GTANew RP.</p>
           <a href="regles.html">Voir les règles</a>
         </div>
 
-        <div class="card" data-date="2024-02-01">
+        <div class="card" data-date="2025-09-13" data-link="jobs_legaux.html">
           <img src="assets/jobs_legaux.png" alt="Jobs Légaux" class="card-img">
           <h3>Jobs Légaux</h3>
           <p>Découvrez les métiers disponibles dans la légalité.</p>
           <a href="jobs_legaux.html">Voir les jobs légaux</a>
         </div>
 
-        <div class="card" data-date="2024-03-01">
+        <div class="card" data-date="2025-09-13" data-link="jobs_illegaux.html">
           <img src="assets/jobs_illegaux.png" alt="Jobs Illégaux" class="card-img">
           <h3>Jobs Illégaux</h3>
           <p>Plongez dans les activités illégales proposées sur l’île.</p>
           <a href="jobs_illegaux.html">Voir les jobs illégaux</a>
         </div>
 
-        <div class="card" data-date="2024-04-01">
+        <div class="card" data-date="2025-09-13" data-link="discord.html">
           <img src="assets/discord.png" alt="Discord" class="card-img">
           <h3>Discord</h3>
           <p>Rejoignez notre communauté sur Discord pour suivre l’actualité et échanger.</p>
           <a href="discord.html">Accéder au Discord</a>
         </div>
 
-        <div class="card" data-date="2024-05-01">
+        <div class="card" data-date="2025-09-13" data-link="generales.html">
           <img src="assets/general.png" alt="Général" class="card-img">
           <h3>Informations Générales</h3>
           <p>Accédez aux infos pratiques et générales sur le serveur.</p>
@@ -394,10 +401,16 @@
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
       sortedCards.slice(0, 3).forEach(card => {
         const title = card.querySelector("h3").innerText;
-        const date = card.dataset.date;
+        const date = "13/09/2025"; // 🔥 Date fixée
+        const link = card.dataset.link;
         const item = document.createElement("div");
         item.classList.add("recent-item");
-        item.innerHTML = `<h3>${title}</h3><p>Ajouté le ${new Date(date).toLocaleDateString("fr-FR")}</p>`;
+        item.innerHTML = `
+          <a href="${link}">
+            <h3>${title}</h3>
+            <p>Modifié le ${date}</p>
+          </a>
+        `;
         recentContainer.appendChild(item);
       });
     }
