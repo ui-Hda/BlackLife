@@ -1,133 +1,167 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobs légaux</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GTANew — Jobs légaux</title>
+
+  <!-- Lien vers ton CSS principal (vérifie que /assets/style.css existe bien) -->
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- Petit CSS "critique" inline : s'applique si assets/style.css ne charge pas (fallback) -->
+  <style id="critical-css">
+    :root{ --violet:#5a0ca3; --violet-light:#9d4edd; --panel:#1a1a1a; --white:#fff; }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Arial, sans-serif; background:#0d0017; color:#fff;}
+    header{background:var(--violet); display:flex; align-items:center; gap:18px; padding:12px 20px; position:sticky; top:0;}
+    .logo{height:42px;}
+    nav ul{display:flex; gap:14px; list-style:none; margin:0; padding:0;}
+    nav a{color:var(--white); text-decoration:none; font-weight:600}
+    .header-search{flex:1; display:flex; justify-content:center;}
+    .search-bar{width:60%; max-width:640px; position:relative;}
+    .search-bar input{width:100%; padding:10px 14px 10px 40px; border-radius:28px; border:none; background:#1e1e1e; color:#fff;}
+    .search-bar .fa-search{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#cfcfcf}
+    .layout{display:flex; gap:30px; max-width:1200px; margin:26px auto; padding:0 18px;}
+    .jobs-sidebar{flex:0 0 250px;}
+    .recent-additions{background:var(--panel); border-radius:10px; padding:14px; border:1px solid rgba(157,78,221,0.12)}
+    .recent-additions h3{color:var(--violet-light); margin:0 0 8px}
+    .jobs-cards{flex:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px}
+    .card{background:#111; padding:18px; border-radius:12px; border:1px solid rgba(157,78,221,0.14); display:flex; flex-direction:column; justify-content:space-between;}
+    .card-img{width:100%; height:140px; object-fit:cover; border-radius:8px; background:#222; margin-bottom:12px}
+    .tag{display:inline-block; padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.04); margin-right:8px; font-size:13px}
+    button.cta{background:var(--violet-light); color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer;}
+    @media(max-width:920px){ .layout{flex-direction:column; padding:0 12px} .jobs-sidebar{order:2} .jobs-cards{order:1} .header-search{order:3; width:100%} nav ul{display:none} }
+  </style>
 </head>
 <body>
-  
-  <!-- ===== HEADER ===== -->
+
+  <!-- HEADER -->
   <header>
-    <img src="images/logo.png" alt="Logo">
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="regles.html">Règles</a>
-      <a href="jobs-legaux.html" class="active">Jobs légaux</a>
-      <a href="jobs-illegaux.html">Jobs illégaux</a>
-      <a href="tutoriels.html">Tutoriels</a>
-      <a href="generales.html">Générales</a>
-      <a href="discord.html">Discord</a>
-    </nav>
-    <div class="search-bar">
-      <input type="text" placeholder="Rechercher un job, ex: LSPD...">
+    <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+
+    <div class="header-left" style="display:flex;align-items:center;gap:18px;">
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="regles.html">Règles</a></li>
+          <li><a href="jobs_legaux.html" class="active">Jobs légaux</a></li>
+          <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
+          <li><a href="tutoriels.html">Tutoriels</a></li>
+          <li><a href="generales.html">Générales</a></li>
+          <li><a href="discord.html">Discord</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header-search">
+      <div class="search-bar" role="search">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" placeholder="Rechercher un job, ex: LSPD..." />
+      </div>
     </div>
   </header>
 
-  <!-- ===== CONTENU ===== -->
-  <main>
-    <h2>📑 Les métiers légaux</h2>
+  <!-- LAYOUT -->
+  <div class="layout">
 
-    <div class="jobs-container">
-      
-      <!-- Colonne gauche : ajouts récents -->
-      <aside class="jobs-sidebar">
-        <div class="recent-additions">
-          <h3>📌 Ajouts récents</h3>
-          <p>[13/09/2025] Ajout du job Vigneron</p>
-          <p>[13/09/2025] Nouvelle interface des jobs légaux</p>
-          <p>[13/09/2025] Optimisation du site</p>
-        </div>
-      </aside>
+    <!-- gauche -->
+    <aside class="jobs-sidebar">
+      <div class="recent-additions">
+        <h3>📌 Ajouts récents</h3>
+        <ul>
+          <li>[13/09/2025] Ajout du job Vigneron</li>
+          <li>[13/09/2025] Nouvelle interface des jobs légaux</li>
+          <li>[13/09/2025] Optimisation du site</li>
+        </ul>
+      </div>
+    </aside>
 
-      <!-- Colonne droite : cartes jobs -->
-      <section class="jobs-cards">
-
-        <div class="card">
-          <img src="images/jobs/lspd.png" alt="LSPD" class="card-img">
+    <!-- centre -->
+    <section class="jobs-cards" aria-label="Jobs légaux">
+      <!-- Exemple : 10 cartes (remplace images par les tiennes dans assets/jobs/) -->
+      <div class="card">
+        <img class="card-img" src="assets/jobs/lspd.jpg" alt="LSPD">
+        <div>
           <h3>LSPD</h3>
           <p>Maintenir l'ordre et la sécurité en ville.</p>
-          <span class="tag">Pré-requis : Oui</span>
-          <span class="tag">Salaire : Haut</span>
-          <button>En savoir +</button>
+          <div style="margin-top:10px">
+            <span class="tag">Pré-requis : Oui</span>
+            <span class="tag">Salaire : Haut</span>
+          </div>
         </div>
+        <div style="margin-top:14px"><button class="cta">En savoir +</button></div>
+      </div>
 
-        <div class="card">
-          <img src="images/jobs/bcso.png" alt="BCSO" class="card-img">
+      <div class="card">
+        <img class="card-img" src="assets/jobs/bcso.jpg" alt="BCSO">
+        <div>
           <h3>BCSO</h3>
           <p>Patrouille et sécurité dans le comté.</p>
-          <span class="tag">Pré-requis : Oui</span>
-          <span class="tag">Salaire : Haut</span>
-          <button>En savoir +</button>
+          <div style="margin-top:10px">
+            <span class="tag">Pré-requis : Oui</span>
+            <span class="tag">Salaire : Haut</span>
+          </div>
         </div>
+        <div style="margin-top:14px"><button class="cta">En savoir +</button></div>
+      </div>
 
-        <div class="card">
-          <img src="images/jobs/gouvernement.png" alt="Gouvernement" class="card-img">
+      <div class="card">
+        <img class="card-img" src="assets/jobs/gouv.jpg" alt="Gouvernement">
+        <div>
           <h3>Gouvernement</h3>
           <p>Gestion de l’administration et des lois.</p>
-          <span class="tag">Pré-requis : Oui</span>
-          <span class="tag">Salaire : Haut</span>
-          <button>En savoir +</button>
+          <div style="margin-top:10px">
+            <span class="tag">Pré-requis : Oui</span>
+            <span class="tag">Salaire : Haut</span>
+          </div>
         </div>
+        <div style="margin-top:14px"><button class="cta">En savoir +</button></div>
+      </div>
 
-        <div class="card">
-          <img src="images/jobs/fib.png" alt="FIB" class="card-img">
-          <h3>FIB</h3>
-          <p>Investigations et sécurité nationale.</p>
-          <span class="tag">Pré-requis : Oui</span>
-          <span class="tag">Salaire : Haut</span>
-          <button>En savoir +</button>
-        </div>
+      <!-- ajoute d'autres cartes de la même façon -->
+    </section>
 
-        <div class="card">
-          <img src="images/jobs/lscustoms.png" alt="LS Customs" class="card-img">
-          <h3>LS Customs</h3>
-          <p>Réparation et personnalisation de véhicules.</p>
-          <span class="tag">Pré-requis : Non</span>
-          <span class="tag">Salaire : Moyen</span>
-          <button>En savoir +</button>
-        </div>
+    <!-- droite -->
+    <aside class="actions" style="width:240px">
+      <h3 style="color:#c77dff;margin-top:0">⚙️ Actions</h3>
+      <button id="themeToggle" style="margin-bottom:10px">🌙 Mode clair</button>
+      <button id="gridBtn" style="margin-bottom:10px">🔲 Vue grille</button>
+      <button id="listBtn">📋 Vue liste</button>
+    </aside>
 
-        <div class="card">
-          <img src="images/jobs/bennys.png" alt="Benny's" class="card-img">
-          <h3>Benny's</h3>
-          <p>Préparation et tuning haut de gamme.</p>
-          <span class="tag">Pré-requis : Non</span>
-          <span class="tag">Salaire : Moyen</span>
-          <button>En savoir +</button>
-        </div>
+  </div>
 
-        <div class="card">
-          <img src="images/jobs/ems.png" alt="EMS" class="card-img">
-          <h3>EMS</h3>
-          <p>Sauver des vies et assurer les soins médicaux.</p>
-          <span class="tag">Pré-requis : Oui</span>
-          <span class="tag">Salaire : Haut</span>
-          <button>En savoir +</button>
-        </div>
+  <!-- SCRIPTS -->
+  <script>
+    // toggle theme
+    document.getElementById('themeToggle').addEventListener('click', function(){
+      document.body.classList.toggle('light-mode');
+      this.textContent = document.body.classList.contains('light-mode') ? '☀️ Mode sombre' : '🌙 Mode clair';
+    });
 
-        <div class="card">
-          <img src="images/jobs/bar.png" alt="Boite de nuit / Bar" class="card-img">
-          <h3>Boite de nuit / Bar</h3>
-          <p>Animation et divertissement en soirée.</p>
-          <span class="tag">Pré-requis : Non</span>
-          <span class="tag">Salaire : Moyen</span>
-          <button>En savoir +</button>
-        </div>
+    // grid / list simple
+    document.getElementById('gridBtn').addEventListener('click', function(){
+      document.querySelector('.jobs-cards').style.display = 'grid';
+      document.querySelector('.jobs-cards').style.gridTemplateColumns = 'repeat(auto-fit,minmax(250px,1fr))';
+    });
+    document.getElementById('listBtn').addEventListener('click', function(){
+      const container = document.querySelector('.jobs-cards');
+      container.style.display = 'block';
+      Array.from(container.children).forEach(c=>{
+        c.style.width = '100%';
+        c.style.maxWidth = '100%';
+        c.style.marginBottom = '16px';
+      });
+    });
 
-        <div class="card">
-          <img src="images/jobs/vigneron.png" alt="Vigneron" class="card-img">
-          <h3>Vigneron</h3>
-          <p>Travail de la vigne et production de vin.</p>
-          <span class="tag">Pré-requis : Non</span>
-          <span class="tag">Salaire : Bas</span>
-          <button>En savoir +</button>
-        </div>
-
-      </section>
-    </div>
-  </main>
-
+    // recherche simple
+    document.getElementById('searchInput').addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('.job-card, .card').forEach(card=>{
+        const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
+        card.style.display = title.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
