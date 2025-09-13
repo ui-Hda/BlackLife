@@ -5,8 +5,8 @@ body {
   color: #fff;
   margin: 0;
   padding: 0;
-  opacity: 0;                 /* départ invisible */
-  transform: translateY(20px); /* départ légèrement en bas */
+  opacity: 0;                 
+  transform: translateY(20px); 
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
@@ -30,7 +30,7 @@ body {
 /* ====== TITRES ====== */
 h1, h2 {
   text-align: center;
-  color: #9d4edd; /* Violet clair adapté au logo */
+  color: #9d4edd; 
   margin-bottom: 40px;
   opacity: 0;
   animation: fadeInTitle 1s ease-out forwards;
@@ -56,7 +56,31 @@ details {
   margin-bottom: 15px;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInBlock 0.6s ease forwards;
 }
+
+@keyframes fadeInBlock {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Délai progressif (effet cascade) */
+details:nth-of-type(1) { animation-delay: 0.4s; }
+details:nth-of-type(2) { animation-delay: 0.6s; }
+details:nth-of-type(3) { animation-delay: 0.8s; }
+details:nth-of-type(4) { animation-delay: 1s; }
+details:nth-of-type(5) { animation-delay: 1.2s; }
+details:nth-of-type(6) { animation-delay: 1.4s; }
+details:nth-of-type(7) { animation-delay: 1.6s; }
+details:nth-of-type(8) { animation-delay: 1.8s; }
 
 details:hover {
   transform: scale(1.02);
@@ -140,6 +164,4 @@ header nav a {
   transition: color 0.3s ease;
 }
 
-header nav a:hover {
-  color: #9d4edd;
-}
+header nav a:hov
