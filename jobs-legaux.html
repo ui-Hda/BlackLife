@@ -1,152 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jobs Légaux - GTA New RP</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <style>
-    /* Adaptation locale : animations / détails / présélection (même style que regles) */
-    body { background: #140026; color: white; font-family: Arial, sans-serif; margin:0; padding:0; }
-    header { background: linear-gradient(90deg,#6a1b9a,#8e24aa); padding:15px 30px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 4px 10px rgba(0,0,0,0.6);}
-    header img{ height:45px; }
-    header nav a{ color:white; margin-left:20px; text-decoration:none; font-weight:bold; padding:5px 10px; border-radius:5px; transition:all .3s; }
-    header nav a:hover{ background:#7a2cff; color:#fff; box-shadow:0 0 12px #d699ff; }
-
-    main{ max-width:1000px; margin:40px auto; padding:20px; }
-    h1{ text-align:center; margin-bottom:20px; font-size:2em; background:linear-gradient(90deg,#9c27b0,#d699ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
-    .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap:18px; margin-top:20px; }
-
-    details { background:#3a0a63; border-radius:10px; padding:14px 16px; transition: all .25s ease; box-shadow:0 6px 18px rgba(0,0,0,.45); overflow:hidden; }
-    details:hover { transform:scale(1.02); box-shadow:0 10px 24px rgba(122,44,255,.18); }
-    details[open]{ background:#5b1d9e; }
-
-    summary { display:flex; align-items:center; justify-content:space-between; font-weight:700; font-size:1.05rem; cursor:pointer; list-style:none; transition:color .2s; }
-    summary .left { display:flex; align-items:center; gap:12px; }
-    summary .icon { font-size:1.25rem; display:inline-block; width:28px; text-align:center; }
-    summary:hover { color:#f3d9ff; }
-
-    summary::after { content:"▶"; transition: transform .28s ease; margin-left:12px; }
-    details[open] summary::after { transform:rotate(90deg); }
-
-    details p, details ul { margin-top:10px; opacity:0; max-height:0; overflow:hidden; transition: all .38s ease; }
-    details[open] p, details[open] ul { opacity:1; max-height:1000px; }
-
-    .job-meta { font-size:0.95rem; color:#f0e6ff; opacity:.9; margin-bottom:8px; }
-    .small { font-size:0.9rem; color:#e6d8ff; opacity:.85; }
-
-    footer{ text-align:center; padding:18px; margin-top:36px; background:#1f0035; color:#ccc; border-top:1px solid #7a2cff; }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <img src="assets/logo.png" alt="GTA New Logo">
+    <img src="assets/logo.png" alt="Logo GTA New RP">
     <nav>
       <a href="index.html">Accueil</a>
-      <a href="regles.html">Règles</a>
-      <a href="jobs-legaux.html" aria-current="page">Jobs légaux</a>
-      <a href="jobs-illegaux.html">Jobs illégaux</a>
-      <a href="tutoriels.html">Tutoriels</a>
+      <a href="regles.html">Règlement</a>
+      <a href="jobs-legaux.html">Jobs Légaux</a>
+      <a href="jobs-illegaux.html">Jobs Illégaux</a>
     </nav>
   </header>
 
-  <main>
+  <div class="container">
     <h1>Jobs Légaux</h1>
-    <p class="small">Ici sont listés les métiers légaux disponibles sur GTA New RP. Clique sur un métier pour voir la fiche (description, responsabilités, accès, règles particulières).</p>
 
-    <div class="grid">
-      <!-- Policier -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">🚓</span>
-            <span>Policier</span>
-          </div>
-          <span class="job-meta">Service public - Responsabilités</span>
-        </summary>
-        <p><strong>Description :</strong> Les policiers maintiennent l'ordre, gèrent les interventions, contrôles routiers, enquêtes et scènes de crime.</p>
-        <ul>
-          <li><strong>Compétences :</strong> Communication, gestion d’événements, tactique & procédures.</li>
-          <li><strong>Règles :</strong> Respect strict du RP lors d’interventions, gestion proportionnée de la force.</li>
-          <li><strong>Accès :</strong> Recrutement via le QG / test RP obligatoire.</li>
-        </ul>
-      </details>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-user-shield"></i></span>
+          Policier
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Maintenir l'ordre, enquêter, gérer les interventions et protéger les citoyens.</p>
+    </details>
 
-      <!-- Médecin / EMS -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">🚑</span>
-            <span>Médecin / EMS</span>
-          </div>
-          <span class="job-meta">Soins - Réanimation</span>
-        </summary>
-        <p><strong>Description :</strong> Les EMS interviennent sur les blessures, réaniment, soignent et gèrent les transports hospitaliers.</p>
-        <ul>
-          <li>Réanimation et stabilisation des patients.</li>
-          <li>Interdiction de roleplay hors-role pendant interventions.</li>
-          <li>Doivent respecter les règles de coma et réanimation du serveur.</li>
-        </ul>
-      </details>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-ambulance"></i></span>
+          Médecin / EMS
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Soigner les blessés, intervenir en urgence et assurer la santé publique.</p>
+    </details>
 
-      <!-- Mécanicien -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">🔧</span>
-            <span>Mécanicien</span>
-          </div>
-          <span class="job-meta">Atelier - Réparations</span>
-        </summary>
-        <p><strong>Description :</strong> Réparation, tuning et assistance mécanique pour véhicules civils et services.</p>
-        <ul>
-          <li>Service en garage ou intervention mobile.</li>
-          <li>Respect des tarifs et facturations RP.</li>
-        </ul>
-      </details>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-car"></i></span>
+          Mécanicien
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Réparer les véhicules, dépanner en cas de panne et gérer les garages.</p>
+    </details>
 
-      <!-- Taxi / Transport -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">🚕</span>
-            <span>Taxi / Transport</span>
-          </div>
-          <span class="job-meta">Transport de civils</span>
-        </summary>
-        <p>Assurer le transport RP des joueurs de A à B, respecter les règles de conduite et le fairplay.</p>
-      </details>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-taxi"></i></span>
+          Chauffeur de Taxi
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Transporter les habitants de la ville en toute sécurité et efficacité.</p>
+    </details>
 
-      <!-- Entrepreneur -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">🏢</span>
-            <span>Entrepreneur</span>
-          </div>
-          <span class="job-meta">Business - Gestion</span>
-        </summary>
-        <p>Création et gestion d’entreprises (boutiques, restaurants, services). Gestion RP des employés et finances.</p>
-      </details>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-store"></i></span>
+          Commerçant
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Gérer une boutique, vendre des produits et animer la vie économique de la ville.</p>
+    </details>
 
-      <!-- Autres -->
-      <details>
-        <summary>
-          <div class="left">
-            <span class="icon">⚙️</span>
-            <span>Autres métiers</span>
-          </div>
-          <span class="job-meta">Livraison, Shop, etc.</span>
-        </summary>
-        <p>Ajoute ici tous les métiers annexes (livreur, commerçant, barman...) avec descriptions et règles.</p>
-      </details>
-    </div>
-  </main>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-truck"></i></span>
+          Livreur
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Assurer la distribution de biens à travers la ville et respecter les délais.</p>
+    </details>
 
-  <footer>
-    <p>© 2025 GTA New RP — Tous droits réservés.</p>
-  </footer>
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-university"></i></span>
+          Banquier
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Gérer les finances, conseiller les clients et assurer la sécurité bancaire.</p>
+    </details>
+
+    <details>
+      <summary>
+        <div class="left">
+          <span class="icon"><i class="fas fa-cut"></i></span>
+          Coiffeur
+        </div>
+      </summary>
+      <p><strong>Description :</strong> Styliser les habitants, proposer des coupes et entretenir l’esthétique de la ville.</p>
+    </details>
+
+  </div>
 </body>
 </html>
