@@ -1,156 +1,261 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTANew - Jobs Légaux</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GTANew — Jobs légaux</title>
   <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/jobs.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- ====== NAVBAR ====== -->
+  <!-- HEADER -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html">Règles</a></li>
-        <li><a href="jobs_legaux.html" class="active">Jobs légaux</a></li>
-        <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
-        <li><a href="tutoriels.html">Tutoriels</a></li>
-        <li><a href="generales.html">Générales</a></li>
-        <li><a href="discord.html">Discord</a></li>
-      </ul>
-    </nav>
+    <div class="header-left">
+      <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="regles.html">Règles</a></li>
+          <li><a href="jobs_legaux.html" class="active">Jobs légaux</a></li>
+          <li><a href="jobs_illegaux.html">Jobs illégaux</a></li>
+          <li><a href="tutoriels.html">Tutoriels</a></li>
+          <li><a href="generales.html">Générales</a></li>
+          <li><a href="discord.html">Discord</a></li>
+        </ul>
+      </nav>
+    </div>
 
-    <!-- Barre de recherche -->
-    <div class="search-bar">
-      <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher...">
+    <div class="header-search">
+      <div class="search-bar" role="search">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" placeholder="Rechercher un job, ex: LSPD..." />
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- reserved for icons or login later -->
     </div>
   </header>
 
-  <main>
-    <div class="layout">
-      
-      <!-- ====== AJOUTS RÉCENTS ====== -->
-      <aside class="recent">
-        <h2>📌 Ajouts récents</h2>
-        <ul>
-          <li>[13/09/2025] Ajout du job Vigneron</li>
-          <li>[13/09/2025] Nouvelle interface des jobs légaux</li>
-          <li>[13/09/2025] Optimisation du site</li>
-        </ul>
-      </aside>
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
 
-      <!-- ====== SLIDER JOBS ====== -->
-      <section class="jobs">
-        <h1>👔 Les métiers légaux</h1>
+    <!-- LEFT: recent -->
+    <aside class="recent" aria-label="Ajouts récents">
+      <h2>📌 Ajouts récents</h2>
+      <ul>
+        <li>[13/09/2025] Ajout du job Vigneron</li>
+        <li>[13/09/2025] Nouvelle interface des jobs légaux</li>
+        <li>[13/09/2025] Optimisation du site</li>
+      </ul>
+    </aside>
 
-        <div class="carousel">
-          <button class="prev">&#10094;</button>
-          <div class="carousel-track">
-            
-            <div class="job-card">
-              <img src="assets/jobs/lspd.png" alt="LSPD">
+    <!-- CENTER: carousel -->
+    <section class="jobs" aria-label="Jobs légaux">
+      <h1>🧾 Les métiers légaux</h1>
+
+      <div class="carousel" aria-hidden="false">
+        <button class="btn prev" aria-label="Précédent">&#10094;</button>
+
+        <div class="carousel-track" id="carouselTrack" aria-live="polite">
+          <!-- each card uses inline background for big cover -->
+          <article class="job-card" data-title="LSPD">
+            <div class="cover" style="background-image: url('assets/jobs/lspd.jpg');"></div>
+            <div class="content">
               <h3>LSPD</h3>
+              <p>Maintenir l’ordre et la sécurité en ville.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Haut</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/bcso.png" alt="BCSO">
+          <article class="job-card" data-title="BCSO">
+            <div class="cover" style="background-image: url('assets/jobs/bcso.jpg');"></div>
+            <div class="content">
               <h3>BCSO</h3>
+              <p>Patrouille et sécurité dans le comté.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Haut</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/gouv.png" alt="Gouvernement">
+          <article class="job-card" data-title="Gouvernement">
+            <div class="cover" style="background-image: url('assets/jobs/gouv.jpg');"></div>
+            <div class="content">
               <h3>Gouvernement</h3>
+              <p>Gestion de l’administration et des lois.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Haut</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/fib.png" alt="FIB">
+          <article class="job-card" data-title="FIB">
+            <div class="cover" style="background-image: url('assets/jobs/fib.jpg');"></div>
+            <div class="content">
               <h3>FIB</h3>
+              <p>Investigations et enquêtes fédérales.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Haut</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/lsc.png" alt="LS Customs">
+          <article class="job-card" data-title="LS Customs">
+            <div class="cover" style="background-image: url('assets/jobs/lscustoms.jpg');"></div>
+            <div class="content">
               <h3>LS Customs</h3>
+              <p>Réparation et personnalisation des véhicules.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Non</span>
+                <span class="tag">Salaire : Moyen</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/bennys.png" alt="Benny's">
+          <article class="job-card" data-title="Benny's">
+            <div class="cover" style="background-image: url('assets/jobs/bennys.jpg');"></div>
+            <div class="content">
               <h3>Benny's</h3>
+              <p>Customisation haut de gamme.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Non</span>
+                <span class="tag">Salaire : Moyen</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/ems.png" alt="EMS">
+          <article class="job-card" data-title="EMS">
+            <div class="cover" style="background-image: url('assets/jobs/ems.jpg');"></div>
+            <div class="content">
               <h3>EMS</h3>
+              <p>Sauver des vies et soins d'urgence.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Moyen</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/nightclub.png" alt="Boîte de nuit">
+          <article class="job-card" data-title="Nightclub">
+            <div class="cover" style="background-image: url('assets/jobs/nightclub.jpg');"></div>
+            <div class="content">
               <h3>Boîte de nuit / Bar</h3>
+              <p>Ambiance et divertissement nocturne.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Non</span>
+                <span class="tag">Salaire : Moyen</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/vigneron.png" alt="Vigneron">
+          <article class="job-card" data-title="Vigneron">
+            <div class="cover" style="background-image: url('assets/jobs/vigneron.jpg');"></div>
+            <div class="content">
               <h3>Vigneron</h3>
+              <p>Production de vin et culture des vignes.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Non</span>
+                <span class="tag">Salaire : Bas</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/concession.png" alt="Concessionnaire">
+          <article class="job-card" data-title="Concessionnaire">
+            <div class="cover" style="background-image: url('assets/jobs/concession.jpg');"></div>
+            <div class="content">
               <h3>Concessionnaire</h3>
+              <p>Vente et gestion de véhicules.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Oui</span>
+                <span class="tag">Salaire : Haut</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-            <div class="job-card">
-              <img src="assets/jobs/farm.png" alt="Jobs de farm">
+          <article class="job-card" data-title="Farm">
+            <div class="cover" style="background-image: url('assets/jobs/farm.jpg');"></div>
+            <div class="content">
               <h3>Jobs de farm</h3>
+              <p>Mineur, pêcheur, livreur — ressources & récoltes.</p>
+              <div class="meta">
+                <span class="tag">Pré-requis : Non</span>
+                <span class="tag">Salaire : Variable</span>
+              </div>
+              <a class="cta" href="metiers.html">En savoir +</a>
             </div>
+          </article>
 
-          </div>
-          <button class="next">&#10095;</button>
         </div>
-      </section>
 
-      <!-- ====== MENU ACTIONS ====== -->
-      <aside class="actions">
-        <h2>⚙️ Actions</h2>
-        <button onclick="toggleTheme()">🌙 Mode</button>
-        <button onclick="setGrid()">🔲 Grille</button>
-        <button onclick="setList()">📋 Liste</button>
-      </aside>
+        <button class="btn next" aria-label="Suivant">&#10095;</button>
+      </div>
 
-    </div>
-  </main>
+    </section>
 
+    <!-- RIGHT: actions -->
+    <aside class="actions">
+      <h2>⚙️ Actions</h2>
+      <button id="themeToggle">🌙 Mode clair</button>
+      <button id="viewGrid">🔲 Vue grille</button>
+      <button id="viewList">📋 Vue liste</button>
+    </aside>
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
-    // ====== THEME ======
-    function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-      const modeBtn = document.querySelector(".actions button");
-      modeBtn.textContent = document.body.classList.contains("light-mode") ? "☀️ Mode Sombre" : "🌙 Mode Clair";
-    }
+    // carousel buttons
+    const track = document.getElementById('carouselTrack');
+    document.querySelector('.prev').addEventListener('click', () => track.scrollBy({ left: -380, behavior: 'smooth' }));
+    document.querySelector('.next').addEventListener('click', () => track.scrollBy({ left: 380, behavior: 'smooth' }));
 
-    function setGrid() {
-      document.querySelector(".carousel-track").style.flexDirection = "row";
-    }
-
-    function setList() {
-      document.querySelector(".carousel-track").style.flexDirection = "column";
-    }
-
-    // ====== CAROUSEL ======
-    const track = document.querySelector(".carousel-track");
-    const prev = document.querySelector(".prev");
-    const next = document.querySelector(".next");
-
-    next.addEventListener("click", () => {
-      track.scrollBy({ left: 300, behavior: "smooth" });
+    // theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️ Mode sombre' : '🌙 Mode clair';
     });
 
-    prev.addEventListener("click", () => {
-      track.scrollBy({ left: -300, behavior: "smooth" });
+    // view grid/list
+    document.getElementById('viewGrid').addEventListener('click', () => {
+      track.style.display = 'flex';
+      track.style.flexDirection = 'row';
+    });
+    document.getElementById('viewList').addEventListener('click', () => {
+      track.style.display = 'block';
+      // when in list, allow vertical stacking
+      Array.from(track.children).forEach(card => {
+        card.style.marginBottom = '18px';
+        card.style.width = '100%';
+        card.style.maxWidth = '100%';
+      });
+    });
+
+    // small search filter for cards
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      Array.from(track.children).forEach(card => {
+        const title = (card.dataset.title || '').toLowerCase();
+        card.style.display = title.includes(q) ? '' : 'none';
+      });
     });
   </script>
 </body>
