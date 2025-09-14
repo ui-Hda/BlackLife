@@ -1,215 +1,252 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GTANew — Jobs Légaux</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Jobs Légaux</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
-
   <style>
-    /* === Reset & Layout de base === */
-    :root{
-      --bg:#0d0017;
-      --card:#0e0e0e;
-      --panel:#1e1e1e;
-      --accent:#38bdf8; /* bleu clair pour accents légaux */
-      --accent-dark:#0c4a6e; /* navbar bleu foncé */
-      --muted:#999;
-      --text:#fff;
-    }
-
-    html,body{height:100%}
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: #0d0017;
+      color: white;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ===== NAVBAR (bleu) ===== */
+    /* ===== NAVBAR ===== */
     header {
-      background: var(--accent-dark);
+      background: #065f46;
       padding: 15px 30px;
-      display:flex;
-      align-items:center;
-      gap:28px;
-      position:sticky;
-      top:0;
-      z-index:40;
+      display: flex;
+      align-items: center;
+      gap: 40px;
     }
-    header .logo{ height:70px; display:block; }
-    nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
-    nav ul li a{ color:#fff; text-decoration:none; font-weight:700; transition:color .2s; }
-    nav ul li a:hover, nav ul li a.active{ color: var(--accent); }
+    header .logo {
+      height: 70px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #34d399;
+    }
 
-    /* ===== Search bar ===== */
-    .search-bar { flex:1; display:flex; justify-content:center; }
-    .search-bar .search-wrap{ width:70%; max-width:720px; position:relative; }
+    /* ===== SEARCH BAR ===== */
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
     .search-bar input {
-      width:100%;
-      padding:12px 16px 12px 44px;
-      border-radius:28px;
-      border:none;
-      background:#1e1e1e;
-      color:var(--text);
-      font-size:15px;
-      outline:none;
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
     }
-    .search-bar .fa-search{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); }
-
-    /* ===== Fil d'Ariane ===== */
-    .breadcrumb {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      margin:20px auto;
-      padding:10px 18px;
-      border-radius:10px;
-      background: var(--panel);
-      box-shadow:0 6px 18px rgba(0,0,0,0.45);
-      width:fit-content;
-    }
-    .breadcrumb-item{ display:flex; align-items:center; gap:8px; font-weight:700; }
-    .breadcrumb-item a{
-      display:flex; align-items:center; gap:8px;
-      text-decoration:none;
-      color:#ccc;
-      padding:8px 12px;
-      border-radius:8px;
-      background:#2a2a2a;
-      transition: background .18s, color .18s;
-    }
-    .breadcrumb-item a i{ color:var(--muted); }
-    .breadcrumb .separator{ color:var(--muted); font-size:14px; }
-    .breadcrumb-item a:hover{ background:#333; color:var(--accent); }
-    /* active */
-    .breadcrumb-item a.active{
-      background: var(--accent);
-      color:#111;
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
     }
 
-    /* ===== MAIN LAYOUT (3 colonnes) ===== */
-    main{
-      flex:1;
-      display:grid;
-      grid-template-columns:250px 1fr 260px;
-      gap:20px;
-      margin:28px;
+    /* ===== LAYOUT 3 colonnes ===== */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
     }
 
-    /* Colonne gauche */
+    /* ===== AJOUTS RECENTS ===== */
     .recent {
-      background: var(--panel);
-      padding:18px;
-      border-radius:10px;
-      height:fit-content;
-      position:sticky;
-      top:96px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
     }
-    .recent h2{ margin:0 0 12px 0; color:#ccc; font-size:18px; }
-    .recent-item{
-      background: #0f0f0f;
-      border:1px solid #333;
-      border-radius:8px;
-      padding:10px;
-      margin-bottom:12px;
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
     }
-    .recent-item h3{ margin:0 0 6px 0; color:var(--accent); font-size:14px; }
-    .recent-item p{ margin:0; color:#aaa; font-size:13px; }
-
-    /* Cartes centre */
-    .cards-wrapper{
-      background: var(--panel);
-      padding:26px;
-      border-radius:14px;
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
     }
-    .cards-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; gap:12px; }
-    .cards-header h2{ margin:0; color:#fff; font-size:20px; }
-    .cards-header select{ padding:8px 10px; border-radius:8px; border:none; background:#111; color:#fff; }
-
-    .cards.grid-view{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap:18px;
+    .recent-item:hover {
+      border-color: #34d399;
+      background: #1a1a1a;
     }
-    .cards.list-view{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #34d399;
+    }
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
     }
 
-    .card{
-      background: var(--card);
-      border-radius:12px;
-      border:2px solid rgba(255,255,255,0.06);
-      padding:16px;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      transition: transform .18s, box-shadow .18s;
+    /* ===== CARDS WRAPPER ===== */
+    .cards-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
     }
-    .card:hover{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
-    .card-img{ width:100px; height:100px; object-fit:contain; margin:0 auto; border-radius:8px; background:#232323; }
-    .card h3{ margin:0; color:var(--accent); font-size:18px; }
-    .card p{ margin:0; color:#bbb; font-size:13px; }
-
-    .cards.list-view .card{ flex-direction:row; align-items:center; text-align:left; padding:12px; }
-    .cards.list-view .card .card-img{ width:80px; height:80px; margin-right:14px; }
-
-    /* Colonne droite */
-    .actions{
-      background:var(--panel);
-      padding:16px;
-      border-radius:10px;
-      height:fit-content;
-      position:sticky;
-      top:96px;
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
     }
-    .actions h2{ margin:0 0 12px 0; color:#ccc; font-size:18px; }
-    .actions button{
-      display:flex; align-items:center; gap:10px;
-      width:100%; background:none; border:none; color:var(--accent);
-      padding:10px 6px; text-align:left; cursor:pointer; font-size:15px;
+    .cards-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+    .cards-header select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #0e0e0e;
+      color: #fff;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+    }
+    .card-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      color: #34d399;
     }
 
-    /* light mode */
+    /* ===== ACTIONS ===== */
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #34d399;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .actions button:hover {
+      color: #fff;
+    }
+
+    /* ===== LIST VIEW ===== */
+    .list-view {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .list-view .card {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .list-view .card-img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+
+    /* ===== MODE CLAIR ===== */
     body.light-mode {
-      background:#f5f5f5; color:#111;
+      background: #f5f5f5;
+      color: #000;
     }
-    body.light-mode header{ background:#0284c7; }
-    body.light-mode .breadcrumb{ background:#f3f3f3; color:#222; }
-    body.light-mode .breadcrumb-item a{ background:#fff; color:#333; }
-    body.light-mode .breadcrumb-item a.active{ background:#0284c7; color:#111; }
-    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions{
-      background:#fff; color:#111;
+    body.light-mode header {
+      background: #10b981;
     }
-    body.light-mode .card, body.light-mode .recent-item{
-      background:#fff; color:#111; border:1px solid #ddd;
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper,
+    body.light-mode .actions {
+      background: #ddd;
+      color: #000;
     }
-
-    @media (max-width:1100px){
-      main{ grid-template-columns: 1fr; margin:18px; }
-      .recent, .actions{ position:static; top:auto; }
-      .breadcrumb{ margin:12px; width:100%; justify-content:flex-start; padding:10px; gap:8px; }
+    body.light-mode .card,
+    body.light-mode .recent-item {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
+  <!-- ====== NAVBAR ====== -->
   <header>
-    <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
-    <nav aria-label="Main navigation">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="regles.html">Réglement</a></li>
         <li><a href="jobs-legaux.html" class="active">Légal</a></li>
         <li><a href="jobs-illegaux.html">Illégal</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
@@ -217,58 +254,91 @@
         <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
-    <div class="search-bar" role="search">
-      <div class="search-wrap">
-        <i class="fas fa-search"></i>
-        <input id="searchInput" type="search" placeholder="Rechercher un job...">
-      </div>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher un job...">
     </div>
   </header>
 
-  <!-- FIL D'ARIANE -->
+  <!-- ====== FIL D'ARIANE ====== -->
   <nav class="breadcrumb" aria-label="Fil d'Ariane">
     <div class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Accueil</a></div>
     <div class="separator"><i class="fas fa-chevron-right"></i></div>
     <div class="breadcrumb-item"><a href="jobs-legaux.html" class="active"><i class="fas fa-briefcase"></i> Jobs Légaux</a></div>
-    <div class="separator"><i class="fas fa-chevron-right"></i></div>
-    <div class="breadcrumb-item"><a href="#top">Liste</a></div>
   </nav>
 
-  <!-- MAIN -->
+  <!-- ====== MAIN ====== -->
   <main>
+    <!-- AJOUTS RECENTS -->
     <aside class="recent" id="recentContainer">
       <h2>Ajouts récents</h2>
     </aside>
 
-    <section class="cards-wrapper">
+    <!-- CARTES -->
+    <div class="cards-wrapper">
       <div class="cards-header">
-        <h2>Jobs Légaux</h2>
+        <h2>Jobs légaux</h2>
         <select id="sortSelect">
           <option value="name">Trier par Nom</option>
           <option value="date">Trier par Date</option>
         </select>
       </div>
-
-      <div id="cardsContainer" class="cards grid-view">
-        <!-- Exemple cartes jobs légaux -->
-        <article class="card" data-date="2025-09-13">
-          <img class="card-img" src="assets/jobs/policier.png" alt="Policier">
-          <h3>Policier</h3>
-          <p>Maintenir l’ordre et protéger les citoyens.</p>
-        </article>
-        <article class="card" data-date="2025-09-13">
-          <img class="card-img" src="assets/jobs/medecin.png" alt="Médecin">
-          <h3>Médecin</h3>
-          <p>Sauver des vies et soigner les blessés.</p>
-        </article>
-        <article class="card" data-date="2025-09-13">
-          <img class="card-img" src="assets/jobs/mecano.png" alt="Mécano">
-          <h3>Mécanicien</h3>
-          <p>Réparer et améliorer les véhicules.</p>
-        </article>
+      <div class="cards grid-view" id="cardsContainer">
+        <!-- Exemples de jobs -->
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lspd.png" alt="LSPD" class="card-img">
+          <h3>LSPD</h3>
+          <p>Maintenir l’ordre et la sécurité en ville.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bcso.png" alt="BCSO" class="card-img">
+          <h3>BCSO</h3>
+          <p>Sécurité et patrouille dans le comté.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/gouv.png" alt="Gouvernement" class="card-img">
+          <h3>Gouvernement</h3>
+          <p>Gestion de l’administration et des lois.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/fib.png" alt="FIB" class="card-img">
+          <h3>FIB</h3>
+          <p>Investigations et sécurité nationale.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lscustoms.png" alt="LS Customs" class="card-img">
+          <h3>LS Customs</h3>
+          <p>Réparation et personnalisation de véhicules.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bennys.png" alt="Benny's" class="card-img">
+          <h3>Benny's</h3>
+          <p>Customisation haut de gamme.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/ems.png" alt="EMS" class="card-img">
+          <h3>EMS</h3>
+          <p>Soins et interventions médicales.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/club.png" alt="Club" class="card-img">
+          <h3>Boîte de nuit / Bar</h3>
+          <p>Animation et gestion nocturne.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/vigneron.png" alt="Vigneron" class="card-img">
+          <h3>Vigneron</h3>
+          <p>Culture et production de vin.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/concessionnaire.png" alt="Concessionnaire" class="card-img">
+          <h3>Concessionnaire</h3>
+          <p>Vente de véhicules.</p>
+        </div>
       </div>
-    </section>
+    </div>
 
+    <!-- ACTIONS -->
     <aside class="actions">
       <h2>Actions</h2>
       <button id="gridBtn"><i class="fas fa-th"></i> Vue en grille</button>
@@ -277,70 +347,75 @@
     </aside>
   </main>
 
+  <!-- ====== SCRIPT ====== -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('searchInput');
-      const cardsContainer = document.getElementById('cardsContainer');
-      const sortSelect = document.getElementById('sortSelect');
-      const themeBtn = document.getElementById('themeToggle');
-      const gridBtn = document.getElementById('gridBtn');
-      const listBtn = document.getElementById('listBtn');
-      const recentContainer = document.getElementById('recentContainer');
-      let cards = Array.from(document.querySelectorAll('.card'));
+    const searchInput = document.getElementById("searchInput");
+    const cardsContainer = document.getElementById("cardsContainer");
+    const sortSelect = document.getElementById("sortSelect");
+    const cards = document.querySelectorAll(".card");
+    const recentContainer = document.getElementById("recentContainer");
+    const themeBtn = document.getElementById("themeToggle");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
 
-      searchInput.addEventListener('input', () => {
-        const q = searchInput.value.trim().toLowerCase();
-        cards.forEach(card => {
-          const txt = (card.innerText || '').toLowerCase();
-          card.style.display = txt.includes(q) ? 'block' : 'none';
-        });
-        updateRecent();
+    // 🔍 Recherche
+    searchInput.addEventListener("input", () => {
+      const search = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(search) ? "block" : "none";
       });
-
-      sortSelect.addEventListener('change', () => {
-        let sorted = [...cards];
-        if (sortSelect.value === 'name') {
-          sorted.sort((a,b) => a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText));
-        } else {
-          sorted.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
-        }
-        cardsContainer.innerHTML = '';
-        sorted.forEach(c => cardsContainer.appendChild(c));
-        cards = Array.from(document.querySelectorAll('.card'));
-        updateRecent();
-      });
-
-      themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        themeBtn.innerHTML = document.body.classList.contains('light-mode')
-          ? '<i class="fas fa-adjust"></i> Mode sombre'
-          : '<i class="fas fa-adjust"></i> Mode clair';
-      });
-
-      gridBtn.addEventListener('click', () => {
-        cardsContainer.classList.remove('list-view');
-        cardsContainer.classList.add('grid-view');
-      });
-      listBtn.addEventListener('click', () => {
-        cardsContainer.classList.remove('grid-view');
-        cardsContainer.classList.add('list-view');
-      });
-
-      function updateRecent(){
-        const visible = Array.from(document.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
-        visible.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
-        recentContainer.innerHTML = '<h2>Ajouts récents</h2>';
-        visible.slice(0,3).forEach(c => {
-          const title = c.querySelector('h3').innerText;
-          const date = c.dataset.date || '13/09/2025';
-          const div = document.createElement('div');
-          div.className = 'recent-item';
-          div.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
-          recentContainer.appendChild(div);
-        });
-      }
-      updateRecent();
     });
+
+    // 📌 Tri
+    sortSelect.addEventListener("change", () => {
+      let sortedCards = Array.from(cards);
+      if (sortSelect.value === "name") {
+        sortedCards.sort((a, b) =>
+          a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
+        );
+      } else if (sortSelect.value === "date") {
+        sortedCards.sort((a, b) =>
+          new Date(b.dataset.date) - new Date(a.dataset.date)
+        );
+      }
+      cardsContainer.innerHTML = "";
+      sortedCards.forEach(card => cardsContainer.appendChild(card));
+    });
+
+    // 🌙 Mode clair/sombre
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    });
+
+    // 🔲 Vue Grille / Liste
+    gridBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("list-view");
+      cardsContainer.classList.add("grid-view");
+    });
+    listBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("grid-view");
+      cardsContainer.classList.add("list-view");
+    });
+
+    // 📌 Ajouts récents auto
+    function loadRecent() {
+      let sortedCards = Array.from(cards);
+      sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      sortedCards.slice(0, 3).forEach(card => {
+        const title = card.querySelector("h3").innerText;
+        const date = "13/09/2025";
+        const item = document.createElement("div");
+        item.classList.add("recent-item");
+        item.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
+        recentContainer.appendChild(item);
+      });
+    }
+    loadRecent();
   </script>
 </body>
 </html>
