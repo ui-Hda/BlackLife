@@ -76,6 +76,40 @@
       pointer-events: none;
     }
 
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #d4af37;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+    .breadcrumb ul li a:hover {
+      background: #f5d76e;
+      color: #000;
+    }
+    .breadcrumb ul li a.active {
+      background: #f5d76e;
+      color: #000;
+    }
+
     main {
       flex: 1;
       display: grid;
@@ -260,6 +294,15 @@
       <input type="text" id="searchInput" placeholder="Rechercher...">
     </div>
   </header>
+
+  <!-- ========= FIL D'ARIANE ========= -->
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="regles.html">Règlement</a></li>
+      <li><a class="active">Liste</a></li>
+    </ul>
+  </nav>
 
   <main>
     <aside class="recent" id="recentContainer">
