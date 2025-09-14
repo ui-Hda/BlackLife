@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Règlement Légal</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #d4af37;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #0d0017;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    /* Sommaire */
+    .sommaire {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .sommaire h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .sommaire ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sommaire ul li {
+      margin-bottom: 10px;
+    }
+
+    .sommaire ul li a {
+      color: #d4af37;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .sommaire ul li a.active {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Texte règlement */
+    .regles-content {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      line-height: 1.6;
+    }
+
+    .regles-content h2 {
+      color: #d4af37;
+      margin-top: 30px;
+    }
+
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d4af37;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .regles-content,
+    body.light-mode .sommaire {
+      background: #ddd;
+      color: #000;
+    }
+
+    body.light-mode .sommaire ul li a {
+      color: #000;
+    }
+
+    body.light-mode .sommaire ul li a.active {
+      color: #d4af37;
+    }
+
+    body.light-mode .actions {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html" class="active">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <main>
+    <!-- Sommaire -->
+    <aside class="sommaire">
+      <h2>Sommaire</h2>
+      <ul>
+        <li><a href="#lspd">LSPD</a></li>
+        <li><a href="#bcso">BCSO</a></li>
+        <li><a href="#fib">FIB</a></li>
+        <li><a href="#concessionnaire">Concessionnaire</a></li>
+        <li><a href="#bennys">Benny's</a></li>
+        <li><a href="#lscustoms">LS Customs</a></li>
+        <li><a href="#farm">Métiers de farm</a></li>
+        <li><a href="#ems">EMS</a></li>
+      </ul>
+    </aside>
+
+    <!-- Texte Règlement -->
+    <div class="regles-content" id="regles">
+      <h1>Règlement Légal</h1>
+
+      <h2 id="lspd">LSPD</h2>
+      <p>Les membres du LSPD doivent respecter le Code de la Police : interventions proportionnées, respect des droits des citoyens, interdiction des abus de pouvoir et corruption. Les sommations doivent être claires et justifiées.</p>
+
+      <h2 id="bcso">BCSO</h2>
+      <p>Le BCSO a les mêmes obligations que le LSPD, mais leur champ d’action est prioritairement en dehors de la ville. Ils doivent rester en cohérence RP avec leur rôle de shérif et assurer la sécurité des zones rurales.</p>
+
+      <h2 id="fib">FIB</h2>
+      <p>Le FIB a un rôle d’enquête et d’infiltration. Ils ne doivent pas abuser de leurs pouvoirs. Les arrestations doivent toujours être justifiées et accompagnées de preuves solides. Le FIB doit rester discret et professionnel.</p>
+
+      <h2 id="concessionnaire">Concessionnaire</h2>
+      <p>Les concessionnaires doivent vendre les véhicules de manière RP et ne peuvent pas abuser des prix. Les arnaques sont interdites et les contrats doivent être clairs pour le client.</p>
+
+      <h2 id="bennys">Benny's</h2>
+      <p>Les mécanos de Benny’s doivent respecter les prix fixés et ne pas exploiter les clients. Ils doivent assurer un service RP correct, et il est interdit de profiter de leur rôle pour cacher ou réparer des véhicules liés à des activités illégales.</p>
+
+      <h2 id="lscustoms">LS Customs</h2>
+      <p>Mêmes règles que Benny’s : tarifs justes, service RP, interdiction d’abus ou de couverture d’activités illégales.</p>
+
+      <h2 id="farm">Métiers de farm</h2>
+      <p>Les métiers de farm doivent être exercés dans le respect du RP. Il est interdit d’exploiter des bugs pour récolter plus rapidement ou en plus grande quantité. Les ventes doivent rester cohérentes et respectueuses des prix fixés.</p>
+
+      <h2 id="ems">EMS</h2>
+      <p>Les EMS ont l’obligation d’intervenir de manière neutre, sans prendre parti dans des conflits. Ils doivent assurer les soins à tous les citoyens sans discrimination. Il est interdit de refuser un soin sauf en cas de danger immédiat pour leur vie.</p>
+    </div>
+
+    <!-- Actions -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    // --- Scrollspy ---
+    const sections = document.querySelectorAll(".regles-content h2, .regles-content h1");
+    const navLinks = document.querySelectorAll(".sommaire ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
