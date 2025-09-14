@@ -160,8 +160,8 @@
   font-size: 14px;
 }
 
-/* Couleur active spécifique pour regles-illegaux.html */
-.breadcrumb .breadcrumb-item a.active {
+/* ✅ Couleur spécifique pour la page regles-illegaux.html */
+body[data-page="regles-illegaux"] .breadcrumb-item a.active {
   background: #FFD700; /* Jaune doré */
   color: #000;
 }
