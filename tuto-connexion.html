@@ -98,6 +98,40 @@
       pointer-events: none;
     }
 
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #1e90ff; /* bleu comme la navbar */
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+    .breadcrumb ul li a:hover {
+      background: #63b3ff;
+      color: #000;
+    }
+    .breadcrumb ul li a.active {
+      background: #63b3ff;
+      color: #000;
+    }
+
     /* LAYOUT */
     main {
       flex: 1;
@@ -253,6 +287,15 @@
     </div>
   </header>
 
+  <!-- ========= FIL D'ARIANE ========= -->
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a class="active">Connexion</a></li>
+    </ul>
+  </nav>
+
   <main>
     <!-- Ajouts récents -->
     <aside class="recent" id="recentContainer">
@@ -306,7 +349,7 @@
     function loadRecent() {
       const recent = [
         { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" },
-        { title: "Tutoriel Connexion", link: "tuto-connect.html", date: "13/09/2025" },
+        { title: "Tutoriel Connexion", link: "tuto-connexion.html", date: "13/09/2025" },
         { title: "Tutoriel Avancé", link: "tuto-avance.html", date: "13/09/2025" }
       ];
 
@@ -327,4 +370,3 @@
   </script>
 </body>
 </html>
-
