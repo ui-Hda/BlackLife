@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Règlement Illégal</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #d4af37;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #0d0017;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    /* Sommaire */
+    .sommaire {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .sommaire h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .sommaire ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sommaire ul li {
+      margin-bottom: 10px;
+    }
+
+    .sommaire ul li a {
+      color: #d4af37;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .sommaire ul li a.active {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Texte règlement */
+    .regles-content {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      line-height: 1.6;
+    }
+
+    .regles-content h2 {
+      color: #d4af37;
+      margin-top: 30px;
+    }
+
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d4af37;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .regles-content,
+    body.light-mode .sommaire {
+      background: #ddd;
+      color: #000;
+    }
+
+    body.light-mode .sommaire ul li a {
+      color: #000;
+    }
+
+    body.light-mode .sommaire ul li a.active {
+      color: #d4af37;
+    }
+
+    body.light-mode .actions {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html" class="active">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <main>
+    <!-- Sommaire -->
+    <aside class="sommaire">
+      <h2>Sommaire</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#loot">1. Loot</a></li>
+        <li><a href="#descentes">2. Descentes</a></li>
+        <li><a href="#pointschauds">3. Points chauds</a></li>
+        <li><a href="#territoires">4. Territoires</a></li>
+        <li><a href="#organisations">5. Organisations Illégales</a></li>
+        <li><a href="#missions">6. Missions</a></li>
+        <li><a href="#braquages">7. Braquages</a></li>
+        <li><a href="#autres">8. Autres</a></li>
+      </ul>
+    </aside>
+
+    <!-- Texte Règlement -->
+    <div class="regles-content" id="regles">
+      <h1 id="intro">Règlement Illégal</h1>
+      <p>Voici le règlement officiel concernant la partie illégale du serveur GTA NEW RP. Nul n'est censé l'ignorer et chacun se doit de le respecter. En cas de non-respect, des sanctions seront appliquées. Il peut également être sujet à des changements.</p>
+
+      <h2 id="loot">1. Loot</h2>
+      <p>Limitations de loot :</p>
+      <ul>
+        <li>Il est interdit de prendre plus de 50% de l’argent sale et propre.</li>
+        <li>Il est interdit de voler tous sacs/gilet pare-balles/armes.</li>
+        <li>Si vous êtes en guerre officielle (se référer au règlement guerres) aucune des limitations de loot ci-dessus ne s’applique.</li>
+        <li>Il est interdit de voler si vous ne faites pas partie d’une organisation illégale officielle.</li>
+        <li>L’arnaque est une forme de vol.</li>
+        <li>Il est interdit de forcer un joueur à aller retirer de l’argent dans une banque.</li>
+        <li>Il est interdit d’avoir une arme d'un membre des services publics sans en faire partie.</li>
+      </ul>
+
+      <h2 id="descentes">2. Descentes</h2>
+      <p>Il est interdit de faire une descente sans dossier soumis aux membres du staff, le dossier doit ensuite être accepté.</p>
+
+      <h2 id="pointschauds">3. Points chauds</h2>
+      <p>En tant que membre d’organisation :</p>
+      <ul>
+        <li>Vous pouvez faire travailler 10 indépendants maximums.</li>
+        <li>Vous devez taxer les travailleurs à 30% minimum.</li>
+        <li>Une fois un laboratoire attaqué, il est protégé et non attaquable pendant 12 heures.</li>
+        <li>Pour attaquer un laboratoire, il faut être au moins 3 membres du crew.</li>
+        <li>Il est interdit de missionner plus d’un crew pour défendre un laboratoire.</li>
+      </ul>
+
+      <h2 id="territoires">4. Territoires</h2>
+      <p>Il est interdit pour une organisation contrôlant un territoire de ne pas respecter les zones de Mass RP et les quartiers.</p>
+
+      <h2 id="organisations">5. Organisations Illégales</h2>
+      <p>Règles spécifiques aux organisations illégales :</p>
+      <ul>
+        <li>Pas d’alliances entre groupes illégaux.</li>
+        <li>Vous devez dire la vérité si vous êtes interrogé sur votre affiliation.</li>
+        <li>Les opérations doivent se faire avec des tenues définies et identifiables.</li>
+        <li>Tout groupe de plus de 4 personnes est considéré comme organisation illégale non officielle.</li>
+      </ul>
+
+      <h2 id="missions">6. Missions</h2>
+      <ul>
+        <li>Les organisations ne peuvent interférer que dans leurs propres missions.</li>
+        <li>Il est interdit d’utiliser un véhicule import lors d’une mission.</li>
+      </ul>
+
+      <h2 id="braquages">7. Braquages</h2>
+      <p><strong>Supérette :</strong></p>
+      <ul>
+        <li>1 à 4 braqueurs max.</li>
+        <li>1 braquage par heure max.</li>
+      </ul>
+      <p><strong>Banque :</strong></p>
+      <ul>
+        <li>6 braqueurs minimum.</li>
+        <li>Pas de maximum de braqueurs.</li>
+        <li>1 braquage par jour par crew officiel.</li>
+        <li>Vous devez être dans un crew officiel.</li>
+      </ul>
+
+      <h2 id="autres">8. Autres</h2>
+      <ul>
+        <li>Cayo Perico est une zone de “non droit”.</li>
+        <li>Il est interdit d’utiliser /otage sans être derrière la personne ciblée.</li>
+        <li>Il est interdit d’utiliser les menottes sans être derrière la personne ciblée.</li>
+        <li>Il est interdit de trash le corps de quelqu’un au sol.</li>
+      </ul>
+    </div>
+
+    <!-- Actions -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    // --- Scrollspy ---
+    const sections = document.querySelectorAll(".regles-content h2, .regles-content h1");
+    const navLinks = document.querySelectorAll(".sommaire ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
