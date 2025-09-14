@@ -1,229 +1,176 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GTANew - Règlement</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
+    /* =======================
+       Base + Header + Layout
+       ======================= */
+    :root{
+      --bg:#0d0017;
+      --panel:#1e1e1e;
+      --accent:#d4af37; /* doré */
+      --accent-dark:#a57f2a;
+      --muted:#999;
+      --text:#fff;
+      --card-border:rgba(255,255,255,0.06);
+    }
+    html,body{height:100%}
     body {
-      background: #0d0017;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      display:flex;
+      flex-direction:column;
     }
 
     header {
-      background: #d4af37;
+      background: var(--accent);
       padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
+      display:flex;
+      align-items:center;
+      gap:40px;
+      position:sticky;
+      top:0;
+      z-index:30;
     }
+    header .logo{ height:70px; display:block; }
+    nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
+    nav ul li a{ color: #111; text-decoration:none; font-weight:700; padding:6px 8px; border-radius:6px; }
+    nav ul li a:hover{ color: #fff; background: rgba(0,0,0,0.12); }
+    nav ul li a.active{ box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12); }
 
-    header .logo {
-      height: 70px;
+    .search-bar{ flex:1; display:flex; justify-content:center; }
+    .search-bar input{
+      width:72%; max-width:720px; padding:12px 16px 12px 44px;
+      border-radius:28px; border:none; background:#121212; color:var(--text); outline:none;
     }
+    .search-bar i{ position:relative; left:28px; top:10px; color:var(--muted); }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
+    /* =======================
+       Breadcrumb (doré centré)
+       ======================= */
+    .breadcrumb-wrapper{ display:flex; justify-content:center; margin:18px 0; }
+    .breadcrumb {
+      background: var(--accent);
+      padding: 10px 18px;
+      border-radius:10px;
+      display:inline-block;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
     }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover, nav ul li a.active {
-      color: #0d0017;
-    }
-
-    .search-bar {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .search-bar input {
-      width: 70%;
-      max-width: 650px;
-      padding: 12px 15px 12px 40px;
-      border: none;
-      border-radius: 25px;
-      font-size: 16px;
-      outline: none;
-      background: #1e1e1e;
-      color: white;
-    }
-
-    .search-bar i {
-      position: relative;
-      left: 35px;
-      top: 12px;
-      color: #999;
-      font-size: 18px;
-      pointer-events: none;
-    }
-
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 250px 1fr 220px;
-      gap: 20px;
-      margin: 30px;
-    }
-
-    /* Sommaire */
-    .sommaire {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      height: fit-content;
-      position: sticky;
-      top: 20px;
-    }
-
-    .sommaire h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #ccc;
-    }
-
-    .sommaire ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sommaire ul li {
-      margin-bottom: 10px;
-    }
-
-    .sommaire ul li a {
-      color: #d4af37;
-      text-decoration: none;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .sommaire ul li a.active {
+    .breadcrumb ul{ list-style:none; display:flex; gap:14px; margin:0; padding:0; align-items:center; }
+    .breadcrumb ul li a{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
       color: #fff;
-      font-weight: bold;
-    }
-
-    /* Texte règlement */
-    .regles-content {
       background: #1e1e1e;
-      padding: 30px;
-      border-radius: 15px;
-      line-height: 1.6;
+      font-weight:700;
+      transition: background .18s, color .18s, transform .12s;
+    }
+    .breadcrumb ul li a:hover{ background:#2a2a2a; transform:translateY(-2px); color:#fff; }
+    .breadcrumb ul li a.active{ background:#f5d76e; color:#000; }
+
+    /* =======================
+       Main grid
+       ======================= */
+    main{
+      flex:1;
+      display:grid;
+      grid-template-columns: 260px 1fr 240px;
+      gap:22px;
+      margin: 20px 30px 60px 30px;
     }
 
-    .regles-content h2 {
-      color: #d4af37;
-      margin-top: 30px;
+    /* Sommaire / left column */
+    .sommaire{
+      background: var(--panel);
+      padding:18px;
+      border-radius:10px;
+      height:fit-content;
+      position:sticky;
+      top:110px;
     }
-
-    /* Cartes */
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 30px;
+    .sommaire h2{ margin:0 0 12px; color:#ccc; font-size:18px; }
+    .sommaire ul{ list-style:none; padding:0; margin:0; }
+    .sommaire ul li{ margin-bottom:10px; }
+    .sommaire ul li a{
+      color: var(--accent);
+      text-decoration:none;
+      font-size:14px;
+      display:block;
+      padding:6px 8px;
+      border-radius:6px;
+      transition: background .12s, color .12s;
     }
+    .sommaire ul li a:hover{ background:#121212; color:#fff; }
+    .sommaire ul li a.active{ background:var(--accent-dark); color:#000; font-weight:700; }
 
-    .card {
-      background: #121212;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 15px;
-      color: #ddd;
+    /* Centre - contenu */
+    .regles-content{
+      background: var(--panel);
+      padding:28px;
+      border-radius:12px;
+      line-height:1.6;
+      color:#ddd;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
     }
+    .regles-content h1{ margin-top:0; color:#fff; font-size:28px; }
+    .regles-content h2{ color:var(--accent); margin-top:28px; font-size:18px; }
+    .regles-content p{ margin:10px 0; color:#ccc; font-size:15px; }
+    .regles-content ul{ margin:6px 0 12px 20px; color:#ccc; }
 
-    .card strong {
-      color: #d4af37;
-    }
-
-    /* Actions */
-    .actions {
-      width: 220px;
+    /* Right - actions */
+    .actions{
+      width:100%;
       background: #0d0017;
-      padding: 20px;
-      border-radius: 10px;
-      height: fit-content;
-      align-self: flex-start;
+      padding:18px;
+      border-radius:10px;
+      align-self:flex-start;
+      height:fit-content;
+      position:sticky;
+      top:110px;
+    }
+    .actions h2{ margin:0 0 12px; color:#ccc; }
+    .actions button{
+      display:flex; align-items:center; gap:10px;
+      width:100%; background:none; border:none; color:var(--accent);
+      padding:10px 6px; text-align:left; cursor:pointer; transition: color .12s;
+    }
+    .actions button:hover{ color:#fff; }
+
+    /* Cards (extrait/regles rapides) */
+    .cards{ display:grid; gap:14px; grid-template-columns:1fr; }
+    .card{ background:#121212; border-radius:10px; padding:12px; border:1px solid var(--card-border); color:#ddd; }
+
+    /* Responsive */
+    @media (max-width:1100px){
+      main{ grid-template-columns: 1fr; margin:14px; }
+      .sommaire, .actions{ position:static; top:auto; }
+      .breadcrumb-wrapper{ padding:0 12px; }
     }
 
-    .actions h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #ccc;
-    }
-
-    .actions button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      background: none;
-      border: none;
-      color: #d4af37;
-      font-size: 15px;
-      padding: 8px 0;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .actions button:hover {
-      color: #fff;
-    }
-
-    body.light-mode {
-      background: #f5f5f5;
-      color: #000;
-    }
-
-    body.light-mode .regles-content,
-    body.light-mode .sommaire {
-      background: #ddd;
-      color: #000;
-    }
-
-    body.light-mode .sommaire ul li a {
-      color: #000;
-    }
-
-    body.light-mode .sommaire ul li a.active {
-      color: #d4af37;
-    }
-
-    body.light-mode .actions {
-      background: #f5f5f5;
-    }
-
-    body.light-mode .card {
-      background: #eee;
-      color: #000;
-    }
+    /* Light mode */
+    body.light-mode{ background:#f5f5f5; color:#111; }
+    body.light-mode .breadcrumb{ background:#f5d76e; }
+    body.light-mode header{ background: #f5d76e; }
+    body.light-mode .sommaire, body.light-mode .regles-content, body.light-mode .actions{ background:#fff; color:#111; }
   </style>
 </head>
 <body data-page="regles">
 
+  <!-- HEADER -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <nav>
+    <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+    <nav aria-label="Navigation principale">
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="regles.html" class="active">Règlement</a></li>
@@ -235,111 +182,244 @@
       </ul>
     </nav>
 
-    <div class="search-bar">
+    <div class="search-bar" role="search" aria-label="Recherche">
       <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher...">
+      <input id="searchInput" type="search" placeholder="Rechercher dans les règles...">
     </div>
   </header>
 
-  <!-- Fil d’Ariane -->
-  <div class="breadcrumb">
-    <div class="breadcrumb-item">
-      <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-    </div>
-    <span class="separator"><i class="fas fa-chevron-right"></i></span>
-    <div class="breadcrumb-item">
-      <a href="regles.html" class="active"><i class="fas fa-book"></i> Règlement</a>
-    </div>
+  <!-- BREADCRUMB doré centré (Accueil - Règlement - Liste) -->
+  <div class="breadcrumb-wrapper" role="navigation" aria-label="Fil d'Ariane">
+    <nav class="breadcrumb">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="regles.html"><i class="fas fa-book"></i> Règlement</a></li>
+        <li><a class="active"><i class="fas fa-list"></i> Liste</a></li>
+      </ul>
+    </nav>
   </div>
 
+  <!-- MAIN -->
   <main>
-    <!-- Sommaire -->
-    <aside class="sommaire">
+    <!-- SOMMAIRE -->
+    <aside class="sommaire" aria-label="Sommaire des règles">
       <h2>Sommaire</h2>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#regles-generales">Règles Générales</a></li>
         <li><a href="#roles">Rôles & Responsabilités</a></li>
-        <li><a href="#sanctions">Sanctions</a></li>
+        <li><a href="#metiers-legaux">Métiers Légaux</a></li>
+        <li><a href="#metiers-illegaux">Métiers Illégaux</a></li>
+        <li><a href="#vehicules">Véhicules & Props</a></li>
+        <li><a href="#economy">Économie & Transactions</a></li>
+        <li><a href="#anticheat">Anti-cheat & Bugs</a></li>
+        <li><a href="#harcelement">Harcèlement & Discrimination</a></li>
+        <li><a href="#sanctions">Sanctions & Appels</a></li>
+        <li><a href="#reporting">Signaler un problème</a></li>
+        <li><a href="#exemples">Exemples & Cas pratiques</a></li>
       </ul>
     </aside>
 
-    <!-- Texte Règlement -->
-    <div class="regles-content" id="regles">
+    <!-- CONTENU -->
+    <article class="regles-content" id="regles" aria-live="polite">
       <h1>Règlement Général du Serveur</h1>
 
       <h2 id="introduction">Introduction</h2>
-      <p>Bienvenue sur GTANew RP ! Le respect du règlement est obligatoire pour tous les joueurs. Ces règles ont pour but de garantir une expérience de jeu immersive, équitable et agréable.</p>
+      <p>Bienvenue sur <strong>GTANew RP</strong> ! Ces règles sont applicables à tous les joueurs et visent à maintenir une expérience RP immersive et respectueuse. En jouant, vous acceptez de respecter ces règles.</p>
 
       <h2 id="regles-generales">Règles Générales</h2>
-      <p>- Le respect entre joueurs est obligatoire.<br>
-         - Le HRP (hors RP) doit être limité au strict nécessaire.<br>
-         - Les propos racistes, sexistes ou discriminatoires sont interdits.<br>
-         - L’utilisation de bugs ou cheats est strictement interdite.</p>
+      <ul>
+        <li>Respect : aucun comportement insultant, raciste, sexiste ou discriminatoire.</li>
+        <li>Réalism & RP : favorisez l'immersion — évitez le metagaming et le powergaming.</li>
+        <li>HRP limité : les discussions HRP doivent rester minimales en jeu.</li>
+        <li>Exploitation : le farming/powerloop abusif ou l'exploitation de bugs est interdit.</li>
+        <li>Cheats : tout cheat / mod non autorisé entraîne un bannissement immédiat.</li>
+      </ul>
 
       <h2 id="roles">Rôles & Responsabilités</h2>
-      <p>Chaque joueur doit respecter le rôle choisi et s’investir dans le RP. Les factions légales comme illégales ont des règles spécifiques. Le non-respect des rôles peut mener à des sanctions.</p>
+      <p>Les joueurs doivent respecter les caractéristiques de leur personnage et la logique RP. Les chefs de factions ont des responsabilités : maintien du RP, organisation, mise en place d'events internes.</p>
 
-      <h2 id="sanctions">Sanctions</h2>
-      <p>Les sanctions sont graduelles selon la gravité : avertissement, kick, ban temporaire, puis ban définitif. L’équipe de modération se réserve le droit d’adapter les sanctions.</p>
+      <h2 id="metiers-legaux">Métiers Légaux</h2>
+      <p>Les métiers légaux (police, EMS, administration, mécanos...) doivent respecter des codes de conduite spécifiques :</p>
+      <ul>
+        <li>Interventions proportionnées et justifiées.</li>
+        <li>Pas d'abus de pouvoirs ni d'extorsion sous couvert d'autorité.</li>
+        <li>Tenue RP : gardez une cohérence entre les actions et le rôle.</li>
+      </ul>
 
-      <!-- Cartes -->
-      <div class="cards">
+      <h2 id="metiers-illegaux">Métiers Illégaux</h2>
+      <p>Les activités illégales (traite, braquage, trafic) sont autorisées dans un cadre RP strict :</p>
+      <ul>
+        <li>Les braquages/attaques doivent être préparés RP et impliquent risque.</li>
+        <li>Respecter les limites : pas d'attaques permanentes ou de griefing.</li>
+        <li>Pas de farm automatique ni de duplication d'objets.</li>
+      </ul>
+
+      <h2 id="vehicules">Véhicules & Props</h2>
+      <p>Utilisation et customisation :</p>
+      <ul>
+        <li>Pas de spawn illégal de véhicules pour un avantage RP injuste.</li>
+        <li>Les véhicules volés doivent être gérés RP (ex : cacher, revendre).</li>
+        <li>L'utilisation de props pour bloquer ou grief est interdite.</li>
+      </ul>
+
+      <h2 id="economy">Économie & Transactions</h2>
+      <p>Toutes transactions doivent rester RP et justifiées :</p>
+      <ul>
+        <li>Arnaques massives / scams hors RP non tolérées.</li>
+        <li>Transactions hors jeu (réelles) strictement interdites.</li>
+        <li>Respecter prix raisonnables pour éviter déséquilibres.</li>
+      </ul>
+
+      <h2 id="anticheat">Anti-cheat & Bugs</h2>
+      <p>Signalez tout bug au staff. Exploiter un bug volontairement est sanctionné. Les preuves d'utilisation de cheat entraînent bannissement.</p>
+
+      <h2 id="harcelement">Harcèlement & Discrimination</h2>
+      <p>Toute forme de harcèlement ou discrimination est strictement interdite. Les victimes doivent signaler au staff avec captures/éléments de preuve.</p>
+
+      <h2 id="sanctions">Sanctions & Appels</h2>
+      <p>Sanctions graduelles : avertissement → kick → ban temporaire → ban définitif. L'équipe de modération peut ajuster selon la gravité. Vous pouvez faire appel via le salon prévu sur le Discord (précisez raisons et preuves).</p>
+
+      <h2 id="reporting">Signaler un problème</h2>
+      <p>Pour signaler : utilisez le formulaire Discord ou ticket. Fournissez : date/heure, pseudo, description, captures/vidéos si possible.</p>
+
+      <h2 id="exemples">Exemples & Cas pratiques</h2>
+      <p>Quelques exemples pour clarifier :</p>
+      <ul>
+        <li><strong>Metagaming :</strong> utiliser une info RP apprise hors jeu pour en tirer avantage — interdit.</li>
+        <li><strong>Powergaming :</strong> forcer une action sur un joueur sans lui laisser de réponse RP — interdit.</li>
+        <li><strong>Abus d'autorité :</strong> PNJs/Staff ou policiers qui exploitent leur rôle pour des bénéfices personnels — sanctionné.</li>
+      </ul>
+
+      <h2 id="faq">FAQ & Ressources</h2>
+      <p>Consulte la page Discord #règlement pour les Q/R, et la section tutoriels pour bien démarrer.</p>
+
+      <!-- LONGUE SECTION D'EXEMPLES (pour complétude/texte) -->
+      <h2 id="cas-pratiques">Cas pratiques détaillés</h2>
+      <p><strong>Scénario 1 — Braquage :</strong> préparation RP, échauffement, planification, rôle des PNJ, conséquences & échappement. Le staff peut intervenir si le RP devient hors-proportion.</p>
+      <p><strong>Scénario 2 — Intervention policière :</strong> sommation claire, prise d'indices, détention justifiée, respect des droits.</p>
+      <p><strong>Scénario 3 — Escroquerie :</strong> arnaque RP possible si la victime a pu raisonnablement se protéger. Les scams massifs / abus répétés seront sanctionnés.</p>
+
+      <h2 id="update-log">Historique des modifications</h2>
+      <p>14/09/2025 — Version initiale du règlement public.<br>
+         01/10/2025 — Ajout de règles anti-exploit et mise à jour des sanctions.</p>
+
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.04); margin:18px 0;">
+
+      <div class="cards" aria-hidden="false">
         <div class="card">
-          <strong>Rappel :</strong> Conservez toujours des preuves (screens/vidéos) en cas de litige.
+          <strong>Rappel :</strong> Conservez toujours des preuves (screens/vidéos) lors d'un signalement.
         </div>
         <div class="card">
-          <strong>Astuce :</strong> Favorisez la résolution RP avant de contacter un staff.
-        </div>
-        <div class="card">
-          <strong>Note :</strong> Toute activité illégale doit rester cohérente avec l’univers RP.
-        </div>
-        <div class="card">
-          <strong>Important :</strong> Les propos discriminatoires seront sanctionnés immédiatement.
+          <strong>Astuce :</strong> Favorisez le dialogue RP avant de contacter le staff, sauf en cas d'urgence/aberration.
         </div>
       </div>
-    </div>
+    </article>
 
-    <!-- Actions -->
-    <aside class="actions">
+    <!-- ACTIONS / Right -->
+    <aside class="actions" aria-label="Actions">
       <h2>Actions</h2>
-      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
-      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button onclick="window.print()"><i class="fas fa-print"></i> Imprimer le règlement</button>
+      <button onclick="document.getElementById('rules-contact')?.scrollIntoView({behavior:'smooth'})"><i class="fas fa-life-ring"></i> Contacter le support</button>
       <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+      <hr style="opacity:0.06; margin:12px 0;">
+      <div style="font-size:13px;color:#999;">Dernières modifications :</div>
+      <ul style="padding-left:18px; margin-top:8px; color:#ccc;">
+        <li>Règles de faction — 14/09/2025</li>
+        <li>Sanctions — 01/10/2025</li>
+      </ul>
     </aside>
   </main>
 
-  <script>
-    const themeBtn = document.getElementById("themeToggle");
+  <!-- FOOTER (simple) -->
+  <footer style="text-align:center; padding:18px 12px; color:#777;">
+    © GTANew — Règlement • Dernière mise à jour : 14/09/2025
+  </footer>
 
-    function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-      themeBtn.innerHTML = document.body.classList.contains("light-mode")
-        ? '<i class="fas fa-adjust"></i> Mode sombre'
-        : '<i class="fas fa-adjust"></i> Mode clair';
+  <!-- SCRIPTS -->
+  <script>
+    // Toggle theme
+    const themeBtn = document.getElementById('themeToggle');
+    function toggleTheme(){
+      document.body.classList.toggle('light-mode');
+      if(themeBtn){
+        themeBtn.innerHTML = document.body.classList.contains('light-mode')
+          ? '<i class="fas fa-adjust"></i> Mode sombre'
+          : '<i class="fas fa-adjust"></i> Mode clair';
+      }
     }
 
-    // --- Scrollspy ---
-    const sections = document.querySelectorAll(".regles-content h2, .regles-content h1");
-    const navLinks = document.querySelectorAll(".sommaire ul li a");
-
-    window.addEventListener("scroll", () => {
-      let current = "";
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
+    // Scrollspy pour sommaire
+    (function(){
+      const sections = Array.from(document.querySelectorAll('.regles-content h2, .regles-content h1'));
+      const links = Array.from(document.querySelectorAll('.sommaire ul li a'));
+      function onScroll(){
+        let currentId = '';
+        sections.forEach(sec => {
+          const top = sec.getBoundingClientRect().top;
+          if(top <= 120) currentId = sec.id || currentId;
+        });
+        links.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive:true });
+      onScroll();
+      // Smooth scroll on click
+      links.forEach(a => {
+        a.addEventListener('click', (e)=>{
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+        });
       });
+    })();
 
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
+    // Load recent items (left column)
+    (function loadRecent(){
+      const recentList = [
+        {title:"Règlement illégal", link:"regles-illegaux.html", date:"13/09/2025"},
+        {title:"Règlement légal", link:"regles-legaux.html", date:"13/09/2025"},
+        {title:"Règlement général", link:"regles-general.html", date:"13/09/2025"},
+        {title:"FAQ Modération", link:"faq-moderation.html", date:"12/09/2025"}
+      ];
+      const container = document.querySelector('.sommaire');
+      if(!container) return;
+      const box = document.createElement('div');
+      box.style.marginTop = '12px';
+      recentList.slice(0,4).forEach(item=>{
+        const a = document.createElement('a');
+        a.href = item.link;
+        a.style.display='block';
+        a.style.padding='8px';
+        a.style.borderRadius='8px';
+        a.style.background='transparent';
+        a.style.color='var(--muted)';
+        a.innerHTML = `<strong style="color:var(--accent)">${item.title}</strong><div style="font-size:12px;color:#999">${item.date}</div>`;
+        box.appendChild(a);
       });
-    });
+      container.appendChild(box);
+    })();
+
+    // Search input quick highlight (simple filtering of headings)
+    (function(){
+      const search = document.getElementById('searchInput');
+      if(!search) return;
+      search.addEventListener('input', ()=>{
+        const q = search.value.trim().toLowerCase();
+        const content = document.querySelector('.regles-content');
+        if(!content) return;
+        const headings = content.querySelectorAll('h1, h2, p, li');
+        headings.forEach(n=>{
+          if(q === '') { n.style.opacity = ''; n.style.display=''; }
+          else {
+            const text = (n.innerText || '').toLowerCase();
+            if(text.includes(q)) { n.style.opacity = ''; n.style.display=''; }
+            else { n.style.opacity = 0.25; }
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
