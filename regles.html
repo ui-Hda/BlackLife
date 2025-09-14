@@ -135,6 +135,27 @@
       margin-top: 30px;
     }
 
+    /* Cartes */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #121212;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      color: #ddd;
+    }
+
+    .card strong {
+      color: #d4af37;
+    }
+
+    /* Actions */
     .actions {
       width: 220px;
       background: #0d0017;
@@ -190,6 +211,11 @@
 
     body.light-mode .actions {
       background: #f5f5f5;
+    }
+
+    body.light-mode .card {
+      background: #eee;
+      color: #000;
     }
   </style>
 </head>
@@ -256,6 +282,22 @@
 
       <h2 id="sanctions">Sanctions</h2>
       <p>Les sanctions sont graduelles selon la gravité : avertissement, kick, ban temporaire, puis ban définitif. L’équipe de modération se réserve le droit d’adapter les sanctions.</p>
+
+      <!-- Cartes -->
+      <div class="cards">
+        <div class="card">
+          <strong>Rappel :</strong> Conservez toujours des preuves (screens/vidéos) en cas de litige.
+        </div>
+        <div class="card">
+          <strong>Astuce :</strong> Favorisez la résolution RP avant de contacter un staff.
+        </div>
+        <div class="card">
+          <strong>Note :</strong> Toute activité illégale doit rester cohérente avec l’univers RP.
+        </div>
+        <div class="card">
+          <strong>Important :</strong> Les propos discriminatoires seront sanctionnés immédiatement.
+        </div>
+      </div>
     </div>
 
     <!-- Actions -->
