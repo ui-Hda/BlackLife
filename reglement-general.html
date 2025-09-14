@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Règlement Général</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #f8f8f8;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+      position: sticky;
+      top: 70px;
+      height: 90vh;
+      overflow-y: auto;
+    }
+    .sidebar h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .sidebar ul li {
+      margin: 8px 0;
+    }
+    .sidebar ul li a {
+      color: #e63946;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    .sidebar ul li a:hover {
+      color: #111;
+    }
+    /* Contenu principal */
+    .content {
+      flex: 1;
+      padding: 0 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .content h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .content section {
+      margin-bottom: 40px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .content h2 {
+      color: #444;
+      margin-top: 30px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .navbar .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .navbar .nav-links li a:hover,
+    .navbar .nav-links li a.active {
+      color: #e63946;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: white;
+    }
+    /* Menu action */
+    .menu-action {
+      background: #f8f8f8;
+      border-top: 1px solid #ddd;
+      padding: 20px;
+    }
+    .menu-action h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .menu-action ul {
+      list-style: none;
+      padding: 0;
+    }
+    .menu-action ul li {
+      margin: 5px 0;
+    }
+    .menu-action ul li a {
+      text-decoration: none;
+      color: #e63946;
+      transition: 0.3s;
+    }
+    .menu-action ul li a:hover {
+      color: #111;
+    }
+  </style>
+</head>
+<body class="light">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">G-Wiki</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a href="reglement-general.html" class="active">Règlement</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="theme-toggle">🌙</button>
+  </nav>
+
+  <div class="container">
+    <!-- Sommaire -->
+    <aside class="sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#powergaming">I. Powergaming</a></li>
+        <li><a href="#metagaming">II. Metagaming</a></li>
+        <li><a href="#massrp">III. Mass RP</a></li>
+        <li><a href="#fearrp">IV. Fear RP</a></li>
+        <li><a href="#carkill">V. Carkill</a></li>
+        <li><a href="#freekill">VI. Freekill</a></li>
+        <li><a href="#copbait">VII. Copbait</a></li>
+        <li><a href="#courtoisie1">VIII. Courtoisie</a></li>
+        <li><a href="#coherence">IX. Cohérence RP</a></li>
+        <li><a href="#coma">X. Coma</a></li>
+        <li><a href="#courtoisie2">XI. Courtoisie</a></li>
+        <li><a href="#noms">XII. Noms interdits</a></li>
+        <li><a href="#provocations">XIII. Provocations</a></li>
+        <li><a href="#chickenrun">XIV. Chicken-run</a></li>
+        <li><a href="#gopro">XV. Go Pro / Photos</a></li>
+        <li><a href="#groupes">XVI. Groupes</a></li>
+        <li><a href="#zonesafe">XVII. Zone Safe</a></li>
+        <li><a href="#metiers">XVIII. Métiers légaux</a></li>
+        <li><a href="#addendum">XIX. Addendum</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenu -->
+    <main class="content">
+      <h1>Règlement Général</h1>
+
+      <section id="powergaming">
+        <h2>I. Powergaming</h2>
+        <p>Le powergaming consiste à faire quelque chose qui serait impossible à réaliser dans la vie réelle. Exemple : Lorsque vous prenez un obstacle à grande vitesse, vous ne pouvez pas continuer de rouler comme si de rien n’était. Il faut garder un minimum de cohérence.</p>
+      </section>
+
+      <section id="metagaming">
+        <h2>II. Metagaming</h2>
+        <p>Utiliser des informations HRP dans un contexte RP est strictement prohibé. Par exemple : utiliser le nom affiché au-dessus de la tête d’un joueur pour l’identifier sans qu’il se soit présenté dans le RP.</p>
+      </section>
+
+      <section id="massrp">
+        <h2>III. Mass RP</h2>
+        <p>Vous devez favoriser l’immersion et éviter les actions qui nuisent à l’expérience de nombreux joueurs. Exemples : bloquer volontairement un événement, semer le chaos en plein lieu public sans raison RP valable.</p>
+      </section>
+
+      <section id="fearrp">
+        <h2>IV. Fear RP</h2>
+        <p>Le FearRP consiste à respecter la peur de la mort de votre personnage. Exemple : si plusieurs personnes armées vous braquent, vous devez obéir et ne pas agir comme si vous n’aviez rien à perdre.</p>
+      </section>
+
+      <section id="carkill">
+        <h2>V. Carkill</h2>
+        <p>Il est interdit d’utiliser un véhicule comme une arme de destruction massive pour écraser volontairement des joueurs en dehors d’une situation RP cohérente.</p>
+      </section>
+
+      <section id="freekill">
+        <h2>VI. Freekill</h2>
+        <p>Tuer un joueur sans raison valable et sans justification RP est strictement interdit.</p>
+      </section>
+
+      <section id="copbait">
+        <h2>VII. Copbait</h2>
+        <p>Il est interdit de provoquer volontairement la police dans le seul but de créer une poursuite ou une interaction sans justification RP.</p>
+      </section>
+
+      <section id="courtoisie1">
+        <h2>VIII. Courtoisie</h2>
+        <p>Le respect est obligatoire, que ce soit en RP ou en HRP. Les insultes HRP, propos discriminatoires ou comportements toxiques sont sanctionnés.</p>
+      </section>
+
+      <section id="coherence">
+        <h2>IX. Cohérence RP</h2>
+        <p>Votre personnage doit agir en accord avec sa personnalité et le cadre du serveur. Les comportements incohérents (exemple : un médecin qui braque une banque) sont sanctionnés.</p>
+      </section>
+
+      <section id="coma">
+        <h2>X. Coma</h2>
+        <p>Un coma est considéré comme une perte de mémoire partielle concernant l’événement en cours. Vous ne pouvez pas utiliser les informations ayant mené à votre coma pour une vengeance.</p>
+      </section>
+
+      <section id="courtoisie2">
+        <h2>XI. Courtoisie (bis)</h2>
+        <p>Le fair-play et le respect sont primordiaux. Même en RP, les propos tenus doivent rester dans le cadre du jeu et ne pas franchir certaines limites HRP.</p>
+      </section>
+
+      <section id="noms">
+        <h2>XII. Noms interdits</h2>
+        <p>Les noms de personnages offensants, ridicules, irréalistes ou tirés de personnalités connues sont interdits.</p>
+      </section>
+
+      <section id="provocations">
+        <h2>XIII. Provocations</h2>
+        <p>Les provocations incessantes sans raison RP valable sont interdites. Exemple : provoquer en permanence une organisation criminelle sans objectif RP.</p>
+      </section>
+
+      <section id="chickenrun">
+        <h2>XIV. Chicken-run</h2>
+        <p>Il est interdit de zigzaguer de manière irréaliste pour éviter des tirs ou une poursuite.</p>
+      </section>
+
+      <section id="gopro">
+        <h2>XV. Go Pro / Photos</h2>
+        <p>Les enregistrements vidéo ou photos doivent être justifiés par un objet RP (caméra, téléphone...). Il est interdit de s’en servir en permanence comme preuve HRP.</p>
+      </section>
+
+      <section id="groupes">
+        <h2>XVI. Groupes</h2>
+        <p>Les regroupements de joueurs doivent rester cohérents RP. Créer un groupe massif sans raison RP claire est sanctionné.</p>
+      </section>
+
+      <section id="zonesafe">
+        <h2>XVII. Zone Safe</h2>
+        <p>Les zones dites “safe” (hôpital, mairie, etc.) sont protégées. Il est interdit d’y commettre des agressions, braquages ou meurtres.</p>
+      </section>
+
+      <section id="metiers">
+        <h2>XVIII. Métiers légaux</h2>
+        <p>Les métiers légaux doivent être respectés dans leur fonctionnement. Exemple : un policier doit agir conformément à la loi et ne pas abuser de ses pouvoirs.</p>
+      </section>
+
+      <section id="addendum">
+        <h2>XIX. Addendum</h2>
+        <p>L’équipe se réserve le droit de sanctionner tout comportement allant à l’encontre de l’esprit RP même s’il n’est pas explicitement écrit dans ce règlement.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Menu action -->
+  <div class="menu-action">
+    <h3>Menu Action</h3>
+    <ul>
+      <li><a href="#">Créer un ticket</a></li>
+      <li><a href="#">Voir les règles rapides</a></li>
+    </ul>
+    <h3>Ajouts Récents</h3>
+    <ul>
+      <li><a href="#">Mise à jour RP - Septembre</a></li>
+      <li><a href="#">Nouvelles règles gangs</a></li>
+    </ul>
+  </div>
+</body>
+</html>
