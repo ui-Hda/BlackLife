@@ -19,7 +19,7 @@
     }
 
     header {
-      background: #001f3f; /* Bleu marine */
+      background: #d3d3d3; /* Gris clair */
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -46,7 +46,7 @@
     }
 
     nav ul li a:hover, nav ul li a.active {
-      color: #001f3f;
+      color: #d3d3d3;
     }
 
     .search-bar {
@@ -78,7 +78,7 @@
 
     /* ========= FIL D'ARIANE ========= */
     .breadcrumb {
-      background: #001f3f;
+      background: #d3d3d3;
       padding: 12px 20px;
       border-radius: 8px;
       display: inline-block;
@@ -94,20 +94,20 @@
     }
     .breadcrumb ul li a {
       text-decoration: none;
-      color: white;
+      color: black;
       font-weight: bold;
       padding: 6px 12px;
       border-radius: 6px;
-      background: #1e1e1e;
+      background: #f5f5f5;
       transition: 0.3s;
     }
     .breadcrumb ul li a:hover {
-      background: #004080; /* Bleu clair au survol */
-      color: #000;
+      background: #b0b0b0;
+      color: white;
     }
     .breadcrumb ul li a.active {
-      background: #004080;
-      color: #000;
+      background: #b0b0b0;
+      color: white;
     }
 
     main {
@@ -141,14 +141,14 @@
     }
 
     .recent-item:hover {
-      border-color: #001f3f;
+      border-color: #d3d3d3;
       background: #1a1a1a;
     }
 
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #001f3f;
+      color: #d3d3d3;
     }
 
     .recent-item p {
@@ -200,7 +200,7 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 31, 63, 0.5);
+      box-shadow: 0 0 20px rgba(211, 211, 211, 0.5);
     }
 
     .card-img {
@@ -211,13 +211,13 @@
     }
 
     .card h3 {
-      color: #001f3f;
+      color: #d3d3d3;
     }
 
     .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #001f3f;
+      color: #d3d3d3;
       font-weight: bold;
     }
 
@@ -243,7 +243,7 @@
       width: 100%;
       background: none;
       border: none;
-      color: #001f3f;
+      color: #d3d3d3;
       font-size: 15px;
       padding: 8px 0;
       text-align: left;
@@ -298,7 +298,6 @@
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="discord.html" class="active">Discord</a></li>
-      <li><a>Liste</a></li>
     </ul>
   </nav>
 
@@ -309,26 +308,14 @@
 
     <div class="cards-wrapper">
       <div class="cards-header">
-        <h2>Discord</h2>
+        <h2>Discord Officiel</h2>
       </div>
       <div class="cards">
-        <div class="card" data-date="2025-09-13" data-link="discord-regles.html">
-          <img src="assets/discord-regles.png" alt="Règles Discord" class="card-img">
-          <h3>Règles Discord</h3>
-          <p>Consultez les règles spécifiques à notre serveur Discord.</p>
-          <a href="discord-regles.html">Voir les règles Discord</a>
-        </div>
-        <div class="card" data-date="2025-09-13" data-link="discord-channels.html">
-          <img src="assets/discord-channels.png" alt="Salons Discord" class="card-img">
-          <h3>Salons Discord</h3>
-          <p>Découvrez les salons disponibles et leurs usages.</p>
-          <a href="discord-channels.html">Voir les salons</a>
-        </div>
-        <div class="card" data-date="2025-09-13" data-link="discord-bots.html">
-          <img src="assets/discord-bots.png" alt="Bots Discord" class="card-img">
-          <h3>Bots Discord</h3>
-          <p>Apprenez à utiliser nos bots et leurs commandes.</p>
-          <a href="discord-bots.html">Voir les bots</a>
+        <div class="card" data-date="2025-09-14">
+          <img src="assets/discord-logo.png" alt="Serveur Discord" class="card-img">
+          <h3>Rejoindre le Discord</h3>
+          <p>Discutez avec la communauté et recevez les dernières informations.</p>
+          <a href="https://discord.gg/tonlien" target="_blank">Rejoindre le serveur</a>
         </div>
       </div>
     </div>
@@ -356,15 +343,13 @@
 
     function loadRecent() {
       const recent = [
-        { title: "Bots Discord", link: "discord-bots.html", date: "13/09/2025" },
-        { title: "Salons Discord", link: "discord-channels.html", date: "13/09/2025" },
-        { title: "Règles Discord", link: "discord-regles.html", date: "13/09/2025" }
+        { title: "Rejoindre le Discord", link: "https://discord.gg/tonlien", date: "14/09/2025" }
       ];
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
       recent.forEach(item => {
         const div = document.createElement("div");
         div.classList.add("recent-item");
-        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+        div.innerHTML = `<a href="${item.link}" target="_blank"><h3>${item.title}</h3><p>Ajouté le ${item.date}</p></a>`;
         recentContainer.appendChild(div);
       });
     }
@@ -373,4 +358,3 @@
   </script>
 </body>
 </html>
-
