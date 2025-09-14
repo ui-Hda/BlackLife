@@ -100,36 +100,35 @@
 
     /* ========= FIL D'ARIANE ========= */
     .breadcrumb {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
+      background: #1e90ff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
     }
-
     .breadcrumb ul {
-      display: flex;
       list-style: none;
-      background: #1e90ff; /* Fond bleu foncé */
-      padding: 8px 12px;
-      border-radius: 12px;
-      gap: 8px;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
     }
-
     .breadcrumb ul li a {
-      padding: 6px 14px;
-      border-radius: 6px;
       text-decoration: none;
+      color: white;
       font-weight: bold;
-      background: #222; /* Boutons gris foncé */
-      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
       transition: 0.3s;
     }
-
     .breadcrumb ul li a:hover {
-      background: #333;
+      background: #63b3ff;
+      color: #000;
     }
-
     .breadcrumb ul li a.active {
-      background: #4aa8ff; /* Bouton actif bleu clair */
+      background: #63b3ff;
       color: #000;
     }
 
@@ -294,7 +293,7 @@
       <li><a href="index.html">Accueil</a></li>
       <li><a href="tutoriels.html">Tutoriels</a></li>
       <li><a href="tuto-debutant.html">Débutant</a></li>
-      <li><a href="#" class="active">Starter Pack</a></li>
+      <li><a class="active">Starter Pack</a></li>
     </ul>
   </nav>
 
@@ -313,7 +312,7 @@
       </p>
       <img src="assets/screens/starter1.png" alt="Starter pack - contenu">
       <p>
-        Vous y trouverez généralement une petite somme d’argent, un téléphone, une arme de mélée ainsi que de la nourriture.  
+        Vous y trouverez généralement une petite somme d’argent, un téléphone, une arme de mêlée ainsi que de la nourriture.  
         Ces éléments sont conçus pour vous aider à découvrir les mécaniques du serveur.
       </p>
       <img src="assets/screens/starter2.png" alt="Starter pack - exemple d'équipement">
@@ -349,7 +348,7 @@
       const recent = [
         { title: "Tutoriel Starter Pack", link: "tuto-starterpack.html", date: "14/09/2025" },
         { title: "Tutoriel Création de personnage", link: "tuto-personnage.html", date: "14/09/2025" },
-        { title: "Tutoriel Connexion", link: "tuto-connect.html", date: "13/09/2025" }
+        { title: "Tutoriel Connexion", link: "tuto-connexion.html", date: "13/09/2025" }
       ];
 
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
