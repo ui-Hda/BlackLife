@@ -112,45 +112,54 @@
   box-sizing: border-box;
 }
 
-/* Fil d'Ariane vertical */
-.breadcrumb-vertical {
+/* Fil d’Ariane style Unity */
+.breadcrumb {
   display: flex;
   justify-content: center;
-  margin: 40px 0;
-}
-
-.breadcrumb-vertical ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column; /* vertical */
+  align-items: center;
   gap: 15px;
-  padding: 20px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  align-items: center; /* centre horizontalement */
+  margin: 25px auto;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: #1e1e1e;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  width: fit-content;
 }
 
-.breadcrumb-vertical ul li {
+.breadcrumb-item {
   display: flex;
   align-items: center;
-  font-size: 15px;
-  color: #aaa;
+  gap: 8px;
+  font-weight: bold;
 }
 
-.breadcrumb-vertical ul li i {
-  margin-right: 8px;
-}
-
-.breadcrumb-vertical ul li a {
+.breadcrumb-item a {
   text-decoration: none;
   color: #ccc;
-  font-weight: bold;
-  transition: 0.3s;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s, color 0.3s;
 }
 
-.breadcrumb-vertical ul li a:hover {
-  color: #fff;
+.breadcrumb-item a:hover {
+  background: #333;
+  color: #d4af37;
+}
+
+.breadcrumb-item a.active {
+  background: #d4af37;
+  color: #000;
+}
+
+.breadcrumb .separator {
+  color: #999;
+  font-size: 14px;
+}
+
 }
 
 /* Couleur active spécifique pour regles-illegaux.html */
