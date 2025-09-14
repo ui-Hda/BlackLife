@@ -160,8 +160,12 @@
   font-size: 14px;
 }
 
-/* ✅ Couleur spécifique pour la page regles-illegaux.html */
-body[data-page="regles-illegaux"] .breadcrumb-item a.active {
+/* Couleur active pour toutes les pages de règlements */
+body[data-page="regles-illegaux"] .breadcrumb .breadcrumb-item a.active,
+body[data-page="regles-legaux"] .breadcrumb .breadcrumb-item a.active,
+body[data-page="regles-general"] .breadcrumb .breadcrumb-item a.active {
   background: #FFD700; /* Jaune doré */
   color: #000;
+}
+
 }
