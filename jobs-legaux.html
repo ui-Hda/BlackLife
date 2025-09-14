@@ -20,17 +20,15 @@
 
     /* ===== NAVBAR ===== */
     header {
-      background: #065f46; /* Vert foncé */
+      background: #065f46;
       padding: 15px 30px;
       display: flex;
       align-items: center;
       gap: 40px;
     }
-
     header .logo {
       height: 70px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -38,16 +36,15 @@
       margin: 0;
       padding: 0;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
     }
-
-    nav ul li a:hover, nav ul li a.active {
-      color: #34d399; /* Vert clair */
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #34d399;
     }
 
     /* ===== SEARCH BAR ===== */
@@ -56,7 +53,6 @@
       display: flex;
       justify-content: center;
     }
-
     .search-bar input {
       width: 70%;
       max-width: 650px;
@@ -68,7 +64,6 @@
       background: #1e1e1e;
       color: white;
     }
-
     .search-bar i {
       position: relative;
       left: 35px;
@@ -76,52 +71,6 @@
       color: #999;
       font-size: 18px;
       pointer-events: none;
-    }
-
-    /* ===== BREADCRUMB ===== */
-    .breadcrumb {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin: 20px auto;
-      padding: 10px 18px;
-      border-radius: 10px;
-      background: #1e1e1e;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-      width: fit-content;
-    }
-    .breadcrumb-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-    }
-    .breadcrumb-item a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: #ccc;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: #2a2a2a;
-      transition: background .18s, color .18s;
-    }
-    .breadcrumb-item a i {
-      color: #999;
-    }
-    .breadcrumb .separator {
-      color: #999;
-      font-size: 14px;
-    }
-    .breadcrumb-item a:hover {
-      background: #333;
-      color: #34d399; /* Vert clair au hover */
-    }
-    .breadcrumb-item a.active {
-      background: #34d399; /* Vert clair actif */
-      color: #111;
     }
 
     /* ===== LAYOUT 3 colonnes ===== */
@@ -140,13 +89,11 @@
       border-radius: 10px;
       height: fit-content;
     }
-
     .recent h2 {
       font-size: 18px;
       margin-bottom: 15px;
       color: #ccc;
     }
-
     .recent-item {
       background: #0e0e0e;
       border: 1px solid #444;
@@ -155,18 +102,15 @@
       margin-bottom: 12px;
       transition: 0.3s;
     }
-
     .recent-item:hover {
       border-color: #34d399;
       background: #1a1a1a;
     }
-
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
       color: #34d399;
     }
-
     .recent-item p {
       margin: 0;
       font-size: 13px;
@@ -179,33 +123,28 @@
       padding: 30px;
       border-radius: 15px;
     }
-
     .cards-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
-
     .cards-header h2 {
       margin: 0;
       font-size: 20px;
       color: #fff;
     }
-
     .cards-header select {
       padding: 8px 12px;
       border-radius: 8px;
       border: none;
       font-size: 14px;
     }
-
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-
     .card {
       background: #0e0e0e;
       color: #fff;
@@ -215,19 +154,16 @@
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
     }
-
     .card:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
     }
-
     .card-img {
       width: 100px;
       height: 100px;
       object-fit: contain;
       margin-bottom: 15px;
     }
-
     .card h3 {
       color: #34d399;
     }
@@ -241,13 +177,11 @@
       height: fit-content;
       align-self: flex-start;
     }
-
     .actions h2 {
       font-size: 18px;
       margin-bottom: 15px;
       color: #ccc;
     }
-
     .actions button {
       display: flex;
       align-items: center;
@@ -262,7 +196,6 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
     .actions button:hover {
       color: #fff;
     }
@@ -273,13 +206,11 @@
       flex-direction: column;
       gap: 15px;
     }
-
     .list-view .card {
       display: flex;
       align-items: center;
       text-align: left;
     }
-
     .list-view .card-img {
       width: 80px;
       height: 80px;
@@ -291,18 +222,15 @@
       background: #f5f5f5;
       color: #000;
     }
-
     body.light-mode header {
       background: #10b981;
     }
-
     body.light-mode .recent,
     body.light-mode .cards-wrapper,
     body.light-mode .actions {
       background: #ddd;
       color: #000;
     }
-
     body.light-mode .card,
     body.light-mode .recent-item {
       background: #fff;
@@ -312,7 +240,6 @@
   </style>
 </head>
 <body>
-
   <!-- ====== NAVBAR ====== -->
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo">
@@ -333,21 +260,6 @@
     </div>
   </header>
 
-  <!-- ====== FIL D'ARIANE ====== -->
-  <nav class="breadcrumb" aria-label="Fil d'Ariane">
-    <div class="breadcrumb-item">
-      <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-    </div>
-    <div class="separator"><i class="fas fa-chevron-right"></i></div>
-    <div class="breadcrumb-item">
-      <a href="jobs-legaux.html" class="active"><i class="fas fa-briefcase"></i> Jobs Légaux</a>
-    </div>
-    <div class="separator"><i class="fas fa-chevron-right"></i></div>
-    <div class="breadcrumb-item">
-      <a href="#top">Liste</a>
-    </div>
-  </nav>
-
   <!-- ====== MAIN ====== -->
   <main>
     <!-- AJOUTS RECENTS -->
@@ -364,9 +276,58 @@
           <option value="date">Trier par Date</option>
         </select>
       </div>
-
       <div class="cards grid-view" id="cardsContainer">
-        <!-- ... tes cartes de jobs légaux ... -->
+        <!-- Exemples de jobs -->
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lspd.png" alt="LSPD" class="card-img">
+          <h3>LSPD</h3>
+          <p>Maintenir l’ordre et la sécurité en ville.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bcso.png" alt="BCSO" class="card-img">
+          <h3>BCSO</h3>
+          <p>Sécurité et patrouille dans le comté.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/gouv.png" alt="Gouvernement" class="card-img">
+          <h3>Gouvernement</h3>
+          <p>Gestion de l’administration et des lois.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/fib.png" alt="FIB" class="card-img">
+          <h3>FIB</h3>
+          <p>Investigations et sécurité nationale.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/lscustoms.png" alt="LS Customs" class="card-img">
+          <h3>LS Customs</h3>
+          <p>Réparation et personnalisation de véhicules.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/bennys.png" alt="Benny's" class="card-img">
+          <h3>Benny's</h3>
+          <p>Customisation haut de gamme.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/ems.png" alt="EMS" class="card-img">
+          <h3>EMS</h3>
+          <p>Soins et interventions médicales.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/club.png" alt="Club" class="card-img">
+          <h3>Boîte de nuit / Bar</h3>
+          <p>Animation et gestion nocturne.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/vigneron.png" alt="Vigneron" class="card-img">
+          <h3>Vigneron</h3>
+          <p>Culture et production de vin.</p>
+        </div>
+        <div class="card" data-date="2025-09-13">
+          <img src="assets/jobs/concessionnaire.png" alt="Concessionnaire" class="card-img">
+          <h3>Concessionnaire</h3>
+          <p>Vente de véhicules.</p>
+        </div>
       </div>
     </div>
 
@@ -379,9 +340,75 @@
     </aside>
   </main>
 
-  <!-- SCRIPT identique (recherche/tri/theme/vue/recent) -->
+  <!-- ====== SCRIPT ====== -->
   <script>
-    // même script que ton code actuel
+    const searchInput = document.getElementById("searchInput");
+    const cardsContainer = document.getElementById("cardsContainer");
+    const sortSelect = document.getElementById("sortSelect");
+    const cards = document.querySelectorAll(".card");
+    const recentContainer = document.getElementById("recentContainer");
+    const themeBtn = document.getElementById("themeToggle");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
+
+    // 🔍 Recherche
+    searchInput.addEventListener("input", () => {
+      const search = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(search) ? "block" : "none";
+      });
+    });
+
+    // 📌 Tri
+    sortSelect.addEventListener("change", () => {
+      let sortedCards = Array.from(cards);
+      if (sortSelect.value === "name") {
+        sortedCards.sort((a, b) =>
+          a.querySelector("h3").innerText.localeCompare(b.querySelector("h3").innerText)
+        );
+      } else if (sortSelect.value === "date") {
+        sortedCards.sort((a, b) =>
+          new Date(b.dataset.date) - new Date(a.dataset.date)
+        );
+      }
+      cardsContainer.innerHTML = "";
+      sortedCards.forEach(card => cardsContainer.appendChild(card));
+    });
+
+    // 🌙 Mode clair/sombre
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="fas fa-adjust"></i> Mode sombre'
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    });
+
+    // 🔲 Vue Grille / Liste
+    gridBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("list-view");
+      cardsContainer.classList.add("grid-view");
+    });
+    listBtn.addEventListener("click", () => {
+      cardsContainer.classList.remove("grid-view");
+      cardsContainer.classList.add("list-view");
+    });
+
+    // 📌 Ajouts récents auto
+    function loadRecent() {
+      let sortedCards = Array.from(cards);
+      sortedCards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      sortedCards.slice(0, 3).forEach(card => {
+        const title = card.querySelector("h3").innerText;
+        const date = "13/09/2025";
+        const item = document.createElement("div");
+        item.classList.add("recent-item");
+        item.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
+        recentContainer.appendChild(item);
+      });
+    }
+    loadRecent();
   </script>
 </body>
 </html>
