@@ -47,6 +47,35 @@
       color: #34d399;
     }
 
+    /* ===== FIL D'ARIANE ===== */
+    .breadcrumb {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background: #1e1e1e;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 20px auto 0;
+      width: fit-content;
+    }
+    .breadcrumb a {
+      padding: 8px 15px;
+      border-radius: 6px;
+      background: #2d2d2d;
+      color: #ccc;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .breadcrumb a.active {
+      background: #065f46;
+      color: white;
+    }
+    .breadcrumb a:hover {
+      background: #34d399;
+      color: #000;
+    }
+
     /* ===== SEARCH BAR ===== */
     .search-bar {
       flex-grow: 1;
@@ -260,12 +289,12 @@
     </div>
   </header>
 
-  <!-- ====== FIL D'ARIANE ====== -->
-  <nav class="breadcrumb" aria-label="Fil d'Ariane">
-    <div class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Accueil</a></div>
-    <div class="separator"><i class="fas fa-chevron-right"></i></div>
-    <div class="breadcrumb-item"><a href="jobs-legaux.html" class="active"><i class="fas fa-briefcase"></i> Jobs Légaux</a></div>
-  </nav>
+  <!-- FIL D'ARIANE -->
+  <div class="breadcrumb">
+    <a href="#">Accueil</a>
+    <a href="#" class="active">Jobs Légaux</a>
+    <a href="#">Liste</a>
+  </div>
 
   <!-- ====== MAIN ====== -->
   <main>
