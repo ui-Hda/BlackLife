@@ -98,10 +98,10 @@
 
 .jobs-cards button:hover {
   background: #c77dff;
-  .recent-additions,
 }
 
-  .actions {
+/* ====== ACTIONS ====== */
+.actions {
   width: 260px;         /* largeur fixe */
   height: 260px;        /* hauteur identique = carré */
   overflow-y: auto;     /* scroll si trop de contenu */
@@ -112,7 +112,7 @@
   box-sizing: border-box;
 }
 
-/* Fil d’Ariane style Unity */
+/* ====== FIL D’ARIANE (style Unity) ====== */
 .breadcrumb {
   display: flex;
   justify-content: center;
@@ -160,9 +160,8 @@
   font-size: 14px;
 }
 
-}
-
 /* Couleur active spécifique pour regles-illegaux.html */
-.breadcrumb-vertical ul li a.active {
-  color: #FFD700; /* jaune doré */
+.breadcrumb .breadcrumb-item a.active {
+  background: #FFD700; /* Jaune doré */
+  color: #000;
 }
