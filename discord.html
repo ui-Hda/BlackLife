@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTANew - Discord</title>
+  <title>GTANew - Tutoriels</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
@@ -19,7 +19,7 @@
     }
 
     header {
-      background: #d3d3d3; /* Gris clair */
+      background: #3a4f87; /* Bleu marine clair */
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -78,7 +78,7 @@
 
     /* ========= FIL D'ARIANE ========= */
     .breadcrumb {
-      background: #d3d3d3;
+      background: #3a4f87;
       padding: 12px 20px;
       border-radius: 8px;
       display: inline-block;
@@ -94,19 +94,19 @@
     }
     .breadcrumb ul li a {
       text-decoration: none;
-      color: black;
+      color: white;
       font-weight: bold;
       padding: 6px 12px;
       border-radius: 6px;
-      background: #f5f5f5;
+      background: #1e1e1e;
       transition: 0.3s;
     }
     .breadcrumb ul li a:hover {
-      background: #b0b0b0;
+      background: #5a6fa8;
       color: white;
     }
     .breadcrumb ul li a.active {
-      background: #b0b0b0;
+      background: #5a6fa8;
       color: white;
     }
 
@@ -141,14 +141,14 @@
     }
 
     .recent-item:hover {
-      border-color: #d3d3d3;
+      border-color: #3a4f87;
       background: #1a1a1a;
     }
 
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #d3d3d3;
+      color: #3a4f87;
     }
 
     .recent-item p {
@@ -200,7 +200,7 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(211, 211, 211, 0.5);
+      box-shadow: 0 0 20px rgba(58, 79, 135, 0.5);
     }
 
     .card-img {
@@ -211,13 +211,13 @@
     }
 
     .card h3 {
-      color: #d3d3d3;
+      color: #3a4f87;
     }
 
     .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #d3d3d3;
+      color: #3a4f87;
       font-weight: bold;
     }
 
@@ -243,7 +243,7 @@
       width: 100%;
       background: none;
       border: none;
-      color: #d3d3d3;
+      color: #3a4f87;
       font-size: 15px;
       padding: 8px 0;
       text-align: left;
@@ -282,9 +282,9 @@
         <li><a href="regles.html">Règlement</a></li>
         <li><a href="jobs-legaux.html">Légal</a></li>
         <li><a href="jobs-illegaux.html">Illégal</a></li>
-        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
         <li><a href="generales.html">Générales</a></li>
-        <li><a href="discord.html" class="active">Discord</a></li>
+        <li><a href="discord.html">Discord</a></li>
       </ul>
     </nav>
     <div class="search-bar">
@@ -297,7 +297,7 @@
   <nav class="breadcrumb">
     <ul>
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="discord.html" class="active">Discord</a></li>
+      <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
     </ul>
   </nav>
 
@@ -308,14 +308,26 @@
 
     <div class="cards-wrapper">
       <div class="cards-header">
-        <h2>Discord Officiel</h2>
+        <h2>Liste des Tutoriels</h2>
       </div>
       <div class="cards">
-        <div class="card" data-date="2025-09-14">
-          <img src="assets/discord-logo.png" alt="Serveur Discord" class="card-img">
-          <h3>Rejoindre le Discord</h3>
-          <p>Discutez avec la communauté et recevez les dernières informations.</p>
-          <a href="https://discord.gg/tonlien" target="_blank">Rejoindre le serveur</a>
+        <div class="card" data-date="2025-09-14" data-link="tuto-starterpack.html">
+          <img src="assets/starterpack.png" alt="Starter Pack" class="card-img">
+          <h3>Starter Pack</h3>
+          <p>Apprenez à bien débuter sur le serveur avec ce guide.</p>
+          <a href="tuto-starterpack.html">Voir le tutoriel</a>
+        </div>
+        <div class="card" data-date="2025-09-14" data-link="tuto-connexion.html">
+          <img src="assets/connexion.png" alt="Connexion" class="card-img">
+          <h3>Connexion</h3>
+          <p>Toutes les étapes pour vous connecter au serveur.</p>
+          <a href="tuto-connexion.html">Voir le tutoriel</a>
+        </div>
+        <div class="card" data-date="2025-09-14" data-link="tuto-personnage.html">
+          <img src="assets/personnage.png" alt="Créer un personnage" class="card-img">
+          <h3>Créer un personnage</h3>
+          <p>Découvrez comment créer et personnaliser votre personnage RP.</p>
+          <a href="tuto-personnage.html">Voir le tutoriel</a>
         </div>
       </div>
     </div>
@@ -343,13 +355,15 @@
 
     function loadRecent() {
       const recent = [
-        { title: "Rejoindre le Discord", link: "https://discord.gg/tonlien", date: "14/09/2025" }
+        { title: "Créer un personnage", link: "tuto-personnage.html", date: "14/09/2025" },
+        { title: "Connexion", link: "tuto-connexion.html", date: "14/09/2025" },
+        { title: "Starter Pack", link: "tuto-starterpack.html", date: "14/09/2025" }
       ];
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
       recent.forEach(item => {
         const div = document.createElement("div");
         div.classList.add("recent-item");
-        div.innerHTML = `<a href="${item.link}" target="_blank"><h3>${item.title}</h3><p>Ajouté le ${item.date}</p></a>`;
+        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Ajouté le ${item.date}</p></a>`;
         recentContainer.appendChild(div);
       });
     }
