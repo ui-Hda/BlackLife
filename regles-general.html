@@ -117,8 +117,9 @@
       transition: 0.3s;
     }
 
-    .sommaire ul li a:hover {
-      color: white;
+    .sommaire ul li a.active {
+      color: #fff;
+      font-weight: bold;
     }
 
     /* Texte règlement */
@@ -183,6 +184,10 @@
       color: #000;
     }
 
+    body.light-mode .sommaire ul li a.active {
+      color: #d4af37;
+    }
+
     body.light-mode .actions {
       background: #f5f5f5;
     }
@@ -195,7 +200,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html" class="active">Réglement</a></li>
+        <li><a href="regles.html" class="active">Règlement</a></li>
         <li><a href="jobs-legaux.html">Légal</a></li>
         <li><a href="jobs-illegaux.html">Illégal</a></li>
         <li><a href="tutoriels.html">Tutoriels</a></li>
@@ -238,7 +243,7 @@
     </aside>
 
     <!-- Texte Règlement -->
-    <div class="regles-content">
+    <div class="regles-content" id="regles">
       <h1>Règlement Général</h1>
 
       <h2 id="powergaming">I. Powergaming</h2>
@@ -319,6 +324,28 @@
         themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
       }
     }
+
+    // --- Scrollspy ---
+    const sections = document.querySelectorAll(".regles-content h2");
+    const navLinks = document.querySelectorAll(".sommaire ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
   </script>
 </body>
 </html>
