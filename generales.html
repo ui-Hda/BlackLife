@@ -19,7 +19,7 @@
     }
 
     header {
-      background: #8B4513; /* Marron */
+      background: #d2b48c; /* Beige */
       padding: 15px 30px;
       display: flex;
       align-items: center;
@@ -46,7 +46,7 @@
     }
 
     nav ul li a:hover, nav ul li a.active {
-      color: #8B4513;
+      color: #d2b48c;
     }
 
     .search-bar {
@@ -78,7 +78,7 @@
 
     /* ========= FIL D'ARIANE ========= */
     .breadcrumb {
-      background: #8B4513;
+      background: #d2b48c;
       padding: 12px 20px;
       border-radius: 8px;
       display: inline-block;
@@ -102,11 +102,11 @@
       transition: 0.3s;
     }
     .breadcrumb ul li a:hover {
-      background: #a0522d; /* Marron clair au survol */
+      background: #f5deb3; /* beige clair */
       color: #000;
     }
     .breadcrumb ul li a.active {
-      background: #a0522d;
+      background: #f5deb3;
       color: #000;
     }
 
@@ -141,14 +141,14 @@
     }
 
     .recent-item:hover {
-      border-color: #8B4513;
+      border-color: #d2b48c;
       background: #1a1a1a;
     }
 
     .recent-item h3 {
       font-size: 15px;
       margin: 0 0 5px;
-      color: #8B4513;
+      color: #d2b48c;
     }
 
     .recent-item p {
@@ -200,7 +200,7 @@
 
     .card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+      box-shadow: 0 0 20px rgba(210, 180, 140, 0.5);
     }
 
     .card-img {
@@ -211,13 +211,13 @@
     }
 
     .card h3 {
-      color: #8B4513;
+      color: #d2b48c;
     }
 
     .card a {
       display: inline-block;
       margin-top: 10px;
-      color: #8B4513;
+      color: #d2b48c;
       font-weight: bold;
     }
 
@@ -243,7 +243,7 @@
       width: 100%;
       background: none;
       border: none;
-      color: #8B4513;
+      color: #d2b48c;
       font-size: 15px;
       padding: 8px 0;
       text-align: left;
@@ -309,26 +309,26 @@
 
     <div class="cards-wrapper">
       <div class="cards-header">
-        <h2>Infos Générales</h2>
+        <h2>Règles Générales</h2>
       </div>
       <div class="cards">
-        <div class="card" data-date="2025-09-13" data-link="info-serveur.html">
-          <img src="assets/info-serveur.png" alt="Infos Serveur" class="card-img">
-          <h3>Informations Serveur</h3>
-          <p>Découvrez toutes les infos générales concernant GTANew.</p>
-          <a href="info-serveur.html">Voir les infos</a>
+        <div class="card" data-date="2025-09-13" data-link="generales-conduite.html">
+          <img src="assets/generales-conduite.png" alt="Conduite RP" class="card-img">
+          <h3>Conduite RP</h3>
+          <p>Respectez les bonnes pratiques et comportements en RP.</p>
+          <a href="generales-conduite.html">Voir la conduite RP</a>
         </div>
-        <div class="card" data-date="2025-09-13" data-link="faq.html">
-          <img src="assets/faq.png" alt="FAQ" class="card-img">
-          <h3>FAQ</h3>
-          <p>Questions fréquentes et réponses pour vous guider.</p>
-          <a href="faq.html">Voir la FAQ</a>
+        <div class="card" data-date="2025-09-13" data-link="generales-sanctions.html">
+          <img src="assets/generales-sanctions.png" alt="Sanctions RP" class="card-img">
+          <h3>Sanctions RP</h3>
+          <p>Découvrez le barème des sanctions appliquées par le staff.</p>
+          <a href="generales-sanctions.html">Voir les sanctions</a>
         </div>
-        <div class="card" data-date="2025-09-13" data-link="contact.html">
-          <img src="assets/contact.png" alt="Contact" class="card-img">
-          <h3>Contact</h3>
-          <p>Besoin d’aide ? Contactez l’administration du serveur.</p>
-          <a href="contact.html">Voir les contacts</a>
+        <div class="card" data-date="2025-09-13" data-link="generales-faq.html">
+          <img src="assets/generales-faq.png" alt="FAQ RP" class="card-img">
+          <h3>FAQ Générales</h3>
+          <p>Questions fréquentes et réponses concernant le RP.</p>
+          <a href="generales-faq.html">Voir la FAQ</a>
         </div>
       </div>
     </div>
@@ -356,9 +356,9 @@
 
     function loadRecent() {
       const recent = [
-        { title: "Contact", link: "contact.html", date: "13/09/2025" },
-        { title: "FAQ", link: "faq.html", date: "13/09/2025" },
-        { title: "Informations Serveur", link: "info-serveur.html", date: "13/09/2025" }
+        { title: "FAQ Générales", link: "generales-faq.html", date: "13/09/2025" },
+        { title: "Sanctions RP", link: "generales-sanctions.html", date: "13/09/2025" },
+        { title: "Conduite RP", link: "generales-conduite.html", date: "13/09/2025" }
       ];
       recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
       recent.forEach(item => {
@@ -373,4 +373,3 @@
   </script>
 </body>
 </html>
-
