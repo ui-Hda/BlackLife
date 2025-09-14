@@ -76,43 +76,6 @@
       pointer-events: none;
     }
 
-    /* ========= FIL D'ARIANE ========= */
-    .breadcrumb {
-      background: #1e90ff; /* bleu comme la navbar */
-      padding: 12px 20px;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 20px;
-    }
-
-    .breadcrumb ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .breadcrumb ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: #1e1e1e;
-      transition: 0.3s;
-    }
-
-    .breadcrumb ul li a:hover {
-      background: #63b3ff; /* bleu clair hover */
-      color: #000;
-    }
-
-    .breadcrumb ul li a.active {
-      background: #63b3ff; /* actif */
-      color: #000;
-    }
-
     main {
       flex: 1;
       display: grid;
@@ -274,6 +237,44 @@
       color: #000;
       border: 2px solid #000;
     }
+
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #1e90ff; /* bleu comme la navbar */
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;  /* auto pour centrer horizontalement */
+    }
+
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center; /* centre les éléments */
+    }
+
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+
+    .breadcrumb ul li a:hover {
+      background: #63b3ff; /* bleu clair hover */
+      color: #000;
+    }
+
+    .breadcrumb ul li a.active {
+      background: #63b3ff; /* actif */
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -303,7 +304,7 @@
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
-      <li><a href="#">Liste</a></li>
+      <li><a>Liste</a></li>
     </ul>
   </nav>
 
