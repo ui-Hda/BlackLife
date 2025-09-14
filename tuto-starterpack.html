@@ -98,6 +98,42 @@
       pointer-events: none;
     }
 
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .breadcrumb ul {
+      display: flex;
+      list-style: none;
+      background: #1e1e1e;
+      padding: 8px 12px;
+      border-radius: 12px;
+      gap: 10px;
+    }
+
+    .breadcrumb ul li a {
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #ddd;
+      background: #2b2b2b;
+      transition: 0.3s;
+    }
+
+    .breadcrumb ul li a:hover {
+      background: #444;
+      color: #fff;
+    }
+
+    .breadcrumb ul li a.active {
+      background: #1e90ff; /* actif bleu */
+      color: #000;
+    }
+
     /* LAYOUT */
     main {
       flex: 1;
@@ -173,23 +209,6 @@
       border-radius: 12px;
       margin: 20px 0;
       box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
-
-    /* Fil d’Ariane */
-    .breadcrumb {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    .breadcrumb a {
-      color: #1e90ff;
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
     }
 
     /* Menu actions */
@@ -270,6 +289,16 @@
     </div>
   </header>
 
+  <!-- ========= FIL D'ARIANE ========= -->
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a href="tuto-debutant.html">Débutant</a></li>
+      <li><a href="#" class="active">Starter Pack</a></li>
+    </ul>
+  </nav>
+
   <main>
     <!-- Ajouts récents -->
     <aside class="recent" id="recentContainer">
@@ -278,14 +307,6 @@
 
     <!-- Zone tutoriel -->
     <div class="tutorial-content">
-      <!-- Fil d’Ariane -->
-      <div class="breadcrumb">
-        <a href="index.html">Accueil</a> - 
-        <a href="tutoriels.html">Tutoriels</a> - 
-        <a href="tuto-debutant.html">Débutant</a> - 
-        Starter Pack
-      </div>
-
       <h1>Starter Pack</h1>
       <p>
         Lors de vos premiers pas sur GTANew, vous recevez un <strong>starter pack</strong>.  
