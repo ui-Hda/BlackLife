@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GTANew — Gouvernement</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --bg:#0d0017;
+  --card:#0e0e0e;
+  --panel:#1e1e1e;
+  --accent:#10b981; /* vert */
+  --accent-dark:#065f46;
+  --muted:#999;
+  --text:#fff;
+  --new-badge-bg: #34d399;
+  --new-badge-color: #fff;
+  --open-btn-bg: rgba(255,255,255,0.06);
+}
+
+html,body{height:100%;}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header {
+  background: var(--accent-dark);
+  padding: 15px 30px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  position:sticky;
+  top:0;
+  z-index:40;
+}
+header .logo{ height:70px; display:block; }
+nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
+nav ul li a{ color:#fff; text-decoration:none; font-weight:700; transition:color .2s; }
+nav ul li a:hover, nav ul li a.active{ color: var(--accent); }
+
+main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  margin:28px;
+  gap:28px;
+}
+
+.breadcrumb {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:40px auto 28px auto;
+  padding:10px 18px;
+  border-radius:10px;
+  background: var(--panel);
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  width:fit-content;
+}
+.breadcrumb-item{ display:flex; align-items:center; gap:8px; font-weight:700; }
+.breadcrumb-item a{
+  display:flex; align-items:center; gap:8px;
+  text-decoration:none;
+  color:#ccc;
+  padding:8px 12px;
+  border-radius:8px;
+  background:#2a2a2a;
+  transition: background .18s, color .18s;
+}
+.breadcrumb-item a i{ color:var(--muted); }
+.breadcrumb .separator{ color:var(--muted); font-size:14px; }
+.breadcrumb-item a:hover{ background:#333; color:var(--accent); }
+.breadcrumb-item a.active{
+  background: var(--accent);
+  color:#111;
+}
+
+.job-header{ text-align:center; margin-bottom:28px; }
+.job-header img{ width:180px; height:180px; object-fit:contain; border-radius:12px; background:#232323; }
+.job-header h1{ color: var(--accent); font-size:32px; margin:12px 0; }
+.job-description{ max-width:800px; margin:0 auto; font-size:16px; color:#ccc; line-height:1.6; background:var(--panel); padding:20px; border-radius:12px; }
+
+.job-section{ max-width:800px; margin:20px auto; background:var(--panel); padding:18px; border-radius:12px; }
+.job-section h2{ color: var(--accent); font-size:20px; margin-bottom:12px; }
+.job-section ul{ padding-left:20px; }
+.job-section li{ margin-bottom:6px; }
+
+a.back-btn{ display:inline-block; margin:20px auto; padding:10px 16px; background: var(--accent); color:#111; text-decoration:none; border-radius:8px; transition:background .2s; }
+a.back-btn:hover{ background: var(--accent-dark); color:#fff; }
+
+body.light-mode {
+  background:#f5f5f5; color:#111;
+}
+body.light-mode header{ background:#10b981; }
+body.light-mode .breadcrumb{ background:#f3f3f3; color:#222; }
+body.light-mode .breadcrumb-item a{ background:#fff; color:#333; }
+body.light-mode .breadcrumb-item a.active{ background:#10b981; color:#111; }
+body.light-mode .job-description, body.light-mode .job-section{
+  background:#fff; color:#111;
+}
+
+@media (max-width:1100px){
+  main{ margin:18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+<nav aria-label="Main navigation">
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="regles.html">Règlement</a></li>
+<li><a href="jobs-legaux.html" class="active">Légal</a></li>
+<li><a href="jobs-illegaux.html">Illégal</a></li>
+<li><a href="tutoriels.html">Tutoriels</a></li>
+<li><a href="generales.html">Généralités</a></li>
+<li><a href="discord.html">Discord</a></li>
+</ul>
+</nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+<div class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Accueil</a></div>
+<div class="separator"><i class="fas fa-chevron-right"></i></div>
+<div class="breadcrumb-item"><a href="jobs-legaux.html"><i class="fas fa-briefcase"></i> Jobs Légaux</a></div>
+<div class="separator"><i class="fas fa-chevron-right"></i></div>
+<div class="breadcrumb-item"><a href="#top" class="active">Gouvernement</a></div>
+</nav>
+
+<main>
+<section class="job-header">
+<img src="assets/jobs/gouvernement.png" alt="Gouvernement">
+<h1>Gouvernement</h1>
+<p class="job-description">
+Administration publique et gestion des affaires de l’État. Responsables de la planification, régulation et supervision des services pour le bien des citoyens.
+</p>
+</section>
+
+<section class="job-section">
+<h2>Objectifs</h2>
+<ul>
+<li>Superviser et coordonner les services gouvernementaux.</li>
+<li>Élaborer et appliquer les lois et régulations.</li>
+<li>Maintenir la stabilité et l’ordre sur le territoire.</li>
+<li>Collaborer avec toutes les agences légales et services publics.</li>
+</ul>
+</section>
+
+<section class="job-section">
+<h2>Pré-requis</h2>
+<ul>
+<li>Bonne compréhension des procédures administratives et légales.</li>
+<li>Compétences en gestion et organisation.</li>
+<li>Capacité à travailler en équipe et communiquer efficacement.</li>
+<li>Intégrité, rigueur et sens des responsabilités.</li>
+</ul>
+</section>
+
+<a href="jobs-legaux.html" class="back-btn">← Retour à la liste des jobs légaux</a>
+
+<script>
+const themeBtn = document.createElement('button');
+themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+themeBtn.style.position = 'fixed';
+themeBtn.style.bottom = '20px';
+themeBtn.style.right = '20px';
+themeBtn.style.padding = '10px';
+themeBtn.style.background = 'var(--accent)';
+themeBtn.style.color = '#111';
+themeBtn.style.border = 'none';
+themeBtn.style.borderRadius = '8px';
+themeBtn.style.cursor = 'pointer';
+themeBtn.addEventListener('click', () => {
+document.body.classList.toggle('light-mode');
+themeBtn.innerHTML = document.body.classList.contains('light-mode')
+? '<i class="fas fa-adjust"></i> Mode sombre'
+: '<i class="fas fa-adjust"></i> Mode clair';
+});
+document.body.appendChild(themeBtn);
+</script>
+
+</body>
+</html>
