@@ -4,283 +4,178 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>GTANew — Jobs Légaux</title>
-
-  <!-- CSS externe -->
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
 
   <style>
-    /* === Variables & Reset === */
-    :root {
+    /* === Reset & Layout de base === */
+    :root{
       --bg:#0d0017;
       --card:#0e0e0e;
       --panel:#1e1e1e;
-      --accent:#34d399; /* vert clair pour accents */
-      --accent-dark:#065f46; /* navbar */
+      --accent:#3b82f6; /* bleu clair pour accents */
+      --accent-dark:#1e40af; /* navbar */
       --muted:#999;
       --text:#fff;
-      --new-badge-bg: #ff6b6b;
+      --new-badge-bg: #3b82f6;
       --new-badge-color: #fff;
       --open-btn-bg: rgba(255,255,255,0.06);
     }
 
-    html, body {
-      margin:0;
-      padding:0;
-      height:100%;
-      font-family: Arial, sans-serif;
-    }
-
+    html,body{height:100%}
     body {
       background: var(--bg);
       color: var(--text);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
       display:flex;
       flex-direction:column;
-      min-height:100vh;
     }
 
     /* ===== NAVBAR ===== */
     header {
       background: var(--accent-dark);
+      padding: 15px 30px;
       display:flex;
       align-items:center;
-      padding:15px 30px;
-      gap:40px;
+      gap:28px;
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:40;
     }
-
-    header .logo {
-      height:70px;
-      display:block;
-    }
-
-    nav ul {
-      list-style:none;
-      display:flex;
-      gap:20px;
-      margin:0;
-      padding:0;
-    }
-
-    nav ul li a {
-      text-decoration:none;
-      color:#fff;
-      font-weight:700;
-      transition:0.2s;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: var(--accent);
-    }
+    header .logo{ height:70px; display:block; }
+    nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; align-items:center; }
+    nav ul li a{ color:#fff; text-decoration:none; font-weight:700; transition:color .2s; }
+    nav ul li a:hover, nav ul li a.active{ color: var(--accent); }
 
     /* ===== Search bar ===== */
-    .search-bar {
-      flex:1;
-      display:flex;
-      justify-content:center;
-    }
-
+    .search-bar { flex:1; display:flex; justify-content:center; }
+    .search-bar .search-wrap{ width:70%; max-width:720px; position:relative; }
     .search-bar input {
-      width:70%;
-      max-width:650px;
-      padding:12px 15px 12px 40px;
-      border-radius:25px;
+      width:100%;
+      padding:12px 16px 12px 44px;
+      border-radius:28px;
       border:none;
       background:#1e1e1e;
-      color:#fff;
-      font-size:16px;
+      color:var(--text);
+      font-size:15px;
       outline:none;
     }
+    .search-bar .fa-search{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); }
 
-    .search-bar i {
-      position: relative;
-      left:-30px;
-      top:2px;
-      color: var(--muted);
-      pointer-events:none;
-    }
-
-    /* ===== Breadcrumb ===== */
+    /* ===== Fil d'Ariane ===== */
     .breadcrumb {
       display:flex;
       justify-content:center;
-      gap:15px;
+      align-items:center;
+      gap:12px;
       margin:20px auto;
-      padding:12px 20px;
-      border-radius:8px;
+      padding:10px 18px;
+      border-radius:10px;
       background: var(--panel);
+      box-shadow:0 6px 18px rgba(0,0,0,0.45);
       width:fit-content;
     }
-
-    .breadcrumb a {
+    .breadcrumb-item{ display:flex; align-items:center; gap:8px; font-weight:700; }
+    .breadcrumb-item a{
+      display:flex; align-items:center; gap:8px;
       text-decoration:none;
       color:#ccc;
-      font-weight:700;
       padding:8px 12px;
-      border-radius:6px;
-      background:#2d2d2d;
-      transition:0.2s;
+      border-radius:8px;
+      background:#2a2a2a;
+      transition: background .18s, color .18s;
     }
-
-    .breadcrumb a:hover {
+    .breadcrumb-item a i{ color:var(--muted); }
+    .breadcrumb .separator{ color:var(--muted); font-size:14px; }
+    .breadcrumb-item a:hover{ background:#333; color:var(--accent); }
+    .breadcrumb-item a.active{
       background: var(--accent);
-      color:#000;
-    }
-
-    .breadcrumb a.active {
-      background: var(--accent-dark);
-      color:#fff;
+      color:#111;
     }
 
     /* ===== MAIN LAYOUT ===== */
-    main {
+    main{
       flex:1;
       display:grid;
-      grid-template-columns:250px 1fr 220px;
+      grid-template-columns:250px 1fr 260px;
       gap:20px;
-      margin:30px;
+      margin:28px;
     }
 
-    /* ===== Recent additions (left) ===== */
+    /* ===== Ajouts récents ===== */
     .recent {
       background: var(--panel);
-      padding:20px;
+      padding:18px;
       border-radius:10px;
       height:fit-content;
       position:sticky;
       top:96px;
     }
-
-    .recent h2 {
-      margin:0 0 12px 0;
-      font-size:18px;
-      color:#ccc;
-    }
-
-    .recent-item {
-      background:#0e0e0e;
-      border:1px solid #444;
+    .recent h2{ margin:0 0 12px 0; color:#ccc; font-size:18px; }
+    .recent-item{
+      background: #0f0f0f;
+      border:1px solid #333;
       border-radius:8px;
       padding:10px;
       margin-bottom:12px;
-      transition:0.2s;
+      transition: border .18s, background .18s;
     }
+    .recent-item h3{ margin:0 0 6px 0; color:var(--accent); font-size:14px; }
+    .recent-item p{ margin:0; color:#aaa; font-size:13px; }
 
-    .recent-item h3 {
-      margin:0 0 5px 0;
-      font-size:15px;
-      color: var(--accent);
-    }
-
-    .recent-item p {
-      margin:0;
-      font-size:13px;
-      color:#aaa;
-    }
-
-    /* ===== Cards (center) ===== */
-    .cards-wrapper {
+    /* ===== Cards center ===== */
+    .cards-wrapper{
       background: var(--panel);
-      padding:30px;
-      border-radius:15px;
-    }
-
-    .cards-header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:20px;
-    }
-
-    .cards-header h2 {
-      margin:0;
-      font-size:20px;
-      color:#fff;
-    }
-
-    .cards-header select {
-      padding:8px 12px;
-      border-radius:8px;
-      border:none;
-      font-size:14px;
-      background:#111;
-      color:#fff;
-    }
-
-    .cards.grid-view {
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .cards.list-view {
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-    }
-
-    .card-wrap {
+      padding:26px;
+      border-radius:14px;
       position: relative;
     }
+    .cards-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; gap:12px; }
+    .cards-header h2{ margin:0; color:#fff; font-size:20px; }
+    .cards-header select{ padding:8px 10px; border-radius:8px; border:none; background:#111; color:#fff; }
 
-    .card-link {
-      display:block;
-      color:inherit;
-      text-decoration:none;
+    .cards.grid-view{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap:18px;
+    }
+    .cards.list-view{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
     }
 
-    .card-link:focus {
-      box-shadow: 0 0 0 3px rgba(52,211,153,0.12);
-      border-radius:12px;
-    }
+    .card-wrap { position: relative; }
+    .card-link { text-decoration:none; color:inherit; display:block; outline:none; }
+    .card-link:focus { box-shadow: 0 0 0 3px rgba(59,130,246,0.12); border-radius:12px; }
 
-    .card {
+    .card{
       background: var(--card);
-      border-radius:15px;
+      border-radius:12px;
       border:2px solid rgba(255,255,255,0.06);
-      padding:20px;
+      padding:16px;
       text-align:center;
       display:flex;
       flex-direction:column;
       gap:10px;
-      transition: transform .2s, box-shadow .2s;
-      position:relative;
+      transition: transform .18s, box-shadow .18s;
+      position: relative;
+      overflow: visible;
     }
+    .card-link:hover .card,
+    .card:hover{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
 
-    .card:hover,
-    .card-link:hover .card {
-      transform:translateY(-6px);
-      box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    .card-img {
-      width:100px;
-      height:100px;
-      object-fit:contain;
-      margin:0 auto;
-      border-radius:8px;
-      background:#232323;
-    }
-
-    .card h3 {
-      margin:0;
-      font-size:18px;
-      color:var(--accent);
-    }
-
-    .card p {
-      margin:0;
-      font-size:13px;
-      color:#bbb;
-    }
+    .card-img{ width:100px; height:100px; object-fit:contain; margin:0 auto; border-radius:8px; background:#232323; }
+    .card h3{ margin:0; color:var(--accent); font-size:18px; }
+    .card p{ margin:0; color:#bbb; font-size:13px; }
 
     .badge-new {
-      position:absolute;
-      top:10px;
-      left:10px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
       background: var(--new-badge-bg);
       color: var(--new-badge-color);
       font-weight:700;
@@ -288,9 +183,8 @@
       padding:4px 8px;
       border-radius:999px;
       z-index:5;
-      box-shadow:0 4px 12px rgba(0,0,0,0.45);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
     }
-
     .badge-hidden { display:none; }
 
     .open-new {
@@ -310,238 +204,344 @@
       z-index:6;
       transition: background .12s, transform .12s;
     }
+    .open-new:hover { background: rgba(255,255,255,0.12); transform:translateY(-2px); }
 
-    .open-new:hover {
-      background: rgba(255,255,255,0.12);
-      transform:translateY(-2px);
-    }
+    .cards.list-view .card{ flex-direction:row; align-items:center; text-align:left; padding:12px; }
+    .cards.list-view .card .card-img{ width:80px; height:80px; margin-right:14px; }
 
-    .cards.list-view .card { flex-direction:row; align-items:center; text-align:left; padding:12px; }
-    .cards.list-view .card .card-img { width:80px; height:80px; margin-right:14px; }
-
-    /* ===== Actions (right) ===== */
-    .actions {
-      background: var(--panel);
+    /* ===== Actions ===== */
+    .actions{
+      background:var(--panel);
       padding:16px;
       border-radius:10px;
       height:fit-content;
       position:sticky;
       top:96px;
     }
-
-    .actions h2 { margin-bottom:12px; color:#ccc; font-size:18px; }
-    .actions button {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      width:100%;
-      background:none;
-      border:none;
-      color:var(--accent);
-      padding:10px 6px;
-      text-align:left;
-      cursor:pointer;
-      font-size:15px;
+    .actions h2{ margin:0 0 12px 0; color:#ccc; font-size:18px; }
+    .actions button{
+      display:flex; align-items:center; gap:10px;
+      width:100%; background:none; border:none; color:var(--accent);
+      padding:10px 6px; text-align:left; cursor:pointer; font-size:15px;
       transition: color .15s, background .15s;
     }
-    .actions button:hover { color:#fff; }
+    .actions button:hover{ color:#fff; }
 
-    /* ===== Light mode ===== */
+    /* ===== light mode ===== */
     body.light-mode {
-      background:#f5f5f5;
-      color:#111;
+      background:#f5f5f5; color:#111;
+    }
+    body.light-mode header{ background:#3b82f6; }
+    body.light-mode .breadcrumb{ background:#f3f3f3; color:#222; }
+    body.light-mode .breadcrumb-item a{ background:#fff; color:#333; }
+    body.light-mode .breadcrumb-item a.active{ background:#3b82f6; color:#111; }
+    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions{
+      background:#fff; color:#111;
+    }
+    body.light-mode .card, body.light-mode .recent-item{
+      background:#fff; color:#111; border:1px solid #ddd;
     }
 
-    body.light-mode header { background:#34d399; }
-    body.light-mode .breadcrumb { background:#f3f3f3; color:#222; }
-    body.light-mode .breadcrumb a { background:#fff; color:#333; }
-    body.light-mode .breadcrumb a.active { background:#34d399; color:#111; }
-    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions { background:#fff; color:#111; }
-    body.light-mode .card, body.light-mode .recent-item { background:#fff; color:#111; border:1px solid #ddd; }
-
-    /* ===== Responsive ===== */
+    /* responsive */
     @media (max-width:1100px){
-      main { grid-template-columns: 1fr; margin:18px; }
-      .recent, .actions { position:static; top:auto; }
-      .breadcrumb { margin:12px; width:100%; justify-content:flex-start; padding:10px; gap:8px; }
+      main{ grid-template-columns: 1fr; margin:18px; }
+      .recent, .actions{ position:static; top:auto; }
+      .breadcrumb{ margin:12px; width:100%; justify-content:flex-start; padding:10px; gap:8px; }
       .open-new { display:none; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<header>
-  <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+  <!-- NAVBAR -->
+  <header>
+    <a href="index.html"><img src="assets/logo.png" alt="GTANew" class="logo"></a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html" class="active">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Généralités</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar" role="search" aria-label="Recherche">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input id="searchInput" type="search" placeholder="Rechercher un job...">
+      </div>
+    </div>
+  </header>
 
-  <nav aria-label="Main navigation">
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="regles.html">Règlement</a></li>
-      <li><a href="jobs-legaux.html" class="active">Légal</a></li>
-      <li><a href="jobs-illegaux.html">Illégal</a></li>
-      <li><a href="tutoriels.html">Tutoriels</a></li>
-      <li><a href="generales.html">Généralités</a></li>
-      <li><a href="discord.html">Discord</a></li>
-    </ul>
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <div class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Accueil</a></div>
+    <div class="separator"><i class="fas fa-chevron-right"></i></div>
+    <div class="breadcrumb-item"><a href="jobs-legaux.html" class="active"><i class="fas fa-briefcase"></i> Jobs Légaux</a></div>
+    <div class="separator"><i class="fas fa-chevron-right"></i></div>
+    <div class="breadcrumb-item"><a href="#top">Liste</a></div>
   </nav>
 
-  <div class="search-bar" role="search">
-    <i class="fas fa-search"></i>
-    <input id="searchInput" type="search" placeholder="Rechercher un job...">
-  </div>
-</header>
+  <!-- MAIN -->
+  <main>
+    <!-- AJOUTS RECENTS -->
+    <aside class="recent" id="recentContainer" aria-label="Ajouts récents">
+      <h2>Ajouts récents</h2>
+    </aside>
 
-<!-- BREADCRUMB -->
-<nav class="breadcrumb" aria-label="Fil d'Ariane">
-  <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-  <a href="jobs-legaux.html" class="active"><i class="fas fa-briefcase"></i> Jobs Légaux</a>
-  <a href="#top">Liste</a>
-</nav>
-
-<main>
-  <!-- AJOUTS RÉCENTS -->
-  <aside class="recent" id="recentContainer" aria-label="Ajouts récents">
-    <h2>Ajouts récents</h2>
-  </aside>
-
-  <!-- CARTES -->
-  <section class="cards-wrapper" aria-label="Liste des jobs légaux">
-    <div class="cards-header">
-      <h2>Jobs Légaux</h2>
-      <select id="sortSelect" aria-label="Trier les jobs">
-        <option value="name">Trier par Nom</option>
-        <option value="date">Trier par Date</option>
-      </select>
-    </div>
-
-    <div id="cardsContainer" class="cards grid-view" aria-live="polite">
-            <!-- LSPD -->
-      <div class="card-wrap">
-        <a href="job-lspd.html" class="card-link" title="LSPD">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/lspd.png" alt="LSPD">
-            <h3>LSPD</h3>
-            <p>Maintenir l'ordre et assurer la sécurité des citoyens.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-lspd.html" target="_blank" rel="noopener" title="Ouvrir LSPD dans un nouvel onglet">↗</a>
+    <!-- CARTES -->
+    <section class="cards-wrapper" aria-label="Liste des jobs légaux">
+      <div class="cards-header">
+        <h2>Jobs Légaux</h2>
+        <select id="sortSelect" aria-label="Trier les jobs">
+          <option value="name">Trier par Nom</option>
+          <option value="date">Trier par Date</option>
+        </select>
       </div>
+      <div id="cardsContainer" class="cards grid-view" aria-live="polite">
+<!-- LSPD -->
+<div class="card-wrap">
+  <a href="job-lspd.html" class="card-link" title="LSPD">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/lspd.png" alt="LSPD">
+      <h3>LSPD</h3>
+      <p>Police de Los Santos, maintien de l'ordre et interventions.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-lspd.html" target="_blank" rel="noopener" title="Ouvrir LSPD dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- BSCO -->
-      <div class="card-wrap">
-        <a href="job-bsco.html" class="card-link" title="BSCO">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/bsco.png" alt="BSCO">
-            <h3>BSCO</h3>
-            <p>Patrouille et sécurité dans les zones rurales et périphériques.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-bsco.html" target="_blank" rel="noopener" title="Ouvrir BSCO dans un nouvel onglet">↗</a>
-      </div>
+<!-- BSCO -->
+<div class="card-wrap">
+  <a href="job-bsco.html" class="card-link" title="BSCO">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/bsco.png" alt="BSCO">
+      <h3>BSCO</h3>
+      <p>Shérif du comté, patrouilles rurales et enquêtes locales.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-bsco.html" target="_blank" rel="noopener" title="Ouvrir BSCO dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- Gouvernement -->
-      <div class="card-wrap">
-        <a href="job-gouvernement.html" class="card-link" title="Gouvernement">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/gouvernement.png" alt="Gouvernement">
-            <h3>Gouvernement</h3>
-            <p>Gestion des affaires publiques et législation de la ville.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-gouvernement.html" target="_blank" rel="noopener" title="Ouvrir Gouvernement dans un nouvel onglet">↗</a>
-      </div>
+<!-- Gouvernement -->
+<div class="card-wrap">
+  <a href="job-gouvernement.html" class="card-link" title="Gouvernement">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/gouvernement.png" alt="Gouvernement">
+      <h3>Gouvernement</h3>
+      <p>Administration et gestion des lois et services publics.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-gouvernement.html" target="_blank" rel="noopener" title="Ouvrir Gouvernement dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- FIB -->
-      <div class="card-wrap">
-        <a href="job-fib.html" class="card-link" title="FIB">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/fib.png" alt="FIB">
-            <h3>FIB</h3>
-            <p>Enquêtes criminelles, contre-espionnage et sécurité fédérale.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-fib.html" target="_blank" rel="noopener" title="Ouvrir FIB dans un nouvel onglet">↗</a>
-      </div>
+<!-- FIB -->
+<div class="card-wrap">
+  <a href="job-fib.html" class="card-link" title="FIB">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/fib.png" alt="FIB">
+      <h3>FIB</h3>
+      <p>Enquêtes fédérales, contre‑espionnage et missions spéciales.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-fib.html" target="_blank" rel="noopener" title="Ouvrir FIB dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- LSCustoms -->
-      <div class="card-wrap">
-        <a href="job-lscustoms.html" class="card-link" title="LSCustoms">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/lscustoms.png" alt="LSCustoms">
-            <h3>LSCustoms</h3>
-            <p>Entretien et personnalisation des véhicules pour les citoyens.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-lscustoms.html" target="_blank" rel="noopener" title="Ouvrir LSCustoms dans un nouvel onglet">↗</a>
-      </div>
+<!-- LSCustoms -->
+<div class="card-wrap">
+  <a href="job-lscustoms.html" class="card-link" title="LSCustoms">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/lscustoms.png" alt="LSCustoms">
+      <h3>LSCustoms</h3>
+      <p>Garage et personnalisation de véhicules pour les citoyens.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-lscustoms.html" target="_blank" rel="noopener" title="Ouvrir LSCustoms dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- Bennys -->
-      <div class="card-wrap">
-        <a href="job-bennys.html" class="card-link" title="Bennys">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/bennys.png" alt="Bennys">
-            <h3>Bennys</h3>
-            <p>Atelier de réparation et amélioration de véhicules de luxe.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-bennys.html" target="_blank" rel="noopener" title="Ouvrir Bennys dans un nouvel onglet">↗</a>
-      </div>
+<!-- Bennys -->
+<div class="card-wrap">
+  <a href="job-bennys.html" class="card-link" title="Bennys">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/bennys.png" alt="Bennys">
+      <h3>Bennys</h3>
+      <p>Garage premium, réparation et customisation haut de gamme.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-bennys.html" target="_blank" rel="noopener" title="Ouvrir Bennys dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- EMS -->
-      <div class="card-wrap">
-        <a href="job-ems.html" class="card-link" title="EMS">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/ems.png" alt="EMS">
-            <h3>EMS</h3>
-            <p>Service médical d'urgence, soins et transport des patients.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-ems.html" target="_blank" rel="noopener" title="Ouvrir EMS dans un nouvel onglet">↗</a>
-      </div>
+<!-- EMS -->
+<div class="card-wrap">
+  <a href="job-ems.html" class="card-link" title="EMS">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/ems.png" alt="EMS">
+      <h3>EMS</h3>
+      <p>Services médicaux d’urgence, soins et transports hospitaliers.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-ems.html" target="_blank" rel="noopener" title="Ouvrir EMS dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- Bar -->
-      <div class="card-wrap">
-        <a href="job-bar.html" class="card-link" title="Bar">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/bar.png" alt="Bar">
-            <h3>Bar</h3>
-            <p>Tenue du bar, service des clients et gestion des boissons.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-bar.html" target="_blank" rel="noopener" title="Ouvrir Bar dans un nouvel onglet">↗</a>
-      </div>
+<!-- Bar -->
+<div class="card-wrap">
+  <a href="job-bar.html" class="card-link" title="Bar">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/bar.png" alt="Bar">
+      <h3>Bar</h3>
+      <p>Tenue d’un bar, service aux clients et gestion des stocks.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-bar.html" target="_blank" rel="noopener" title="Ouvrir Bar dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- Vigneron -->
-      <div class="card-wrap">
-        <a href="job-vigneron.html" class="card-link" title="Vigneron">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/vigneron.png" alt="Vigneron">
-            <h3>Vigneron</h3>
-            <p>Culture et production de vin, gestion des vignobles.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-vigneron.html" target="_blank" rel="noopener" title="Ouvrir Vigneron dans un nouvel onglet">↗</a>
-      </div>
+<!-- Vigneron -->
+<div class="card-wrap">
+  <a href="job-vigneron.html" class="card-link" title="Vigneron">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/vigneron.png" alt="Vigneron">
+      <h3>Vigneron</h3>
+      <p>Culture de vignobles, production et vente de vin.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-vigneron.html" target="_blank" rel="noopener" title="Ouvrir Vigneron dans un nouvel onglet">↗</a>
+</div>
 
-      <!-- Concessionnaire -->
-      <div class="card-wrap">
-        <a href="job-concessionnaire.html" class="card-link" title="Concessionnaire">
-          <article class="card" data-date="2025-09-13" role="article">
-            <span class="badge-new badge-hidden">NOUVEAU</span>
-            <img class="card-img" src="assets/jobs/concessionnaire.png" alt="Concessionnaire">
-            <h3>Concessionnaire</h3>
-            <p>Vente de véhicules neufs et d'occasion aux citoyens.</p>
-          </article>
-        </a>
-        <a class="open-new" href="job-concessionnaire.html" target="_blank" rel="noopener" title="Ouvrir Concessionnaire dans un nouvel onglet">↗</a>
-      </div>
+<!-- Concessionnaire -->
+<div class="card-wrap">
+  <a href="job-concessionnaire.html" class="card-link" title="Concessionnaire">
+    <article class="card" data-date="2025-09-13" role="article">
+      <span class="badge-new badge-hidden">NOUVEAU</span>
+      <img class="card-img" src="assets/jobs/concessionnaire.png" alt="Concessionnaire">
+      <h3>Concessionnaire</h3>
+      <p>Vente et gestion de véhicules neufs et d’occasion.</p>
+    </article>
+  </a>
+  <a class="open-new" href="job-concessionnaire.html" target="_blank" rel="noopener" title="Ouvrir Concessionnaire dans un nouvel onglet">↗</a>
+</div>
+    </section>
+
+    <!-- ACTIONS -->
+    <aside class="actions" aria-label="Actions">
+      <h2>Actions</h2>
+      <button id="gridBtn" title="Vue grille"><i class="fas fa-th"></i> Vue en grille</button>
+      <button id="listBtn" title="Vue liste"><i class="fas fa-list"></i> Vue en liste</button>
+      <button id="themeToggle" title="Mode clair/sombre"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const cardsContainer = document.getElementById('cardsContainer');
+      const sortSelect = document.getElementById('sortSelect');
+      const themeBtn = document.getElementById('themeToggle');
+      const gridBtn = document.getElementById('gridBtn');
+      const listBtn = document.getElementById('listBtn');
+      const recentContainer = document.getElementById('recentContainer');
+
+      function refreshCardLists(){
+        cardWraps = Array.from(document.querySelectorAll('.card-wrap'));
+        cardAnchors = cardWraps.map(w => w.querySelector('.card-link'));
+        cards = cardAnchors.map(a => a.querySelector('.card'));
+      }
+
+      let cardWraps = [], cardAnchors = [], cards = [];
+      refreshCardLists();
+
+      function markNewBadges(){
+        const now = new Date();
+        cardAnchors.forEach(a => {
+          const article = a.querySelector('.card');
+          if (!article) return;
+          const raw = article.dataset.date || '';
+          const badge = article.querySelector('.badge-new');
+          if (!raw) { if (badge) badge.classList.add('badge-hidden'); return; }
+          const d = new Date(raw + 'T00:00:00');
+          const diff = (now - d) / (1000*60*60*24);
+          if (diff >=0 && diff <=7){ badge && badge.classList.remove('badge-hidden'); }
+          else { badge && badge.classList.add('badge-hidden'); }
+        });
+      }
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        refreshCardLists();
+        cardWraps.forEach(w => {
+          const txt = (w.innerText || '').toLowerCase();
+          w.style.display = txt.includes(q) ? 'block' : 'none';
+        });
+        updateRecent();
+      });
+
+      sortSelect.addEventListener('change', () => {
+        refreshCardLists();
+        let sortedWraps = [...cardWraps];
+        if(sortSelect.value==='name'){
+          sortedWraps.sort((a,b)=> (a.querySelector('h3')?.innerText||'').localeCompare(b.querySelector('h3')?.innerText||'','fr',{sensitivity:'base'}));
+        }else{
+          sortedWraps.sort((a,b)=> new Date(b.querySelector('.card').dataset.date||'') - new Date(a.querySelector('.card').dataset.date||''));
+        }
+        cardsContainer.innerHTML='';
+        sortedWraps.forEach(w=>cardsContainer.appendChild(w));
+        refreshCardLists();
+        markNewBadges();
+        updateRecent();
+      });
+
+      themeBtn.addEventListener('click', ()=>{
+        document.body.classList.toggle('light-mode');
+        themeBtn.innerHTML = document.body.classList.contains('light-mode')
+          ? '<i class="fas fa-adjust"></i> Mode sombre'
+          : '<i class="fas fa-adjust"></i> Mode clair';
+      });
+
+      gridBtn.addEventListener('click', ()=>{ cardsContainer.classList.remove('list-view'); cardsContainer.classList.add('grid-view'); });
+      listBtn.addEventListener('click', ()=>{ cardsContainer.classList.remove('grid-view'); cardsContainer.classList.add('list-view'); });
+
+      function updateRecent(){
+        refreshCardLists();
+        const visibleWraps = cardWraps.filter(w=>w.style.display!=='none');
+        visibleWraps.sort((a,b)=> new Date(b.querySelector('.card').dataset.date||'') - new Date(a.querySelector('.card').dataset.date||''));
+        recentContainer.innerHTML='<h2>Ajouts récents</h2>';
+        visibleWraps.slice(0,3).forEach(w=>{
+          const title=w.querySelector('h3')?.innerText||'Job';
+          const raw=w.querySelector('.card')?.dataset.date||'';
+          const date=formatDate(raw);
+          const div=document.createElement('div');
+          div.className='recent-item';
+          div.innerHTML=`<h3>${title}</h3><p>Ajouté le ${date}</p>`;
+          recentContainer.appendChild(div);
+        });
+        if(visibleWraps.length===0){
+          const div=document.createElement('div');
+          div.className='recent-item';
+          div.innerHTML=`<p>Aucun job trouvé.</p>`;
+          recentContainer.appendChild(div);
+        }
+      }
+
+      function formatDate(raw){
+        if(!raw) return '';
+        const d=new Date(raw+'T00:00:00');
+        return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'});
+      }
+
+      markNewBadges();
+      updateRecent();
+    });
+  </script>
+</body>
+</html>
