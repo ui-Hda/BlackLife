@@ -17,6 +17,9 @@
       --accent-dark:#7f1d1d; /* navbar */
       --muted:#999;
       --text:#fff;
+      --new-badge-bg: #ff6b6b;
+      --new-badge-color: #fff;
+      --open-btn-bg: rgba(255,255,255,0.06);
     }
 
     html,body{height:100%}
@@ -129,6 +132,7 @@
       background: var(--panel);
       padding:26px;
       border-radius:14px;
+      position: relative;
     }
     .cards-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; gap:12px; }
     .cards-header h2{ margin:0; color:#fff; font-size:20px; }
@@ -145,6 +149,20 @@
       gap:14px;
     }
 
+    /* wrapper autour du lien + bouton */
+    .card-wrap {
+      position: relative;
+    }
+
+    /* carte en lien */
+    .card-link {
+      text-decoration:none;
+      color:inherit;
+      display:block;
+      outline: none;
+    }
+    .card-link:focus { box-shadow: 0 0 0 3px rgba(251,113,133,0.12); border-radius:12px; }
+
     .card{
       background: var(--card);
       border-radius:12px;
@@ -155,11 +173,53 @@
       flex-direction:column;
       gap:10px;
       transition: transform .18s, box-shadow .18s;
+      position: relative;
+      overflow: visible;
     }
+
+    /* hover via lien pour garder l'effet quand c'est cliquable */
+    .card-link:hover .card,
     .card:hover{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
+
     .card-img{ width:100px; height:100px; object-fit:contain; margin:0 auto; border-radius:8px; background:#232323; }
     .card h3{ margin:0; color:var(--accent); font-size:18px; }
     .card p{ margin:0; color:#bbb; font-size:13px; }
+
+    /* badge "NOUVEAU" top-left */
+    .badge-new {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--new-badge-bg);
+      color: var(--new-badge-color);
+      font-weight:700;
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      z-index:5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    }
+    .badge-hidden { display:none; }
+
+    /* bouton ouvrir dans un nouvel onglet (top-right) */
+    .open-new {
+      position:absolute;
+      top:8px;
+      right:8px;
+      background: var(--open-btn-bg);
+      color: #fff;
+      width:32px;
+      height:32px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight:700;
+      z-index:6;
+      transition: background .12s, transform .12s;
+    }
+    .open-new:hover { background: rgba(255,255,255,0.12); transform:translateY(-2px); }
 
     /* list view adjustments */
     .cards.list-view .card{ flex-direction:row; align-items:center; text-align:left; padding:12px; }
@@ -203,6 +263,7 @@
       main{ grid-template-columns: 1fr; margin:18px; }
       .recent, .actions{ position:static; top:auto; }
       .breadcrumb{ margin:12px; width:100%; justify-content:flex-start; padding:10px; gap:8px; }
+      .open-new { display:none; } /* hide new-tab button on small screens (optional) */
     }
   </style>
 </head>
@@ -261,77 +322,151 @@
 
       <div id="cardsContainer" class="cards grid-view" aria-live="polite">
         <!-- Cartes : images attendues dans assets/jobs/ -->
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/gang.png" alt="Gang">
-          <h3>Gang</h3>
-          <p>Prendre le contrôle de quartiers et mener des trafics locaux.</p>
-        </article>
+        <!-- Structure : .card-wrap > (a.card-link > article.card) + a.open-new(button) -->
+        <div class="card-wrap">
+          <a href="job-gang.html" class="card-link" title="Gang">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/gang.png" alt="Gang">
+              <h3>Gang</h3>
+              <p>Prendre le contrôle de quartiers et mener des trafics locaux.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-gang.html" target="_blank" rel="noopener" title="Ouvrir Gang dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/mafia.png" alt="Mafia">
-          <h3>Mafia</h3>
-          <p>Réseaux criminels organisés, extorsion et infiltration.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-mafia.html" class="card-link" title="Mafia">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/mafia.png" alt="Mafia">
+              <h3>Mafia</h3>
+              <p>Réseaux criminels organisés, extorsion et infiltration.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-mafia.html" target="_blank" rel="noopener" title="Ouvrir Mafia dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/cartel.png" alt="Cartel">
-          <h3>Cartel</h3>
-          <p>Trafic de stupéfiants à grande échelle et opérations internationales.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-cartel.html" class="card-link" title="Cartel">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/cartel.png" alt="Cartel">
+              <h3>Cartel</h3>
+              <p>Trafic de stupéfiants à grande échelle et opérations internationales.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-cartel.html" target="_blank" rel="noopener" title="Ouvrir Cartel dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/dealer.png" alt="Dealer">
-          <h3>Dealer</h3>
-          <p>Vente et distribution de drogues en rue.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-dealer.html" class="card-link" title="Dealer">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/dealer.png" alt="Dealer">
+              <h3>Dealer</h3>
+              <p>Vente et distribution de drogues en rue.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-dealer.html" target="_blank" rel="noopener" title="Ouvrir Dealer dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/fabricant.png" alt="Fabricant de drogues">
-          <h3>Fabricant de drogues</h3>
-          <p>Production de substances illicites en laboratoire.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-fabricant.html" class="card-link" title="Fabricant de drogues">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/fabricant.png" alt="Fabricant de drogues">
+              <h3>Fabricant de drogues</h3>
+              <p>Production de substances illicites en laboratoire.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-fabricant.html" target="_blank" rel="noopener" title="Ouvrir Fabricant dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/armes.png" alt="Trafic d'armes">
-          <h3>Trafic d'armes</h3>
-          <p>Importation, modification et revente d'armes illégales.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-armes.html" class="card-link" title="Trafic d'armes">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/armes.png" alt="Trafic d'armes">
+              <h3>Trafic d'armes</h3>
+              <p>Importation, modification et revente d'armes illégales.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-armes.html" target="_blank" rel="noopener" title="Ouvrir Trafic d'armes dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/braqueur.png" alt="Braqueur">
-          <h3>Braqueur</h3>
-          <p>Braquages organisés (banques, bijouteries, fourgons blindés).</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-braqueur.html" class="card-link" title="Braqueur">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/braqueur.png" alt="Braqueur">
+              <h3>Braqueur</h3>
+              <p>Braquages organisés (banques, bijouteries, fourgons blindés).</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-braqueur.html" target="_blank" rel="noopener" title="Ouvrir Braqueur dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/hacker.png" alt="Hacker">
-          <h3>Hacker</h3>
-          <p>Piratage, intrusion et vol de données / de fonds.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-hacker.html" class="card-link" title="Hacker">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/hacker.png" alt="Hacker">
+              <h3>Hacker</h3>
+              <p>Piratage, intrusion et vol de données / de fonds.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-hacker.html" target="_blank" rel="noopener" title="Ouvrir Hacker dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/contrebandier.png" alt="Contrebandier">
-          <h3>Contrebandier</h3>
-          <p>Transport et vente de marchandises illégales entre frontières.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-contrebandier.html" class="card-link" title="Contrebandier">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/contrebandier.png" alt="Contrebandier">
+              <h3>Contrebandier</h3>
+              <p>Transport et vente de marchandises illégales entre frontières.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-contrebandier.html" target="_blank" rel="noopener" title="Ouvrir Contrebandier dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/fraude.png" alt="Fraude">
-          <h3>Fraude / Arnaqueur</h3>
-          <p>Arnaques financières, faux documents et escroqueries.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-fraude.html" class="card-link" title="Fraude">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/fraude.png" alt="Fraude">
+              <h3>Fraude / Arnaqueur</h3>
+              <p>Arnaques financières, faux documents et escroqueries.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-fraude.html" target="_blank" rel="noopener" title="Ouvrir Fraude dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/vol.png" alt="Voleur">
-          <h3>Voleur / Cambrioleur</h3>
-          <p>Cambriolages, vols à la tire et pillages ciblés.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-voleur.html" class="card-link" title="Voleur / Cambrioleur">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/vol.png" alt="Voleur">
+              <h3>Voleur / Cambrioleur</h3>
+              <p>Cambriolages, vols à la tire et pillages ciblés.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-voleur.html" target="_blank" rel="noopener" title="Ouvrir Voleur / Cambrioleur dans un nouvel onglet">↗</a>
+        </div>
 
-        <article class="card" data-date="2025-09-13" role="article">
-          <img class="card-img" src="assets/jobs/blackmarket.png" alt="Marché noir">
-          <h3>Marché noir</h3>
-          <p>Vente d'objets rares/illégaux et services interdits.</p>
-        </article>
+        <div class="card-wrap">
+          <a href="job-marche-noir.html" class="card-link" title="Marché noir">
+            <article class="card" data-date="2025-09-13" role="article">
+              <span class="badge-new badge-hidden">NOUVEAU</span>
+              <img class="card-img" src="assets/jobs/blackmarket.png" alt="Marché noir">
+              <h3>Marché noir</h3>
+              <p>Vente d'objets rares/illégaux et services interdits.</p>
+            </article>
+          </a>
+          <a class="open-new" href="job-marche-noir.html" target="_blank" rel="noopener" title="Ouvrir Marché noir dans un nouvel onglet">↗</a>
+        </div>
+
       </div>
     </section>
 
@@ -355,31 +490,71 @@
       const listBtn = document.getElementById('listBtn');
       const recentContainer = document.getElementById('recentContainer');
 
-      // NodeList -> Array (les cartes sont déjà dans le DOM)
-      let cards = Array.from(document.querySelectorAll('.card'));
+      // Helpers to keep references up-to-date
+      function refreshCardLists(){
+        cardWraps = Array.from(document.querySelectorAll('.card-wrap'));
+        cardAnchors = cardWraps.map(w => w.querySelector('.card-link'));
+        cards = cardAnchors.map(a => a.querySelector('.card'));
+      }
 
-      // Recherche live
+      // initial lists
+      let cardWraps = [];
+      let cardAnchors = [];
+      let cards = [];
+      refreshCardLists();
+
+      // Mark "NOUVEAU" badge if date within 7 days
+      function markNewBadges(){
+        const now = new Date();
+        cardAnchors.forEach(a => {
+          const article = a.querySelector('.card');
+          if (!article) return;
+          const raw = article.dataset.date || '';
+          const badge = article.querySelector('.badge-new');
+          if (!raw) { if (badge) badge.classList.add('badge-hidden'); return; }
+          const d = new Date(raw + 'T00:00:00'); // ensure no timezone weirdness
+          const diff = (now - d) / (1000 * 60 * 60 * 24); // days
+          if (diff >= 0 && diff <= 7) {
+            if (badge) badge.classList.remove('badge-hidden');
+          } else {
+            if (badge) badge.classList.add('badge-hidden');
+          }
+        });
+      }
+
+      // Recherche live (cherche dans le texte de la carte)
       searchInput.addEventListener('input', () => {
         const q = searchInput.value.trim().toLowerCase();
-        cards.forEach(card => {
-          const txt = (card.innerText || '').toLowerCase();
-          card.style.display = txt.includes(q) ? 'block' : 'none';
+        refreshCardLists();
+        cardWraps.forEach(w => {
+          const txt = (w.innerText || '').toLowerCase();
+          w.style.display = txt.includes(q) ? 'block' : 'none';
         });
         updateRecent();
       });
 
       // Tri
       sortSelect.addEventListener('change', () => {
-        let sorted = [...cards];
+        refreshCardLists();
+        let sortedWraps = [...cardWraps];
         if (sortSelect.value === 'name') {
-          sorted.sort((a,b) => a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText));
+          sortedWraps.sort((a,b) => {
+            const an = (a.querySelector('h3')?.innerText || '').trim();
+            const bn = (b.querySelector('h3')?.innerText || '').trim();
+            return an.localeCompare(bn, 'fr', { sensitivity: 'base' });
+          });
         } else {
-          sorted.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+          sortedWraps.sort((a,b) => {
+            const ad = new Date(a.querySelector('.card').dataset.date || '');
+            const bd = new Date(b.querySelector('.card').dataset.date || '');
+            return bd - ad;
+          });
         }
+        // replace container
         cardsContainer.innerHTML = '';
-        sorted.forEach(c => cardsContainer.appendChild(c));
-        // re-lier cards var (utile si tu veux réagir après tri)
-        cards = Array.from(document.querySelectorAll('.card'));
+        sortedWraps.forEach(w => cardsContainer.appendChild(w));
+        refreshCardLists();
+        markNewBadges();
         updateRecent();
       });
 
@@ -391,7 +566,7 @@
           : '<i class="fas fa-adjust"></i> Mode clair';
       });
 
-      // Grid / List
+      // Grid / List view
       gridBtn.addEventListener('click', () => {
         cardsContainer.classList.remove('list-view');
         cardsContainer.classList.add('grid-view');
@@ -403,21 +578,59 @@
 
       // Ajouts récents (affiche 3 premiers visibles, triés par date)
       function updateRecent(){
-        const visible = Array.from(document.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
-        visible.sort((a,b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+        refreshCardLists();
+        const visibleWraps = cardWraps.filter(w => w.style.display !== 'none');
+        visibleWraps.sort((a,b) => {
+          const ad = new Date(a.querySelector('.card').dataset.date || '');
+          const bd = new Date(b.querySelector('.card').dataset.date || '');
+          return bd - ad;
+        });
         recentContainer.innerHTML = '<h2>Ajouts récents</h2>';
-        visible.slice(0,3).forEach(c => {
-          const title = c.querySelector('h3').innerText;
-          const date = c.dataset.date || '13/09/2025';
+        visibleWraps.slice(0,3).forEach(w => {
+          const title = w.querySelector('h3')?.innerText || 'Job';
+          const raw = w.querySelector('.card')?.dataset.date || '';
+          const date = formatDate(raw);
           const div = document.createElement('div');
           div.className = 'recent-item';
           div.innerHTML = `<h3>${title}</h3><p>Ajouté le ${date}</p>`;
           recentContainer.appendChild(div);
         });
+
+        if (visibleWraps.length === 0) {
+          const div = document.createElement('div');
+          div.className = 'recent-item';
+          div.innerHTML = `<h3>Aucun résultat</h3><p>Aucun job ne correspond à la recherche.</p>`;
+          recentContainer.appendChild(div);
+        }
       }
 
-      // initial
+      // format date YYYY-MM-DD -> DD/MM/YYYY (fallback: 13/09/2025)
+      function formatDate(raw){
+        if (!raw) return '13/09/2025';
+        const parts = raw.split('-');
+        if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        return raw;
+      }
+
+      // initial actions
+      refreshCardLists();
+      markNewBadges();
       updateRecent();
+
+      // Accessibility: allow Enter on focused card-link to follow
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && document.activeElement && document.activeElement.classList.contains('card-link')) {
+          document.activeElement.click();
+        }
+      });
+
+      // Mutation observer: if cards added/removed later, keep lists updated
+      const observer = new MutationObserver(() => {
+        refreshCardLists();
+        markNewBadges();
+        updateRecent();
+      });
+      observer.observe(cardsContainer, { childList: true, subtree: true });
     });
   </script>
 </body>
