@@ -227,20 +227,57 @@
     }
     .actions button:hover{ color:#fff; }
 
-    /* ===== light mode ===== */
+  /* ===== light mode ===== */
     body.light-mode {
-      background:#f5f5f5; color:#111;
-    }
-    body.light-mode header{ background:#3b82f6; }
-    body.light-mode .breadcrumb{ background:#f3f3f3; color:#222; }
-    body.light-mode .breadcrumb-item a{ background:#fff; color:#333; }
-    body.light-mode .breadcrumb-item a.active{ background:#3b82f6; color:#111; }
-    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions{
-      background:#fff; color:#111;
-    }
-    body.light-mode .card, body.light-mode .recent-item{
-      background:#fff; color:#111; border:1px solid #ddd;
-    }
+  background: #f5f5f5;
+  color: #111;
+}
+
+body.light-mode header {
+  background: #10b981; /* navbar vert */
+}
+
+body.light-mode .breadcrumb {
+  background: #f3f3f3;
+  color: #222;
+}
+
+body.light-mode .breadcrumb-item a {
+  background: #fff;
+  color: #333;
+}
+
+body.light-mode .breadcrumb-item a.active {
+  background: #10b981; /* vert actif */
+  color: #fff;
+}
+
+body.light-mode .recent,
+body.light-mode .cards-wrapper,
+body.light-mode .actions {
+  background: #fff;
+  color: #111;
+}
+
+body.light-mode .card,
+body.light-mode .recent-item {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+body.light-mode .card h3 {
+  color: #10b981; /* titres verts */
+}
+
+body.light-mode .badge-new {
+  background: #22c55e; /* badge vert */
+  color: #fff;
+}
+
+body.light-mode .actions button {
+  color: #10b981;
+}
 
     /* responsive */
     @media (max-width:1100px){
