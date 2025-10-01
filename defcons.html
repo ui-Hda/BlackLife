@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - DEFCON</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #d4af37;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #d4af37;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      background: #d4af37;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+    .breadcrumb ul li a:hover {
+      background: #f5d76e;
+      color: #000;
+    }
+    .breadcrumb ul li a.active {
+      background: #f5d76e;
+      color: #000;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #d4af37;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #d4af37;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cards-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .defcon-card {
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .defcon-5 { background:#4caf50; color:#000; }
+    .defcon-4 { background:#ffeb3b; color:#000; }
+    .defcon-3 { background:#ff9800; color:#000; }
+    .defcon-2 { background:#f44336; color:#fff; }
+    .defcon-1 { background:#9c27b0; color:#fff; }
+
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d4af37;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper {
+      background: #ddd;
+    }
+
+    body.light-mode .defcon-card {
+      color: #000;
+    }
+
+    .back-button {
+      display:inline-block;
+      margin:15px 0;
+      padding:10px 15px;
+      background:#d4af37;
+      color:#000;
+      text-decoration:none;
+      border-radius:6px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .back-button:hover {
+      background:#f5d76e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html" class="active">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Généralités</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="regles.html" class="active">Règlement</a></li>
+      <li><a>DEFCON</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>DEFCON</h2>
+      </div>
+
+      <a href="regles.html" class="back-button"><i class="fas fa-arrow-left"></i> Retour au Règlement</a>
+
+      <!-- ====== Texte DEFCON ====== -->
+      <div class="defcon-card">
+        <p><strong>Qu’est-ce que le DEFCON ?</strong></p>
+        <p><u>IRL :</u> Défense readiness condition, niveau d’alerte des forces armées US, 5 niveaux (5 bas → 1 haut).</p>
+        <p><u>En jeu :</u> Détermine autorisations des agences, gouvernement et EMS sur Unity.</p>
+      </div>
+
+      <div class="defcon-card defcon-5">
+        <strong>DEFCON 5</strong><br>
+        Durée : N/A | Renouvellement : N/A<br>
+        <u>Autorisations :</u><br>
+        Agences : Pistolet/Taser, pas de gilet, véhicules classiques, patrouilles normales.<br>
+        Gouvernement : Fonctionnement normal.<br>
+        EMS : Fonctionnement classique.
+      </div>
+
+      <div class="defcon-card defcon-4">
+        <strong>DEFCON 4</strong><br>
+        Durée : 72h–1 semaine | Renouvellement : 2 semaines<br>
+        Coopération entre agences sur autorisation du gouvernement.<br>
+        Agences : Fouille possible, armes d’assaut autorisées, patrouilles à deux, barrage de contrôle, tir létal après 3 sommations.<br>
+        Gouvernement : Surveillance accrue, VIP accompagnés.<br>
+        EMS : Fonctionnement classique.
+      </div>
+
+      <div class="defcon-card defcon-3">
+        <strong>DEFCON 3</strong><br>
+        Durée : 24–72h | Renouvellement : 24h<br>
+        Coopération sur autorisation gouvernement.<br>
+        Agences : Gilet pare-balles, armes létales, fouille systématique, mise en place de barrages.<br>
+        Gouvernement : Sécurisation des VIP, Air Force One prêt, surveillance maximale.<br>
+        EMS : Intervention prioritaire pour gouvernement/agences.
+      </div>
+
+      <div class="defcon-card defcon-2">
+        <strong>DEFCON 2</strong><br>
+        Durée : 1–24h | Renouvellement : 24h<br>
+        Agences : Tenue d’intervention obligatoire, patrouille blindée systématique, tir létal après sommation.<br>
+        Gouvernement : Protection renforcée, autorisation spéciale armes.<br>
+        EMS : Sous autorité gouvernementale.
+      </div>
+
+      <div class="defcon-card defcon-1">
+        <strong>DEFCON 1</strong><br>
+        Durée : 1–24h | Renouvellement : 1–24h<br>
+        Agences : Remplacées par armée, tir sans sommation, sortie citoyens interdite.<br>
+        Gouvernement : Air Force One en vol, sécurité maximale, autorisation destruction.<br>
+        EMS : Mise en fédéral, inopérant sous gouvernement.
+      </div>
+    </div>
+
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode") ? '<i class="fas fa-adjust"></i> Mode sombre' : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    function loadRecent() {
+      const recent = [
+        { title: "Règlement illégal", link: "regles-illegaux.html", date: "13/09/2025" },
+        { title: "Règlement légal", link: "regles-legaux.html", date: "13/09/2025" },
+        { title: "Règlement général", link: "regles-general.html", date: "13/09/2025" }
+      ];
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      recent.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("recent-item");
+        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+        recentContainer.appendChild(div);
+      });
+    }
+
+    loadRecent();
+  </script>
+</body>
+</html>
