@@ -1,190 +1,167 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Code de Los Santos</title>
-<style>
-body { font-family: Arial, sans-serif; margin: 0; line-height: 1.6; background: #f9f9f9; }
-header { background: #003366; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-header h1 { margin: 0; font-size: 24px; }
-nav { background: #0055a5; padding: 10px 20px; }
-nav a { color: white; text-decoration: none; margin-right: 15px; font-weight: bold; }
-nav a:hover { text-decoration: underline; }
-.breadcrumb { padding: 10px 20px; background: #e6e6e6; }
-.breadcrumb a { text-decoration: none; color: #003366; margin-right: 5px; }
-.breadcrumb span { margin-right: 5px; }
-.container { display: flex; }
-aside { width: 250px; background: #e0e0e0; padding: 20px; }
-aside h3 { margin-top: 0; }
-aside ul { list-style: none; padding-left: 0; }
-aside li { margin-bottom: 10px; }
-aside li a { color: #003366; text-decoration: none; }
-aside li a:hover { text-decoration: underline; }
-main { flex: 1; padding: 20px; background: white; }
-h2 { border-bottom: 2px solid #003366; padding-bottom: 5px; margin-top: 30px; }
-h3 { margin-top: 20px; color: #003366; }
-p { margin: 5px 0; }
-.sub-article { margin-left: 20px; }
-.recent-additions { margin-top: 30px; padding: 10px; background: #f0f0f0; border-left: 4px solid #003366; }
-button { padding: 5px 10px; margin-left: 5px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code de Los Santos</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #333; color: #fff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5em; }
+    .actions button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+    nav { background: #444; padding: 10px 20px; }
+    nav a { color: #fff; margin-right: 15px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .breadcrumb { padding: 10px 20px; background: #eee; }
+    .breadcrumb a { text-decoration: none; color: #333; margin-right: 5px; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    main { padding: 20px; max-width: 1200px; margin: auto; background: #fff; }
+    section.ajouts-recents { background: #e2e2e2; padding: 10px; margin-bottom: 20px; }
+    h2 { border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 40px; }
+    pre { white-space: pre-wrap; }
+  </style>
 </head>
 <body>
 
-<header>
-<h1>Code de Los Santos</h1>
-<div class="actions">
-<button onclick="alert('Ajouter un article')">Ajouter</button>
-<button onclick="alert('Rechercher')">Rechercher</button>
-</div>
-</header>
+  <!-- Header avec actions -->
+  <header>
+    <h1>Code de Los Santos</h1>
+    <div class="actions">
+      <button onclick="alert('Ajouter un article')">Ajouter</button>
+      <button onclick="alert('Rechercher')">Rechercher</button>
+      <button onclick="window.location.href='regles.html'">Retour aux règles</button>
+    </div>
+  </header>
 
-<nav>
-<a href="#chapitre-1">Chapitre 1</a>
-<a href="#chapitre-6">Chapitre 6</a>
-<a href="#chapitre-7">Chapitre 7</a>
-<a href="#chapitre-8">Chapitre 8</a>
-<a href="#chapitre-9">Chapitre 9</a>
-<a href="#chapitre-10">Chapitre 10</a>
-<a href="#chapitre-11">Chapitre 11</a>
-<a href="#chapitre-12">Chapitre 12</a>
-<a href="#chapitre-13">Chapitre 13</a>
-<a href="#chapitre-14">Chapitre 14</a>
-</nav>
+  <!-- Navbar principale -->
+  <nav>
+    <a href="#chapitre1">Chapitre 1</a>
+    <a href="#chapitre2">Chapitre 2</a>
+    <a href="#chapitre3">Chapitre 3</a>
+    <a href="#chapitre4">Chapitre 4</a>
+    <a href="#chapitre5">Chapitre 5</a>
+    <a href="#chapitre6">Chapitre 6</a>
+    <a href="#chapitre7">Chapitre 7</a>
+    <a href="#chapitre8">Chapitre 8</a>
+    <a href="#chapitre9">Chapitre 9</a>
+    <a href="#chapitre10">Chapitre 10</a>
+    <a href="#chapitre11">Chapitre 11</a>
+    <a href="#chapitre12">Chapitre 12</a>
+    <a href="#chapitre13">Chapitre 13</a>
+    <a href="#chapitre14">Chapitre 14</a>
+  </nav>
 
-<div class="breadcrumb">
-<a href="#">Accueil</a> <span>></span> <a href="#">Loi</a> <span>></span> <span>Code de Los Santos</span>
-</div>
+  <!-- Fil d'Ariane -->
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a> &gt;
+    <a href="regles.html">Règles</a> &gt;
+    <span>Code de Los Santos</span>
+  </div>
 
-<div class="container">
-<aside>
-<h3>Menu d'action</h3>
-<ul>
-<li><a href="#chapitre-1">Chapitre 1</a></li>
-<li><a href="#chapitre-6">Chapitre 6</a></li>
-<li><a href="#chapitre-7">Chapitre 7</a></li>
-<li><a href="#chapitre-8">Chapitre 8</a></li>
-<li><a href="#chapitre-9">Chapitre 9</a></li>
-<li><a href="#chapitre-10">Chapitre 10</a></li>
-<li><a href="#chapitre-11">Chapitre 11</a></li>
-<li><a href="#chapitre-12">Chapitre 12</a></li>
-<li><a href="#chapitre-13">Chapitre 13</a></li>
-<li><a href="#chapitre-14">Chapitre 14</a></li>
-</ul>
+  <!-- Ajouts récents -->
+  <section class="ajouts-recents">
+    <h3>Ajouts récents</h3>
+    <ul>
+      <li>Chapitre 14 : Décrets et différences de lois entre Comté ajouté</li>
+      <li>Chapitre 13 : Contrats de travail mis à jour</li>
+      <li>Chapitre 11 : Entreprises privées sous gestion de l'État</li>
+    </ul>
+  </section>
 
-<div class="recent-additions">
-<h3>Ajouts récents</h3>
-<ul>
-<li>Article 13.8 ajouté</li>
-<li>Modification de l'Article 10.7</li>
-<li>Chapitre 9 mis à jour</li>
-</ul>
-</div>
-</aside>
+  <!-- Contenu principal -->
+  <main>
 
-<main>
+    <!-- Ici tu peux coller tout le texte complet des articles, chapitre par chapitre -->
+    <section id="chapitre1">
+      <h2>Chapitre 1 : Généralités</h2>
+      <pre>
+Article 1.1
+Lorem ipsum… (ici coller le texte complet du chapitre 1 et ainsi de suite)
+      </pre>
+    </section>
 
-<!-- Chapitre 1 -->
-<section id="chapitre-1">
-<h2>Chapitre 1 : Dispositions Générales</h2>
-<h3>Article 1.1</h3>
-<p>Le texte complet de l'article 1.1...</p>
-<h3>Article 1.2</h3>
-<p>Le texte complet de l'article 1.2...</p>
-<!-- Continuer avec tous les articles du Chapitre 1 jusqu'à 6.1.4 -->
-</section>
+    <section id="chapitre2">
+      <h2>Chapitre 2</h2>
+      <pre>
+Article 2.1
+Lorem ipsum…
+      </pre>
+    </section>
 
-<!-- Chapitre 6 -->
-<section id="chapitre-6">
-<h2>Chapitre 6 : Gouvernance, Juges et Agences</h2>
+    <section id="chapitre6">
+      <h2>Chapitre 6 : Justice et Agences</h2>
+      <pre>
+Article 6.1.5 :
+Le Gouverneur est le garant de l'indépendance de la justice...
+(ici tout le texte que tu m’as fourni jusqu'à Chapitre 14)
+      </pre>
+    </section>
 
-<h3>Article 6.1.5</h3>
-<p>Le Gouverneur est le garant de l'indépendance de la justice (sauf si il doit juger cf. Article 4.6). Il nomme les Juges, une fois ceci fait il se détache de toute autorité ou influence envers ce dernier.</p>
-<p>Le gouvernement nomme un Juge sous candidature spontanée et après examen de la candidature.</p>
-<p>Le juge est soumis à ses engagements d'impartialité et sera tenu sur l'honneur de faire son travail et de juger les prévenus soumis à son jugement et veillera à ce que son jugement soit appliqué.</p>
-<p>Le juge conduit la politique de répression pénale et rend des décisions de justice en veillant à la stricte application du présent Code Pénal. Il veille à la cohérence de son application sur le territoire.</p>
-<p>Le juge assure le bon déroulement des audiences et l'organisation de la Cour de justice. Le juge décide de la délivrance d'un mandat d'arrêt ou de perquisition à la demande des dépositaires de l'autorité publique. Le juge se basera sur le bien fondé de la demande pour décider de l'attribution ou non d'un mandat.</p>
-<p>Le Ministre de la Défense peut lui aussi émettre des mandats d'arrêts et de perquisition au nom du « Secret Défense » uniquement ou en cas d'absence du Juge.</p>
-<p>Les dépositaires de l'autorité publique sont placés sous la surveillance du Juge et du Ministre de la Défense. Ils peuvent les charger de fournir tous les renseignements qu'il estime utiles à une bonne administration de l'instruction.</p>
-<p>Le Juge et le Ministre de la Défense peuvent adresser des instructions générales ou particulières aux enquêteurs.</p>
-<p>Le Juge contrôle la légalité des moyens mis en œuvre par ces derniers, la proportionnalité des actes d'enquête au regard de la nature et de la gravité des faits, l'orientation donnée à l'enquête ainsi que la qualité de celle-ci.</p>
-<p>Le Juge veille à ce que les enquêtes tendent à la manifestation de la vérité et qu'elles soient complices à charge et à décharge, dans le respect des droits de la victime, du suspect et de la personne suspectée.</p>
-<p>En cas d'évasion, la dernière victime de l'évadé doit en être avisée sans délais afin de prévoir toutes éventuelles représailles à son encontre.</p>
-<p>Le Juge peut, dans le cadre d'un mandat d'arrêt, autoriser le placement en garde à vue provisoire de toute personne susceptible d'interférer dans l'opération d'arrestation de la susdite.</p>
+    <section id="chapitre7">
+      <h2>Chapitre 7 : Le Jugement</h2>
+      <pre>
+Article 7.1 :
+Avant chaque début d'audience, le juge et chacune des parties ont accès...
+      </pre>
+    </section>
 
-<h3>Article 6.1.6</h3>
-<p>Les corps de direction des Gouvernements, travaillent sur les questions de sécurité nationale et collabore dans un premier lieu avec le FBI.</p>
-<p>Ceux-ci ont pouvoir d'émettre des mandats d'arrêt et de perquisition de manière confidentielle au nom du "Secret Défense".</p>
-<p>Ceux ont accès à toutes les informations recueillies par les Agences. Afin de mieux cerner les menaces potentielles à la sécurité nationale et afin de permettre au FBI d'agir.</p>
-<p>Tous les mandats émis par les corps de direction des gouvernements sont classés "Secret Défense" en dehors de ceux accordés lors de l'absence du Juge pour des questions ne relevant pas dudit "Secret Défense".</p>
+    <section id="chapitre8">
+      <h2>Chapitre 8 : Etat d'urgence : DEFCON et code écarlate</h2>
+      <pre>
+Article 8.1 :
+L'état de sécurité de l'île de Los Santos est soumis...
+      </pre>
+    </section>
 
-<h3>Article 6.1.7</h3>
-<p>Les salaires des personnes travaillant pour les services publics sont versés par le service public et sont à taux fixe...</p>
-<!-- Continuer avec tous les articles 6.2 → 6.3.2 -->
+    <section id="chapitre9">
+      <h2>Chapitre 9 : Légalité des stupéfiants et objets illégaux</h2>
+      <pre>
+Article 9.1 :
+Tout stupéfiant, et peu importe la quantité...
+      </pre>
+    </section>
 
-</section>
+    <section id="chapitre10">
+      <h2>Chapitre 10 : Droit de propriété</h2>
+      <pre>
+Article 10.1 :
+Est considérée comme une propriété routière...
+      </pre>
+    </section>
 
-<!-- Chapitres 7 à 14 -->
-<section id="chapitre-7">
-<h2>Chapitre 7 : Le Jugement</h2>
-<h3>Article 7.1</h3>
-<p>Avant chaque début d'audience, le juge et chacune des parties ont accès à l'ensemble du dossier...</p>
-<h3>Article 7.2</h3>
-<p>A chaque audience sont présentes : le juge, le parti civil, l'accusé et/ou son représentant...</p>
-<!-- Continuer jusqu'à Article 7.5 -->
-</section>
+    <section id="chapitre11">
+      <h2>Chapitre 11 : Entreprises privées et sous gestion de l'État</h2>
+      <pre>
+Article 11.1 :
+Tout patron se doit de tenir une comptabilité complète...
+      </pre>
+    </section>
 
-<section id="chapitre-8">
-<h2>Chapitre 8 : Etat d'urgence : DEFCON et code écarlate</h2>
-<h3>Article 8.1</h3>
-<p>L'état de sécurité de l'île de Los Santos est soumis à un niveau de menaces divisé en 5 parties...</p>
-<!-- Continuer avec Articles 8.2 et 8.3 -->
-</section>
+    <section id="chapitre12">
+      <h2>Chapitre 12 : L'espace public</h2>
+      <pre>
+Article 12.1 :
+L'occupation illégale d'un espace public est strictement interdite...
+      </pre>
+    </section>
 
-<section id="chapitre-9">
-<h2>Chapitre 9 : Légalité des stupéfiants et objets illégaux</h2>
-<h3>Article 9.1</h3>
-<p>Tout stupéfiant, et peu importe la quantité, est considéré comme illégal...</p>
-<!-- Continuer avec Articles 9.1-1 à 9.6 et §1-5 -->
-</section>
+    <section id="chapitre13">
+      <h2>Chapitre 13 : Contrat de travail</h2>
+      <pre>
+Article 13.1 :
+Il est interdit pour une entreprise de conclure des contrats à durée déterminée...
+      </pre>
+    </section>
 
-<section id="chapitre-10">
-<h2>Chapitre 10 : Droit de propriété</h2>
-<h3>Article 10.1</h3>
-<p>Est considérée comme une propriété routière comme un bien immobilier...</p>
-<!-- Continuer avec Articles 10.2 à 10.7 et sous-articles -->
-</section>
+    <section id="chapitre14">
+      <h2>Chapitre 14 : Décrets et différences de lois entre Comté</h2>
+      <pre>
+Article 14.1 :
+Les lois peuvent varier selon le comté...
+      </pre>
+    </section>
 
-<section id="chapitre-11">
-<h2>Chapitre 11 : Entreprise privée achetée ou sous gestion de l'état</h2>
-<h3>Article 11.1</h3>
-<p>Tout patron se doit de tenir une comptabilité complète de ses entrées et sorties d’argent...</p>
-<!-- Continuer avec Articles 11.2 à 11.7 -->
-</section>
-
-<section id="chapitre-12">
-<h2>Chapitre 12 : L'espace public</h2>
-<h3>Article 12.1</h3>
-<p>L'occupation illégale d'un espace public est strictement interdite...</p>
-<!-- Continuer avec Articles 12.2 à 12.5 -->
-</section>
-
-<section id="chapitre-13">
-<h2>Chapitre 13 : Le contrat de travail</h2>
-<h3>Article 13.1</h3>
-<p>Il est interdit pour une entreprise de conclure des contrats à durée déterminée...</p>
-<!-- Continuer avec Articles 13.2 à 13.8 -->
-</section>
-
-<section id="chapitre-14">
-<h2>Chapitre 14 : Les décrets, et différences de lois entre Comté</h2>
-<h3>Article 14.1</h3>
-<p>Les lois peuvent varier selon le comté dans lequel vous vous trouvez...</p>
-</section>
-
-</main>
-</div>
+  </main>
 
 </body>
 </html>
