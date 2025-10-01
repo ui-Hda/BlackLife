@@ -193,20 +193,26 @@
       color: #3a4f87;
     }
 
-    .screenshot-placeholder {
-      width:   200%;
-      height: 300px;
-      background: #1e1e1e;
-      border: 2px dashed #3a4f87;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #3a4f87;
-      font-weight: bold;
-      margin-top: 15px;
-    }
+.screenshot-placeholder {
+  width: 100%; 
+  max-width: 600px; 
+  height: auto; 
+  background: #1e1e1e;
+  border: 2px dashed #3a4f87;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  overflow: hidden; 
+}
 
+.screenshot-placeholder img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain; 
+}
     .actions {
       width: 220px;
       background: #0d0017;
