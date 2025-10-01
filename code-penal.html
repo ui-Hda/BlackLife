@@ -17,7 +17,6 @@
       display: flex;
       flex-direction: column;
     }
-
     header {
       background: #d4af37;
       padding: 15px 30px;
@@ -25,83 +24,25 @@
       align-items: center;
       gap: 40px;
     }
-
     header .logo { height: 70px; }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
+    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
     nav ul li a:hover, nav ul li a.active { color: #d4af37; }
-
-    .search-bar {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-    }
-
+    .search-bar { flex-grow: 1; display: flex; justify-content: center; }
     .search-bar input {
-      width: 70%;
-      max-width: 650px;
-      padding: 12px 15px 12px 40px;
-      border: none;
-      border-radius: 25px;
-      font-size: 16px;
-      outline: none;
-      background: #1e1e1e;
-      color: white;
+      width: 70%; max-width: 650px; padding: 12px 15px 12px 40px;
+      border: none; border-radius: 25px; font-size: 16px; outline: none;
+      background: #1e1e1e; color: white;
     }
-
-    .search-bar i {
-      position: relative;
-      left: 35px;
-      top: 12px;
-      color: #999;
-      font-size: 18px;
-      pointer-events: none;
-    }
-
-    .breadcrumb {
-      background: #d4af37;
-      padding: 12px 20px;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 20px auto;
-    }
-
-    .breadcrumb ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-      justify-content: center;
-    }
-
+    .search-bar i { position: relative; left: 35px; top: 12px; color: #999; font-size: 18px; pointer-events: none; }
+    .breadcrumb { background: #d4af37; padding: 12px 20px; border-radius: 8px; display: inline-block; margin: 20px auto; }
+    .breadcrumb ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; justify-content: center; }
     .breadcrumb ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: #1e1e1e;
-      transition: 0.3s;
+      text-decoration: none; color: white; font-weight: bold;
+      padding: 6px 12px; border-radius: 6px; background: #1e1e1e; transition: 0.3s;
     }
-
     .breadcrumb ul li a:hover { background: #f5d76e; color: #000; }
     .breadcrumb ul li a.active { background: #f5d76e; color: #000; }
-
     main {
       flex: 1;
       display: grid;
@@ -109,314 +50,154 @@
       gap: 20px;
       margin: 30px;
     }
-
-    .recent {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      height: fit-content;
-    }
-
+    .recent { background: #1e1e1e; padding: 20px; border-radius: 10px; height: fit-content; }
     .recent h2 { font-size: 18px; margin-bottom: 15px; color: #ccc; }
-
-    .recent-item {
-      background: #0e0e0e;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 12px;
-      transition: 0.3s;
-    }
-
-    .recent-item:hover {
-      border-color: #d4af37;
-      background: #1a1a1a;
-    }
-
+    .recent-item { background: #0e0e0e; border: 1px solid #444; border-radius: 8px; padding: 10px; margin-bottom: 12px; transition: 0.3s; }
+    .recent-item:hover { border-color: #d4af37; background: #1a1a1a; }
     .recent-item h3 { font-size: 15px; margin: 0 0 5px; color: #d4af37; }
     .recent-item p { margin: 0; font-size: 13px; color: #aaa; }
     .recent-item a { display: block; text-decoration: none; color: inherit; }
-
-    .cards-wrapper {
-      background: #1e1e1e;
-      padding: 30px;
-      border-radius: 15px;
-    }
-
+    .cards-wrapper { background: #1e1e1e; padding: 30px; border-radius: 15px; }
     .cards-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .cards-header h2 { margin: 0; font-size: 20px; color: #fff; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .card {
-      background: #0e0e0e;
-      color: #fff;
-      border-radius: 15px;
-      border: 2px solid #fff;
-      padding: 20px;
-      text-align: left;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.01);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-    }
-
-    .card h3 { color: #d4af37; margin-top:0; }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #d4af37;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .actions {
-      width: 220px;
-      background: #0d0017;
-      padding: 20px;
-      border-radius: 10px;
-      height: fit-content;
-      align-self: flex-start;
-    }
-
+    .cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .card { background: #0e0e0e; color: #fff; border-radius: 15px; border: 2px solid #fff; padding: 20px; transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s; }
+    .card:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+    .card h3 { color: #d4af37; }
+    .card p { white-space: pre-line; line-height: 1.5em; }
+    .actions { width: 220px; background: #0d0017; padding: 20px; border-radius: 10px; height: fit-content; align-self: flex-start; }
     .actions h2 { font-size: 18px; margin-bottom: 15px; color: #ccc; }
-    .actions button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      background: none;
-      border: none;
-      color: #d4af37;
-      font-size: 15px;
-      padding: 8px 0;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
+    .actions button { display: flex; align-items: center; gap: 8px; width: 100%; background: none; border: none; color: #d4af37; font-size: 15px; padding: 8px 0; text-align: left; cursor: pointer; transition: 0.3s; }
     .actions button:hover { color: #fff; }
-
-    body.light-mode {
-      background: #f5f5f5;
-      color: #000;
-    }
-
-    body.light-mode .recent,
-    body.light-mode .cards-wrapper { background: #ddd; }
-
-    body.light-mode .card,
-    body.light-mode .recent-item {
-      background: #fff;
-      color: #000;
-      border: 2px solid #000;
-    }
-
-    .return-btn {
-      margin-top: 15px;
-      display: inline-block;
-      background: #d4af37;
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .return-btn:hover { background: #f5d76e; }
   </style>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="regles.html" class="active">Règlement</a></li>
-        <li><a href="jobs-legaux.html">Légal</a></li>
-        <li><a href="jobs-illegaux.html">Illégal</a></li>
-        <li><a href="tutoriels.html">Tutoriels</a></li>
-        <li><a href="generales.html">Généralités</a></li>
-        <li><a href="discord.html">Discord</a></li>
-      </ul>
-    </nav>
-    <div class="search-bar">
-      <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Rechercher...">
-    </div>
-  </header>
-
-  <nav class="breadcrumb">
+<header>
+  <img src="assets/logo.png" alt="Logo" class="logo">
+  <nav>
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="regles.html" class="active">Règlement</a></li>
-      <li><a>Code Pénal</a></li>
+      <li><a href="jobs-legaux.html">Légal</a></li>
+      <li><a href="jobs-illegaux.html">Illégal</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a href="generales.html">Généralités</a></li>
+      <li><a href="discord.html">Discord</a></li>
     </ul>
   </nav>
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Rechercher...">
+  </div>
+</header>
 
-  <main>
-    <aside class="recent" id="recentContainer">
-      <h2>Ajouts récents</h2>
-    </aside>
+<nav class="breadcrumb">
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="regles.html" class="active">Règlement</a></li>
+    <li><a>Code Pénal</a></li>
+  </ul>
+</nav>
 
-    <div class="cards-wrapper">
-      <div class="cards-header">
-        <h2>Code Pénal</h2>
-      </div>
-      <div class="cards">
+<main>
+<aside class="recent" id="recentContainer">
+  <h2>Ajouts récents</h2>
+</aside>
 
-        <!-- Bouton de retour -->
-        <a href="regles.html" class="return-btn"><i class="fas fa-arrow-left"></i> Retour au Règlement</a>
+<div class="cards-wrapper">
+  <div class="cards-header">
+    <h2>Code Pénal</h2>
+  </div>
+  <div class="cards">
 
-        <!-- ======= Texte complet des articles ======= -->
-        <div class="card">
-          <h3>Articles 1.1 à 14</h3>
-          <p>
-            <!-- **tout le texte complet du Code Pénal**, de l'article 1.1 à l'article 14,l. -->
-           <!-- Chapitre 1 : Principes généraux -->
-Article 1.1 :
-Tout citoyen est égal devant la loi et jouit des mêmes droits et devoirs. La loi protège la liberté, la propriété, la sécurité et la vie des individus.
+    <div class="card">
+      <h3>Article 1.1 à 14.1</h3>
+      <p>
+        <!-- Début du Code Pénal -->
 
-Article 1.2 :
-Nul ne peut être puni qu’en vertu d’une loi promulguée avant la commission de l’infraction. Les lois doivent être publiques et accessibles à tous.
+        <!-- Article 6.1.6 -->
+        <strong>Article 6.1.6 :</strong> Les corps de direction des Gouvernements travaillent sur les questions de sécurité nationale et collaborent principalement avec le FBI. Ils peuvent émettre des mandats d'arrêt et de perquisition confidentiels au nom du "Secret Défense".<br><br>
 
-Article 1.3 :
-Tout individu a droit à un procès équitable et à la présomption d’innocence. Aucun jugement arbitraire ne peut être prononcé à l’encontre d’un citoyen.
+        <strong>Article 6.1.7 :</strong> Les salaires des personnes travaillant pour les services publics sont versés par le service public et sont à taux fixe. Les fonctionnaires sont payés par le Gouvernement, salaires fixés par décret après consultation du directeur de l'institution et du Ministre des Finances (ou Gouverneur/Vice-Gouverneur).<br><br>
 
-Article 1.4 :
-Tout citoyen est tenu de respecter les lois en vigueur sur le territoire de Los Santos et de Blaine County, sous peine de sanctions prévues par le présent Code Pénal.
+        <strong>Article 6.2 :</strong> Agences : Le LSPD/BCSO fait respecter la loi. Le FBI est indépendant et peut accéder aux commissariats et dossiers pour enquêtes sans entrave.<br><br>
 
-Article 1.5 :
-Les autorités publiques doivent agir dans le cadre légal et ne peuvent porter atteinte aux droits fondamentaux des citoyens, sauf dérogation prévue par la loi.
+        <strong>Article 6.2.1 :</strong> Les agences tiennent un rapport détaillé de toutes les enquêtes, preuves et informations pouvant être présentées devant un juge.<br><br>
 
-<!-- Chapitre 2 : Infractions pénales -->
-Article 2.1 :
-Sont considérées comme infractions pénales toutes actions violant la loi et portant atteinte aux personnes, biens ou à l’ordre public.
+        <strong>Article 6.2.2 :</strong> Les agents doivent être en tenue ou pouvoir prouver leur appartenance à leur service.<br><br>
 
-Article 2.2 :
-Les infractions sont classées selon leur gravité : contraventions, délits et crimes. La classification détermine les sanctions applicables.
+        <strong>Article 6.2.3 :</strong> Tout agent doit décliner son matricule sur demande. L’identité civile est confidentielle jusqu’au procès.<br><br>
 
-Article 2.3 :
-Tout auteur d’une infraction est passible de sanctions proportionnelles à la gravité de l’acte, à l’intention et aux circonstances.
+        <strong>Article 6.2.4 :</strong> Le FBI gère la sécurité nationale, lutte contre le terrorisme, la cybercriminalité, la corruption et la criminalité violente, en collaboration avec le gouvernement et les agences.<br><br>
 
-Article 2.4 :
-Les peines peuvent inclure amendes, emprisonnement, travaux d’intérêt général, saisies ou interdictions spécifiques selon la gravité des faits.
+        <strong>Article 6.3 :</strong> Service EMS : personnel soumis au serment d’Hippocrate, doit porter tenue et véhicule attitré.<br><br>
 
-Article 2.5 :
-Les circonstances aggravantes et atténuantes sont prises en compte par le juge pour déterminer la peine appropriée.
+        <strong>Article 6.3.2 :</strong> Les EMS tiennent un registre d’intervention, confidentiel mais accessible aux autorités avec mandat.<br><br>
 
-<!-- Chapitre 3 : Responsabilités civiles et pénales -->
-Article 3.1 :
-Toute personne ayant causé un dommage à autrui peut être tenue responsable civilement et/ou pénalement. La réparation doit être proportionnelle au préjudice subi.
+        <strong>Chapitre 7 - Le Jugement :</strong><br>
+        <strong>Article 7.1 :</strong> Chaque partie a accès au dossier avant l'audience, le juge peut demander réquisitions du ministère public.<br>
+        <strong>Article 7.2 :</strong> Présence obligatoire : juge, parties, victimes. Audience peut être publique.<br>
+        <strong>Article 7.3 :</strong> Chaque partie peut demander rapport d'audience ; deuxième demande favorable à la partie adverse.<br>
+        <strong>Article 7.4 :</strong> Ne peut être jugé deux fois pour le même motif sauf nouveaux éléments.<br>
+        <strong>Article 7.5 :</strong> Les décisions équivalentes à un appel sont nulles.<br><br>
 
-Article 3.2 :
-Les délits commis par négligence ou imprudence sont sanctionnés conformément au présent Code, même en l’absence d’intention de nuire.
+        <strong>Chapitre 8 - Etat d’urgence :</strong><br>
+        <strong>Article 8.1 :</strong> Niveau de menace DEFCON 5 à 1.<br>
+        <strong>Article 8.2 :</strong> Changement de DEFCON décidé par réunion des chefs d'agences et gouvernement.<br>
+        <strong>Article 8.3 :</strong> Code Écarlate : activation en cas d’attaque ciblée sur institutions ou personnels, durée max 24h.<br><br>
 
-Article 3.3 :
-Les mineurs sont soumis à un régime particulier de responsabilité pénale adapté à leur âge et à leur discernement.
+        <strong>Chapitre 9 - Stupéfiants et objets illégaux :</strong><br>
+        <strong>Article 9.1 :</strong> Tout stupéfiant est illégal.<br>
+        <strong>Article 9.1-1 :</strong> Stupéfiants classés doux ou durs.<br>
+        <strong>Article 9.2 à 9.6 :</strong> Consommation, possession, trafic de drogues, armes et argent illégal sont sanctionnés. Gilets pare-balles régis par restrictions.<br><br>
 
-<!-- Chapitre 4 : Procédures judiciaires -->
-Article 4.1 :
-Toute enquête doit être menée dans le respect des droits fondamentaux des personnes. Les preuves doivent être obtenues légalement.
+        <strong>Chapitre 10 - Droit de propriété :</strong><br>
+        <strong>Article 10.1 à 10.7 :</strong> Définition de propriété, perquisitions, saisies, garde à vue et gestion des biens.<br><br>
 
-Article 4.2 :
-Le ministère public est chargé de représenter l’État et de veiller à la poursuite des infractions. Il agit dans le cadre légal et sous le contrôle du juge.
+        <strong>Chapitre 11 - Entreprises :</strong><br>
+        <strong>Article 11.1 à 11.7 :</strong> Obligations comptables pour entreprises privées ou sous gestion de l'Etat, sanctions en cas d’infractions ou implication judiciaire.<br><br>
 
-Article 4.3 :
-Toute personne soupçonnée d’une infraction a droit à la défense et à l’assistance d’un avocat dès le début de la procédure.
+        <strong>Chapitre 12 - Espace public :</strong><br>
+        <strong>Articles 12.1 à 12.5 :</strong> Occupation, revendication, vente et utilisation commerciale de l’espace public réglementées.<br><br>
 
-Article 4.4 :
-Les auditions doivent être conduites en présence de l’accusé et de son représentant légal si nécessaire. Toute procédure menée sans respect des droits de la défense est nulle.
+        <strong>Chapitre 13 - Contrat de travail :</strong><br>
+        <strong>Articles 13.1 à 13.8 :</strong> Contrats, CDD/CDI, avenants, clauses, visite médicale obligatoire.<br><br>
 
-Article 4.5 :
-Les preuves obtenues de manière illégale ne peuvent être utilisées devant le tribunal.
+        <strong>Chapitre 14 - Décrets et différences de lois :</strong><br>
+        <strong>Article 14.1 :</strong> Les violations de ces articles engagent la responsabilité pénale et conduisent à sanctions proportionnelles.<br><br>
 
-Article 4.6 :
-Le juge peut être amené à intervenir directement dans certaines affaires exceptionnelles, mais doit respecter strictement l’impartialité et les procédures prévues par le Code.
-
-<!-- Chapitre 5 : Sanctions et amendements -->
-Article 5.1 :
-Les sanctions sont appliquées conformément à la classification des infractions et au tableau d’amendement prévu par le Code Pénal.
-
-Article 5.2 :
-Les amendes sont fixées selon la gravité de l’infraction et les ressources financières du contrevenant, conformément aux barèmes définis par le Code.
-
-Article 5.3 :
-Les peines d’emprisonnement et mesures restrictives doivent être proportionnées à la gravité des infractions et respectueuses des droits fondamentaux.
-
-Article 5.4 :
-Les juges peuvent appliquer des mesures alternatives à l’emprisonnement dans le cadre d’une sanction adaptée aux circonstances.
-
-Article 5.5 :
-Le Code prévoit des dispositions pour la réhabilitation et la réinsertion des personnes condamnées afin de favoriser le respect futur de la loi.
-
-Article 6.1.5 :
-Le Gouverneur est le garant de l'indépendance de la justice (sauf si il doit juger cf. Article 4.6). Il nomme les Juges, une fois ceci fait il se détache de toute autorité ou influence envers ce dernier.
-Le gouvernement nomme un Juge sous candidature spontanée et après examen de la candidature.
-Le juge est soumis à ses engagements d'impartialité et sera tenu sur l'honneur de faire son travail et de juger les prévenus soumis à son jugement et veillera à ce que son jugement soit appliqué.
-Le juge conduit la politique de répression pénale et rend des décisions de justice en veillant à la stricte application du présent Code Pénal. Il veille à la cohérence de son application sur le territoire.
-Le juge assure le bon déroulement des audiences et l'organisation de la Cour de justice. Le juge décide de la délivrance d'un mandat d'arrêt ou de perquisition à la demande des dépositaires de l'autorité publique. Le juge se basera sur le bien fondé de la demande pour décider de l'attribution ou non d'un mandat.
-Le Ministre de la Défense peut lui aussi émettre des mandats d'arrêts et de perquisition au nom du « Secret Défense » uniquement ou en cas d'absence du Juge.
-Les dépositaires de l'autorité publique sont placés sous la surveillance du Juge et du Ministre de la Défense. Ils peuvent les charger de fournir tous les renseignements qu'il estime utiles à une bonne administration de l'instruction.
-Le Juge et le Ministre de la Défense peuvent adresser des instructions générales ou particulières aux enquêteurs.
-Le Juge contrôle la légalité des moyens mis en œuvre par ces derniers, la proportionnalité des actes d'enquête au regard de la nature et de la gravité des faits, l'orientation donnée à l'enquête ainsi que la qualité de celle-ci.
-Le Juge veille à ce que les enquêtes tendent à la manifestation de la vérité et qu'elles soient complices à charge et à décharge, dans le respect des droits de la victime, du suspect et de la personne suspectée.
-En cas d'évasion, la dernière victime de l'évadé doit en être avisé sans délais afin de prévoir toutes éventuelles représailles à son encontre.
-Le Juge peut, dans le cadre d'un mandat d'arrêt, autoriser le placement en garde à vue provisoire de toute personne susceptible d'interférer dans l'opération d'arrestation de la susdite.
-
-Article 6.1.6 :
-Les corps de direction des Gouvernements, travaille sur les questions de sécurité nationale et collabore dans un premier lieu avec le FBI.
-Ceux-ci ont pouvoir d'émettre des mandats d'arrêt et de perquisition de manière confidentielle au nom du "Secret Défense".
-Ceux ont accès à toutes les informations recueillies par les Agences. Afin de mieux cerner les menaces potentielles à la sécurité nationale et afin de permettre au FBI d'agir.
-Tous les mandats émis par les corps de direction des gouvernements sont classés "Secret Défense" en dehors de ceux accordés lors de l'absence du Juge pour des questions ne relevant pas dudit "Secret Défense".
-          </p>
-        </div>
-      </div>
+        <!-- Fin du Code Pénal -->
+      </p>
+      <button onclick="window.location.href='regles.html'" style="margin-top:15px; padding:8px 15px; background:#d4af37; border:none; border-radius:5px; color:#000; font-weight:bold; cursor:pointer;">Retour</button>
     </div>
 
-    <aside class="actions">
-      <h2>Actions</h2>
-      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
-      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
-      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
-    </aside>
-  </main>
+  </div>
+</div>
 
-  <script>
-    const themeBtn = document.getElementById("themeToggle");
-    const recentContainer = document.getElementById("recentContainer");
+<aside class="actions">
+  <h2>Actions</h2>
+  <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+  <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+</aside>
+</main>
 
-    function toggleTheme() {
-      document.body.classList.toggle("light-mode");
-      themeBtn.innerHTML = document.body.classList.contains("light-mode") ?
-        '<i class="fas fa-adjust"></i> Mode sombre' :
-        '<i class="fas fa-adjust"></i> Mode clair';
-    }
-
-    function loadRecent() {
-      const recent = [
-        { title: "Code Pénal complet", link: "#", date: "01/10/2025" },
-        { title: "Règlement général", link: "regles-general.html", date: "13/09/2025" },
-        { title: "Règlement légal", link: "regles-legaux.html", date: "13/09/2025" }
-      ];
-      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
-      recent.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("recent-item");
-        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
-        recentContainer.appendChild(div);
-      });
-    }
-
-    loadRecent();
-  </script>
+<script>
+const recentContainer = document.getElementById("recentContainer");
+function loadRecent() {
+  const recent = [
+    { title: "Règlement général", link: "regles-general.html", date: "13/09/2025" },
+    { title: "Règlement légal", link: "regles-legaux.html", date: "13/09/2025" },
+    { title: "Règlement illégal", link: "regles-illegaux.html", date: "13/09/2025" }
+  ];
+  recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+  recent.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("recent-item");
+    div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+    recentContainer.appendChild(div);
+  });
+}
+loadRecent();
+</script>
 </body>
 </html>
