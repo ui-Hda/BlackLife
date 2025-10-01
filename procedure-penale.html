@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTANew - Procédure Pénale</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #d4af37; /* Jaune foncé doré */
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #d4af37;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #d4af37; /* même jaune doré que la navbar */
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+    .breadcrumb ul li a:hover {
+      background: #f5d76e; /* Jaune clair au survol */
+      color: #000;
+    }
+    .breadcrumb ul li a.active {
+      background: #f5d76e;
+      color: #000;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #d4af37;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #d4af37;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cards-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .reglement-text {
+      color: #e6e6e6;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d4af37;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper {
+      background: #ddd;
+    }
+
+    body.light-mode .card,
+    body.light-mode .recent-item {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html">Généralités</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <!-- ========= FIL D'ARIANE ========= -->
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="regles.html">Règlement</a></li>
+      <li><a class="active">Procédure pénale</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>Procédure pénale</h2>
+      </div>
+
+      <div class="reglement-text">
+Chapitre 1: Définitions
+
+Article 1 : Dispositions générales
+
+
+1.0 Hiérarchie des textes
+
+Le code de procédure pénale prévaut sur le code pénal. Pour toute contradiction entre le code pénal et le code de procédure pénale, le code de procédure pénale prévaut.
+Toute instruction du Pentagone prévaut sur l’ensemble des textes législatifs en vigueur sur les comtés de Blaine County et Los Santos.
+
+
+1.1. Portée
+
+Le code de procédure pénale à vocation à définir et faire appliquer une procédure à suivre sur le plan pénal. Les procédures civiles ne sont pas régies par le présent code.
+
+
+1.2. Procédure pénale
+
+Constitue une procédure pénale tout mouvement de l’action publique engagé contre une personne physique ou morale par un dépositaire de l’autorité publique qui applique une sanction pénale prévue par la tarification amende en vigueur.
+
+
+1.3. Vice de procédure
+
+§ 1 - Constitue un vice de procédure toute action, décision ou enregistrement d’information personnelle non justifiée, délictueuse où criminelle dans le cadre du mouvement de l’action publique. Le vice de procédure constitue un motif de nullité des éléments, preuves, etc. obtenue par la commission volontaire ou non dudit vice.
+
+§ 2 - Des poursuites pénales ne peuvent être engagées par la personne victime du vice de procédure à l’encontre des procureurs, juges ou dépositaires de l’autorité publique pour les vices de procédure. Les poursuites civiles restent possibles à l’encontre des entités employant la personne ayant commis ledit vice de procédure. Néanmoins des sanctions administratives peuvent être appliquées par la hiérarchie. 
+
+§ 3 - La hiérarchie peut également engager des poursuites à l’encontre de l’auteur des faits si ses derniers sont délictueux ou criminels uniquement en transférant leurs informations au F.I.B.
+
+§ 4 - La sanction administrative ne dispense pas de sanction pénale. Celle-ci n’éteint pas l’action publique. Néanmoins la sanction pénale n’a rien d’obligatoire si la hiérarchie ne décide pas d’engager de poursuites via le F.I.B.
+
+§ 5 - Si le vice de procédure est le résultat d’une action d’un membre du F.I.B ce dernier sera traité administrativement et pénalement par sa hiérarchie en l’absence de structure ou branche spécialisé dans le traitement des vice de procédure des agences fédérales.
+
+
+1.4. Tarification amende en vigueur
+
+La tarification amende en vigueur est celle dont dispose le code pénal. (cf. code pénal chapitre V article 5.2 grille forfaitaire.) Elle définit les peines encourues et applicables au justiciable.
+
+
+1.5. Justiciable
+
+Est un justiciable toute personne physique ou morale soumis aux lois nationales/fédérales.
+
+Article 2 : Dispositions du mouvement de l’action publique
+
+
+2.0 Mouvement de l’action publique
+
+La mise en mouvement de l’action publique au niveau pénal n'éteint pas, même après une décision de justice pénale qui pourrait éteindre les mouvements de l’action publique au niveau pénal, l’action en justice devant une juridiction civile.
+
+
+2.1. Classement sans suite et acquittement
+
+§ 1 - Les dépositaires de l’autorité publique ont toute discrétion sur la mise en mouvement de l’action publique.
+
+§ 2 - A moins que la décision soit une décision d’acquittement prise par un juge compétent sous une décision éteignant l’action publique sauf contradiction dans les articles 2.101 à 2.108 les dépositaires de l’autorité publique peuvent revenir ultérieurement sur leurs décisions initiales, notamment en cas d’apparition d’éléments supplémentaires.
+
+Les motifs de classement sans suite sont :
+
+
+2.101 - Absence d’infraction
+
+Dans ce cas, les dépositaires de l’autorité publique considèrent qu’aucune infraction n’a été commise par le mis en cause.
+
+
+2.102 - Infraction insuffisamment caractérisée
+
+Dans ce cas, les dépositaires de l’autorité publique considèrent que l’engagement de poursuites ne peut se faire pour un manque de preuve.
+
+
+2.103 - Motif juridique
+
+§ 1 - Dans ce cas, les dépositaires de l’autorité publique ne peuvent engager de poursuites pour l’un des motif suivant :
+
+    Grâce (cf. code pénal Chapitre V article 4.6).
+
+    Irresponsabilité pénale de l’auteur (troubles psychiques, légitime défense, contrainte/force majeure, état de nécessité, commandement de l’autorité légitime).
+
+    Décès
+
+§ 2 - Dans le cas d’une irresponsabilité pénale pour un motif médical, le juge doit accompagner l’acquittement d’une obligation de soins temporaire ou permanente dans le lieu qu’il choisit.
+
+
+2.104 - Poursuite inopportunes
+
+Dans ce cas, les dépositaires de l’autorité publique considèrent que les poursuites ne viennent pas à propos. Dans ce cas, il n'est pas contesté que l’infraction pénale semble caractérisée, mais les poursuites n’apparaissent pas utiles ou judicieuses. Le classement pour ce motif doit être clairement explicité dans la décision.
+
+
+2.105 - Autre poursuite ou sanction non pénale
+
+Dans ce cas, les dépositaires de l’autorité publique ne peuvent engager de poursuites puisque des poursuites pénales sont déjà engagées contre l’auteur des faits pour les mêmes faits ou puisque les faits reprochés ont déjà été jugés. Les poursuites pénales n’éteignent pas l’action civile.
+
+
+2.106 - Accord dispensant de poursuites pénales
+
+§ 1 - Les infractions constituant une contravention, un délit (mineur et/ou majeur) ou un crime peuvent faire l’objet d’un accord qui est discuté entre le Procureur ou à défaut le Juge et l’accusé ou à défaut son représentant (avocat). Les conditions sont validées par le juge.
+
+§ 2 - Les infractions constituant un crime fédéral, une contravention, un délit (mineur et/ou majeur) ou un crime peuvent faire l’objet d’un accord qui est discuté entre un dépositaire de l’autorité publique veillant à l’application des lois fédérales et l’accusé ou à défaut son représentant (avocat). Les conditions peuvent être validées par le juge.
+
+§ 3 - Le non-respect de tout ou partie d’un accord écrit et signé par les parties (cf. à l’alinéa 1 et/ou 2) autorise des poursuites pénales à l’encontre de l’individu initialement accusé pour les motifs qui lui étaient initialement reprochés ainsi que pour le non-respect d’une décision de justice.
+
+§ 4 - Un accord écrit et signé ne peut être annulé par l’une des parties sauf dans les conditions énoncées dans l’alinéa précédent.
+
+§ 5 - Un accord respecté dispensant de poursuites pénales vaut décision de justice et éteint l’action publique pour les faits concernés explicitement par l’accord tant que ce dernier est respecté par les parties.
+
+§ 6 - Les accords dispensant de poursuites pénales ne peuvent couvrir toute infraction commise avant une date précise (cf. à la grâce article 4.6 du Code Pénal). Ils doivent être explicite et clair, néanmoins ils peuvent couvrir toute infraction commises à une date ou série de date précise, tant que les périodes couvertes n’excèdent pas trente jours.
+
+§ 7 - Les accords dispensant de poursuites pénales doivent être mis à l'écrit, tout accord non écrit et nul et non avenu.
+
+§ 8 - Les accords doivent être signés par les deux partis, si l’une ou l’autre des signatures est manquante l’accord est nul et non avenu. Pour la signature l’accusé peut déléguer cette tâche à son représentant (avocat).
+
+§ 9 - Tous accords passés à partir d’une pression, intimidation, contrainte est nul et non avenu.
+2.107 - Motif juridique relatif au secret de la défense
+
+§ 1 - Permet de dispenser toute personne physique ou morale de sa responsabilité pénale vis-à-vis d’un ou plusieurs événements constituant une infraction pénale survenus dans le cadre d’une opération fédérale approuvée par la hiérarchie. 
+
+§ 2 - Ce motif ne peut être refusé par un juge sauf s’il suspecte des agissements criminels de la part de la hiérarchie ayant approuvé l’opération fédérale, cette suspicion ouvrira automatiquement un jugement à huis-clos pour les faits suspectés, en cas d’acquittement lors de ce jugement, l’affaire initialement jugé sera automatiquement acquitté au titre du présent article.
+2.108 - Abandon des poursuites pénales
+
+Tout dépositaire de l’autorité publique à sa discrétion peut abandonner les poursuites qu’il avait décidé d’engager. Cette décision est soumise à l’accord d’un juge.
+2.109 - Motif fédéral suite à l’intervention d’un Marshall (Staff)
+
+§ 1 - Tout intervention d’un Marshall lors d’une procédure pénale suspend tout délai de prescription, de traitement, de garde à vue, etc.
+
+§ 2 - Sur simple décision d’un Marshall une procédure pénale peut être arrêtée, suspendue, annulée. En cas d’annulation d’une procédure pénale par un Marshall peu importe toute contradiction, tout élément lié à l’affaire est supprimé et toute saisie légale ou illégale est restituée sans délai. 
+
+§ 3 - En cas de restitution différée, l’accusé à 72 heures à compter de la décision d’un Marshall pour réclamer les saisies, passé ce délai les saisies deviendront propriété de l’Etat et ne pourront plus être restituées.
+
+§ 4 - En cas d’application illicite du présent article la ou les personnes physiques et ou morales se rendent automatiquement coupable d’accès à des informations confidentielles et/ou secret défense, de non respect des procédures pénalement répréhensible, de commission d’actes ripoux, d’entrave à une enquête judiciaire, d’entrave aux opérations gouvernementales, de falsification de document officiel, d’utilisation et/ou présentation de faux. Les procédures pénales ayant été impactées par un usage illicite du présent article devront reprendre l’état dans lesquelles elles étaient avant l’application illicite du présent article. Les personnes lésées par l’usage illicite du présent article ne pourront engager de poursuites pénales et/ou civiles à l’encontre de la ou les personnes physiques et/ou morales qui auront fait un usage illicite du présent article.
+2.110 - Intime conviction du juge ou des jurés
+
+§ 1 - L'acquittement par intime conviction consiste à affirmer que les éléments portés à votre connaissance lors d’une procédure pénale, notamment un jugement, que ce soit les preuves, les témoignages, les plaidoiries, etc. Laisse planer un doute raisonnable sur la culpabilité de l’individu accusé. Ce doute peut porter sur tout ou partie des chefs d’accusation, c’est pour cela que vous devez exprimer votre intime conviction sur des chefs d’accusation spécifiques et unique lors d’un jugement.
+
+§ 2 - Le doute profite systématiquement à l’accusé.
+
+§ 3 - Une décision d’intime conviction peut être annulée s’il est prouvé qu’une pression, intimidation, contrainte ont amené à ladite décision.
+
+
+2.2. Ouverture d’une information judiciaire
+
+L’information judiciaire est l’enquête menée par les dépositaires de l’autorité publique permettant de déterminer l’existence d’une infraction, les auteurs de l’infraction et s’il y a des indices contre la personne ou les personnes mises en cause. L’information judiciaire est ouverte sur décision du procureur, du juge ou des dépositaires de l’autorité publique ou à l’initiative d’une victime par le dépôt d’une plainte. Les dépositaires de l’autorité publique disposent de nombreux moyens d’enquête et de contraintes (mandats, détention provisoire, …).
+
+
+2.3. Ouverture d’un procès
+
+L’ouverture d’un procès se fait dans les conditions établies par la loi. (cf. code pénal Chapitre I article 1.1), elle se fait par initiative d’un procureur, d’un juge ou des dépositaires de l’autorité publique.
+
+
+2.3.1. Classement avec suite et culpabilité de l’accusé
+
+§ 2 - A moins que la décision soit une décision de culpabilité prise par un juge compétent ou une décision éteignant l’action publique sauf contradiction dans les articles 2.301 à 2.303 les dépositaires de l’autorité publique peuvent revenir ultérieurement sur leurs décisions initiales, notamment en cas d’apparition d’éléments supplémentaires.
+
+Les motifs de classement avec suite sont :
+2.301 - Accord de plaider coupable ne dispensant pas de poursuites pénales
+
+§ 1 - Les infractions constituant une contravention, un délit (mineur et/ou majeur) ou un crime peuvent faire l’objet d’un accord qui est discuté entre le Procureur ou à défaut le Juge et l’accusé ou à défaut son représentant (avocat). Les conditions sont validées par le juge.
+
+§ 2 - Les infractions constituant un crime fédéral, une contravention, un délit (mineur et/ou majeur) ou un crime peuvent faire l’objet d’un accord qui est discuté entre un dépositaire de l’autorité publique veillant à l’application des lois fédérales et l’accusé ou à défaut son représentant (avocat). Les conditions peuvent être validées par le juge.
+
+§ 3 - Le non-respect de tout ou partie d’un accord écrit et signé par les parties (cf. à l’alinéa 1 et/ou 2) autorise des poursuites pénales à l’encontre de l’individu initialement accusé pour les motifs qui lui étaient initialement reprochés ainsi que pour le non-respect d’une décision de justice.
+
+§ 4 - Un accord écrit et signé ne peut être annulé par l’une des parties sauf dans les conditions énoncées dans l’alinéa précédent.
+
+§ 5 - Un accord respecté ne dispensant pas de poursuites pénales vaut décision de justice et éteint l’action publique pour les faits concernés explicitement par l’accord tant que ce dernier est respecté.
+
+§ 6 - Les accords ne dispensant pas de poursuites pénales ne peuvent couvrir toute infraction commise avant une date précise (cf. à la grâce article 4.6 du Code Pénal). Ils doivent être explicite et clair, néanmoins ils peuvent couvrir toute infraction commises à une date ou série de date précise, tant que les périodes couvertes n’excèdent pas quatre-vingt-dix jours.
+
+§ 7 - Les accords ne dispensant pas de poursuites pénales doivent être mis à l'écrit, tout accord non écrit et nul et non avenu.
+
+§ 8 - Les accords doivent être signés par les deux partis, si l’une ou l’autre des signatures est manquante l’accord est nul et non avenu. Pour la signature l’accusé peut déléguer cette tâche à son représentant (avocat).
+
+§ 9 - Tous accords passés à partir d’une pression, intimidation, contrainte est nul et non avenu.
+2.302 - Motif fédéral suite à l’intervention d’un Marshall (Staff)
+
+§ 1 - Sur simple décision d’un Marshall une procédure pénale peut être appliquée sans validation préalable d’un juge.
+
+§ 2 - En cas d’application illicite du présent article la ou les personnes physiques et ou morales se rendent automatiquement coupable d’accès à des informations confidentielles et/ou secret défense, de non respect des procédures pénalement répréhensible, de commission d’actes ripoux, d’entrave à une enquête judiciaire, d’entrave aux opérations gouvernementales, de falsification de document officiel, d’utilisation et/ou présentation de faux. Les procédures pénales ayant été impactées par un usage illicite du présent article devra reprendre l’état dans lequel elle était avant l’application illicite du présent article. Les personnes lésées par l’usage illicite du présent article ne pourront engager de poursuites pénales et/ou civiles à l’encontre de la ou les personnes physiques et/ou morales qui auront fait un usage illicite du présent article.
+2.303 - Intime conviction du juge ou des jurés
+
+§ 1 - La culpabilité par intime conviction consiste à affirmer que les éléments portés à votre connaissance lors d’une procédure pénale, notamment un jugement, que ce soit les preuves, les témoignages, les plaidoiries, etc. ne laissent pas planer un doute raisonnable sur la culpabilité de l’individu accusé. Cette absence de doute peut porter sur tout ou partie des chefs d’accusation, c’est pour cela que vous devez exprimer votre intime conviction sur des chefs d’accusation spécifiques et unique lors d’un jugement.
+
+§ 2 - Une décision d’intime conviction peut être annulée s’il est prouvé qu’une pression, intimidation, contrainte ont amené à ladite décision.
+
+
+2.4. Application immédiate
+
+L’application immédiate des peines se fait dans les conditions établies par la loi. (cf. code pénal Chapitre I article 1.1 et Chapitre V article 5.2 et Chapitre IV article 4.1), elle se fait par initiative des dépositaires de l’autorité publique.
+
+L’application immédiate n’est possible que si un jugement n’est pas obligatoire dans les conditions prévues par le code pénal.
+Article 3 : De l’interpellation à la garde à vue 
+
+
+3.1. De l’état d’interpellation
+
+Est considéré comme en état d'interpellation un individu qui par ses actes, son comportement pris sur le fait ou relaté, serai en possible relation avec un crime, un délit ou une infraction.
+
+§ 1 - De ce fait est aussi considéré comme en état d'interpellation un individu à qui un dépositaire de l’autorité publique a dû priver de liberté de mouvement (mis à terre ou menotté(e)s) pour sa propre sécurité ou celle de personne présente sur les lieux. Cet état est bien distinct de l’état d’arrestation de par sa nature ne découlant pas d’une mise sous amendes et/ou d’une peine de prison.
+
+§ 2 - Cet état a pour durée maximum, 20 minutes au cours duquel le dépositaire de l’autorité publique devra à terme décider de relaxer l’individu ou de l’inculpé pour un chef d’accusation.
+
+
+3.2. De l’état d’arrestation
+
+Est placé en état d’arrestation un individu menotté étant suspecté d’avoir commis ou ayant commis un délit, un crime ou un crime fédéral. L’état d’arrestation est nécessaire pour les procédures pénales relevant d’un délit où d’un crime entraînant une peine de prison.
+
+L’état d’arrestation est notifié par la lecture des droits Miranda à l’individu.
+
+§ 1 - Ces droits peuvent être cités à trois reprises, une fois cela fait, ils seront considérés comme actés par l’inculpé et feront donc office à ce moment la.
+
+§ 2 - Les dépositaires de l’autorité publique ont un délai global de 20 minutes à partir du moment où les menottes sont passées à l’individu sous état d’arrestation pour citer les droits Miranda. Si le délai est dépassé dans une situation dite "normale" l’inculpé pourra prétendre au vice de procédure et ce voir relâché.
+
+§ 3 - Seul exceptions faite pour les personnes accusées et avérées d’actes terroristes, lui font perdre tous droits citoyens dès qu’ils sont reconnus comme tels, ainsi qu’une arrestation donnant sur les lieux à une fusillade ou l’inculpé serait présent, dans ce cas là les droits pourront être lu dans un délai de 20 minutes après la fin de la fusillade en question.
+
+3.3. De la mise en garde à vue
+
+La mise en garde à vue est une mesure de contrainte décidée par les services de police de l’Etat de San Andreas qui ne peut dépasser 1h00, sauf contre indication d’un(e) procureur ou d’un(e) juge qui peut prolonger ce délai, par laquelle il existe une ou plusieurs raisons plausibles de soupçonner qu’elle a commis ou tenté de commettre un crime ou un délit est maintenue à la disposition des forces de l’ordres. La mise en garde à vue entraîne obligatoirement une rédaction d’un procès verbal, et des poursuites judiciaires envers le mis en cause.
+
+
+Article 4 : Des procédures judiciaire
+4.1. De la possibilité de poursuite du Bureau du Procureur
+
+Le bureau du procureur opte pour les procédures suivantes :
+
+    Plaider coupable
+
+    Prononcé Unilatéral
+
+    Comparution immédiate
+
+
+4.2. Le "plaider coupable"
+
+Le plaider coupable ou appelé également comparution sur reconnaissance préalable de culpabilité (C.R.P.C) est une procédure qui permet de juger rapidement l'auteur d'une infraction qui reconnaît les faits reprochés.  Le procureur propose une peine. Si la peine est acceptée par l'auteur des faits (ou avocat si présent), l'affaire est jugée de suite par le procureur.
+A défaut d’accord, le Bureau du Procureur présente le dossier soit devant un juge soit sur une procédure de prononcé unilatéral.
+
+
+4.3. Le "prononcé unilatéral"
+
+Le prononcé unilatéral est une procédure où le procureur au vu des faits reprochés décide de procéder au jugement de l'accusé sans négociation possible au préalable. 
+
+
+4.4. La "comparution immédiate"
+
+Une comparution immédiate est une procédure rapide qui permet au procureur de faire juger une personne tout de suite après sa garde à vue.
+
+Lorsqu’il opte pour la procédure de comparution immédiate, le Bureau de Procureur s’assure de la disponibilité immédiate d’un Juge, d’un Avocat si demandé afin d'assurer la défense du prévenu.
+Cette procédure n’est possible qu’en matière de crimes ou crimes fédéraux flagrants. Le prévenu est auditionné par la juridiction compétente, son avocat doit être informé dans les plus brefs délais de se rendre à l’audience.
+
+
+4.5. De la disposition d'une audience
+
+Sont requis durant une audience : 
+
+    Le ou les Juges;
+
+    Le Bureau du Procureur;
+
+    L’accusé et son avocat (si celui-ci en a un);
+
+    La victime et son avocat (affaire civile et si celui-ci en a un);
+
+    Les témoins, experts judiciaires ou médecins (si il y en a de liée à l’affaire)
+
+
+4.6. Le rôle du juge en audience
+
+Le juge dirige l’audience et exerce la police des débats. Il peut également, tout au long du procès et ce jusqu’au réquisitoire du Procureur, poser des questions à l’accusé qui lui répond. Dans ce cadre, le Bureau du Procureur et les avocats peuvent également formuler des questions.
+
+
+4.7. Du déroulement de l'audience
+
+L'audience doit se dérouler de la façon suivante : 
+
+    Ouverture de l'audience par le Juge
+
+    Parole au Bureau de Procureur qui énonce les faits reprochés, ainsi que les informations requise pour le ou les Juges.
+
+    Décision de l’accusé sur la poursuite des procédures à son encontre (Art. 4.1 du C.P.P)
+
+    Interrogatoire des témoins par le Bureau des Procureurs ou de l’avocat de la défense
+
+    Contre-Interrogatoire par la partie adverse
+
+    Déposition de la victime (Si victime ou si procès civile)
+
+    Réquisitoire du Bureau du Procureur
+
+    Plaidoirie de l’avocat de la défense
+
+    Suspension de l’audience par le juge (début de délibération)
+
+    Prononcé de la décision après la délibération
+
+Article 5 : De l’opportunité des poursuites et du prononcé des sanctions
+
+
+5.1. Contravention
+
+En matière contraventionnelle, la police dispose de l’opportunité des poursuites.
+
+
+5.2. Délit
+
+En matière délictuelle, les services de police se chargent des poursuites si et le montant d’amende ne dépasse pas le montant de(s) amende(s) 100 000$. Dans le cas contraire, le département de la Justice doit être informé de la procédure et un jugement est nécessaire.
+
+
+5.3. Crime
+
+En matière criminelle, à l’issue de l’interpellation et de la rédaction du procès-verbal (rapport d’ intervention), si le montant de(s) amende(s) est supérieur à 100.000$, le département de la Justice doit être informé des procédures et un jugement est nécessaire.
+
+Article 6 : Du droit à l’assistance d’un avocat
+
+6.1. Du droit à la défense
+
+Les services de police de l’Etat de San Andreas, une fois informés de la volonté du gardé à vue de disposer d’un avocat pour sa défense, disposent d’un délai raisonnable pour appeler celui-ci. Une fois prévenu l’avocat à 10 minutes pour répondre et 10 minutes supplémentaire pour rejoindre le poste de police si celui-ci répond positivement. Au-delà, l’avocat sera considéré comme indisponible ou absent et la procédure suivra son cours.
+
+§ 1 - Si un individu ne dispose pas des moyens nécessaires pour se procurer un avocat, un avocat commis d’office lui sera mis à disposition.
+
+§ 2 - Selon le DEFCON (Art.8.1 du Code Pénal), la défense d'un individu peut être maintenu mais aussi selon les circonstances si l'individu est poursuivie pour des faits de terrorisme (suppression des droits de citoyen Américain).
+
+
+6.2. De la mise en relation avec un avocat
+
+Pour informer l’avocat, l’agent devra faire figurer son nom, son prénom, les agents concernés par la mise en arrestation, le procès-verbal (rapport d’intervention) et enfin le poste de police dans lequel l’avocat peut rejoindre son client. Si l’avocat le demande, les agents devront rédiger un rapport d’arrestation.
+
+6.3. De l’interrogatoire du justiciable
+
+Afin de garantir la défense de leurs clients, les avocats ont le droit d’interroger seul le client pendant un délai raisonnable de maximum 20 minutes avant le plaider coupable.
+
+6.4. Du droit à l’information
+
+Les avocats ont accès à l’intégralité du dossier de l’enquête visant leur client au plus tard, sauf cas de force majeure, une heure après leur arrivée. En cas d’indisponibilité matérielle du dossier, les avocats sont informés verbalement des éléments pouvant permettre de prouver la culpabilité du mis en cause.
+
+Afin de garantir l’impartialité de la justice et les droits de la défense tout nouvel élément (à charge ou à décharge) devra être communiqué à la défense du mis en cause.
+
+§ 1 - Dans le cadre d'une affaire fédérale le dossier d'enquête est classifié "Secret Défense", cela signifie que la défense disposera uniquement des preuves à conviction liés aux dossiers. 
+
+Chapitre 2: Moyens
+
+
+Article 7 : Fouilles
+7.1. Motif
+
+§ 1 - Justifie une fouille la suspicion ou la commission d’une infraction constituant un délit, un crime ou un crime fédéral.
+
+§ 2 - Justifie également une fouille la mise en état d’arrestation de l’individu, sont emprisonnement, une dénonciation qui l’implique dans une infraction constituant un délit, un crime ou un crime fédéral ou une information judiciaire (dans ce cas, un document signé délivré sous les conditions établies par le code pénal doit être disponible pour l’individu) dont la fouille de l’individu est nécessaire à l’émergence de la vérité.
+
+§ 3 - Enfin justifie également une fouille les dispositions étant établies dans le code de procédure pénale mais également les dispositions extraordinaires donné aux dépositaires de l’autorité publique lors d’un passage en DEFCON modifiant les présentes dispositions.
+
+§ 4 - Une fouille peut néanmoins être effectuée si l’individu donne son consentement verbal ou écrit.
+
+§ 5 - Vous devez obligatoirement informer l’individu du motif de la fouille avant de procéder à cette dernière.
+
+
+7.2. Méthodologie
+
+§ 1 - Si la fouille a pour motif :
+
+    Une dénonciation
+
+    Une information judiciaire
+
+    La suspicion de la commission d’une infraction constituant un délit, un crime ou un crime fédéral
+
+    Un emprisonnement
+
+    Le consentement verbal ou écrit de l’individu
+
+    Autorisé par DEFCON
+
+Dans ce cas, vous pouvez fouiller l’individu sans plus de procédure. La fouille peut résulter sur une mise en état d’arrestation de l’individu.
+
+§ 2 - Si la fouille a pour motif :
+
+    Une commission d’une infraction constituant un délit, un crime ou un crime fédéral constaté suite à une information judiciaire ou par flagrance.
+
+    Une mise en état d’arrestation
+
+    Toute autre motif dont les dispositions du code pénal vous en donne le droit
+
+Dans ce cas, la mise en état d’arrestation de l’individu est obligatoire.
+
+
+7.3. Véhicules
+
+Les dispositions de l’article 3.1 et 3.2 du présent code s’appliquent également aux véhicules.
+
+
+Article 8 : Perquisitions
+
+
+8.1. Motif
+
+Constitue un motif légitime de perquisition la suspicion de commission ou la commission d’une infraction constituant un délit, crime ou crime fédéral dont ladite commission ou non ne peut être prouvé ou facilité l’enquête sans perquisition du lieu perquisitionné.
+
+Constitue également un motif légitime de perquisition des lieux où se sont produits ou où sont suspectés de s’être produits des délits, crimes ou crimes fédéraux.
+
+
+8.2. Méthodologie pour les mandats classiques
+
+La perquisition doit être accomplie selon les dispositions du code pénal.
+
+Le mandat de perquisition doit être présenté aux individus si ces derniers sont présents, s’ils sont absents les individus en sont informés par voie légale (face à face, appel, sms, mail (radio d), etc.).
+
+A la fin de la perquisition un récapitulatif de tous les objets saisies doit être remis à la personne ayant autorisé la perquisition, cette personne est inscrite sur le mandat de perquisition avec son numéro de téléphone. Cette liste doit également être transmise au propriétaire du lieu perquisitionné.
+
+Le mandat de perquisition doit spécifier le ou les motifs de la perquisition, le nom, le prénom, la fonction ainsi que le numéro de téléphone de la personne ayant émis ledit mandat.
+
+
+8.2 bis. Méthodologie pour les mandats au nom du “Secret Défense”
+
+La perquisition doit être accomplie selon les dispositions du code pénal.
+
+Le mandat de perquisition peut ou non être présenté aux individus si ces derniers sont présents, s’ils sont absents ils n’en sont pas informés.
+
+A la fin de la perquisition un récapitulatif de tous les objets saisies doit être remis à la personne ayant autorité la perquisition, cette personne est inscrite sur le mandat de perquisition avec son numéro de téléphone. Cette liste n’est pas transmise au propriétaire du lieu perquisitionné.
+
+Le mandat de perquisition ne spécifie pas le ou les motifs de la perquisition mais uniquement le motif “Secret Défense”. Il comporte également le nom, le prénom, la fonction ainsi que le numéro de téléphone de la personne ayant émis ledit mandat.
+
+
+8.3. Portée
+
+La portée d’un mandat de perquisition est indiqué sur ce dernier, il peut spécifier un lieu, un coffre spécifique ou au contraire être généraliste.
+
+
+8.4. Contestation d’un mandat de perquisition
+
+Les mandats de perquisition peuvent être contestés dans les conditions établies par le code pénal.
+
+Les mandats de perquisition émis au nom du “Secret Défense” ne peuvent être contestés.
+
+Article 9 : Saisies
+
+
+9.1. Précisions
+
+Peuvent être saisies, les sommes d’argent, les objets, les biens meubles ou immeubles, les armes (blanches et létales), les véhicules, les entités morales (entreprises, associations, etc.).
+
+
+9.2. Motif
+
+Constitue un motif légitime de saisie le fait d’avoir usé ou tenter d’user du bien qui doit être saisi dans l’objectif de commettre ou tenter de commettre une infraction constituant un délit, crime ou crime fédéral.
+
+Constitue également un motif légitime de saisie le fait d’être suspecté d’avoir commis une infraction constituant un délit, crime ou crime fédéral en ayant user ou tenter d’user du bien.
+
+Constitue également un motif légitime de saisie les biens gênant la voie publique, bloquant le stationnement, étant mal stationné ou entravant les opérations des services publics.
+
+Enfin constitue un motif légitime de saisie les biens illégaux se trouvant sur la voie publique.
+
+
+9.3. Méthodologie
+
+Pour saisir un bien, le propriétaire dudit bien doit en être informé.
+
+L’information du propriétaire n’est pas obligatoire dans les cas suivants :
+
+    Biens illégaux se trouvant sur la voie publique.
+
+    Biens gênant la voie publique, bloquant le stationnement, étant mal stationnés ou entravant les opérations des services publics.
+
+    Le propriétaire du ou des biens est inconnue
+
+L’information du propriétaire se fait par voie légale.
+
+Le propriétaire doit également être informé du motif de la saisie.
+
+
+9.4. Restitution des biens
+
+La restitution du ou des biens se fait selon plusieurs modalités.
+
+Les biens saisies dans une procédure pénale en cours ne seront restitué qu’à la fin de la procédure en cours en fonctions des modalités ci-dessous et seulement sur demande de l’intéressé dans un délai de 48 heures après la décision définitive :
+
+    Biens illégaux
+
+Les biens illégaux (armes illégales, drogues, sommes supérieures à 10.000$, etc.) ne sont pas restitués peu importe le motif.
+
+    Véhicules
+
+Les véhicules sont restitués après un paiement forfaitaire à la fourrière, sans délai y compris pendant la procédure en cours.
+
+    Biens légaux
+
+Les biens légaux sont restitués si la culpabilité du mis en cause n’est pas avérée sous décision d’un dépositaire de l’autorité publique ou du juge à la demande de l’intéressé dans un délai de 48 heures après la décision définitive.
+
+§ 1 - Toutes les armes de catégorie 1 et 2 sont restituables a compté du moment ou l'intégralité des amendes soient remboursées, dans le cas contraire l'arme ou les armes ne seront pas restituées.
+
+Si la culpabilité du mis en cause est avérée, la restitution ne se fait que sur autorisation du juge pour motif légitime. Ce motif est notifié à l’individu ayant procédé à la saisie ou à défaut ses supérieurs hiérarchiques. Ceci n’est possible qu’à la demande de l’intéressé dans un délai de 48 heures après la décision définitive.
+
+En cas d’application immédiate la restitution est à la discrétion du dépositaire de l’autorité publique, en cas de refus de restitution de la part du dépositaire de l’autorité publique le ou les biens deviennent la propriété de l'Etat (cf. chapitre II article 5.5 du présent code).
+
+
+9.5 Non restitution des biens
+
+Les biens illégaux et les biens légaux non réclamés deviennent propriété de l’Etat à l’épuisement de tout recours possible.
+
+L’Etat en dispose comme il le souhaite (destruction, revente, reversement dans les fonds gouvernementaux, dissolution, etc.).
+
+La façon dont circule les saisies est définie par chaque agence et/ou par le gouvernement.
+
+
+Chapitre 3 : Les contrôles routiers
+
+
+Article 10 : Contrôle aléatoires
+10.1. Fonctionnement
+
+Les contrôles aléatoires sont autorisés en DEFCON 3, DEFCON 2 et DEFCON 1, ces derniers se font à des barrages de contrôles la plupart du temps. Néanmoins des contrôles peuvent être effectués par les dépositaires de l’autorité publique sur la route ou même ailleurs.
+
+Les contrôles aléatoires ne sont pas autorisés en DEFCON 4 et en DEFCON 5. Les contrôles doivent alors être justifiés par la commission d’une infraction.
+
+
+10.2. Méthodologie
+
+Les contrôles aléatoires vous permettent donc de contrôler :
+
+    Une pièce d’identité de l’individu
+
+    Un permis de conduire (constitue une pièce d’identité)
+
+    Son assurance véhicule
+
+    La carte grise du véhicule (contrôle de plaque)
+
+    L’alcoolémie de l’individu (0,5 g/l maximum légal autorisé)
+
+    Un test antidopage (contrôle de drogue)
+
+Les dispositions des DEFCON 3, 2 et 1 vous permettant de fouiller les individus et les véhicules sans motifs précis vous pouvez fouiller ces derniers sans problèmes. N’oubliez d’avertir l’individu que vous le fouiller lui ou son véhicule.
+      </div>
+    </div>
+
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
+    }
+
+    function loadRecent() {
+      const recent = [
+        { title: "Procédure pénale", link: "procedure-penale.html", date: "01/10/2025" },
+        { title: "Règlement illégal", link: "regles-illegaux.html", date: "13/09/2025" },
+        { title: "Règlement légal", link: "regles-legaux.html", date: "13/09/2025" }
+      ];
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      recent.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("recent-item");
+        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+        recentContainer.appendChild(div);
+      });
+    }
+
+    loadRecent();
+  </script>
+</body>
+</html>
