@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackLife - Conduite RP</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #d2b48c;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      color: #d2b48c;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #d2b48c;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+    .breadcrumb ul li a:hover {
+      background: #f5deb3;
+      color: #000;
+    }
+    .breadcrumb ul li a.active {
+      background: #f5deb3;
+      color: #000;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #d2b48c;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #d2b48c;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .content {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .content h1 {
+      color: #d2b48c;
+      margin-bottom: 15px;
+    }
+
+    .content h2 {
+      color: #f5deb3;
+      margin-top: 25px;
+    }
+
+    .content p, .content ul {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .content ul {
+      margin-left: 20px;
+    }
+
+    .actions {
+      width: 220px;
+      background: #0d0017;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #d2b48c;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html">Tutoriels</a></li>
+        <li><a href="generales.html" class="active">Générales</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="generales.html">Générales</a></li>
+      <li><a href="conduite.html" class="active">Conduite RP</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <div class="content">
+      <h1>La Conduite RP sur BlackLife</h1>
+      <p>La conduite RP désigne la manière dont chaque joueur incarne son personnage au quotidien. Elle repose sur le respect, la cohérence, et l’immersion dans le rôle choisi. Une bonne conduite RP contribue à rendre l’expérience agréable et réaliste pour tout le monde.</p>
+
+      <h2>Respect et immersion</h2>
+      <p>Un joueur doit toujours rester cohérent avec le rôle qu’il interprète. Les réactions, décisions et dialogues doivent correspondre à la personnalité, au passé et à la situation de son personnage.  
+      Le but est de créer une immersion naturelle dans l’univers du serveur.</p>
+
+      <h2>Attitude générale en RP</h2>
+      <ul>
+        <li>Adoptez un comportement crédible dans chaque situation (évitez les excès irréalistes).</li>
+        <li>Faites preuve de calme et de maturité, même en cas de conflit RP.</li>
+        <li>Favorisez la communication et l’échange RP plutôt que la confrontation directe.</li>
+        <li>Ne cherchez pas à “gagner” une scène : le RP se construit à plusieurs.</li>
+      </ul>
+
+      <h2>Interactions avec les autres joueurs</h2>
+      <p>Le respect mutuel est la base d’une bonne conduite RP. Chaque action a un impact sur les autres personnages.  
+      Prenez en compte les émotions, les limites et les choix des autres joueurs, et cherchez à créer des scènes vivantes et logiques.</p>
+
+      <h2>Responsabilité du joueur</h2>
+      <p>Chaque joueur est responsable de son attitude et de l’image qu’il renvoie.  
+      Votre personnage peut avoir des défauts, faire des erreurs, ou se retrouver dans des situations difficiles — c’est ce qui rend le RP authentique.  
+      L’important est de garder une cohérence et de toujours agir avec fair-play.</p>
+
+      <h2>Objectif principal</h2>
+      <p>Le RP ne se résume pas à un simple jeu : c’est une forme d’histoire collective.  
+      Avoir une bonne conduite RP, c’est contribuer à la qualité du serveur, au plaisir des autres joueurs et à la richesse de l’univers partagé.</p>
+    </div>
+
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button><i class="fas fa-tags"></i> Voir les mots-clés</button>
+      <button><i class="fas fa-info-circle"></i> Afficher les détails</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
+    }
+
+    function loadRecent() {
+      const recent = [
+        { title: "FAQ Générales", link: "generales-faq.html", date: "13/09/2025" },
+        { title: "Sanctions RP", link: "generales-sanctions.html", date: "13/09/2025" },
+        { title: "Conduite RP", link: "conduite.html", date: "13/09/2025" }
+      ];
+      recentContainer.innerHTML = "<h2>Ajouts récents</h2>";
+      recent.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("recent-item");
+        div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+        recentContainer.appendChild(div);
+      });
+    }
+
+    loadRecent();
+  </script>
+</body>
+</html>
