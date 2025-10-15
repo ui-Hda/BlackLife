@@ -60,7 +60,7 @@
       pointer-events: none;
     }
 
-    /* FIL D'ARIANE */
+    /* FIL D’ARIANE */
     .breadcrumb {
       background: #1e90ff;
       padding: 12px 20px;
@@ -94,39 +94,48 @@
       color: #000;
     }
 
-    /* MAIN LAYOUT */
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 250px;
-      gap: 20px;
-      margin: 20px 30px 30px 30px;
-      align-items: start;
+    /* ACTIONS EN HAUT À DROITE */
+    .actions-top {
+      display: flex;
+      justify-content: flex-end;
+      margin: 20px 30px 0 30px;
     }
-
-    /* ACTIONS EN HAUT À GAUCHE */
     .actions {
       background: #1e1e1e;
       padding: 20px;
       border-radius: 10px;
-      height: fit-content;
       width: 250px;
-      animation: slideInLeft 0.8s ease;
+      height: fit-content;
+      animation: slideInRight 0.8s ease;
     }
-    .actions h2 { font-size: 18px; margin-bottom: 15px; color: #ccc; }
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
     .actions button {
-      display: flex; align-items: center; gap: 8px; width: 100%;
-      background: none; border: none; color: #1e90ff;
-      font-size: 15px; padding: 8px 0; text-align: left; cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #1e90ff;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
       transition: 0.3s;
     }
     .actions button:hover { color: #fff; }
 
-    /* CONTENU PRINCIPAL */
-    .content {
+    /* MAIN LAYOUT */
+    main {
+      flex: 1;
       display: grid;
       grid-template-columns: 250px 1fr;
       gap: 20px;
+      margin: 20px 30px 30px 30px;
     }
 
     /* AJOUTS RECENTS */
@@ -151,7 +160,7 @@
     .recent-item p { margin: 0; font-size: 13px; color: #aaa; }
     .recent-item a { display: block; text-decoration: none; color: inherit; }
 
-    /* CARDS */
+    /* CARTES */
     .cards-wrapper {
       background: #1e1e1e;
       padding: 30px;
@@ -222,7 +231,6 @@
     @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
     @keyframes slideInLeft { from {opacity: 0; transform: translateX(-30px);} to {opacity: 1; transform: translateX(0);} }
     @keyframes slideInRight { from {opacity: 0; transform: translateX(30px);} to {opacity: 1; transform: translateX(0);} }
-
   </style>
 </head>
 <body>
@@ -254,8 +262,8 @@
     </ul>
   </nav>
 
-  <!-- ACTIONS EN HAUT À GAUCHE -->
-  <section style="margin: 20px 30px 0 30px;">
+  <!-- ACTIONS EN HAUT À DROITE -->
+  <div class="actions-top">
     <aside class="actions">
       <h2>Actions</h2>
       <button onclick="window.location.href='tutoriels.html'"><i class="fas fa-home"></i> Retour aux Tutoriels</button>
@@ -263,33 +271,32 @@
       <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
       <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
     </aside>
-  </section>
+  </div>
 
   <main>
-    <!-- CONTENU -->
-    <div class="content">
-      <aside class="recent" id="recentContainer">
-        <h2>Ajouts récents</h2>
-      </aside>
+    <!-- AJOUTS RECENTS -->
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
 
-      <div class="cards-wrapper">
-        <div class="cards-header">
-          <h2>Tutoriel Débutant</h2>
+    <!-- CARTES -->
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>Tutoriel Débutant</h2>
+      </div>
+      <div class="cards">
+        <div class="card" data-link="tuto-connexion.html">
+          <img src="assets/connexion.png" alt="Connexion" class="card-img">
+          <h3>Comment se connecter ?</h3>
+          <p>Apprends à rejoindre rapidement BlackLife.</p>
+          <a href="tuto-connexion.html">Voir plus</a>
         </div>
-        <div class="cards">
-          <div class="card" data-link="tuto-connexion.html">
-            <img src="assets/connexion.png" alt="Connexion" class="card-img">
-            <h3>Comment se connecter ?</h3>
-            <p>Apprends à rejoindre rapidement BlackLife.</p>
-            <a href="tuto-connexion.html">Voir plus</a>
-          </div>
 
-          <div class="card" data-link="tuto-personnage.html">
-            <img src="assets/personnage.png" alt="Création de personnage" class="card-img">
-            <h3>Création de personnage</h3>
-            <p>Crée ton avatar et choisis ton style de jeu.</p>
-            <a href="tuto-personnage.html">Voir plus</a>
-          </div>
+        <div class="card" data-link="tuto-personnage.html">
+          <img src="assets/personnage.png" alt="Création de personnage" class="card-img">
+          <h3>Création de personnage</h3>
+          <p>Crée ton avatar et choisis ton style de jeu.</p>
+          <a href="tuto-personnage.html">Voir plus</a>
         </div>
       </div>
     </div>
