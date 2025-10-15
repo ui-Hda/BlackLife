@@ -30,6 +30,7 @@
     .recent-item p { margin:0; font-size:13px; color:#aaa; }
     .recent-item a { display:block; text-decoration:none; color:inherit; }
     .text-content { background:#1e1e1e; padding:30px; border-radius:15px; color:white; line-height:1.6; }
+    .text-content h2, .text-content h3 { color:#1e90ff; }
     .actions { width:220px; background:#1e1e1e; padding:20px; border-radius:10px; height:fit-content; align-self:flex-start; }
     .actions h2 { font-size:18px; margin-bottom:15px; color:#ccc; }
     .actions button { display:flex; align-items:center; gap:8px; width:100%; background:none; border:none; color:#1e90ff; font-size:15px; padding:8px 0; text-align:left; cursor:pointer; transition:0.3s; }
@@ -37,6 +38,7 @@
     body.light-mode { background:#f5f5f5; color:#000; }
     body.light-mode header { background:#87cefa; }
     body.light-mode .recent, body.light-mode .text-content, body.light-mode .actions { background:#ddd; color:#000; }
+    body.light-mode .text-content h2, body.light-mode .text-content h3 { color:#1e90ff; }
   </style>
 </head>
 <body>
@@ -74,15 +76,38 @@
 
     <div class="text-content">
       <h2>Stratégie Avancée</h2>
-      <p>Ce tutoriel couvre les stratégies avancées de BlackLife pour planifier vos actions et maximiser vos gains.</p>
+      <p>Ce tutoriel vous guidera à travers toutes les techniques avancées pour exceller dans BlackLife. Les sections ci-dessous sont détaillées pour que vous puissiez planifier efficacement vos actions et maximiser vos gains.</p>
+
       <h3>1. Planification des missions</h3>
-      <p>Découvrez comment organiser vos missions afin de maximiser vos récompenses et d'éviter les pertes.</p>
+      <p>Avant de lancer une mission, il est crucial de vérifier la disponibilité des ressources et l'état de votre inventaire. Préparez votre équipement, définissez vos objectifs principaux et secondaires, et assurez-vous que votre temps est optimisé pour accomplir plusieurs missions en chaîne.</p>
+      <p>Astuce : Classez vos missions selon leur difficulté et leur rentabilité. Commencez par celles qui offrent un maximum de récompenses avec un minimum de risques.</p>
+
       <h3>2. Gestion d'équipe</h3>
-      <p>Apprenez à collaborer efficacement avec d'autres joueurs pour atteindre vos objectifs communs.</p>
+      <p>Travailler seul est possible, mais un bon groupe peut accomplir des missions plus rapidement et avec moins de risques. Communiquez avec vos coéquipiers, définissez des rôles précis et partagez vos stratégies pour coordonner vos actions.</p>
+      <p>Astuce : Maintenez un canal de communication constant pour adapter vos stratégies en temps réel en fonction des événements du serveur.</p>
+
       <h3>3. Optimisation du temps</h3>
-      <p>Techniques pour gérer votre temps et vos ressources afin de progresser rapidement dans le jeu.</p>
+      <p>Gérer votre temps efficacement est crucial. Planifiez vos sessions de jeu selon les horaires où les missions sont les plus lucratives. Alternez entre missions légales et illégales pour diversifier vos revenus.</p>
+      <p>Astuce : Utilisez un calendrier ou une checklist pour suivre vos tâches, vos objectifs et vos gains quotidiens afin de ne jamais perdre de vue vos priorités.</p>
+
       <h3>4. Prise de décision stratégique</h3>
-      <p>Analysez vos options et choisissez les actions les plus rentables selon la situation.</p>
+      <p>Chaque action dans BlackLife a des conséquences. Avant de prendre une décision, analysez les risques et les gains possibles. La patience et la réflexion sont souvent plus rentables que la précipitation.</p>
+      <p>Astuce : Apprenez à reconnaître les situations où l’action rapide est nécessaire et celles où la prudence vous évitera des pertes importantes.</p>
+
+      <h3>5. Gestion financière avancée</h3>
+      <p>Une stratégie efficace inclut la gestion de vos ressources et de votre argent. Investissez dans l’équipement approprié, évitez les dépenses inutiles et utilisez vos gains pour améliorer vos capacités.</p>
+      <p>Astuce : Toujours garder une réserve d'argent pour les imprévus. Cela vous permettra de continuer vos activités même après des pertes ou des échecs.</p>
+
+      <h3>6. Analyse du marché et des opportunités</h3>
+      <p>Observez régulièrement le marché du jeu, les prix des biens et les activités des autres joueurs. Identifier les opportunités vous permettra de tirer profit de situations avantageuses.</p>
+      <p>Astuce : Les fluctuations du marché peuvent être utilisées à votre avantage si vous anticipez correctement les mouvements et les besoins des autres joueurs.</p>
+
+      <h3>7. Sécurité et discrétion</h3>
+      <p>Certaines missions comportent des risques élevés. Pour minimiser les pertes, soyez discret dans vos actions et utilisez les outils et stratégies qui réduisent la probabilité d’être détecté par d’autres joueurs.</p>
+      <p>Astuce : Alternez vos horaires et vos méthodes pour éviter d’être prévisible, et ainsi protéger vos gains et votre réputation.</p>
+
+      <h3>Conclusion</h3>
+      <p>En suivant ces techniques avancées, vous serez capable de planifier vos missions avec précision, collaborer efficacement, gérer vos ressources et prendre des décisions stratégiques. La maîtrise de ces compétences vous permettra de devenir un joueur influent et performant sur BlackLife.</p>
     </div>
 
     <aside class="actions">
@@ -106,8 +131,8 @@
     }
 
     const recent = [
-      { title: "Tutoriel Avancé", link: "tuto-avance.html", date: "13/09/2025" },
-      { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" }
+      { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" },
+      { title: "Tutoriel Économie", link: "tuto-economie.html", date: "13/09/2025" }
     ];
 
     recent.forEach(item => {
