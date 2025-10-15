@@ -1,11 +1,150 @@
-<div class="content">
-  <h1>Astuces & Conseils</h1>
-  <p>Voici quelques astuces utiles pour améliorer ton expérience :</p>
-  <ul>
-    <li>Utilise la carte pour repérer les zones stratégiques</li>
-    <li>Participe aux événements réguliers pour gagner des bonus</li>
-    <li>Respecte le règlement pour éviter les sanctions</li>
-    <li>Échange avec les joueurs pour trouver des bons plans</li>
-  </ul>
-  <p>🚀 Plus tu explores, plus tu découvriras de secrets sur le serveur !</p>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackLife - Astuces et Conseils</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body { background: #0d0017; color: white; font-family: Arial, sans-serif; margin:0; padding:0; min-height:100vh; display:flex; flex-direction:column; }
+    header { background: #1e90ff; padding:15px 30px; display:flex; align-items:center; gap:40px; }
+    header .logo { height:70px; }
+    nav ul { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
+    nav ul li a { color:white; text-decoration:none; font-weight:bold; transition:0.3s; }
+    nav ul li a:hover, nav ul li a.active { color:#000; background:rgba(255,255,255,0.2); padding:5px 10px; border-radius:5px; }
+    .search-bar { flex-grow:1; display:flex; justify-content:center; }
+    .search-bar input { width:70%; max-width:650px; padding:12px 15px 12px 40px; border:none; border-radius:25px; font-size:16px; outline:none; background:#1e1e1e; color:white; }
+    .search-bar i { position:relative; left:35px; top:12px; color:#999; font-size:18px; pointer-events:none; }
+    .breadcrumb { background:#1e90ff; padding:12px 20px; border-radius:8px; display:inline-block; margin:20px auto; }
+    .breadcrumb ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; justify-content:center; }
+    .breadcrumb ul li a { text-decoration:none; color:white; font-weight:bold; padding:6px 12px; border-radius:6px; background:#1e1e1e; transition:0.3s; }
+    .breadcrumb ul li a:hover { background:#63b3ff; color:#000; }
+    .breadcrumb ul li a.active { background:#63b3ff; color:#000; }
+    main { flex:1; display:grid; grid-template-columns:250px 1fr 220px; gap:20px; margin:30px; }
+    .recent { background:#1e1e1e; padding:20px; border-radius:10px; height:fit-content; }
+    .recent h2 { font-size:18px; margin-bottom:15px; color:#ccc; }
+    .recent-item { background:#0e0e0e; border:1px solid #444; border-radius:8px; padding:10px; margin-bottom:12px; transition:0.3s; }
+    .recent-item:hover { border-color:#1e90ff; background:#1a1a1a; }
+    .recent-item h3 { font-size:15px; margin:0 0 5px; color:#1e90ff; }
+    .recent-item p { margin:0; font-size:13px; color:#aaa; }
+    .recent-item a { display:block; text-decoration:none; color:inherit; }
+    .text-content { background:#1e1e1e; padding:30px; border-radius:15px; color:white; line-height:1.6; }
+    .text-content h2, .text-content h3 { color:#1e90ff; }
+    .actions { width:220px; background:#1e1e1e; padding:20px; border-radius:10px; height:fit-content; align-self:flex-start; }
+    .actions h2 { font-size:18px; margin-bottom:15px; color:#ccc; }
+    .actions button { display:flex; align-items:center; gap:8px; width:100%; background:none; border:none; color:#1e90ff; font-size:15px; padding:8px 0; text-align:left; cursor:pointer; transition:0.3s; }
+    .actions button:hover { color:#fff; }
+    body.light-mode { background:#f5f5f5; color:#000; }
+    body.light-mode header { background:#87cefa; }
+    body.light-mode .recent, body.light-mode .text-content, body.light-mode .actions { background:#ddd; color:#000; }
+    body.light-mode .text-content h2, body.light-mode .text-content h3 { color:#1e90ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
+        <li><a href="generales.html">Généralités</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a class="active">Astuces & Conseils</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <div class="text-content">
+      <h2>Astuces et Conseils pour BlackLife</h2>
+      <p>Ce tutoriel regroupe toutes les astuces importantes pour progresser rapidement dans BlackLife, optimiser votre temps et vos ressources, et profiter pleinement de toutes les fonctionnalités du jeu.</p>
+
+      <h3>1. Acheter des points dans la boutique</h3>
+      <p>L’achat de points via la boutique du jeu permet d’accéder à du contenu premium et de débloquer certaines fonctionnalités plus rapidement. Utilisez ces points pour :</p>
+      <ul>
+        <li>Accélérer la progression de vos métiers et missions.</li>
+        <li>Obtenir des équipements ou véhicules exclusifs.</li>
+        <li>Acquérir des ressources rares plus facilement.</li>
+      </ul>
+      <p>Bien que les points ne soient pas indispensables pour jouer, un investissement stratégique peut donner un avantage certain aux joueurs souhaitant progresser rapidement.</p>
+
+      <h3>2. Planifier ses sessions</h3>
+      <p>Avant de jouer, planifiez vos objectifs : quelles missions réaliser, quels métiers pratiquer et quelles ressources collecter. Cela vous permet d’éviter de perdre du temps et de maximiser vos gains.</p>
+
+      <h3>3. Participer aux événements</h3>
+      <p>BlackLife propose régulièrement des événements spéciaux avec des récompenses uniques. Participer à ces événements vous permet de gagner des points, de l’argent, et parfois des objets exclusifs que vous ne pourriez obtenir autrement.</p>
+
+      <h3>4. Optimiser les métiers</h3>
+      <p>Choisir des métiers adaptés à votre style de jeu est essentiel. Les métiers légaux offrent une sécurité et des revenus stables, tandis que les métiers illégaux peuvent être plus lucratifs mais plus risqués. Combinez les deux pour un équilibre optimal.</p>
+
+      <h3>5. Collaborer avec d’autres joueurs</h3>
+      <p>Former des alliances ou des groupes de travail permet de partager des ressources, d’accomplir des missions plus efficacement et de protéger vos biens. Le travail d’équipe est souvent plus rentable que de jouer en solo.</p>
+
+      <h3>6. Maîtriser l’économie interne</h3>
+      <p>Suivez l’évolution des prix des biens, ressources et services. Acheter au bon moment et vendre au moment opportun est la clé pour augmenter vos profits. La patience et l’analyse du marché interne sont vos meilleures armes.</p>
+
+      <h3>7. Conseils pratiques supplémentaires</h3>
+      <ul>
+        <li>Ne négligez pas les petites missions, elles cumulées peuvent rapporter beaucoup.</li>
+        <li>Utilisez les raccourcis et fonctionnalités du jeu pour économiser du temps.</li>
+        <li>Investissez dans des véhicules et équipements qui facilitent votre mobilité et vos missions.</li>
+        <li>Gardez un œil sur les mises à jour pour profiter des nouvelles fonctionnalités et récompenses.</li>
+      </ul>
+
+      <h3>Conclusion</h3>
+      <p>En appliquant ces astuces, vous pourrez progresser plus rapidement, optimiser vos ressources et tirer le maximum de l’expérience BlackLife. L’utilisation intelligente de la boutique et la planification stratégique de vos actions sont des clés essentielles pour devenir un joueur performant.</p>
+    </div>
+
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button onclick="window.location.href='tuto-avance.html'"><i class="fas fa-home"></i> Retour au tutoriel Avancé</button>
+      <button><i class="fas fa-share"></i> Partager</button>
+      <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById("themeToggle");
+    const recentContainer = document.getElementById("recentContainer");
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      themeBtn.innerHTML = document.body.classList.contains("light-mode") 
+        ? '<i class="fas fa-adjust"></i> Mode sombre' 
+        : '<i class="fas fa-adjust"></i> Mode clair';
+    }
+
+    const recent = [
+      { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" },
+      { title: "Tutoriel Économie", link: "tuto-economie.html", date: "13/09/2025" }
+    ];
+
+    recent.forEach(item => {
+      const div = document.createElement("div");
+      div.classList.add("recent-item");
+      div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+      recentContainer.appendChild(div);
+    });
+  </script>
+</body>
+</html>
