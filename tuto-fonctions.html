@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
   <style>
-    /* --- Copier le style complet de tuto-avance.html --- */
     body { background: #0d0017; color: white; font-family: Arial, sans-serif; margin:0; padding:0; min-height:100vh; display:flex; flex-direction:column; }
     header { background: #1e90ff; padding:15px 30px; display:flex; align-items:center; gap:40px; }
     header .logo { height:70px; }
@@ -30,24 +29,14 @@
     .recent-item h3 { font-size:15px; margin:0 0 5px; color:#1e90ff; }
     .recent-item p { margin:0; font-size:13px; color:#aaa; }
     .recent-item a { display:block; text-decoration:none; color:inherit; }
-    .cards-wrapper { background:#1e1e1e; padding:30px; border-radius:15px; }
-    .cards-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-    .cards-header h2 { margin:0; font-size:22px; color:#fff; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
-    .card { background:#0e0e0e; color:#fff; border-radius:15px; border:2px solid #fff; padding:20px; text-align:center; transition:transform 0.2s ease, box-shadow 0.2s ease, border 0.3s; }
-    .card:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(30,144,255,0.4); }
-    .card-img { width:90px; height:90px; object-fit:contain; margin-bottom:15px; }
-    .card h3 { color:#1e90ff; }
-    .card a { display:inline-block; margin-top:10px; color:#1e90ff; font-weight:bold; text-decoration:none; }
+    .text-content { background:#1e1e1e; padding:30px; border-radius:15px; color:white; line-height:1.6; }
     .actions { width:220px; background:#1e1e1e; padding:20px; border-radius:10px; height:fit-content; align-self:flex-start; }
     .actions h2 { font-size:18px; margin-bottom:15px; color:#ccc; }
     .actions button { display:flex; align-items:center; gap:8px; width:100%; background:none; border:none; color:#1e90ff; font-size:15px; padding:8px 0; text-align:left; cursor:pointer; transition:0.3s; }
     .actions button:hover { color:#fff; }
     body.light-mode { background:#f5f5f5; color:#000; }
     body.light-mode header { background:#87cefa; }
-    body.light-mode .recent, body.light-mode .cards-wrapper, body.light-mode .actions { background:#ddd; color:#000; }
-    body.light-mode .card, body.light-mode .recent-item { background:#fff; color:#000; border:2px solid #000; }
-    body.light-mode .card h3 { color:#1e90ff; }
+    body.light-mode .recent, body.light-mode .text-content, body.light-mode .actions { background:#ddd; color:#000; }
   </style>
 </head>
 <body>
@@ -79,28 +68,28 @@
   </nav>
 
   <main>
+    <!-- Ajouts récents -->
     <aside class="recent" id="recentContainer">
       <h2>Ajouts récents</h2>
     </aside>
 
-    <div class="cards-wrapper">
-      <div class="cards-header">
-        <h2>Fonctions Avancées</h2>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <img src="assets/fonction-1.png" alt="Fonction 1" class="card-img">
-          <h3>Fonction 1</h3>
-          <p>Description détaillée de la fonction 1 pour les joueurs avancés.</p>
-        </div>
-        <div class="card">
-          <img src="assets/fonction-2.png" alt="Fonction 2" class="card-img">
-          <h3>Fonction 2</h3>
-          <p>Description détaillée de la fonction 2 pour les joueurs avancés.</p>
-        </div>
-      </div>
+    <!-- Contenu texte -->
+    <div class="text-content">
+      <h2>Fonctions Avancées</h2>
+      <p>Dans ce tutoriel, nous détaillons les principales fonctions avancées de BlackLife pour améliorer votre expérience de jeu. Chaque fonctionnalité est expliquée clairement afin que vous puissiez les utiliser efficacement.</p>
+      <h3>1. Gestion des ressources</h3>
+      <p>Apprenez à gérer vos ressources et vos stocks pour optimiser vos gains et minimiser les pertes. Utilisez les menus avancés pour suivre vos inventaires.</p>
+      <h3>2. Commandes rapides</h3>
+      <p>Découvrez les commandes avancées qui permettent d'accéder rapidement à vos outils et actions sans passer par les menus principaux.</p>
+      <h3>3. Optimisation des missions</h3>
+      <p>Utilisez les options avancées pour planifier vos missions de manière stratégique et maximiser vos récompenses.</p>
+      <h3>4. Interaction avec les autres joueurs</h3>
+      <p>Apprenez à communiquer efficacement et à collaborer avec d'autres joueurs pour atteindre vos objectifs communs.</p>
+      <h3>5. Astuces supplémentaires</h3>
+      <p>Nous partageons des conseils et astuces pour les joueurs expérimentés, afin de maîtriser toutes les subtilités de BlackLife.</p>
     </div>
 
+    <!-- Menu Actions -->
     <aside class="actions">
       <h2>Actions</h2>
       <button onclick="window.location.href='tuto-avance.html'"><i class="fas fa-home"></i> Retour au tutoriel Avancé</button>
