@@ -1,11 +1,421 @@
-<div class="content">
-  <h1>Tutoriel Avancé</h1>
-  <p>Ce guide est destiné aux joueurs qui maîtrisent déjà les bases.</p>
-  <ul>
-    <li>Gestion avancée des métiers</li>
-    <li>Optimisation de ton temps de jeu</li>
-    <li>Techniques pour développer ton réseau</li>
-    <li>Explications sur les systèmes économiques et sociaux</li>
-  </ul>
-  <p>💡 Astuce : collabore avec d’autres joueurs pour évoluer plus vite.</p>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackLife - Tutoriel Avancé</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://kit.fontawesome.com/4b7e65eb9f.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background: #0d0017;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header {
+      background: #1e90ff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    header .logo {
+      height: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #000;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* SEARCH BAR */
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .search-bar i {
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    /* FIL D'ARIANE */
+    .breadcrumb {
+      background: #1e90ff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+
+    .breadcrumb ul li a:hover {
+      background: #63b3ff;
+      color: #000;
+    }
+
+    .breadcrumb ul li a.active {
+      background: #63b3ff;
+      color: #000;
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
+    }
+
+    /* AJOUTS RECENTS */
+    .recent {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      animation: slideInLeft 0.8s ease;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #1e90ff;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #1e90ff;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* CARDS */
+    .cards-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #0e0e0e;
+      color: #fff;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+    }
+
+    .card-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #1e90ff;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e90ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* ACTIONS */
+    .actions {
+      width: 220px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
+      animation: slideInRight 0.8s ease;
+    }
+
+    .actions h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .actions button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      background: none;
+      border: none;
+      color: #1e90ff;
+      font-size: 15px;
+      padding: 8px 0;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions button:hover {
+      color: #fff;
+    }
+
+    /* LIGHT MODE */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #000;
+    }
+
+    body.light-mode header {
+      background: #87cefa;
+    }
+
+    body.light-mode .recent,
+    body.light-mode .cards-wrapper,
+    body.light-mode .actions {
+      background: #ddd;
+      color: #000;
+    }
+
+    body.light-mode .card,
+    body.light-mode .recent-item {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+
+    body.light-mode .card h3 {
+      color: #1e90ff;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideInLeft {
+      from {opacity: 0; transform: translateX(-30px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    @keyframes slideInRight {
+      from {opacity: 0; transform: translateX(30px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="regles.html">Règlement</a></li>
+        <li><a href="jobs-legaux.html">Légal</a></li>
+        <li><a href="jobs-illegaux.html">Illégal</a></li>
+        <li><a href="tutoriels.html" class="active">Tutoriels</a></li>
+        <li><a href="generales.html">Généralités</a></li>
+        <li><a href="discord.html">Discord</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher...">
+    </div>
+  </header>
+
+  <!-- FIL D'ARIANE -->
+  <nav class="breadcrumb">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tutoriels.html">Tutoriels</a></li>
+      <li><a class="active">Avancé</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- AJOUTS RECENTS -->
+    <aside class="recent" id="recentContainer">
+      <h2>Ajouts récents</h2>
+    </aside>
+
+    <!-- CARDS -->
+    <div class="cards-wrapper">
+      <div class="cards-header">
+        <h2>Tutoriel Avancé</h2>
+      </div>
+      <div class="cards">
+        <div class="card" data-link="tuto-fonctions.html">
+          <img src="assets/fonctions.png" alt="Fonctions avancées" class="card-img">
+          <h3>Fonctions avancées</h3>
+          <p>Maîtrisez les fonctionnalités avancées du jeu.</p>
+          <a href="tuto-fonctions.html">Voir plus</a>
+        </div>
+        <div class="card" data-link="tuto-strategie.html">
+          <img src="assets/strategie.png" alt="Stratégies" class="card-img">
+          <h3>Stratégies avancées</h3>
+          <p>Optimisez vos actions pour réussir dans BlackLife.</p>
+          <a href="tuto-strategie.html">Voir plus</a>
+        </div>
+        <div class="card" data-link="tuto-economie.html">
+          <img src="assets/economie.png" alt="Économie" class="card-img">
+          <h3>Économie & finances</h3>
+          <p>Apprenez à gérer vos ressources et votre argent efficacement.</p>
+          <a href="tuto-economie.html">Voir plus</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button onclick="window.location.href='tutoriels.html'"><i class="fas fa-home"></i> Retour aux Tutoriels</button>
+      <button><i class="fas fa-share"></i> Partager</button>
+      <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
+  </main>
+
+  <script>
+    // Ajouts récents dynamiques
+    const recentContainer = document.getElementById("recentContainer");
+    const recent = [
+      { title: "Tutoriel Avancé", link: "tuto-avance.html", date: "13/09/2025" },
+      { title: "Astuces & Conseils", link: "tuto-astuces.html", date: "13/09/2025" },
+      { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" }
+    ];
+
+    recent.forEach(item => {
+      const div = document.createElement("div");
+      div.classList.add("recent-item");
+      div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
+      recentContainer.appendChild(div);
+    });
+
+    // Toggle mode clair/sombre
+    const themeBtn = document.getElementById("themeToggle");
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      if (document.body.classList.contains("light-mode")) {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode sombre';
+      } else {
+        themeBtn.innerHTML = '<i class="fas fa-adjust"></i> Mode clair';
+      }
+    }
+  </script>
+</body>
+</html>
