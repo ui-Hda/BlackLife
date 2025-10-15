@@ -20,13 +20,17 @@
 
     /* HEADER */
     header {
-      background: #1e90ff;
+      background: #1e90ff; /* Bleu ciel */
       padding: 15px 30px;
       display: flex;
       align-items: center;
       gap: 40px;
     }
-    header .logo { height: 70px; }
+
+    header .logo {
+      height: 70px;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -34,12 +38,14 @@
       margin: 0;
       padding: 0;
     }
+
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
     }
+
     nav ul li a:hover,
     nav ul li a.active {
       color: #000;
@@ -49,70 +55,167 @@
     }
 
     /* SEARCH BAR */
-    .search-bar { flex-grow: 1; display: flex; justify-content: center; }
-    .search-bar input {
-      width: 70%; max-width: 650px; padding: 12px 15px 12px 40px;
-      border: none; border-radius: 25px; font-size: 16px; outline: none;
-      background: #1e1e1e; color: white;
+    .search-bar {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
     }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 650px;
+      padding: 12px 15px 12px 40px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      background: #1e1e1e;
+      color: white;
+    }
+
     .search-bar i {
-      position: relative; left: 35px; top: 12px; color: #999; font-size: 18px;
+      position: relative;
+      left: 35px;
+      top: 12px;
+      color: #999;
+      font-size: 18px;
       pointer-events: none;
     }
 
-    /* FIL D’ARIANE */
-    .breadcrumb {
-      background: #1e90ff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 20px auto 0 auto;
-    }
-    .breadcrumb ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-      justify-content: center;
-    }
-    .breadcrumb ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: #1e1e1e;
-      transition: 0.3s;
-    }
-    .breadcrumb ul li a:hover {
-      background: #63b3ff;
-      color: #000;
-    }
-    .breadcrumb ul li a.active {
-      background: #63b3ff;
-      color: #000;
+    /* MAIN LAYOUT */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 250px 1fr 220px;
+      gap: 20px;
+      margin: 30px;
     }
 
-    /* ACTIONS EN HAUT À DROITE */
-    .actions-top {
-      display: flex;
-      justify-content: flex-end;
-      margin: 20px 30px 0 30px;
-    }
-    .actions {
+    /* AJOUTS RECENTS */
+    .recent {
       background: #1e1e1e;
       padding: 20px;
       border-radius: 10px;
-      width: 250px;
       height: fit-content;
+      animation: slideInLeft 0.8s ease;
+    }
+
+    .recent h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .recent-item {
+      background: #0e0e0e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .recent-item:hover {
+      border-color: #1e90ff;
+      background: #1a1a1a;
+    }
+
+    .recent-item h3 {
+      font-size: 15px;
+      margin: 0 0 5px;
+      color: #1e90ff;
+    }
+
+    .recent-item p {
+      margin: 0;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .recent-item a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* CARDS */
+    .cards-wrapper {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .cards-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards-header h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #0e0e0e;
+      color: #fff;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+    }
+
+    .card-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #1e90ff;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #1e90ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* ACTIONS — même placement que la page règlement */
+    .actions {
+      width: 220px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      height: fit-content;
+      align-self: flex-start;
       animation: slideInRight 0.8s ease;
     }
+
     .actions h2 {
       font-size: 18px;
       margin-bottom: 15px;
       color: #ccc;
     }
+
     .actions button {
       display: flex;
       align-items: center;
@@ -127,84 +230,9 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .actions button:hover { color: #fff; }
 
-    /* MAIN LAYOUT */
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 250px 1fr;
-      gap: 20px;
-      margin: 20px 30px 30px 30px;
-    }
-
-    /* AJOUTS RECENTS */
-    .recent {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 10px;
-      height: fit-content;
-      animation: slideInLeft 0.8s ease;
-    }
-    .recent h2 { font-size: 18px; margin-bottom: 15px; color: #ccc; }
-    .recent-item {
-      background: #0e0e0e;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 12px;
-      transition: 0.3s;
-    }
-    .recent-item:hover { border-color: #1e90ff; background: #1a1a1a; }
-    .recent-item h3 { font-size: 15px; margin: 0 0 5px; color: #1e90ff; }
-    .recent-item p { margin: 0; font-size: 13px; color: #aaa; }
-    .recent-item a { display: block; text-decoration: none; color: inherit; }
-
-    /* CARTES */
-    .cards-wrapper {
-      background: #1e1e1e;
-      padding: 30px;
-      border-radius: 15px;
-      animation: fadeInUp 1s ease;
-    }
-    .cards-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .cards-header h2 { margin: 0; font-size: 22px; color: #fff; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #0e0e0e;
+    .actions button:hover {
       color: #fff;
-      border-radius: 15px;
-      border: 2px solid #fff;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.3s;
-    }
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
-    }
-    .card-img {
-      width: 90px;
-      height: 90px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    .card h3 { color: #1e90ff; }
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #1e90ff;
-      font-weight: bold;
-      text-decoration: none;
     }
 
     /* LIGHT MODE */
@@ -212,25 +240,82 @@
       background: #f5f5f5;
       color: #000;
     }
-    body.light-mode header { background: #87cefa; }
+
+    body.light-mode header {
+      background: #87cefa;
+    }
+
     body.light-mode .recent,
     body.light-mode .cards-wrapper,
     body.light-mode .actions {
       background: #ddd;
       color: #000;
     }
+
     body.light-mode .card,
     body.light-mode .recent-item {
       background: #fff;
       color: #000;
       border: 2px solid #000;
     }
-    body.light-mode .card h3 { color: #1e90ff; }
+
+    body.light-mode .card h3 {
+      color: #1e90ff;
+    }
 
     /* ANIMATIONS */
-    @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
-    @keyframes slideInLeft { from {opacity: 0; transform: translateX(-30px);} to {opacity: 1; transform: translateX(0);} }
-    @keyframes slideInRight { from {opacity: 0; transform: translateX(30px);} to {opacity: 1; transform: translateX(0);} }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideInLeft {
+      from {opacity: 0; transform: translateX(-30px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    @keyframes slideInRight {
+      from {opacity: 0; transform: translateX(30px);}
+      to {opacity: 1; transform: translateX(0);}
+    }
+
+    /* ========= FIL D'ARIANE ========= */
+    .breadcrumb {
+      background: #1e90ff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px auto;
+    }
+
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .breadcrumb ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #1e1e1e;
+      transition: 0.3s;
+    }
+
+    .breadcrumb ul li a:hover {
+      background: #63b3ff;
+      color: #000;
+    }
+
+    .breadcrumb ul li a.active {
+      background: #63b3ff;
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -262,24 +347,13 @@
     </ul>
   </nav>
 
-  <!-- ACTIONS EN HAUT À DROITE -->
-  <div class="actions-top">
-    <aside class="actions">
-      <h2>Actions</h2>
-      <button onclick="window.location.href='tutoriels.html'"><i class="fas fa-home"></i> Retour aux Tutoriels</button>
-      <button><i class="fas fa-share"></i> Partager</button>
-      <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
-      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
-    </aside>
-  </div>
-
   <main>
     <!-- AJOUTS RECENTS -->
     <aside class="recent" id="recentContainer">
       <h2>Ajouts récents</h2>
     </aside>
 
-    <!-- CARTES -->
+    <!-- CARDS -->
     <div class="cards-wrapper">
       <div class="cards-header">
         <h2>Tutoriel Débutant</h2>
@@ -291,7 +365,6 @@
           <p>Apprends à rejoindre rapidement BlackLife.</p>
           <a href="tuto-connexion.html">Voir plus</a>
         </div>
-
         <div class="card" data-link="tuto-personnage.html">
           <img src="assets/personnage.png" alt="Création de personnage" class="card-img">
           <h3>Création de personnage</h3>
@@ -300,6 +373,15 @@
         </div>
       </div>
     </div>
+
+    <!-- ACTIONS -->
+    <aside class="actions">
+      <h2>Actions</h2>
+      <button onclick="window.location.href='tutoriels.html'"><i class="fas fa-home"></i> Retour aux Tutoriels</button>
+      <button><i class="fas fa-share"></i> Partager</button>
+      <button><i class="fas fa-bookmark"></i> Sauvegarder</button>
+      <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i> Mode clair</button>
+    </aside>
   </main>
 
   <script>
@@ -310,13 +392,11 @@
       { title: "Astuces & Conseils", link: "tuto-astuces.html", date: "13/09/2025" },
       { title: "Tutoriel Débutant", link: "tuto-debutant.html", date: "13/09/2025" }
     ];
+
     recent.forEach(item => {
       const div = document.createElement("div");
       div.classList.add("recent-item");
-      div.innerHTML = `<a href="${item.link}">
-          <h3>${item.title}</h3>
-          <p>Modifié le ${item.date}</p>
-        </a>`;
+      div.innerHTML = `<a href="${item.link}"><h3>${item.title}</h3><p>Modifié le ${item.date}</p></a>`;
       recentContainer.appendChild(div);
     });
 
