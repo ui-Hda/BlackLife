@@ -1,2 +1,2 @@
-# BlackLife WIKI 
-BlackLife WIKI  2K25 By Hedraa
+# GTANEW WIKI 
+GTANEW WIKI  2K25 By Hedraa
