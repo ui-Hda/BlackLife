@@ -1,2 +1,2 @@
-# GTANEW WIKI 
-GTANEW WIKI  2K25 By Hedraa
+# Dynasty RP WIKI 
+Dynasty RP WIKI 2K25 By Hedraa
